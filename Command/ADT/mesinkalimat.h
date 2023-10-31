@@ -2,7 +2,6 @@
 #define MESINKALIMAT_H
 
 #include "boolean.h"
-#include <stdio.h>
 
 #define MARK '\n'
 
