@@ -4,3 +4,4 @@ GOGOGOGOGOOOOOOO
 pppppp gw ngedit disini wkwkkwk
 jewf,jgjefggj,eg
 daffa gane jelek
+anak gane cupu ajng
