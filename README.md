@@ -1,5 +1,11 @@
 # Tugas Besar Alstrukdat Kel 2: WayangWave
 
+```
+int main(){
+      printf("semoga ga keos aminnnn");
+}
+```
+
 ### Partisipan:
 
 Samuel Franciscus Togar Hasurungan
