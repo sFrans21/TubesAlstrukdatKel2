@@ -1,24 +1,24 @@
 # Tugas Besar Alstrukdat Kel 2: WayangWave
 
-## Partisipan:
+### Partisipan:
 
-## Samuel Franciscus Togar Hasurungan
+Samuel Franciscus Togar Hasurungan
 
-## Muhammad Faishal Firdaus
+Muhammad Faishal Firdaus
 
-## Khayla Belva Annandira
+Khayla Belva Annandira
 
-## Adinda Khairunnisa Indraputri
+Adinda Khairunnisa Indraputri
 
-## Muhammad Daffa Kusuma Atmaja
+Muhammad Daffa Kusuma Atmaja
 
-## Deskripsi Singkat:
+### Deskripsi Singkat:
 
-### WayangWave adalah sebuah program service pemutaran musik yang terinspirasi dari aplikasi pemutar lagu ternama seperti
+**WayangWave adalah sebuah program service pemutaran musik yang terinspirasi dari aplikasi pemutar lagu ternama seperti**
 
-### Spotify, Apple Music, dan software- lainnya.
+**Spotify, Apple Music, dan software- lainnya.**
 
-### WayangWave memiliki 5 fungsi utama:
+**WayangWave memiliki 5 fungsi utama:**
 
 1.Memutar lagu
 
