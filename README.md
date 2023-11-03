@@ -14,18 +14,18 @@
 
 ## Deskripsi Singkat:
 
-## WayangWave adalah sebuah program service pemutaran musik yang terinspirasi dari aplikasi pemutar lagu ternama seperti
+### WayangWave adalah sebuah program service pemutaran musik yang terinspirasi dari aplikasi pemutar lagu ternama seperti
 
-## Spotify, Apple Music, dan software- lainnya.
+### Spotify, Apple Music, dan software- lainnya.
 
-## WayangWave memiliki 5 fungsi utama:
+### WayangWave memiliki 5 fungsi utama:
 
-### 1.Memutar lagu
+1.Memutar lagu
 
-### 2.Menampilkan daftar lagu
+2.Menampilkan daftar lagu
 
-### 3.Membuat dan menghapus playlist
+3.Membuat dan menghapus playlist
 
-### 4.Mengatur urutan dimainkannya lagu
+4.Mengatur urutan dimainkannya lagu
 
-### 5.Menampilkan status dari aplikasi
+5.Menampilkan status dari aplikasi
