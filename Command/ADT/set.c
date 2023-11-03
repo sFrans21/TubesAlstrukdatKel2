@@ -6,6 +6,8 @@
 
 #include <stdio.h>
 #include "set.h"
+#include "boolean.h"
+#include "mesinkata.h"
 
 /* *** Konstruktor/Kreator *** */
 void CreateEmpty(Set *S)
