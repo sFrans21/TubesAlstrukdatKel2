@@ -23,5 +23,6 @@ void help()
     printf("6. STATUS -> menampilkan lagu yang sedang dimainkan beserta Queue song yang ada dan dari playlist mana lagu itu diputar.\n");
     printf("7. SAVE -> menyimpan state aplikasi terbaru ke dalam suatu file.\n");
     printf("8. QUIT -> Untuk keluar dari sesi\n");
-    printf("ppp\n");
+
+    return 0;
 }
