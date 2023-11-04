@@ -1,9 +1,3 @@
-//	NIM				: 18221157
-//	Nama			: Cathleen Lauretta
-//	Tanggal			: 31 Oktober 2022
-//	Topik praktikum : Praktikum 8 - Set & Hash
-//	Deskripsi		: Program yang membuat implementasi dari set.h dengan beberapa fungsi tambahan untuk melakukan operasi terhadap ADT Set
-
 #include <stdio.h>
 #include "set.h"
 #include "boolean.h"

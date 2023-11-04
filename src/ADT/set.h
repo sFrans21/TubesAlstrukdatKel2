@@ -1,6 +1,6 @@
 #ifndef set_H
 #define set_H
-#include <stdio.h>
+
 #include "boolean.h"
 #include "mesinkata.h"
 
