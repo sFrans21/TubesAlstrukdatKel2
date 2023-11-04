@@ -16,8 +16,8 @@ typedef int addrSer;
 
 typedef struct
 {
-    infotypeSet Elements[MaxElSet];
-    addrSer Count;
+        infotypeSet Elements[MaxElSet];
+        addrSer Count;
 } Set;
 
 /* Definisi Set S kosong : S.Count = Nil */

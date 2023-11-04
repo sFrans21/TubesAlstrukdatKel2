@@ -1,74 +1,60 @@
 #include <stdio.h>
 #include "set.h"
-#include "boolean.h"
-#include "mesinkata.h"
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty(Set *S)
+void CreateEmptySet(Set *S)
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Set S kosong berkapasitas MaxEl */
+/* F.S. Membuat sebuah Set S kosong berkapasitas MaxElSet */
 /* Ciri Set kosong : count bernilai Nil */
 {
-      (*S).Count = Nil;
+      S->Count = Nil;
 }
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmpty(Set S)
+boolean IsEmptySet(Set S)
 /* Mengirim true jika Set S kosong*/
 /* Ciri Set kosong : count bernilai Nil */
 {
       return S.Count == Nil;
 }
 
-boolean IsFull(Set S)
+boolean IsFullSet(Set S)
 /* Mengirim true jika Set S penuh */
-/* Ciri Set penuh : count bernilai MaxEl */
+/* Ciri Set penuh : count bernilai MaxElSet */
 {
       return S.Count == MaxElSet;
 }
 
 /* ********** Operator Dasar Set ********* */
-void Insert(Set *S, infotypeSet Elmt)
+void InsertSet(Set *S, infotypeSet Elmt)
 /* Menambahkan Elmt sebagai elemen Set S. */
 /* I.S. S mungkin kosong, S tidak penuh
         S mungkin sudah beranggotakan Elmt */
 /* F.S. Elmt menjadi anggota dari S. Jika Elmt sudah merupakan anggota, operasi tidak dilakukan */
 {
-      boolean found = false;
-      int i = 0;
-
-      while (i < (*S).Count && !found)
+      if (IsMemberSet(*S, Elmt))
       {
-            if ((*S).Elements[i] == Elmt)
-            {
-                  found = true;
-            }
-            i += 1;
+            return;
       }
-
-      if (!found)
-      {
-            (*S).Elements[(*S).Count] = Elmt;
-            (*S).Count += 1;
-      }
+      S->Elements[S->Count] = Elmt;
+      S->Count++;
 }
 
-void Delete(Set *S, infotypeSet Elmt)
+void DeleteSet(Set *S, infotypeSet Elmt)
 /* Menghapus Elmt dari Set S. */
 /* I.S. S tidak kosong
         Elmt mungkin anggota / bukan anggota dari S */
 /* F.S. Elmt bukan anggota dari S */
 {
       boolean found = false;
-      addrSer idx = 0;
-
-      if (!IsMember(*S, Elmt))
+      addrSer idx = 0, iterator;
+      if (!IsMemberSet(*S, Elmt))
       {
             return;
       }
       while (!found && idx < S->Count)
       {
-            if (S.Elements[idx] == Elmt)
+            if (IsWordEq(S->Elements[idx], Elmt))
             {
                   found = true;
             }
@@ -77,22 +63,21 @@ void Delete(Set *S, infotypeSet Elmt)
                   idx++;
             }
       }
-      for (addrSer i = idx + 1; i < S->Count; i++)
+      for (iterator = idx + 1; iterator < S->Count; iterator++)
       {
-            S->Elements[i - 1] = S->Elements[i];
+            S->Elements[iterator - 1] = S->Elements[iterator];
       }
       S->Count--;
 }
 
-boolean IsMember(Set S, infotypeSet Elmt)
+boolean IsMemberSet(Set S, infotypeSet Elmt)
 /* Mengembalikan true jika Elmt adalah member dari S */
 {
       boolean found = false;
       addrSer idx = 0;
-
       while (!found && idx < S.Count)
       {
-            if (S.Elements[idx] == Elmt)
+            if (IsWordEq(S.Elements[idx], Elmt))
             {
                   found = true;
             }
@@ -108,69 +93,56 @@ Set SetUnion(Set s1, Set s2)
 // Mengembalikan set baru yang berisi elemen-elemen yang terdapat pada s1 atau s2
 // Contoh: [1, 2] U [2, 3] = [1, 2, 3]
 {
-      Set Union;
-      CreateEmpty(&Union);
-
       int i;
-
+      Set s3;
+      CreateEmptySet(&s3);
       for (i = 0; i < s1.Count; i++)
       {
-            Insert(&Union, s1.Elements[i]);
+            if (!IsMemberSet(s3, s1.Elements[i]))
+                  InsertSet(&s3, s1.Elements[i]);
       }
-
       for (i = 0; i < s2.Count; i++)
       {
-            Insert(&Union, s2.Elements[i]);
+            if (!IsMemberSet(s3, s2.Elements[i]))
+                  InsertSet(&s3, s2.Elements[i]);
       }
-
-      return Union;
+      return s3;
 }
 
 Set SetIntersection(Set s1, Set s2)
 // Mengembalikan set baru yang berisi elemen-elemen dari s1 dan s2 yang terdapat pada kedua set
 // Contoh: [1, 2] ∩ [2, 3] = [2]
 {
-      Set Intersect;
-      CreateEmpty(&Intersect);
-
-      int i;
-
-      for (i = 0; i < s1.Count; i++)
+      Set s3;
+      CreateEmptySet(&s3);
+      for (int i = 0; i < s1.Count; i++)
       {
-            if (IsMember(s2, s1.Elements[i]))
-            {
-                  Insert(&Intersect, s1.Elements[i]);
-            }
+            if (IsMemberSet(s2, s1.Elements[i]))
+                  InsertSet(&s3, s1.Elements[i]);
       }
-
-      return Intersect;
+      return s3;
 }
 
 Set SetSymmetricDifference(Set s1, Set s2)
 // Mengembalikan set baru yang berisi elemen yang ada di s1 atau s2, tapi tidak pada keduanya
 // Contoh: [1, 2] ⊖ [2, 3] = [1, 3]
 {
-      Set Setdiff;
-      CreateEmpty(&Setdiff);
-      int i;
-
-      for (i = 0; i < s1.Count; i++)
       {
-            if (!IsMember(s2, s1.Elements[i]))
+            int i;
+            Set s3;
+            CreateEmptySet(&s3);
+            for (i = 0; i < s1.Count; i++)
             {
-                  Insert(&Setdiff, s1.Elements[i]);
+                  if (!IsMemberSet(s2, s1.Elements[i]))
+                        InsertSet(&s3, s1.Elements[i]);
             }
-      }
-
-      for (i = 0; i < s2.Count; i++)
-      {
-            if (!IsMember(s1, s2.Elements[i]))
+            for (i = 0; i < s2.Count; i++)
             {
-                  Insert(&Setdiff, s2.Elements[i]);
+                  if (!IsMemberSet(s1, s2.Elements[i]))
+                        InsertSet(&s3, s2.Elements[i]);
             }
+            return s3;
       }
-
-      return Setdiff;
 }
 
 Set SetSubtract(Set s1, Set s2)
@@ -179,17 +151,12 @@ Set SetSubtract(Set s1, Set s2)
 // s1 = [1, 2] s2 = [2, 3]
 // s1 - s2 = [1]
 {
-      Set Substract;
-      CreateEmpty(&Substract);
-      int i;
-
-      for (i = 0; i < s1.Count; i++)
+      Set s3;
+      CreateEmptySet(&s3);
+      for (int i = 0; i < s1.Count; i++)
       {
-            if (!IsMember(s2, s1.Elements[i]))
-            {
-                  Insert(&Substract, s1.Elements[i]);
-            }
+            if (!IsMemberSet(s2, s1.Elements[i]))
+                  InsertSet(&s3, s1.Elements[i]);
       }
-
-      return Substract;
+      return s3;
 }
