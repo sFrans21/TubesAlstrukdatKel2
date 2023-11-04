@@ -1,8 +1,11 @@
 #ifndef START_H
 #define START_H
 
-#include ".\ADT\mesinkata.h"
+#include "mesinkar2.h"
+#include "mesinkata2.h"
+#include "arrayDin.h"
+#include "boolean.h"
 
-extern void Start(char *configFileName);
+void StartWW(ArrayDin *ListPenyanyi, ArrayDin *ListAlbum, ArrayDin *ListLagu);
 
 #endif

@@ -1,92 +1,58 @@
-#include "start.h"
-#include "mesinkata.h"
-#include "mesinkarakter.h"
-#include "boolean.h"
 #include <stdio.h>
-#include <stdlib.h>
+#include "start.h"
 
-#define MAX_PENYANYI 100 // Batasan maksimum penyanyi
-#define MAX_ALBUM 10     // Batasan maksimum album per penyanyi
-#define MAX_LAGU 20      // Batasan maksimum lagu per album
+void StartWW(ArrayDin *ListPenyanyi, ArrayDin *ListAlbum, ArrayDin *ListLagu){
+    char path[NMax];
+    char *filename = "config.txt";
+    stringConcat("../data/",filename,path);
+    printf("%s\n",path);
 
-typedef struct {
-    char nama[100]; // Nama penyanyi
-    struct Album {
-        char nama[100]; // Nama album
-        struct Lagu {
-            char nama[100]; // Nama lagu
-        } lagu[MAX_LAGU];
-        int jumlahLagu; // Jumlah lagu dalam album
-    } album[MAX_ALBUM];
-    int jumlahAlbum; // Jumlah album penyanyi
-} Penyanyi;
+    STARTWORD(path);
+    int nPenyanyi = WordToInt(currentWord);
+    printf("%d\n" , nPenyanyi);
+    nPenyanyi -= 10;
 
-Penyanyi penyanyiList[MAX_PENYANYI]; // Array untuk menyimpan penyanyi
-
-void IgnoreBlanks() {
-    while (currentChar == BLANK) {
-        ADV();
-    }
-}
-
-void CopyString(char dest[], Word source) {
-    int i;
-    for (i = 0; i < source.Length; i++) {
-        dest[i] = source.TabWord[i];
-    }
-    dest[i] = '\0';
-}
-
-void CopyWord(Word *dest, Word source) {
-    dest->Length = source.Length;
-    for (int i = 0; i < source.Length; i++) {
-        dest->TabWord[i] = source.TabWord[i];
-    }
-    dest->TabWord[dest->Length] = '\0';
-}
-
-
-void Start(char *configFileName) {
-    STARTWORD();
-    // Baca jumlah penyanyi
-    ADVWORD();
-    int jumlahPenyanyi;
-    if (isEndWord()) {
-        printf("File konfigurasi aplikasi kosong.\n");
-        return;
-    } else {
-        jumlahPenyanyi = (int)(currentWord.TabWord[0] - '0');
-    }
-
-    int penyanyiIndex = 0;
-    for (int i = 0; i < jumlahPenyanyi; i++) {
-        IgnoreBlanks();
+    char stringPenyanyi[NMax];
+    for (int i = 1; i <= nPenyanyi; i++){
+        ADVLine();
+        int nAlbum = WordtoInt(currentWord);
+        printf("%d\n", nAlbum);
+        nAlbum -= 10;
         ADVWORD();
-        CopyWord(&(penyanyiList[penyanyiIndex].nama), currentWord);
-        penyanyiList[penyanyiIndex].jumlahAlbum = 0;
+        wordToString(currentWord , stringPenyanyi);
+        InsertLast(ListPenyanyi , stringPenyanyi);
+        printf("%s\n" , (*ListPenyanyi).A[i-1]);
 
-        // Baca album
-        ADVWORD();
-        int albumIndex = 0;
-        while (!isEndWord()) {
-            IgnoreBlanks();
-            if (isEndWord()) {
-                break;
-            } else {
-                int jumlahLagu = (int)(currentWord.TabWord[0] - '0');
-                ADVWORD();
-                for (int laguIndex = 0; laguIndex < jumlahLagu; laguIndex++) {
-                    CopyWord(&(penyanyiList[penyanyiIndex].album[albumIndex].lagu[laguIndex].nama), currentWord);
-                    penyanyiList[penyanyiIndex].album[albumIndex].jumlahLagu++;
-                    ADVWORD();
-                }
-                albumIndex++;
+        char stringAlbum[NMax];
+        for (int j = 1; j <= nAlbum; j++){
+            ADVLine();
+            int nLagu = WordtoInt(currentWord);
+            printf("%d\n", nLagu);
+            nLagu -= 10;
+            ADVWORD();
+            wordToString(currentWord , stringAlbum);
+            InsertLast(ListAlbum, stringAlbum);
+            printf("%s\n" , (*ListAlbum).A[i-1]);
+
+            char stringLagu[NMax];
+            for (int k = 1; k <= nLagu; k++){
+                ADVLine();
+                WordToString(currentWord, stringLagu);
+                InsertLast(ListLagu, stringLagu);
+                printf("%s\n", (*ListLagu).A[i-1]);
             }
         }
-        penyanyiList[penyanyiIndex].jumlahAlbum = albumIndex;
-        penyanyiIndex++;
     }
+    if(!IsEmpty(*ListPenyanyi)) 
+    { 
+        printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n"); 
+    } else {
+        printf("File konfigurasi kosong.\n");
+    }
+}
 
-    // Setelah membaca dan mengolah data, cetak pesan sukses
-    printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
+
+int main(){
+    ArrayDin ListPenyanyi, ListAlbum, ListLagu;
+    StartWW(&ListPenyanyi, &ListAlbum, &ListLagu);
 }
