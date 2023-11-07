@@ -41,3 +41,18 @@ int WordToInt(Word word)
 
     return (val);
 }
+
+char *WORDTOSTRING(Word kata)
+{
+    char *akusisiKata = NULL;
+
+    akusisiKata = malloc(kata.Length * sizeof(char));
+    int i = 0;
+    while (i < kata.Length)
+    {
+        *(akusisiKata + i) = kata.TabWord[i];
+        i++;
+    }
+    akusisiKata[i] = '\0';
+    return akusisiKata;
+}

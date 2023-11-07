@@ -2,11 +2,11 @@
 #define LOAD_H
 
 #include "start.h" // Termasuk file header yang diperlukan
-#include ".\ADT\set.h"  // Mungkin memerlukan tipe data seperti Set untuk menyimpan lagu
-#include ".\ADT\map.h"   // Memerlukan Map untuk menyimpan album dan lagu
-#include ".\ADT\list.h"  // Memerlukan List statis untuk daftar penyanyi
+#include "ADT/stack.h"  // Mungkin memerlukan tipe data seperti Set untuk menyimpan lagu
+#include "ADT/arrayDin.h"   // Memerlukan Map untuk menyimpan album dan lagu
+#include "ADT/queue.h"  // Memerlukan List statis untuk daftar penyanyi
 
 // Deklarasi fungsi untuk membaca save file
-int loadSaveFile(const char *filename, Map *penyanyiAlbums, Map *albumLagu, List *penyanyiList);
+void load(char *filename, StaticList penyanyi, Map album, Map lagu, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu);
 
 #endif

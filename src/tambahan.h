@@ -10,4 +10,6 @@ boolean isEqual(Word a, Word b);
 
 int WordToInt(Word word);
 
+char *WORDTOSTRING(Word kata);
+
 #endif

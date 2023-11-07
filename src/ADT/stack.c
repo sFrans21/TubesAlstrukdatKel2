@@ -27,7 +27,7 @@ int NbElmtStack(Stack S)
 /* Mengirimkan banyaknya elemen Stack; mengirimkan 0 jika Stack kosong */
 {
       int count = 0;
-      infotype dump;
+      INFOTYPE dump;
       while (!IsEmptyStack(S))
       {
             Pop(&S, &dump);
@@ -37,7 +37,7 @@ int NbElmtStack(Stack S)
 }
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack *S, infotype X)
+void Push(Stack *S, INFOTYPE X)
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
@@ -47,11 +47,22 @@ void Push(Stack *S, infotype X)
 }
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack *S, infotype *X)
+void Pop(Stack *S, INFOTYPE *X)
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 {
       (*X) = InfoTop(*S);
       Top(*S)--;
+}
+
+Stack ReverseStack(Stack in){
+    Stack out;
+    CreateEmptyStack(&out);
+    INFOTYPE element;
+    while(!IsEmptyStack(in)){
+        Pop(&in, &element);
+        Push(&out, element);
+    }
+    return out;
 }

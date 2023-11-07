@@ -12,13 +12,13 @@
 #define MaxEl 100
 /* Undef adalah stack dengan elemen kosong . */
 
-typedef Word infotype;
+typedef char* INFOTYPE;
 typedef int addr;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 typedef struct { 
-  infotype T[MaxEl]; /* tabel penyimpan elemen */
+  INFOTYPE T[MaxEl]; /* tabel penyimpan elemen */
   addr TOP;  /* alamat TOP: elemen puncak */
 } Stack;
 /* Definisi stack S kosong : S.TOP = Undef */
@@ -50,15 +50,17 @@ int NbElmtStack(Stack S);
 /* Mengirimkan banyaknya elemen Stack; mengirimkan 0 jika Stack kosong */
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack * S, infotype X);
+void Push(Stack * S, INFOTYPE X);
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack * S, infotype* X);
+void Pop(Stack * S, INFOTYPE* X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
+
+Stack ReverseStack(Stack in);
 
 #endif
