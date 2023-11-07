@@ -1,6 +1,3 @@
-/* File : queue.h */
-/* Definisi ADT Queue dengan representasi array secara eksplisit dan alokasi statik */
-
 #ifndef QUEUE_H
 #define QUEUE_H
 
@@ -11,20 +8,19 @@
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef Word ElType;
-typedef struct
-{
-        ElType buffer[CAPACITY];
-        int idxHead;
-        int idxTail;
+typedef struct {
+	Word buffer[CAPACITY]; 
+	int idxHead;
+	int idxTail;
 } Queue;
+
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define HEAD(q) (q).buffer[(q).idxHead]
-#define TAIL(q) (q).buffer[(q).idxTail]
+#define     HEAD(q) (q).buffer[(q).idxHead]
+#define     TAIL(q) (q).buffer[(q).idxTail]
 
 /* *** Kreator *** */
 void CreateQueue(Queue *q);
@@ -35,22 +31,22 @@ void CreateQueue(Queue *q);
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q);
+boolean isQueueEmpty(Queue q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFull(Queue q);
+boolean isQueueFull(Queue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(Queue q);
+int lengthQueue(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val);
+void enqueue(Queue *q, Word val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, ElType *val);
+void dequeue(Queue *q, Word *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -58,11 +54,13 @@ void dequeue(Queue *q, ElType *val);
 
 /* *** Display Queue *** */
 void displayQueue(Queue q);
-/* Menampilkan queue pada layar
-   I.S. Q sembarang, mungkin kosong
-   F.S. Isi Q ditampilkan ke layar */
+/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
+   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
+   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+/* I.S. q boleh kosong */
+/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
+/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
+/* Jika Queue kosong : menulis [] */
 
-boolean IsMemberQ(Queue q, ElType v);
-/* Mengembalikan nilai true apabila elemen v ada pada Queue */
 
 #endif

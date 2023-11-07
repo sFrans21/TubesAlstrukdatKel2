@@ -1,80 +1,104 @@
 #include <stdio.h>
+
 #include "mesinkata.h"
 
-boolean endWord;
+boolean EndWord;
 Word currentWord;
 
 void IgnoreBlanks()
 {
-    /* Mengabaikan satu atau beberapa BLANK
-       I.S. : currentChar sembarang
-       F.S. : currentChar ≠ BLANK atau currentChar = MARK */
     while (currentChar == BLANK)
     {
         ADV();
     }
 }
 
-void STARTWORD()
+void IgnoreNewlines()
 {
-    /* I.S. : currentChar sembarang
-       F.S. : endWord = true, dan currentChar = MARK;
-              atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
-              currentChar karakter pertama sesudah karakter terakhir kata */
+    while (currentChar == NEWLINE)
+    {
+        AdvFile();
+    }
+}
+
+void StartWordInput()
+{
     START();
     IgnoreBlanks();
-    if (currentChar == MARK)
+    if (IsEOP())
     {
-        endWord = true;
+        EndWord = true;
     }
     else
     {
-        endWord = false;
+        EndWord = false;
         CopyWord();
     }
 }
 
-void ADVWORD()
+void StartWordFile(char *filename)
 {
-    /* I.S. : currentChar adalah karakter pertama kata yang akan diakuisisi
-       F.S. : currentWord adalah kata terakhir yang sudah diakuisisi,
-              currentChar adalah karakter pertama dari kata berikutnya, mungkin MARK
-              Jika currentChar = MARK, endWord = true.
-       Proses : Akuisisi kata menggunakan procedure CopyWord */
-    IgnoreBlanks();
-    if (currentChar == MARK)
+    StartFile(filename);
+    if (currentChar == NEWLINE)
     {
-        endWord = true;
+        EndWord = true;
     }
     else
     {
-        endWord = false;
+        EndWord = false;
+        AdvWordFile();
+    }
+}
+
+void AdvWord()
+{
+    IgnoreBlanks();
+    if (currentChar == BLANK)
+    {
+        EndWord = true;
+    }
+    else
+    {
         CopyWord();
         IgnoreBlanks();
     }
 }
 
-void CopyWord()
+void AdvWordFile()
 {
-    /* Mengakuisisi kata, menyimpan dalam currentWord
-       I.S. : currentChar adalah karakter pertama dari kata
-       F.S. : currentWord berisi kata yang sudah diakuisisi;
-              currentChar = BLANK atau currentChar = MARK;
-              currentChar adalah karakter sesudah karakter terakhir yang diakuisisi.
-              Jika panjang kata melebihi CAPACITY, maka sisa kata terpotong */
-    currentWord.Length = 0;
-    while (currentChar != BLANK && currentChar != MARK)
+    if (currentChar == NEWLINE)
     {
-        if (currentWord.Length < NMax)
-        { // jika lebih akan terpotong
-            currentWord.TabWord[currentWord.Length++] = currentChar;
-            ADV();
-        }
-        else
-            break;
+        EndWord = true;
+    }
+    else
+    {
+        CopyWordFile();
+        IgnoreNewlines();
     }
 }
 
-boolean isEndWord() {
-    return endWord;
+void CopyWord()
+{
+    int i = 0;
+
+    while ((!IsEOP()) && (currentChar != BLANK))
+    {
+        currentWord.TabWord[i] = currentChar;
+        ADV();
+        i++;
+    }
+    currentWord.Length = i;
+}
+
+Word CopyWordFile()
+{
+    int i = 0;
+
+    while ((!EOP) && currentChar != NEWLINE)
+    {
+        currentWord.TabWord[i] = currentChar;
+        AdvFile();
+        i++;
+    }
+    currentWord.Length = i;
 }

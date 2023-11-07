@@ -1,79 +1,64 @@
 #include <stdio.h>
 #include "start.h"
+#include "tambahan.h"
 
-void StartWW(ArrayDin *ListPenyanyi, ArrayDin *ListAlbum, ArrayDin *ListLagu){
-    char path[NMax];
-    char *filename = "config.txt";
-    stringConcat("../data/",filename,path);
-    //printf("%s\n",path);
+void start(StaticList penyanyi, Map album, Map lagu)
+{
+    int jumlahPenyanyi, jumlahAlbum, jumlahLagu;
+    //Word namaPenyanyi, namaAlbum, judulLagu;
 
-    STARTWORD(path);
-    int nPenyanyi = WordToInt(currentWord);
-    //nPenyanyi -= 10;
-    //printf("%d\n" , nPenyanyi);
-    char stringPenyanyi[NMax];
-    for (int i = 1; i <= nPenyanyi; i++){
-        char *namaPenyanyi = (char*) malloc (currentWord.Length * sizeof(char));
-        //char *namaPenyanyi;
-        ADVLine();
-        int nAlbum = WordtoInt(currentWord);
-        //printf("%d\n", nAlbum);
-        //nAlbum -= 10;
-        ADVWORD();
-        wordToString(currentWord, stringPenyanyi);
-        //printf("%s\n", stringPenyanyi);
-        int j = 0;
-        while (j <= currentWord.Length){
-            namaPenyanyi[j] = stringPenyanyi[j];
-            j++;
+    StartWordFile("cek.txt");
+    jumlahPenyanyi = WordToInt(currentWord);
+    printf("%d\n", jumlahPenyanyi);
+    for (int i = 0; i < jumlahPenyanyi; i++) {
+        AdvWord();
+        jumlahAlbum = WordToInt(currentWord);
+        printf("%d\n", jumlahAlbum);
+        AdvWordFile();
+
+        // Membuat salinan dari currentWord ke namaPenyanyi
+        Word namaPenyanyi;
+        for (int j = 0; j < currentWord.Length; j++) {
+            namaPenyanyi.TabWord[j] = currentWord.TabWord[j];
         }
-        //namaPenyanyi[j] = '\0';
-        InsertLast(ListPenyanyi, namaPenyanyi);
-        printf("%s\n" , (*ListPenyanyi).A[i-1]);
+        namaPenyanyi.Length = currentWord.Length; 
 
-        char stringAlbum[NMax];
-        for (int k = 1; k <= nAlbum; k++){
-            char *namaAlbum = (char*) malloc (currentWord.Length * sizeof(char));
-            ADVLine();
-            int nLagu = WordtoInt(currentWord);
-            //printf("%d\n", nLagu);
-            //nLagu -= 10;
-            ADVWORD();
-            wordToString(currentWord , stringAlbum);
-            //printf("%s\n", stringAlbum);
-            int l = 0;
-            while (l <= currentWord.Length){
-                namaAlbum[l] = stringAlbum[l];
-                l++;
+        // Mengirim namaPenyanyi ke setItem
+        setItem(&penyanyi, i, &namaPenyanyi);
+        printf("%s\n", penyanyi.items[i].TabWord);
+
+        for (int z=0; z < jumlahAlbum; z++)
+        {
+            AdvWord();
+            jumlahLagu = WordToInt(currentWord);
+            printf("%d\n", jumlahLagu);
+            AdvWordFile();
+            Word namaAlbum;
+            //namaAlbum.Length = currentWord.Length;
+            for (int j = 0; j < currentWord.Length; j++) {
+                namaAlbum.TabWord[j] = currentWord.TabWord[j];
             }
-            InsertLast(ListAlbum, stringAlbum);
-            printf("%s\n" , (*ListAlbum).A[i-1]);
-
-            char stringLagu[NMax];
-            for (int m = 1; m <= nLagu; m++){
-                char *namaLagu = (char*) malloc (currentWord.Length * sizeof(char));
-                ADVLine();
-                WordToString(currentWord, stringLagu);
-                int n = 0;
-                while (n <= currentWord.Length){
-                    namaLagu[n] = stringLagu[n];
-                    n++;
+            Insertmap(&album, namaPenyanyi, namaAlbum);
+            printf("%s\n", namaAlbum.TabWord);
+        
+            for (int k=0; k<jumlahLagu; k++)
+            {
+                AdvWordFile();
+                Word judulLagu;
+                //judulLagu.Length = currentWord.Length;
+                for (int j = 0; j < currentWord.Length; j++) {
+                    judulLagu.TabWord[j] = currentWord.TabWord[j];
                 }
-                InsertLast(ListLagu, stringLagu);
-                printf("%s\n", (*ListLagu).A[i-1]);
+                Insertmap(&lagu, namaAlbum, judulLagu);
+                printf("%s\n", judulLagu.TabWord);
             }
         }
-    }
-    if(!IsEmpty(*ListPenyanyi)) 
-    { 
-        printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n"); 
-    } else {
-        printf("File konfigurasi kosong.\n");
     }
 }
 
-
-int main(){
-    ArrayDin ListPenyanyi, ListAlbum, ListLagu;
-    StartWW(&ListPenyanyi, &ListAlbum, &ListLagu);
+int main (){
+    StaticList penyanyi;
+    Map album;
+    Map lagu;
+    start(penyanyi, album, lagu);
 }

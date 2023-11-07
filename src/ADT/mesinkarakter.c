@@ -1,36 +1,67 @@
 #include <stdio.h>
+
 #include "mesinkarakter.h"
 
 char currentChar;
 boolean EOP;
+
 static FILE *pita;
 static int retval;
 
-void START() {
-    /* Mesin siap dioperasikan. Pita disiapkan ... */
-    /* Algoritma */
+void START()
+{
     pita = stdin;
     ADV();
 }
 
-void ADV() {
-    /* Pita dimajukan satu karakter. ... */
-    /* Algoritma */
-    retval = fscanf(pita, "%c", &currentChar);
-    EOP = (currentChar == MARK);
-    if (EOP) {
-        fclose(pita);
+void StartFile(char *filename)
+{
+    pita = fopen(filename, "r");
+    AdvFile();
+}
+ 
+void ADV()
+{
+    if (pita == NULL)
+    {
+        EOP = true;
+    }
+    else
+    {
+        retval = fscanf(pita, "%c", &currentChar);
+        EOP = feof(pita);
+
+        if (EOP)
+        {
+            fclose(pita);
+        }
     }
 }
 
-char GetCC() {
-    /* Mengirimkan currentChar */
-    /* Algoritma */
-    return currentChar;
+void AdvFile()
+{
+    if (pita == NULL)
+    {
+        EOP = true;
+    }
+    else
+    {
+        retval = fscanf(pita, "%c", &currentChar);
+        EOP = feof(pita);
+
+        if (EOP)
+        {
+            fclose(pita);
+        }
+    }
 }
 
-boolean IsEOP() {
-    /* Mengirimkan true jika currentChar = MARK */
-    /* Algoritma */
-    return EOP;
+char GetCC()
+{
+    return (currentChar);
+}
+
+boolean IsEOP()
+{
+    return (currentChar == MARK);
 }

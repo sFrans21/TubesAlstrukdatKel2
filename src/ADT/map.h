@@ -10,23 +10,23 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 // #define false 0
 // #define true 1
-#define MaxElMap 10
+#define Nil 0
+#define MaxEl 10
+#define Undefined NULL
 
 // typedef int bool;
 typedef Word keytype;
-typedef int valuetype;
-typedef int addr;
+typedef Word valuetype;
+typedef int address;
 
-typedef struct
-{
+typedef struct {
 	keytype Key;
 	valuetype Value;
-} infotypeMap;
+} infotype;
 
-typedef struct
-{
-	infotypeMap Elements[MaxElMap];
-	addr Count;
+typedef struct {
+	infotype Elements[MaxEl];
+	address Count;
 } Map;
 
 /* Definisi Map M kosong : M.Count = Nil */
@@ -36,37 +36,38 @@ typedef struct
 /* ********* Prototype ********* */
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyMap(Map *M);
+void CreateEmptymap(Map *M);
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
 /* Ciri Map kosong : count bernilai Nil */
 
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
-boolean IsEmptyMap(Map M);
+boolean IsEmptymap(Map M);
 /* Mengirim true jika Map M kosong*/
 /* Ciri Map kosong : count bernilai Nil */
 
-boolean IsFullMap(Map M);
+boolean IsFullmap(Map M);
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxElMap */
+/* Ciri Map penuh : count bernilai MaxEl */
 
 /* ********** Operator Dasar Map ********* */
-valuetype Value(Map M, keytype k);
+valuetype Valuemap(Map M, keytype k);
 /* Mengembalikan nilai value dengan key k dari M */
+/* Jika tidak ada key k pada M, akan mengembalikan Undefined */
 
-void Insert(Map *M, keytype k, valuetype v);
+void Insertmap(Map *M, keytype k, valuetype v);
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
-	  M mungkin sudah beranggotakan v dengan key k */
+        M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 
-void Delete(Map *M, keytype k);
+void Deletemap(Map *M, keytype k);
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
-	  element dengan key k mungkin anggota / bukan anggota dari M */
+        element dengan key k mungkin anggota / bukan anggota dari M */
 /* F.S. element dengan key k bukan anggota dari M */
 
-boolean IsMemberMap(Map M, keytype k);
+boolean IsMembermap(Map M, keytype k);
 /* Mengembalikan true jika k adalah member dari M */
 
 #endif

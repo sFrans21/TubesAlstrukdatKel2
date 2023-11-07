@@ -1,11 +1,10 @@
-#ifndef START_H
-#define START_H
+#ifndef __START_H__
+#define __START_H__
 
-#include "ADT/arrayDin.h"
-#include "ADT/mesinkar2.h"
-#include "ADT/mesinkata2.h"
-#include "ADT/boolean.h"
+#include "ADT/mesinkata.h"
+#include "ADT/listStatik.h"
+#include "ADT/map.h"
 
-void StartWW(ArrayDin *ListPenyanyi, ArrayDin *ListAlbum, ArrayDin *ListLagu);
+void start(StaticList artist, Map album_artist, Map song_album);
 
 #endif
