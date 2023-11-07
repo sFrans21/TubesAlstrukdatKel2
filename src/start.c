@@ -9,11 +9,11 @@ void start(StaticList penyanyi, Map album, Map lagu)
     jumlahPenyanyi = WordToInt(currentWord);
     printf("%d\n", jumlahPenyanyi);
     for (int i = 0; i < jumlahPenyanyi; i++) {
-        AdvWord();
+        ADVWord();
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
         printf("%d\n", jumlahAlbum);
-        AdvWordFile();
+        ADVLine();
 
         // Membuat salinan dari currentWord ke namaPenyanyi
         Word namaPenyanyi;
@@ -28,11 +28,11 @@ void start(StaticList penyanyi, Map album, Map lagu)
 
         for (int z=0; z < jumlahAlbum; z++)
         {
-            AdvWord();
+            ADVWord();
             int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
             printf("%d\n", jumlahLagu);
-            AdvWordFile();
+            ADVLine();
             Word namaAlbum;
             for (int j = 0; j < currentWord.Length; j++) {
                 namaAlbum.TabWord[j] = currentWord.TabWord[j];
@@ -43,7 +43,7 @@ void start(StaticList penyanyi, Map album, Map lagu)
         
             for (int k=0; k<jumlahLagu; k++)
             {
-                AdvWordFile();
+                ADVLine();
                 Word judulLagu;
                 for (int j = 0; j < currentWord.Length; j++) {
                     judulLagu.TabWord[j] = currentWord.TabWord[j];

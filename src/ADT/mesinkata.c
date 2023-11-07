@@ -46,11 +46,11 @@ void StartWordFile(char *filename)
     else
     {
         EndWord = false;
-        AdvWordFile();
+        ADVLine();
     }
 }
 
-void AdvWord()
+void ADVWord()
 {
     IgnoreBlank();
     if (currentChar == BLANK)
@@ -64,7 +64,7 @@ void AdvWord()
     }
 }
 
-void AdvWordFile()
+void ADVLine()
 {
     if (currentChar == NEWLINE)
     {

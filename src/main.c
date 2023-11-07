@@ -48,7 +48,7 @@ int main()
             {
                 char *inputfile;
                 inputfile = (char *) malloc (30 * sizeof(char));
-                ADVWORD(0);
+                ADVWord(0);
                 if (currentChar == '\n')
                 {
                     wordToString(currentWord, inputfile);
@@ -83,7 +83,7 @@ int main()
             {
                 char *inputfile;
                 inputfile = (char *) malloc (50 * sizeof(char));
-                ADVWORD(0);
+                ADVWord(0);
                 if (currentChar == '\n')
                 {
                     wordToString(currentWord, inputfile);

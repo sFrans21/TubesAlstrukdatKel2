@@ -9,11 +9,11 @@ void load(char *filename, StaticList penyanyi, Map album, Map lagu, Queue *Uruta
     jumlahPenyanyi = WordToInt(currentWord);
     printf("%d\n", jumlahPenyanyi);
     for (int i = 0; i < jumlahPenyanyi; i++) {
-        AdvWord();
+        ADVWord();
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
         printf("%d\n", jumlahAlbum);
-        AdvWordFile();
+        ADVLine();
 
         // Membuat salinan dari currentWord ke namaPenyanyi
         Word namaPenyanyi;
@@ -28,11 +28,11 @@ void load(char *filename, StaticList penyanyi, Map album, Map lagu, Queue *Uruta
 
         for (int z=0; z < jumlahAlbum; z++)
         {
-            AdvWord();
+            ADVWord();
             int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
             printf("%d\n", jumlahLagu);
-            AdvWordFile();
+            ADVLine();
             Word namaAlbum;
             for (int j = 0; j < currentWord.Length; j++) {
                 namaAlbum.TabWord[j] = currentWord.TabWord[j];
@@ -43,7 +43,7 @@ void load(char *filename, StaticList penyanyi, Map album, Map lagu, Queue *Uruta
         
             for (int k=0; k<jumlahLagu; k++)
             {
-                AdvWordFile();
+                ADVLine();
                 Word judulLagu;
                 for (int j = 0; j < currentWord.Length; j++) {
                     judulLagu.TabWord[j] = currentWord.TabWord[j];
@@ -57,11 +57,11 @@ void load(char *filename, StaticList penyanyi, Map album, Map lagu, Queue *Uruta
     /* QUEUE*/
 
     /* STACK RIWAYAT LAGU */
-        AdvWordFile();
+        ADVLine();
         int nRLagu = WordToInt(currentWord);
         char *Rlagu;
         for (int i = 1; i <= nRLagu; i++){
-            AdvWordFile();
+            ADVLine();
             Rlagu = WORDTOSTRING(currentWord);
             Push(RiwayatLagu, Rlagu);
         }

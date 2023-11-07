@@ -25,9 +25,9 @@ void StartWordFile(char *directory);
 
 void StartWord();
 
-void AdvWord();
+void ADVWord();
 
-void AdvWordFile();
+void ADVLine();
 
 void CopyWord();
 
