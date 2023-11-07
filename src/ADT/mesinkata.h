@@ -17,9 +17,9 @@ typedef struct
 extern boolean EndWord;
 extern Word currentWord;
 
-void IgnoreBlanks();
+void IgnoreBlank();
 
-void IgnoreNewlines();
+void IgnoreNewline();
 
 void StartWordFile(char *directory);
 

@@ -5,7 +5,7 @@
 boolean EndWord;
 Word currentWord;
 
-void IgnoreBlanks()
+void IgnoreBlank()
 {
     while (currentChar == BLANK)
     {
@@ -13,7 +13,7 @@ void IgnoreBlanks()
     }
 }
 
-void IgnoreNewlines()
+void IgnoreNewline()
 {
     while (currentChar == NEWLINE)
     {
@@ -24,7 +24,7 @@ void IgnoreNewlines()
 void StartWordInput()
 {
     START();
-    IgnoreBlanks();
+    IgnoreBlank();
     if (IsEOP())
     {
         EndWord = true;
@@ -52,7 +52,7 @@ void StartWordFile(char *filename)
 
 void AdvWord()
 {
-    IgnoreBlanks();
+    IgnoreBlank();
     if (currentChar == BLANK)
     {
         EndWord = true;
@@ -60,7 +60,7 @@ void AdvWord()
     else
     {
         CopyWord();
-        IgnoreBlanks();
+        IgnoreBlank();
     }
 }
 
@@ -73,7 +73,7 @@ void AdvWordFile()
     else
     {
         CopyWordFile();
-        IgnoreNewlines();
+        IgnoreNewline();
     }
 }
 
