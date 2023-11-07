@@ -4,16 +4,15 @@
 
 void start(StaticList penyanyi, Map album, Map lagu)
 {
-    int jumlahPenyanyi, jumlahAlbum, jumlahLagu;
-    //Word namaPenyanyi, namaAlbum, judulLagu;
-
     StartWordFile("cek.txt");
+    int jumlahPenyanyi;
     jumlahPenyanyi = WordToInt(currentWord);
     printf("%d\n", jumlahPenyanyi);
     for (int i = 0; i < jumlahPenyanyi; i++) {
         AdvWord();
+        int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
-        printf("%d\n", jumlahAlbum);
+        //printf("%d\n", jumlahAlbum);
         AdvWordFile();
 
         // Membuat salinan dari currentWord ke namaPenyanyi
@@ -25,13 +24,14 @@ void start(StaticList penyanyi, Map album, Map lagu)
 
         // Mengirim namaPenyanyi ke setItem
         setItem(&penyanyi, i, &namaPenyanyi);
-        printf("%s\n", penyanyi.items[i].TabWord);
+        //printf("%s\n", penyanyi.items[i].TabWord);
 
         for (int z=0; z < jumlahAlbum; z++)
         {
             AdvWord();
+            int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
-            printf("%d\n", jumlahLagu);
+            //printf("%d\n", jumlahLagu);
             AdvWordFile();
             Word namaAlbum;
             //namaAlbum.Length = currentWord.Length;
@@ -39,7 +39,7 @@ void start(StaticList penyanyi, Map album, Map lagu)
                 namaAlbum.TabWord[j] = currentWord.TabWord[j];
             }
             Insertmap(&album, namaPenyanyi, namaAlbum);
-            printf("%s\n", namaAlbum.TabWord);
+            //printf("%s\n", namaAlbum.TabWord);
         
             for (int k=0; k<jumlahLagu; k++)
             {
@@ -50,7 +50,7 @@ void start(StaticList penyanyi, Map album, Map lagu)
                     judulLagu.TabWord[j] = currentWord.TabWord[j];
                 }
                 Insertmap(&lagu, namaAlbum, judulLagu);
-                printf("%s\n", judulLagu.TabWord);
+                //printf("%s\n", judulLagu.TabWord);
             }
         }
     }
