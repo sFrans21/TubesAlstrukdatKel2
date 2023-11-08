@@ -13,15 +13,15 @@ void start(StaticList penyanyi, Map album, Map lagu)
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
         printf("%d\n", jumlahAlbum);
-        ADVLine();
-
-        // Membuat salinan dari currentWord ke namaPenyanyi
         Word namaPenyanyi;
+        namaPenyanyi.Length = 0;
+        namaPenyanyi.TabWord[0] = "\0";
+        ADVLine();
+        // Membuat salinan dari currentWord ke namaPenyanyi
         for (int j = 0; j < currentWord.Length; j++) {
             namaPenyanyi.TabWord[j] = currentWord.TabWord[j];
         }
-        namaPenyanyi.Length = currentWord.Length; 
-
+        namaPenyanyi.Length = currentWord.Length;
         // Mengirim namaPenyanyi ke setItem
         setItem(&penyanyi, i, &namaPenyanyi);
         printf("%s\n", penyanyi.items[i].TabWord);
