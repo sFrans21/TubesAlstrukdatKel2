@@ -26,6 +26,4 @@ void help()
         printf("7. SAVE -> menyimpan state aplikasi terbaru ke dalam suatu file.\n");
         printf("8. QUIT -> Untuk keluar dari sesi\n");
     }
-
-    return 0;
 }
