@@ -22,7 +22,7 @@ boolean IsStringsEqual(const char str1[], const char str2[]) {
 /* *** Konstruktor/Kreator *** */
 void CreateEmptymap(Map *M)
 /* I.S. Sembarang */
-/* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
+/* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
 /* Ciri Map kosong : count bernilai Nil */
 {
     (*M).Count = Nil;
@@ -38,9 +38,9 @@ boolean IsEmptymap(Map M)
 
 boolean IsFullmap(Map M)
 /* Mengirim true jika Map M penuh */
-/* Ciri Map penuh : count bernilai MaxEl */
+/* Ciri Map penuh : count bernilai MaxElMap */
 {
-    return M.Count == MaxEl;
+    return M.Count == MaxElMap;
 }
 
 /* ********** Operator Dasar Map ********* */
