@@ -7,6 +7,6 @@
 #include "ADT/queue.h"  // Memerlukan List statis untuk daftar penyanyi
 
 // Deklarasi fungsi untuk membaca save file
-void load(char *filename, StaticList penyanyi, Map album, Map lagu, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu);
+void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu);
 
 #endif

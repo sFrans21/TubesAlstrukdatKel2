@@ -56,3 +56,14 @@ char *WORDTOSTRING(Word kata)
     akusisiKata[i] = '\0';
     return akusisiKata;
 }
+
+void wordToString(Word currentWord, char *string)
+{
+    int i = 0;
+    while (i < currentWord.Length)
+    {
+        string[i] = currentWord.TabWord[i];
+        i++;
+    }
+    string[i] = '\0';
+}

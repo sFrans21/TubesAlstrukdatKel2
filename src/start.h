@@ -5,6 +5,6 @@
 #include "ADT/listStatik.h"
 #include "ADT/map.h"
 
-void start(StaticList penyanyi, Map album, Map lagu);
+void start(StaticList *penyanyi, Map *album, Map *lagu);
 
 #endif

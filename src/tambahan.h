@@ -12,4 +12,6 @@ int WordToInt(Word word);
 
 char *WORDTOSTRING(Word kata);
 
+void wordToString(Word currentWord, char *string);
+
 #endif
