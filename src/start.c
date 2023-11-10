@@ -3,7 +3,11 @@
 #include "tambahan.h"
 
 void start(StaticList *penyanyi, Map *album, Map *lagu) {
-    StartWordFile("cek.txt");
+    char path[NMax];
+    char *filename = "config.txt";
+    stringConcat("../save/",filename,path);
+    StartWordFile(path);
+
     int jumlahPenyanyi;
     jumlahPenyanyi = WordToInt(currentWord);
     printf("%d\n", jumlahPenyanyi);
@@ -11,7 +15,7 @@ void start(StaticList *penyanyi, Map *album, Map *lagu) {
         ADVWord();
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
-        printf("%d\n", jumlahAlbum);
+        printf("%d ", jumlahAlbum);
         Word namaPenyanyi;
         ADVLine();
         // Membuat salinan dari currentWord ke namaPenyanyi
@@ -20,12 +24,13 @@ void start(StaticList *penyanyi, Map *album, Map *lagu) {
         }
         namaPenyanyi.Length = currentWord.Length;
         // Mengirim namaPenyanyi ke setItem
-        //namaPenyanyi = currentWord;
-        //setItem(penyanyi, i, &namaPenyanyi);
-        printf("%s\n", namaPenyanyi.TabWord);
 
-        namaPenyanyi.Length = 0;
-        namaPenyanyi.TabWord[0] = '\0';
+        setItem(penyanyi, i, &namaPenyanyi);
+        printf("%s\n", (*penyanyi).items[i].TabWord);
+
+        for (int b = 0; b < namaPenyanyi.Length; b++){
+            namaPenyanyi.TabWord[b] = '\0';
+        }
 
 
         for (int z=0; z < jumlahAlbum; z++)
@@ -33,7 +38,7 @@ void start(StaticList *penyanyi, Map *album, Map *lagu) {
             ADVWord();
             int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
-            printf("%d\n", jumlahLagu);
+            printf("%d ", jumlahLagu);
             ADVLine();
             Word namaAlbum;
             for (int j = 0; j < currentWord.Length; j++) {
@@ -42,6 +47,10 @@ void start(StaticList *penyanyi, Map *album, Map *lagu) {
             namaAlbum.Length = currentWord.Length;
             Insertmap(album, namaPenyanyi, namaAlbum);
             printf("%s\n", namaAlbum.TabWord);
+
+            for (int b = 0; b < namaAlbum.Length; b++){
+                namaAlbum.TabWord[b] = '\0';
+            }
         
             for (int k=0; k<jumlahLagu; k++)
             {
@@ -53,9 +62,14 @@ void start(StaticList *penyanyi, Map *album, Map *lagu) {
                 judulLagu.Length = currentWord.Length;
                 Insertmap(lagu, namaAlbum, judulLagu);
                 printf("%s\n", judulLagu.TabWord);
+
+                for (int b = 0; b < judulLagu.Length; b++){
+                    judulLagu.TabWord[b] = '\0';
+                }
             }
         }
     }
+    printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
 }
 
 int main (){

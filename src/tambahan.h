@@ -14,4 +14,6 @@ char *WORDTOSTRING(Word kata);
 
 void wordToString(Word currentWord, char *string);
 
+void stringConcat(char str1[] , char str2[] , char *output);
+
 #endif

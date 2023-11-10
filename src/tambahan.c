@@ -67,3 +67,19 @@ void wordToString(Word currentWord, char *string)
     }
     string[i] = '\0';
 }
+
+void stringConcat(char str1[] , char str2[] , char *output)
+{
+    int i=0,j=0;
+    while(str1[i]!='\0'){
+        output[i] = str1[i];
+        i++;
+    }
+
+    while(str2[j]!='\0'){
+        output[i]=str2[j];
+        j++;
+        i++;
+    }
+    output[i]='\0';
+}
