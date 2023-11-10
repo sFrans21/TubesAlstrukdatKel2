@@ -5,7 +5,11 @@
 #include "ADT/mesinkata.h"
 
 void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu){
-    StartWordFile("cek2.txt");
+    char path[NMax];
+    char *filename = "config2.txt";
+    stringConcat("../save/",filename,path);
+    StartWordFile(path);
+
     int jumlahPenyanyi;
     jumlahPenyanyi = WordToInt(currentWord);
     printf("%d\n", jumlahPenyanyi);
@@ -13,26 +17,30 @@ void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *Ur
         ADVWord();
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
-        printf("%d\n", jumlahAlbum);
-        ADVLine();
-
-        // Membuat salinan dari currentWord ke namaPenyanyi
+        printf("%d ", jumlahAlbum);
         Word namaPenyanyi;
+        ADVLine();
+        // Membuat salinan dari currentWord ke namaPenyanyi
         for (int j = 0; j < currentWord.Length; j++) {
             namaPenyanyi.TabWord[j] = currentWord.TabWord[j];
         }
-        namaPenyanyi.Length = currentWord.Length; 
-
+        namaPenyanyi.Length = currentWord.Length;
         // Mengirim namaPenyanyi ke setItem
+
         setItem(penyanyi, i, &namaPenyanyi);
         printf("%s\n", (*penyanyi).items[i].TabWord);
+
+        for (int b = 0; b < namaPenyanyi.Length; b++){
+            namaPenyanyi.TabWord[b] = '\0';
+        }
+
 
         for (int z=0; z < jumlahAlbum; z++)
         {
             ADVWord();
             int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
-            printf("%d\n", jumlahLagu);
+            printf("%d ", jumlahLagu);
             ADVLine();
             Word namaAlbum;
             for (int j = 0; j < currentWord.Length; j++) {
@@ -41,6 +49,10 @@ void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *Ur
             namaAlbum.Length = currentWord.Length;
             Insertmap(album, namaPenyanyi, namaAlbum);
             printf("%s\n", namaAlbum.TabWord);
+
+            for (int b = 0; b < namaAlbum.Length; b++){
+                namaAlbum.TabWord[b] = '\0';
+            }
         
             for (int k=0; k<jumlahLagu; k++)
             {
@@ -52,31 +64,46 @@ void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *Ur
                 judulLagu.Length = currentWord.Length;
                 Insertmap(lagu, namaAlbum, judulLagu);
                 printf("%s\n", judulLagu.TabWord);
+
+                for (int b = 0; b < judulLagu.Length; b++){
+                    judulLagu.TabWord[b] = '\0';
+                }
             }
         }
     }
     /* QUEUE*/
+    ADVWord();
+    int nQueue = WordToInt(currentWord);
+    for (int i = 1; i <= nQueue; i++){
+        ADVLine();
+        Word laguQueue;
+        for (int j = 0; j < currentWord.Length; j++) {
+            laguQueue.TabWord[j] = currentWord.TabWord[j];
+        }
+        laguQueue.Length = currentWord.Length;
+        enqueue(UrutanLagu, laguQueue);
+    }
 
     /* STACK RIWAYAT LAGU */
+    ADVWord();
+    int nRLagu = WordToInt(currentWord);
+    char *Rlagu;
+    for (int i = 1; i <= nRLagu; i++){
         ADVLine();
-        int nRLagu = WordToInt(currentWord);
-        char *Rlagu;
-        for (int i = 1; i <= nRLagu; i++){
-            ADVLine();
-            Rlagu = WORDTOSTRING(currentWord);
-            Push(RiwayatLagu, Rlagu);
-        }
-        (*RiwayatLagu) = ReverseStack(*RiwayatLagu);
+        Rlagu = WORDTOSTRING(currentWord);
+        Push(RiwayatLagu, Rlagu);
+    }
+    (*RiwayatLagu) = ReverseStack(*RiwayatLagu);
 
     /* ARRAYDIN PLAYLIST */
-    ADVLine();
+    ADVWord();
     int nPlaylist = WordToInt(currentWord);
     char stringPlaylist[NMax];
     for (int i = 1; i <= nPlaylist; i++){
         char *namaPlaylist = (char*) malloc (currentWord.Length * sizeof(char));
-        ADVLine();
-        int nPLagu = WordToInt(currentWord);
         ADVWord();
+        int nPLagu = WordToInt(currentWord);
+        ADVLine();
         wordToString(currentWord, stringPlaylist);
         int j = 0;
         while (j <= currentWord.Length){
