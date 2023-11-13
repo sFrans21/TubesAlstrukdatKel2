@@ -10,7 +10,7 @@ void showhelp()
         printf("2. LOAD -> Untuk memulai sesi berdasarkan file konfigurasi\n");
     }
 
-    if (/*program dipanggil setelah masuk sesi. geus start can di jalankeun*/)
+    if (/*program dipanggil setelah masuk sesi. (command start sudah dijalankan)*/)
     {
         printf("1. LIST -> Untuk menampilkan daftar lagu, penyanyi, album, dan playlist\n");
         printf("2. PLAY -> Untuk memulai suatu lagu\n");
