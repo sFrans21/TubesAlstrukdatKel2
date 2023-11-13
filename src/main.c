@@ -66,7 +66,7 @@ int main()
             }
             else if (compareString(upper(command), "HELP") == true)
             {
-                showhelp();
+                showhelp1(); // blom fix
                 return 0;
             }
             else
