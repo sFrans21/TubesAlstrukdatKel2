@@ -1,6 +1,6 @@
 #ifndef HELP_H
 #define HELP_H
-
+#include <stdio.h>
 void help();
 
 /* menampilkan daftar command yang mungkin untuk dieksekusi

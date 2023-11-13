@@ -1,23 +1,23 @@
 #include "./src/console.c"
 #include <stdio.h>
-
+#include "help.h"
 int main()
 {
     system("cls||clear");
     srand(time(NULL));
-    
+
     Map penyanyiAlbums;
     Map albumLagu;
     List penyanyiList;
 
-    /*Games = MakeArrayDin(); 
+    /*Games = MakeArrayDin();
     CreateQueue(&GamesQueue);
     CreateEmptyStack(&History);*/
 
     boolean saved = false;
     boolean endProgram = false;
     char *command;
-    command = (char *) malloc (50 * sizeof(char));
+    command = (char *)malloc(50 * sizeof(char));
 
     printf("    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\n");
     printf("    W   W  E      L     C     O   O MM MM  E      !\n");
@@ -36,25 +36,24 @@ int main()
     {
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.");
         printf("\nENTER COMMAND: ");
+
         inputString(0, command);
         system("cls||clear");
         if (IsEmpty(Penyanyi))
         {
             if (compareString(upper(command), "START") == true)
             {
-            
             }
             else if (compareString(upper(command), "LOAD") == true)
             {
                 char *inputfile;
-                inputfile = (char *) malloc (30 * sizeof(char));
+                inputfile = (char *)malloc(30 * sizeof(char));
                 ADVWord(0);
                 if (currentChar == '\n')
                 {
                     wordToString(currentWord, inputfile);
                     if (compareString(upper(inputfile), "LOAD") == false)
                     {
-                    
                     }
                     else
                     {
@@ -64,11 +63,11 @@ int main()
             }
             else if (compareString(upper(command), "QUIT") == true)
             {
-                
             }
             else if (compareString(upper(command), "HELP") == true)
             {
-                
+                showhelp();
+                return 0;
             }
             else
             {
@@ -82,14 +81,13 @@ int main()
             if (compareString(upper(command), "SAVE") == true)
             {
                 char *inputfile;
-                inputfile = (char *) malloc (50 * sizeof(char));
+                inputfile = (char *)malloc(50 * sizeof(char));
                 ADVWord(0);
                 if (currentChar == '\n')
                 {
                     wordToString(currentWord, inputfile);
                     if (compareString(upper(inputfile), "SAVE") == false)
                     {
-            
                     }
                     else
                     {

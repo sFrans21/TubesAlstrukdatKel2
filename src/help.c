@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "help.h"
 
-void help()
+void showhelp()
 {
     if (/*program dipanggil sebelum masuk sesi*/)
     {
