@@ -2,6 +2,7 @@
   "files.associations": {
     "set.h": "c",
     "listlinier.h": "c",
-    "stdio.h": "c"
+    "stdio.h": "c",
+    "boolean.h": "c"
   }
 }
