@@ -35,4 +35,4 @@ void playNextSong(SongQueue* queue);
 // Fungsi untuk memutar lagu sebelumnya dalam queue
 void playPreviousSong(SongQueue* queue, Song currentSong);
 
-#endif // SONG_H
+#endif 
