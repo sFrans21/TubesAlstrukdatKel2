@@ -1,4 +1,4 @@
-#include "./src/console.c"
+#include "../src/console.c"
 #include <stdio.h>
 #include "help.h"
 int main()

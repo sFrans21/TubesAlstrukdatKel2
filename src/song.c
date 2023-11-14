@@ -2,23 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "song.h"
-
-void enqueue(SongQueue* queue, Song song)
-{
-    Node* newNode = createNode(song);
-    if (queue->tail == NULL) {
-        // Queue kosong
-        queue->head = queue->tail = newNode;
-    } else {
-        // Tambahkan di urutan ke-2 atau setelah HEAD
-        newNode->next = queue->head->next;
-        queue->head->next = newNode;
-        if (newNode->next == NULL) {
-            // Jika newNode adalah elemen terakhir, update tail
-            queue->tail = newNode;
-        }
-    }
-}
+#include "ADT/Queue.h"
 
 // Fungsi untuk memutar lagu sebelumnya dalam queue
 void playPreviousSong(SongQueue* queue, Song currentSong)
