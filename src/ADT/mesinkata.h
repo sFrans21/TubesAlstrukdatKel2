@@ -23,8 +23,6 @@ void IgnoreNewline();
 
 void StartWordFile(char *directory);
 
-void StartWord();
-
 void ADVWord();
 
 void ADVLine();
