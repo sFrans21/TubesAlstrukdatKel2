@@ -21,21 +21,6 @@ void IgnoreNewline()
     }
 }
 
-void StartWordInput()
-{
-    START();
-    IgnoreBlank();
-    if (IsEOP())
-    {
-        EndWord = true;
-    }
-    else
-    {
-        EndWord = false;
-        CopyWord();
-    }
-}
-
 void StartWordFile(char *filename)
 {
     StartFile(filename);
