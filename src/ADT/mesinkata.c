@@ -114,3 +114,15 @@ void CopyWordinput(){
     }
     currentWord.Length = i;   
 }
+
+void CopyWordinput(){
+     int i = 0;
+
+    while ((!IsEOP()))
+    {
+        currentWord.TabWord[i] = currentChar;
+        ADV();
+        i++;
+    }
+    currentWord.Length = i;   
+}

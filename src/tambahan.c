@@ -85,4 +85,53 @@ void stringConcat(char str1[], char str2[], char *output)
     output[i] = '\0';
 }
 
-// ini tambahan buat apa?
+boolean compareString(char *string1, char *string2)
+{
+    while (*string1 != '\0' || *string2 != '\0')
+    {
+        if (*string1 != *string2)
+        {
+            return false;
+        }
+        string1++;
+        string2++;
+    }
+    return true;
+}
+
+void inputString(char* value)
+{
+    StartWordFile(NULL);
+    wordToString(currentWord, value);
+}
+
+char* upper(char *string)
+{
+    char *uppered;
+    uppered = (char *) malloc (50 * sizeof(char));
+    for (int i = 0; i < stringLen(string); i++)
+    {
+        if (string[i] >= 97 && string[i] <= 122)
+        {
+            uppered[i] = string[i] - 32;
+        }
+        else
+        {
+            uppered[i] = string[i];
+        }
+    }
+    uppered[stringLen(string)] = '\0';
+    return uppered;
+}
+
+int stringLen(char *string)
+{
+    int i = 0;
+    int count = 0;
+    while (string[i]!='\0') {
+        count++;
+        i++;
+    }
+    return count;
+}
+
