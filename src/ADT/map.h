@@ -4,6 +4,8 @@
 #include "boolean.h"
 #include "mesinkata.h"
 #include "string.h"
+#include "set.h"
+
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
@@ -16,7 +18,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 // typedef int bool;
 typedef Word keytype;
-typedef Word valuetype;
+typedef Set valuetype;
 typedef int address;
 
 typedef struct
@@ -30,6 +32,13 @@ typedef struct
 	infotype Elements[MaxElMap];
 	address Count;
 } Map;
+
+typedef struct
+{
+	Map Elements[MaxElMap];
+	address count;
+}maps;
+
 
 /* Definisi Map M kosong : M.Count = Nil */
 /* M.Count = jumlah element Map */
@@ -62,6 +71,10 @@ void Insertmap(Map *M, keytype k, valuetype v);
 /* I.S. M mungkin kosong, M tidak penuh
 	  M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
+
+void createmaps(maps *m);
+
+void insertmaps(maps *m, Map M);
 
 void Deletemap(Map *M, keytype k);
 /* Menghapus Elmt dari Map M. */

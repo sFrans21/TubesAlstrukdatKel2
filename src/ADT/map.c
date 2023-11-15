@@ -57,18 +57,18 @@ valuetype Valuemap(Map M, keytype k)
     }
 
     // Jika key tidak ditemukan, kembalikan nilai Word yang sesuai
-    Word notFound;
-    const char notFoundMessage[] = "notFound";
-    int j = 0;
-    while (notFoundMessage[j] != '\0')
-    {
-        notFound.TabWord[j] = notFoundMessage[j];
-        j++;
-    }
-    notFound.TabWord[j] = '\0';
-    notFound.Length = j;
+    // Word notFound;
+    // const char notFoundMessage[] = "notFound";
+    // int j = 0;
+    // while (notFoundMessage[j] != '\0')
+    // {
+    //     notFound.TabWord[j] = notFoundMessage[j];
+    //     j++;
+    // }
+    // notFound.TabWord[j] = '\0';
+    // notFound.Length = j;
 
-    return notFound;
+    // return notFound;
 }
 
 void Insertmap(Map *M, keytype k, valuetype v)
@@ -83,6 +83,15 @@ void Insertmap(Map *M, keytype k, valuetype v)
         (*M).Elements[(*M).Count].Value = v;
         (*M).Count += 1;
     }
+}
+
+void createmaps(maps *m){
+    m->count= Nil;
+}
+
+void insertmaps(maps *m, Map M){
+    m->Elements[m->count] = M;
+    m->count++;
 }
 
 void Deletemap(Map *M, keytype k)

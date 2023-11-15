@@ -32,7 +32,7 @@ void StartWordInput()
     else
     {
         EndWord = false;
-        CopyWord();
+        CopyWordinput();
     }
 }
 
@@ -101,4 +101,16 @@ Word CopyWordFile()
         i++;
     }
     currentWord.Length = i;
+}
+
+void CopyWordinput(){
+     int i = 0;
+
+    while ((!IsEOP()))
+    {
+        currentWord.TabWord[i] = currentChar;
+        ADV();
+        i++;
+    }
+    currentWord.Length = i;   
 }

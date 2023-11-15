@@ -3,6 +3,7 @@
 
 #include "boolean.h"
 #include "mesinkata.h"
+#include "../tambahan.h"
 
 /* MODUL Set
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
