@@ -138,6 +138,27 @@ void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *kiw)
     printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n",albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord,  (penyanyi).items[idxp].TabWord);
 }   
 
+void queueswap(Queue *kiw, int idx1, int idx2){
+    Word temp;
+    temp = kiw->buffer[idx1];
+    kiw->buffer[idx1]=kiw->buffer[idx2];
+    kiw->buffer[idx2]=temp;
+}
+
+void queueremove(Queue *kiw, int i)
+{
+	int j;
+	for (j = i ; j < kiw->idxTail ; j++)
+	{
+		kiw->buffer[j] = kiw->buffer[j+1]; 
+	}
+	
+	kiw->idxTail--;
+}
+
+void  queueclear(Queue *kiw){
+    CreateQueue(kiw);
+}
 
 int main (){
     StaticList penyanyi;
@@ -151,5 +172,11 @@ int main (){
     start(&penyanyi, &penyanyiAlbums, &albumLagu);
     queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);
     queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);   
+    displayQueue(kiw);
+    queueswap(&kiw, 0, 1);
+    displayQueue(kiw);
+    queueremove(&kiw, 0);
+    displayQueue(kiw);
+    queueclear(&kiw);
     displayQueue(kiw);
 }
