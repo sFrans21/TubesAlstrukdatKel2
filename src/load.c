@@ -4,9 +4,15 @@
 #include "tambahan.h"
 #include "ADT/mesinkata.h"
 
-void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu){
+void load(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu){
+    Set albums;
+    Set songs;
+    CreateEmptySet(&albums);
+    CreateEmptySet(&songs);
+    Map albumLagu;
+    CreateEmptymap(&albumLagu);
     char path[NMax];
-    char *filename = "config2.txt";
+    char *filename = "config.txt";
     stringConcat("../save/",filename,path);
     StartWordFile(path);
 
@@ -30,11 +36,6 @@ void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *Ur
         setItem(penyanyi, i, &namaPenyanyi);
         printf("%s\n", (*penyanyi).items[i].TabWord);
 
-        for (int b = 0; b < namaPenyanyi.Length; b++){
-            namaPenyanyi.TabWord[b] = '\0';
-        }
-
-
         for (int z=0; z < jumlahAlbum; z++)
         {
             ADVWord();
@@ -47,12 +48,8 @@ void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *Ur
                 namaAlbum.TabWord[j] = currentWord.TabWord[j];
             }
             namaAlbum.Length = currentWord.Length;
-            Insertmap(album, namaPenyanyi, namaAlbum);
+            InsertSet(&albums, namaAlbum);
             printf("%s\n", namaAlbum.TabWord);
-
-            for (int b = 0; b < namaAlbum.Length; b++){
-                namaAlbum.TabWord[b] = '\0';
-            }
         
             for (int k=0; k<jumlahLagu; k++)
             {
@@ -62,15 +59,25 @@ void load(char *filename, StaticList *penyanyi, Map *album, Map *lagu, Queue *Ur
                     judulLagu.TabWord[j] = currentWord.TabWord[j];
                 }
                 judulLagu.Length = currentWord.Length;
-                Insertmap(lagu, namaAlbum, judulLagu);
+                InsertSet(&songs, judulLagu);
                 printf("%s\n", judulLagu.TabWord);
-
                 for (int b = 0; b < judulLagu.Length; b++){
                     judulLagu.TabWord[b] = '\0';
                 }
             }
+            Insertmap(&albumLagu, namaAlbum, songs);
+            for (int b = 0; b < namaAlbum.Length; b++){
+                namaAlbum.TabWord[b] = '\0';}   
+            CreateEmptySet(&songs);
         }
+        Insertmap(penyanyiAlbums, namaPenyanyi, albums);
+        insertmaps(albumsong, albumLagu);
+        CreateEmptymap(&albumLagu);
+        CreateEmptySet(&albums);
+        for (int b = 0; b < namaPenyanyi.Length; b++){
+            namaPenyanyi.TabWord[b] = '\0';}
     }
+
     /* QUEUE*/
     ADVWord();
     int nQueue = WordToInt(currentWord);
