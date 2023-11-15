@@ -25,6 +25,7 @@ void StartWordInput()
 {
     START();
     IgnoreBlank();
+    IgnoreNewline();
     if (IsEOP())
     {
         EndWord = true;
@@ -104,25 +105,12 @@ Word CopyWordFile()
 }
 
 void CopyWordinput(){
-     int i = 0;
-
+    int i = 0;
     while ((!IsEOP()))
     {
         currentWord.TabWord[i] = currentChar;
         ADV();
         i++;
-    }
-    currentWord.Length = i;   
-}
-
-void CopyWordinput(){
-     int i = 0;
-
-    while ((!IsEOP()))
-    {
-        currentWord.TabWord[i] = currentChar;
-        ADV();
-        i++;
-    }
-    currentWord.Length = i;   
+    } 
+    currentWord.Length = i;
 }
