@@ -3,6 +3,7 @@
 #include "start.h"
 #include "help.h"
 #include "load.h"
+#include "quit.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -63,7 +64,7 @@ int main()
                 }
             }
             else if (compareString(upper(command), "QUIT") == true) {
-                //QUIT(&Games, &GamesQueue, &History, &Scoreboard, true);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
                 endProgram = true;
             }
             else if (compareString(upper(command), "HELP") == true) {

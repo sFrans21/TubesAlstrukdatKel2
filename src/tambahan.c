@@ -146,4 +146,3 @@ int stringLen(char *string)
     }
     return count;
 }
-
