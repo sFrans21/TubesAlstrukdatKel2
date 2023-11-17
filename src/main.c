@@ -3,24 +3,25 @@
 #include "start.h"
 #include "load.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 int main()
 {
     StaticList penyanyi;
-    Map album;
-    Map lagu;
+    Map penyanyiAlbums;
+    maps albumsong;
     Queue UrutanLagu;
     ArrayDin Playlist;
     Stack RiwayatLagu;
 
     initializeList(&penyanyi);
-    CreateEmptymap(&album);
-    CreateEmptymap(&lagu);
+    CreateEmptymap(&penyanyiAlbums);
+    createmaps(&albumsong);
     CreateQueue(&UrutanLagu);
     CreateDynArray(&Playlist);
     CreateEmptyStack(&RiwayatLagu);
 
-    boolean compile = true;
+    boolean saved = false;
     boolean endProgram = false;
     char *command;
     command = (char *) malloc (50 * sizeof(char));
@@ -39,31 +40,35 @@ int main()
     printf("Jalankan command START atau LOAD <nama file> untuk membuka file.\n");
     printf("Jalankan command QUIT untuk keluar dari program.");
 
-    while (compile) {
+    while (endProgram == false) {
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.");
         printf("\nENTER COMMAND: ");
-        inputString(command);
-
-        if (compareString(upper(command), "START") == true) {
-            if (!endProgram){
-                start(&penyanyi, &album, &lagu);
-                compile = true;
-            } else {
-                printf("Command gagal\n");
+        inputString(command,50);
+        if (IsEmptymap(penyanyiAlbums)){
+            if (compareString(upper(command), "START") == true) {
+                    start(&penyanyi, &penyanyiAlbums, &albumsong);
             }
-        }
-        else if (compareString(upper(command), "LOAD") == true){
-            if (!endProgram){
-                char *filename;
-                filename = (char *) malloc (30 *sizeof(char));
-                ADVWord;
+            else if (compareString(upper(command), "LOAD") == true){
+                char *inputfile;
+                inputfile = (char *) malloc (30 *sizeof(char));
+                ADVWord();
                 if (currentChar == '\n'){
-                    load(filename, &penyanyi, &album, &lagu, &UrutanLagu, &Playlist, &RiwayatLagu);
+                    wordToString(currentWord, inputfile);
+                    if (compareString(upper(inputfile), "LOAD") == false){
+                        load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu);
+                    } else {
+                        printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename tanpa .txt>\n");
+                    }
                 }
-            } else {
-                printf("Command gagal\n");
+            }
+            else if (compareString(upper(command), "QUIT") == true)
+            {
+                //QUIT(&Games, &GamesQueue, &History, &Scoreboard, true);
+                endProgram = true;
             }
         }
 
     }
+    free(command);
+    return 0;
 }

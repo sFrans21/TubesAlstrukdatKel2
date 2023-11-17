@@ -37,7 +37,7 @@ typedef struct
 {
 	Map Elements[MaxElMap];
 	address count;
-}maps;
+} maps;
 
 
 /* Definisi Map M kosong : M.Count = Nil */
