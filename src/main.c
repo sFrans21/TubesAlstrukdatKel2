@@ -1,6 +1,7 @@
 #include "tambahan.h"
 #include "boolean.h"
 #include "start.h"
+#include "help.h"
 #include "load.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -51,7 +52,7 @@ int main()
             else if (compareString(upper(command), "LOAD") == true){
                 char *inputfile;
                 inputfile = (char *) malloc (30 *sizeof(char));
-                ADVWord();
+                ADVLine();
                 if (currentChar == '\n'){
                     wordToString(currentWord, inputfile);
                     if (compareString(upper(inputfile), "LOAD") == false){
@@ -61,10 +62,12 @@ int main()
                     }
                 }
             }
-            else if (compareString(upper(command), "QUIT") == true)
-            {
+            else if (compareString(upper(command), "QUIT") == true) {
                 //QUIT(&Games, &GamesQueue, &History, &Scoreboard, true);
                 endProgram = true;
+            }
+            else if (compareString(upper(command), "HELP") == true) {
+                showhelp1();
             }
         }
 
