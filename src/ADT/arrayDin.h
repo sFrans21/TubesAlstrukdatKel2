@@ -2,9 +2,10 @@
 #define _ARRAY_OF_STRING_
 
 #include "boolean.h"
+#include "mesinkata.h"
 
 typedef int IdxType;
-typedef char* ElType;
+typedef Word ElType;
 typedef struct {
     ElType *A;
     int Capacity;
@@ -17,7 +18,7 @@ void DeallocateList(ArrayDin *array);
 
 int Length(ArrayDin list);
 
-void InsertIn(char*string , ArrayDin*ListGames ,  int idx);
+void InsertIn(Word string , ArrayDin*ListGames ,  int idx);
 
 void InsertAt(ArrayDin *array, ElType el, IdxType i);
   

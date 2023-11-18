@@ -61,7 +61,7 @@ int main()
                 if (compareString(upper(inputfile), "LOAD") == false){
                     load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu);
                 } else {
-                    printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename tanpa .txt>\n");
+                    printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
                 //}
             }

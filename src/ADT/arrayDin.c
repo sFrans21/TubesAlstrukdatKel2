@@ -23,7 +23,7 @@ int Length(ArrayDin array) {
     return array.Neff;
 }
 
-void InsertIn(char*string , ArrayDin*ListGames ,  int idx){
+void InsertIn(Word string , ArrayDin*ListGames ,  int idx){
     int j = idx - 1;
     (*ListGames).A[j] = string;
 }
