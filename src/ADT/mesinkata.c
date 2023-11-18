@@ -25,6 +25,7 @@ void StartWordInput()
 {
     START();
     IgnoreBlank();
+    IgnoreNewline();
     if (IsEOP())
     {
         EndWord = true;
@@ -32,21 +33,38 @@ void StartWordInput()
     else
     {
         EndWord = false;
-        CopyWord();
+        CopyWordinput();
     }
 }
 
-void StartWordFile(char *filename)
+void StartWordFile(char *filename, int type)
 {
-    StartFile(filename);
-    if (currentChar == NEWLINE)
+    if (type == 0)
     {
-        EndWord = true;
+        StartFile(filename);
+        IgnoreBlank();
+        if (currentChar == '\n')
+        {
+            EndWord = true;
+        }
+        else
+        {
+            EndWord = false;
+            CopyWord(type);
+        }
     }
     else
     {
-        EndWord = false;
-        ADVLine();
+        StartFile(filename);
+        if (currentChar == NEWLINE)
+        {
+            EndWord = true;
+        }
+        else
+        {
+            EndWord = false;
+            ADVLine();
+        }
     }
 }
 
@@ -59,6 +77,16 @@ void ADVWord()
     }
     else
     {
+        CopyWord();
+        IgnoreBlank();
+    }
+}
+
+void ADVInput(){
+    IgnoreBlank();
+    if (currentChar == NEWLINE){
+        EndWord = true;
+    }else{
         CopyWord();
         IgnoreBlank();
     }
@@ -100,5 +128,16 @@ Word CopyWordFile()
         AdvFile();
         i++;
     }
+    currentWord.Length = i;
+}
+
+void CopyWordinput(){
+    int i = 0;
+    while ((!IsEOP()))
+    {
+        currentWord.TabWord[i] = currentChar;
+        ADV();
+        i++;
+    } 
     currentWord.Length = i;
 }

@@ -16,8 +16,12 @@ void START()
 
 void StartFile(char *filename)
 {
-    pita = fopen(filename, "r");
-    AdvFile();
+    if (filename == NULL){
+        pita = stdin;
+    } else {
+        pita = fopen(filename, "r");
+    }
+    ADV();
 }
  
 void ADV()

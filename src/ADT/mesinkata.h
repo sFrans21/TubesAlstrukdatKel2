@@ -21,16 +21,20 @@ void IgnoreBlank();
 
 void IgnoreNewline();
 
-void StartWordFile(char *directory);
+void StartWordInput();
 
-void StartWord();
+void StartWordFile(char *filename, int type);
 
 void ADVWord();
+
+void ADVInput();
 
 void ADVLine();
 
 void CopyWord();
 
 Word CopyWordFile();
+
+void CopyWordinput();
 
 #endif

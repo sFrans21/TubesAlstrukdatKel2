@@ -6,8 +6,9 @@ void initializeList(StaticList *list) {
 }
 
 void setItem(StaticList *list, int index, Word *item) {
-    if (index >= 0 && index < list->itemCount) {
+    if (index >= 0 && index < MAX_ITEMS) {
         list->items[index] = *item;  // Menyalin Word ke dalam list
+        list->itemCount ++;
     }
 }
 

@@ -98,17 +98,17 @@ void displayQueue(Queue q){
         printf("[");
         if (IDX_HEAD(q) > IDX_TAIL(q)){
             for (i=IDX_HEAD(q); i <= CAPACITY-1; i++){
-                printf("%d", q.buffer[i]);
+                printf("%s", q.buffer[i].TabWord);
                 printf(",");
             } for (i=0; i <= IDX_TAIL(q); i++){
-                printf("%d", q.buffer[i]);
+                printf("%s", q.buffer[i]);
                 if (i != IDX_TAIL(q)) {
                     printf(",");
                 }
             }
         } else {
             for (i=IDX_HEAD(q); i <= IDX_TAIL(q); i++){
-                printf("%d", q.buffer[i]);
+                printf("%s", q.buffer[i].TabWord);
                 if (i != IDX_TAIL(q)) {
                     printf(",");
                 }

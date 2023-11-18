@@ -38,7 +38,7 @@ BLACKPINK;BORN PINK;Pink Venom
 3 BLACKPINK My Top Three
 BLACKPINK;THE ALBUM;How You Like That
 BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;BORN PINK;Pink Venom 
+BLACKPINK;BORN PINK;Pink Venom
 5 Arctic Monkeys My Top 5
 Arctic Monkeys;AM;R U Mine?
 Arctic Monkeys;AM;Do I Wanna Know?

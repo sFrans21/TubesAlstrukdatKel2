@@ -16,4 +16,12 @@ void wordToString(Word currentWord, char *string);
 
 void stringConcat(char str1[] , char str2[] , char *output);
 
+boolean compareString(char *string1, char *string2);
+
+void inputString(int type, char* value);
+
+char* upper(char *string);
+
+int stringLen(char *string);
+
 #endif
