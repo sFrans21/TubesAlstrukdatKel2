@@ -33,7 +33,7 @@ int main()
     printf("    W W W  EEEE   L     C     O   O M M M  EEEE   !\n");
     printf("    W W W  E      L     C     O   O M   M  E      \n");
     printf("     W W   EEEEE  LLLL   CCCC  OOO  M   M  EEEEE  !\n");
-
+    printf("\n");
     printf("                                  PERINGATAN!!!\n");
     printf("======================================================================================\n");
     printf("PROGRAM AKAN ERROR ATAU BERHENTI KETIKA MENJALANKAN COMMAND YANG MEMILIKI KARAKTER '.'\n");
@@ -45,10 +45,11 @@ int main()
     while (endProgram == false) {
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.");
         printf("\nENTER COMMAND: ");
-        inputString(command,50);
+        inputString(0, command);
+        //system("cls||clear");
         if (IsEmptymap(penyanyiAlbums)){
             if (compareString(upper(command), "START") == true) {
-                    start(&penyanyi, &penyanyiAlbums, &albumsong);
+                start(&penyanyi, &penyanyiAlbums, &albumsong);
             }
             else if (compareString(upper(command), "LOAD") == true){
                 char *inputfile;
@@ -69,6 +70,13 @@ int main()
             }
             else if (compareString(upper(command), "HELP") == true) {
                 showhelp1();
+            }
+        } else {
+            if (compareString(upper(command), "HELP") == true) {
+                showhelp2();
+            } else if (compareString(upper(command), "QUIT") == true) {
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
+                endProgram = true;
             }
         }
 

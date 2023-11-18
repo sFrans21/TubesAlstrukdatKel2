@@ -23,7 +23,7 @@ void IgnoreNewline();
 
 void StartWordInput();
 
-void StartWordFile(char *directory);
+void StartWordFile(char *filename, int type);
 
 void ADVWord();
 

@@ -99,22 +99,9 @@ boolean compareString(char *string1, char *string2)
     return true;
 }
 
-void inputString(char *str, int maxLength) {
-    int i = 0;
-    char c;
-
-    // Baca karakter satu per satu sampai menemui newline atau maxLength tercapai
-    while ((c = getchar()) != '\n' && i < maxLength - 1) {
-        str[i++] = c;
-    }
-
-    // Tambahkan null terminator pada akhir string
-    str[i] = '\0';
-
-    // Bersihkan buffer stdin jika masih ada karakter tersisa
-    while (c != '\n' && c != EOF) {
-        c = getchar();
-    }
+void inputString(int type, char* value) {
+    StartWordFile(NULL, type);
+    wordToString(currentWord, value);
 }
 
 char* upper(char *string)

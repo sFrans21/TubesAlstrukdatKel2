@@ -18,7 +18,7 @@ void stringConcat(char str1[] , char str2[] , char *output);
 
 boolean compareString(char *string1, char *string2);
 
-void inputString(char *str, int maxLength);
+void inputString(int type, char* value);
 
 char* upper(char *string);
 

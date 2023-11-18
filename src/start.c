@@ -12,16 +12,16 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
     char path[NMax];
     char *filename = "config.txt";
     stringConcat("../save/",filename,path);
-    StartWordFile(path);
+    StartWordFile(path, 1);
 
     int jumlahPenyanyi;
     jumlahPenyanyi = WordToInt(currentWord);
-    printf("%d\n", jumlahPenyanyi);
+    //printf("%d\n", jumlahPenyanyi);
     for (int i = 0; i < jumlahPenyanyi; i++) {
         ADVWord();
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
-        printf("%d ", jumlahAlbum);
+        //printf("%d ", jumlahAlbum);
         Word namaPenyanyi;
         ADVLine();
         // Membuat salinan dari currentWord ke namaPenyanyi
@@ -32,14 +32,14 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
         // Mengirim namaPenyanyi ke setItem
 
         setItem(penyanyi, i, &namaPenyanyi);
-        printf("%s\n", (*penyanyi).items[i].TabWord);
+        //printf("%s\n", (*penyanyi).items[i].TabWord);
 
         for (int z=0; z < jumlahAlbum; z++)
         {
             ADVWord();
             int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
-            printf("%d ", jumlahLagu);
+            //printf("%d ", jumlahLagu);
             ADVLine();
             Word namaAlbum;
             for (int j = 0; j < currentWord.Length; j++) {
@@ -47,7 +47,7 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
             }
             namaAlbum.Length = currentWord.Length;
             InsertSet(&albums, namaAlbum);
-            printf("%s\n", namaAlbum.TabWord);
+            //printf("%s\n", namaAlbum.TabWord);
         
             for (int k=0; k<jumlahLagu; k++)
             {
@@ -58,7 +58,7 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
                 }
                 judulLagu.Length = currentWord.Length;
                 InsertSet(&songs, judulLagu);
-                printf("%s\n", judulLagu.TabWord);
+                //printf("%s\n", judulLagu.TabWord);
                 for (int b = 0; b < judulLagu.Length; b++){
                     judulLagu.TabWord[b] = '\0';
                 }

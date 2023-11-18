@@ -37,17 +37,34 @@ void StartWordInput()
     }
 }
 
-void StartWordFile(char *filename)
+void StartWordFile(char *filename, int type)
 {
-    StartFile(filename);
-    if (currentChar == NEWLINE)
+    if (type == 0)
     {
-        EndWord = true;
+        StartFile(filename);
+        IgnoreBlank();
+        if (currentChar == '\n')
+        {
+            EndWord = true;
+        }
+        else
+        {
+            EndWord = false;
+            CopyWord(type);
+        }
     }
     else
     {
-        EndWord = false;
-        ADVLine();
+        StartFile(filename);
+        if (currentChar == NEWLINE)
+        {
+            EndWord = true;
+        }
+        else
+        {
+            EndWord = false;
+            ADVLine();
+        }
     }
 }
 
