@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "map.h"
 
 #define MaxElMap 10
 #define Nil -1

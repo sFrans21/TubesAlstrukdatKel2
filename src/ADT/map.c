@@ -1,24 +1,6 @@
 #include <stdio.h>
 #include "map.h"
 
-boolean IsStringsEqual(const char str1[], const char str2[]) {
-    int i = 0;
-
-    while (str1[i] != '\0' && str2[i] != '\0') {
-        if (str1[i] != str2[i]) {
-            return false;
-        }
-        i++;
-    }
-
-    // Pastikan keduanya berakhir pada karakter null.
-    if (str1[i] != '\0' || str2[i] != '\0') {
-        return false;
-    }
-
-    return true;
-}
-
 /* *** Konstruktor/Kreator *** */
 void CreateEmptymap(Map *M)
 /* I.S. Sembarang */
@@ -52,8 +34,8 @@ valuetype Valuemap(Map M, keytype k)
     {
         if (IsStringsEqual(M.Elements[i].Key.TabWord, k.TabWord))
         {
-			return M.Elements[i].Value;
-		}
+            return M.Elements[i].Value;
+        }
     }
 
     // Jika key tidak ditemukan, kembalikan nilai Word yang sesuai
