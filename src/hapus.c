@@ -26,7 +26,7 @@ typedef struct
 // ... (Implementasikan fungsi-fungsi ADT Map di sini)
 
 // Fungsi untuk membaca file konfigurasi dan mengisi ADT Map
-void BacaKonfigurasi(Map *M, const char *namaFile)
+void BacaKonfigurasi(Map *M, char *namaFile)
 {
       FILE *file = fopen(namaFile, "r");
 
