@@ -54,15 +54,16 @@ int main()
             else if (compareString(upper(command), "LOAD") == true){
                 char *inputfile;
                 inputfile = (char *) malloc (30 *sizeof(char));
-                ADVLine();
-                if (currentChar == '\n'){
-                    wordToString(currentWord, inputfile);
-                    if (compareString(upper(inputfile), "LOAD") == false){
-                        load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu);
-                    } else {
-                        printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename tanpa .txt>\n");
-                    }
+                ADVInput();
+                //printf(currentWord.TabWord);
+                //if (currentChar == '\n'){
+                wordToString(currentWord, inputfile);
+                if (compareString(upper(inputfile), "LOAD") == false){
+                    load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu);
+                } else {
+                    printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename tanpa .txt>\n");
                 }
+                //}
             }
             else if (compareString(upper(command), "QUIT") == true) {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);

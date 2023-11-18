@@ -19,8 +19,15 @@ void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *Uru
         else if (compareString(upper(input), "Y") == true){
             char *inputfile;
             inputfile = (char *) malloc (50 * sizeof(char));
-            printf("\nSilahkan input nama file untuk disimpan (tanpa .txt): ");
-            inputString(0, inputfile);
+            printf("\nSilahkan input nama file untuk disimpan: ");
+            StartWordInput();
+            Word filename;
+            filename.Length = currentWord.Length;
+
+            int i;
+            for (i=0; i<currentWord.Length; i++){
+                filename.TabWord[i] = currentWord.TabWord[i];
+            }
             //SAVE(Games, History, Scoreboard, inputfile);
             quit(penyanyi, penyanyiAlbums, albumsong, UrutanLagu, Playlist, RiwayatLagu, true);
         }

@@ -27,6 +27,8 @@ void StartWordFile(char *filename, int type);
 
 void ADVWord();
 
+void ADVInput();
+
 void ADVLine();
 
 void CopyWord();

@@ -82,6 +82,16 @@ void ADVWord()
     }
 }
 
+void ADVInput(){
+    IgnoreBlank();
+    if (currentChar == NEWLINE){
+        EndWord = true;
+    }else{
+        CopyWord();
+        IgnoreBlank();
+    }
+}
+
 void ADVLine()
 {
     if (currentChar == NEWLINE)
