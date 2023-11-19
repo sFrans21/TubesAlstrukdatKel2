@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "help.h"
+#include "tambahan.h"
 
 void showhelp1()
 // program dipanggil sebelum masuk sesi (command sart belum dijalankan.)

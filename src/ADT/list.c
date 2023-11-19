@@ -1,13 +1,57 @@
 #include <stdio.h>
 #include "list.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "string.h"
 #include "boolean.h"
-#include "list.h"
+#include "tambahan.h"
 
 // // Definisi struktur Word dan Map
+
+#define Nil 0
+#define MaxElMap 50
+#define Undefined NULL
+#define MAX_ITEMS 100
+#define MaxElSet 100
+
+typedef struct
+{
+	char TabWord[50];
+	int Length;
+} Word;
+
+typedef Word infotypeSet;
+typedef int addrSer;
+
+typedef struct
+{
+	infotypeSet Elements[MaxElSet];
+	addrSer Count;
+} Set;
+
+typedef struct
+{
+	Word items[MAX_ITEMS];
+	int itemCount;
+} StaticList;
+
+typedef struct
+{
+	Word Key;
+	StaticList Value;
+} infotype1;
+
+typedef struct
+{
+	Word Key;
+	Set Value;
+} infotype2;
+
+typedef struct
+{
+	infotype2 Elements[MaxElMap];
+	int Count;
+} Map;
 
 // Fungsi-fungsi dan prosedur-prosedur ADT Map
 // ... (Implementasikan fungsi-fungsi ADT Map di sini)
@@ -70,7 +114,7 @@ void PrintPenyanyi(StaticList M)
 	}
 }
 
-void PrintAlbum(MapPenyanyi M, Word c) // ini gunain map penyanyi-album
+void PrintAlbum(Map M, char c) // ini gunain map penyanyi-album
 {
 	// ngecek kata c ada di key map/tidak
 	int found;
@@ -78,7 +122,7 @@ void PrintAlbum(MapPenyanyi M, Word c) // ini gunain map penyanyi-album
 	{
 		for (int i = 0; i < c.Length; i++)
 		{
-			if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
+			if (c != M.Elements[d].Key.TabWord[i])
 			{
 				break;
 			}
@@ -86,13 +130,17 @@ void PrintAlbum(MapPenyanyi M, Word c) // ini gunain map penyanyi-album
 		}
 	}
 	printf("Daftar Album oleh %s :\n", M.Elements[found].Key.TabWord);
-	for (int i = 0; i < M.Elements[found].Value.itemCount; i++)
+	for (int e = 0; e < M.Elements[found].Value.Count; e++)
 	{
-		printf("%d. %s\n", (i + 1), M.Elements[found].Value.items[i].TabWord);
+		printf("%d. ", (e + 1));
+		for (int i = 0; i < M.Elements[found].Value.Elements->Length; i++)
+		{
+			printf("%s\n", M.Elements[found].Value.Elements.TabWord[i]);
+		}
 	}
 }
 
-void PrintLagu(MapAlbum M, Word c) // ini gunain map album-lagu
+void PrintLagu(Map M, Word c) // ini gunain map album-lagu
 {
 	int found;
 	for (int d = 0; d < M.Count; d++)
@@ -102,15 +150,30 @@ void PrintLagu(MapAlbum M, Word c) // ini gunain map album-lagu
 			if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
 			{
 				break;
+				found = d;
 			}
-			found = d;
 		}
 	}
 	printf("Daftar Lagu di album %s :\n", M.Elements[found].Key.TabWord);
-	for (int i = 0; i < M.Elements[found].Value.CountSet; i++)
+	for (int i = 0; i < M.Elements[found].Value.Count; i++)
 	{
 		printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i].TabWord);
 	}
 }
 
 void PrintPlaylist();
+
+// int main()
+// {
+// 	// inisisalisasi M
+// 	// if (input == LIST DEFAULT;)
+// 	PrintPenyanyi(M);
+// 	printf("Ingin melihat album yang ada?(Y/N): ");
+// 	// scanf("%s", %jawaban);
+// 	printf("Pilih penyanyi untuk melihat album mereka:");
+// 	// scanf("%s", %jawaban);
+// 	PrintAlbum(M, jawab);
+// 	printf("\nIngin melihat lagu yang ada pada album tersebut? (Y/N): ");
+// 	// scanf("%s", %jawaban);
+// 	PrintLagu(M, jawab);
+// }
