@@ -1,132 +1,162 @@
 #include <stdio.h>
 #include "list.h"
 
-// Konstruktor
+#include <stdio.h>
+#include <stdlib.h>
+#include "string.h"
+#include "boolean.h"
 
-List MakeList() {
-	List L;
-	IdxType i;
-	for (i = 0; i < MaxEl; i++) {
-		L.A[i] = Mark;
-	}
-	return L;
-}
+// // Definisi struktur Word dan Map
 
-boolean IsEmpty(List L) {
-	return (L.A[0] == Mark);
-}
+#define Nil 0
+#define MaxElMap 50
+#define Undefined NULL
+#define MAX_ITEMS 100
 
-int Length(List L) {
-	int i = 0;
-	while (L.A[i] != Mark) {
-		i += 1;
-	}
-	return i;
-}
+typedef struct
+{
+	char TabWord[50];
+	int Length;
+} Word;
 
-ElType Get(List L, IdxType i) {
-	return L.A[i];
-}
+typedef struct
+{
+	Word Elements[MAX_ITEMS];
+	int CountSet;
+} Set;
 
-void Set(List *L, IdxType i, ElType v) {
-	(*L).A[i] = v;
-}
+typedef struct
+{
+	Word items[MAX_ITEMS];
+	int itemCount;
+} StaticList;
 
-IdxType FirstIdx(List L) {
-    return 0;
-}
+typedef struct
+{
+	Word Key;
+	StaticList Value;
+} infotype1;
 
-IdxType LastIdx(List L) {
-	int i = FirstIdx(L);
-	while ((i < MaxEl) && (L.A[i+1] != Mark)) {
-		i += 1;
-	}
-	return i;
-}
+typedef struct
+{
+	infotype1 Elements[MaxElMap];
+	int Count;
+} MapPenyanyi;
 
-boolean IsIdxValid (List L, IdxType i) {
-	return (0 <= i) && (MaxEl >= i);
-}
+typedef struct
+{
+	Word Key;
+	Set Value;
+} infotype2;
 
-boolean IsIdxEff (List L, IdxType i) {
-	return (FirstIdx(L) <= i) && (LastIdx(L) >= i);
-}
+typedef struct
+{
+	infotype2 Elements[MaxElMap];
+	int Count;
+} MapAlbum;
 
-boolean Search(List L, ElType X) {
-	int i = FirstIdx(L);
-	int j = LastIdx(L);
-	boolean found = false;
-	while ((i <= j) && !found) {
-		if (L.A[i] == X) {
-			found = true;
+// Fungsi-fungsi dan prosedur-prosedur ADT Map
+// ... (Implementasikan fungsi-fungsi ADT Map di sini)
+
+// Fungsi untuk membaca file konfigurasi dan mengisi ADT Map
+// void BacaKonfigurasi(Map *M, char *namaFile)
+// {
+//       FILE *file = fopen(namaFile, "r");
+
+//       if (file == NULL)
+//       {
+//             perror("Error membuka file");
+//             exit(EXIT_FAILURE);
+//       }
+
+//       int jumlahPenyanyi;
+//       fscanf(file, "%d", &jumlahPenyanyi);
+
+//       for (int i = 0; i < jumlahPenyanyi; i++)
+//       {
+//             Word namaPenyanyi;
+//             fscanf(file, "%d %s", &namaPenyanyi.Length, namaPenyanyi.TabWord);
+
+//             int jumlahAlbum;
+//             fscanf(file, "%d", &jumlahAlbum);
+
+//             for (int j = 0; j < jumlahAlbum; j++)
+//             {
+//                   Word judulAlbum;
+//                   fscanf(file, "%d %s", &judulAlbum.Length, judulAlbum.TabWord);
+
+//                   int jumlahLagu;
+//                   fscanf(file, "%d", &jumlahLagu);
+
+//                   for (int k = 0; k < jumlahLagu; k++)
+//                   {
+//                         Word judulLagu;
+//                         fscanf(file, "%s", judulLagu.TabWord);
+
+//                         // // Tambahkan ke dalam ADT Map
+//                         // InsMap(M, namaPenyanyi, judulLagu);
+//                   }
+//             }
+//       }
+
+//       fclose(file);
+// }
+
+void PrintPenyanyi(StaticList M)
+{
+
+	printf("Daftar Penyanyi :\n");
+	for (int i = 0; i < M.itemCount; i++)
+	{
+		printf("%d. ", (i + 1));
+		for (int x = 0; x < M.items[i].Length; x++)
+		{
+			printf("%c", M.items[i].TabWord[x]);
 		}
-		i += 1;
-	}
-    return found;
-}
-
-void InsertFirst(List *L, ElType X) {
-	IdxType i = LastIdx(*L);
-	while (i >= 0) {
-		Set(L, i+1, Get(*L, i));
-		i--;
-	}
-	Set(L, 0, X);
-}
-
-void InsertAt(List *L, ElType X, IdxType i) {
-    IdxType j = LastIdx(*L);
-	while (i <= j) {
-		Set(L, j+1, Get(*L, j));
-        j--;
-	}
-	Set(L, i, X);
-}
-
-void InsertLast(List *L, ElType X) {
-    if (IsEmpty(*L)) {
-        InsertFirst(L, X);
-    } else {
-        (*L).A[LastIdx(*L) + 1] = X;
-    }
-}
-
-void DeleteFirst(List *L) {
-	int i = FirstIdx(*L);
-	while (i < LastIdx(*L)) {
-		(*L).A[i] = (*L).A[i+1];
-        i++;
-	}
-    (*L).A[i] = Mark;
-}
-
-void DeleteAt(List *L, IdxType i) {
-	int j = LastIdx(*L);
-	while (i <= j) {
-		(*L).A[i] = (*L).A[i+1];
-        i++;
 	}
 }
 
-void DeleteLast(List *L) {
-	(*L).A[LastIdx(*L)] = Mark;
+void PrintAlbum(MapPenyanyi M, Word c) // ini gunain map penyanyi-album
+{
+	// ngecek kata c ada di key map/tidak
+	int found;
+	for (int d = 0; d < M.Count; d++)
+	{
+		for (int i = 0; i < c.Length; i++)
+		{
+			if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
+			{
+				break;
+			}
+			found = d;
+		}
+	}
+	printf("Daftar Album oleh %s :\n", M.Elements[found].Key.TabWord);
+	for (int i = 0; i < M.Elements[found].Value.itemCount; i++)
+	{
+		printf("%d. %s\n", (i + 1), M.Elements[found].Value.items[i].TabWord);
+	}
 }
 
-List Concat(List L1, List L2) {
-	List L3 = MakeList();
-	int i = FirstIdx(L1);
-	int j = FirstIdx(L2);
-	int idx = 0;
-	while (i <= LastIdx(L1)) {
-		L3.A[idx] = L1.A[i];
-        idx++;
-        i++;
+void PrintLagu(MapAlbum M, Word c) // ini gunain map album-lagu
+{
+	int found;
+	for (int d = 0; d < M.Count; d++)
+	{
+		for (int i = 0; i < c.Length; i++)
+		{
+			if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
+			{
+				break;
+			}
+			found = d;
+		}
 	}
-	while (j <= LastIdx(L2)) {
-		L3.A[idx] = L2.A[j];
-        idx++;
-        j++;
+	printf("Daftar Lagu di album %s :\n", M.Elements[found].Key.TabWord);
+	for (int i = 0; i < M.Elements[found].Value.CountSet; i++)
+	{
+		printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i].TabWord);
 	}
-
-    return L3;
 }
+
+void PrintPlaylist();
