@@ -5,55 +5,9 @@
 #include <stdlib.h>
 #include "string.h"
 #include "boolean.h"
+#include "list.h"
 
 // // Definisi struktur Word dan Map
-
-#define Nil 0
-#define MaxElMap 50
-#define Undefined NULL
-#define MAX_ITEMS 100
-
-typedef struct
-{
-	char TabWord[50];
-	int Length;
-} Word;
-
-typedef struct
-{
-	Word Elements[MAX_ITEMS];
-	int CountSet;
-} Set;
-
-typedef struct
-{
-	Word items[MAX_ITEMS];
-	int itemCount;
-} StaticList;
-
-typedef struct
-{
-	Word Key;
-	StaticList Value;
-} infotype1;
-
-typedef struct
-{
-	infotype1 Elements[MaxElMap];
-	int Count;
-} MapPenyanyi;
-
-typedef struct
-{
-	Word Key;
-	Set Value;
-} infotype2;
-
-typedef struct
-{
-	infotype2 Elements[MaxElMap];
-	int Count;
-} MapAlbum;
 
 // Fungsi-fungsi dan prosedur-prosedur ADT Map
 // ... (Implementasikan fungsi-fungsi ADT Map di sini)

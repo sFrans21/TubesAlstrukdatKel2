@@ -4,20 +4,66 @@
 
 #ifndef ADTList1
 #define ADTList1
+#define Nil 0
+#define MaxElMap 50
+#define Undefined NULL
+#define MAX_ITEMS 100
 
+typedef struct
+{
+	char TabWord[50];
+	int Length;
+} Word;
+
+typedef struct
+{
+	Word Elements[MAX_ITEMS];
+	int CountSet;
+} Set;
+
+typedef struct
+{
+	Word items[MAX_ITEMS];
+	int itemCount;
+} StaticList;
+
+typedef struct
+{
+	Word Key;
+	StaticList Value;
+} infotype1;
+
+typedef struct
+{
+	infotype1 Elements[MaxElMap];
+	int Count;
+} MapPenyanyi;
+
+typedef struct
+{
+	Word Key;
+	Set Value;
+} infotype2;
+
+typedef struct
+{
+	infotype2 Elements[MaxElMap];
+	int Count;
+} MapAlbum;
 #include "boolean.h"
 
 /* Kamus Umum */
 #define MaxEl 100
-#define Mark -9999  /* Nilai tak terdefinisi */
-#define InvalidIdx -1  /* Indeks tak terdefinisi */
+#define Mark -9999    /* Nilai tak terdefinisi */
+#define InvalidIdx -1 /* Indeks tak terdefinisi */
 
 /* Definisi elemen dan koleksi objek */
 #define IdxType int
 #define ElType int
 
-typedef struct {
-	ElType A[MaxEl];  /* Memori tempat penyimpanan elemen (container) */
+typedef struct
+{
+	ElType A[MaxEl]; /* Memori tempat penyimpanan elemen (container) */
 } List;
 
 #define List(i) L.A(i)
@@ -66,12 +112,12 @@ IdxType LastIdx(List L);
 /* Mengirimkan indeks elemen terakhir */
 
 /* ********** Test Indeks yang valid ********** */
-boolean IsIdxValid (List L, IdxType i);
+boolean IsIdxValid(List L, IdxType i);
 /* Prekondisi : i sembarang */
 /* Mengirimkan true jika i adalah indeks yang valid utk ukuran list */
 /* yaitu antara indeks yang terdefinisi untuk container*/
 
-boolean IsIdxEff (List L, IdxType i);
+boolean IsIdxEff(List L, IdxType i);
 /* Prekondisi : i sembarang*/
 /* Mengirimkan true jika i adalah indeks yang terdefinisi utk list */
 /* yaitu antara FirstIdx(L)..LastIdx(L) */
