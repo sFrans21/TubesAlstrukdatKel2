@@ -32,13 +32,25 @@ typedef struct
 {
       Word Key;
       StaticList Value;
-} infotype;
+} infotype1;
 
 typedef struct
 {
-      infotype Elements[MaxElMap];
+      infotype1 Elements[MaxElMap];
       int Count;
 } MapPenyanyi;
+
+typedef struct
+{
+      Word key;
+      Set Value;
+} infotype2;
+
+typedef struct
+{
+      infotype2 Elements[MaxElMap];
+      int Count;
+} MapAlbum;
 
 // Fungsi-fungsi dan prosedur-prosedur ADT Map
 // ... (Implementasikan fungsi-fungsi ADT Map di sini)
@@ -100,27 +112,44 @@ void PrintPenyanyi(StaticList M)
 void PrintAlbum(MapPenyanyi M, Word c) // ini gunain map penyanyi-album
 {
       // ngecek kata c ada di key map/tidak
+      int found;
       printf("Daftar Album oleh %s :\n", c);
-      for (int i = 0; i < M.Count; i++)
+      for (int d = 0; d < M.Count; d++)
       {
             for (int i = 0; i < c.Length; i++)
             {
-                  if (c.TabWord[i] ==)
+                  if (c.TabWord[i] != M.Elements[d]->Key->TabWord[i])
+                  {
+                        break;
+                  }
+                  found = d;
             }
       }
 
-      for (int i = 0; i < M.Count; i++)
+      for (int i = 0; i < M.Elements[found].Value.itemCount; i++)
       {
-            printf("%d. %s\n", (i + 1), M.Elements[i].Value.items[i]);
+            printf("%d. %s\n", (i + 1), M.Elements[found]->Value.items[i]);
       }
 }
 
-void PrintLagu(Map M) // ini gunain map album-lagu
+void PrintLagu(MapAlbum M, Word c) // ini gunain map album-lagu
 {
-      printf("Daftar Lagu di %s :\n", M.Elements[0].Key.TabWord);
-      for (int i = 0; i < M.Count; i++)
+      int found;
+      printf("Daftar Lagu di album %s :\n", c);
+      for (int d = 0; d < M.Count; d++)
       {
-            printf("%d. %s\n", (i + 1), M.Elements[i].Value.items[i]);
+            for (int i = 0; i < c.Length; i++)
+            {
+                  if (c.TabWord[i] != M.Elements[d]->Key->TabWord[i])
+                  {
+                        break;
+                  }
+                  found = d;
+            }
+      }
+      for (int i = 0; i < M.Elements[found].Value.CountSet; i++)
+      {
+            printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i]);
       }
 }
 
