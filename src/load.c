@@ -12,17 +12,14 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
     Map albumLagu;
     CreateEmptymap(&albumLagu);
 
-    char *txt = ".txt";
-    char *filename;
     char *directory;
-    filename = (char *) malloc (25 * sizeof(char));
     directory = (char *) malloc (50 * sizeof(char));
-    stringConcat(inputfile, txt, filename);
-    stringConcat("../save/", filename, directory);
+    stringConcat("../save/", inputfile, directory);
 
     FILE *open;
     open = fopen(directory, "r");
     if (open != NULL){
+        fclose(open);
         StartWordFile(directory, 1);
 
         int jumlahPenyanyi;
@@ -86,7 +83,6 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             for (int b = 0; b < namaPenyanyi.Length; b++){
                 namaPenyanyi.TabWord[b] = '\0';}
         }
-
     
         // QUEUE
         ADVLine();
@@ -124,45 +120,47 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 RLagu.TabWord[b] = '\0';
             }
         }
+        (*RiwayatLagu) = ReverseStack(*RiwayatLagu);
 
         //ARRAYDIN PLAYLIST
         ADVLine();
         int nPlaylist = WordToInt(currentWord);
         printf("%d\n", nPlaylist);
-        char stringPlaylist[NMax];
         for (int i = 1; i <= nPlaylist; i++){
-            char *namaPlaylist = (char*) malloc (currentWord.Length * sizeof(char));
             ADVWord();
             int nPLagu = WordToInt(currentWord);
             printf("%d ", nPLagu);
             ADVLine();
-            wordToString(currentWord, stringPlaylist);
-            int j = 0;
-            while (j <= currentWord.Length){
-                namaPlaylist[j] = stringPlaylist[j];
-                j++;
+            Word namaPlaylist;
+            for (int j = 0; j < currentWord.Length; j++) {
+                namaPlaylist.TabWord[j] = currentWord.TabWord[j];
             }
+            namaPlaylist.Length = currentWord.Length;
             InsertLast(Playlist, namaPlaylist);
-            printf("%s\n", ((*Playlist).A[i-1]));
+            printf("%s\n", namaPlaylist.TabWord);
 
-            ArrayDin *LaguPlaylist;
-            CreateDynArray(LaguPlaylist);
-            char stringLaguPlaylist[NMax];
-            for (int i = 1; i <= nPLagu; i++){
-                char *namaPLagu = (char*) malloc (currentWord.Length * sizeof(char));
-                ADVLine();
-                wordToString(currentWord, stringLaguPlaylist);
-                int j = 0;
-                while (j <= currentWord.Length){
-                    namaPLagu[j] = stringLaguPlaylist[j];
-                    j++;
+            if (nPLagu > 0){
+                ArrayDin LaguPlaylist;
+                CreateDynArray(&LaguPlaylist);
+                for (int k = 0; k < nPLagu; k++){
+                    ADVLine();
+                    Word namaPLagu;
+                    for (int j = 0; j < currentWord.Length; j++) {
+                        namaPLagu.TabWord[j] = currentWord.TabWord[j];
+                    }
+                    namaPLagu.Length = currentWord.Length;
+                    InsertLast(&LaguPlaylist, namaPLagu);
+                    printf("%s\n", namaPLagu.TabWord);
+                    for (int b = 0; b < namaPLagu.Length; b++){
+                        namaPLagu.TabWord[b] = '\0';
+                    }
                 }
-                InsertLast(LaguPlaylist, namaPLagu);
-                printf("%s\n", ((*LaguPlaylist).A[i-1]));
+            }
+            for (int b = 0; b < namaPlaylist.Length; b++){
+                namaPlaylist.TabWord[b] = '\0';
             }
         }
         printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
-    
     } else {
         printf("Save file tidak ditemukan. WayangWave gagal dijalankan.");
     }
