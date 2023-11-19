@@ -19,7 +19,7 @@ void playPreviousSong(SongQueue* queue, Song currentSong)
     }
 
     // Simulasikan pemutaran lagu
-    printf("Now Playing: %s - %s (ID: %d)\n", currentSong.singer, currentSong.album, currentSong.songId);
+    printf("Memutar lagu : %s - %s (judul : %s)\n", currentSong.singer, currentSong.album, currentSong.songtitle);
 }
 
 // Fungsi untuk memutar lagu selanjutnya dalam queue
@@ -39,7 +39,7 @@ void playNextSong(SongQueue* queue)
         }
 
         // Simulasikan pemutaran lagu
-        printf("Now Playing: %s - %s (ID: %d)\n", currentSong.singer, currentSong.album, currentSong.songId);
+        printf("Memutar lagu sebelumnya: %s - %s (judul : %s)\n", currentSong.singer, currentSong.album, currentSong.songtitle);
     } else {
         printf("Queue is empty.\n");
     }

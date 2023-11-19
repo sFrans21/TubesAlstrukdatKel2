@@ -5,7 +5,7 @@
 typedef struct {
     char singer[50];
     char album[50];
-    int songId;
+    char songtitle[50];
 } Song;
 
 // Node untuk representasi elemen dalam queue
@@ -27,7 +27,7 @@ Node* createNode(Song song);
 SongQueue* createQueue();
 
 // Fungsi untuk menambahkan lagu ke dalam queue
-void enqueue(SongQueue* queue, Song song);
+void enqueuesong(SongQueue* queue, Song song);
 
 // Fungsi untuk memutar lagu selanjutnya dalam queue
 void playNextSong(SongQueue* queue);
