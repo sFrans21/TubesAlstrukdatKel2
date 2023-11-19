@@ -111,27 +111,28 @@ void PrintPenyanyi(StaticList M)
     }
 }
 
-void PrintAlbum(Map M, char c) // ini gunain map penyanyi-album
+void PrintAlbum(Map *M, char *c) // ini gunain map penyanyi-album
 {
 
     // ngecek kata c ada di key map/tidak
     int when;
     boolean found;
     char asem;
-    for (int d = 0; d < M.Count; d++)
+    for (int d = 0; d < (*M).Count; d++)
     {
-        wordToString(M.Elements[d].Key, asem); // ubah ke char
+        wordToString((*M).Elements[d].Key, asem); // ubah ke char
         if (strcmp(c, asem) == 0)
         {
             found = true;
             when = d;
         }
     }
+
     printf("Daftar Album oleh %s :\n", c);
-    for (int e = 0; e < M.Elements[when].Value.Count; e++)
+    for (int e = 0; e < (*M).Elements[when].Value.Count; e++)
     {
         printf("%d. ", (e + 1));
-        printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
+        printf("%s\n", (*M).Elements[when].Value.Elements[e].TabWord);
     }
 }
 
