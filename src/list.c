@@ -107,10 +107,7 @@ void PrintPenyanyi(StaticList M)
     for (int i = 0; i < M.itemCount; i++)
     {
         printf("%d. ", (i + 1));
-        for (int x = 0; x < M.items[i].Length; x++)
-        {
-            printf("%c", M.items[i].TabWord[x]);
-        }
+        printf("%s\n", list->items[i].TabWord);
     }
 }
 
