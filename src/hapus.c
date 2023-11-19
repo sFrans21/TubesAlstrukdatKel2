@@ -1,9 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "boolean.h"
+// #include <stdio.h>
+// #include <stdlib.h>
+// #include "string.h"
+// #include "boolean.h"
 
-// Definisi struktur Word dan Map
+// // Definisi struktur Word dan Map
+
+#define Nil 0
+#define MaxElMap 50
+#define Undefined NULL
+
+typedef int address;
+
 typedef struct
 {
       char TabWord[50];
@@ -14,99 +21,291 @@ typedef struct
 {
       Word Key;
       Word Value;
+} Dualvalue;
+
+typedef struct
+{
+      Word Key;
+      Word Value;
 } infotype;
 
 typedef struct
 {
-      infotype Elements[100]; // Sesuaikan ukuran array sesuai kebutuhan
-      int Count;
+      infotype Elements[MaxElMap];
+      address Count;
 } Map;
 
-// Fungsi-fungsi dan prosedur-prosedur ADT Map
-// ... (Implementasikan fungsi-fungsi ADT Map di sini)
+// // Fungsi-fungsi dan prosedur-prosedur ADT Map
+// // ... (Implementasikan fungsi-fungsi ADT Map di sini)
 
-// Fungsi untuk membaca file konfigurasi dan mengisi ADT Map
-void BacaKonfigurasi(Map *M, char *namaFile)
+// // Fungsi untuk membaca file konfigurasi dan mengisi ADT Map
+// void BacaKonfigurasi(Map *M, char *namaFile)
+// {
+//       FILE *file = fopen(namaFile, "r");
+
+//       if (file == NULL)
+//       {
+//             perror("Error membuka file");
+//             exit(EXIT_FAILURE);
+//       }
+
+//       int jumlahPenyanyi;
+//       fscanf(file, "%d", &jumlahPenyanyi);
+
+//       for (int i = 0; i < jumlahPenyanyi; i++)
+//       {
+//             Word namaPenyanyi;
+//             fscanf(file, "%d %s", &namaPenyanyi.Length, namaPenyanyi.TabWord);
+
+//             int jumlahAlbum;
+//             fscanf(file, "%d", &jumlahAlbum);
+
+//             for (int j = 0; j < jumlahAlbum; j++)
+//             {
+//                   Word judulAlbum;
+//                   fscanf(file, "%d %s", &judulAlbum.Length, judulAlbum.TabWord);
+
+//                   int jumlahLagu;
+//                   fscanf(file, "%d", &jumlahLagu);
+
+//                   for (int k = 0; k < jumlahLagu; k++)
+//                   {
+//                         Word judulLagu;
+//                         fscanf(file, "%s", judulLagu.TabWord);
+
+//                         // // Tambahkan ke dalam ADT Map
+//                         // InsMap(M, namaPenyanyi, judulLagu);
+//                   }
+//             }
+//       }
+
+//       fclose(file);
+// }
+
+// // Fungsi untuk menampilkan isi Map (hanya untuk keperluan debugging)
+// void PrintPenyanyi(Map M)
+// {
+
+//       printf("Daftar Penyanyi :\n");
+//       for (int i = 0; i < M.Count; i++)
+//       {
+//             printf("%d. %s\n", (i + 1), M.Elements[i].Key.TabWord);
+//       }
+// }
+
+// void PrintAlbum(Map M) // ini gunain map penyanyi-album
+// {
+//       printf("Daftar Album oleh %s :\n", M.Elements[0].Key.TabWord);
+//       for (int i = 0; i < M.Count; i++)
+//       {
+//             printf("%d. %s\n", (i + 1), M.Elements[i].Value.TabWord);
+//       }
+// }
+
+// void PrintLagu(Map M) // ini gunain map album-lagu
+// {
+//       printf("Daftar Lagu di %s :\n", M.Elements[0].Key.TabWord);
+//       for (int i = 0; i < M.Count; i++)
+//       {
+//             printf("%d. %s\n", (i + 1), M.Elements[i].Value.TabWord);
+//       }
+// }
+
+// void Insertmap(Map *M, Word k, Word v)
+// {
+//       if (M->Count < 100) // Pastikan array tidak penuh
+//       {
+//             strcpy(M->Elements[M->Count].Key.TabWord, k.TabWord);
+//             M->Elements[M->Count].Key.Length = k.Length;
+
+//             strcpy(M->Elements[M->Count].Value.TabWord, v.TabWord);
+//             M->Elements[M->Count].Value.Length = v.Length;
+
+//             M->Count++;
+//       }
+//       else
+//       {
+//             printf("Map penuh, tidak dapat menambahkan elemen baru.\n");
+//       }
+// }
+
+// // int main()
+// // {
+// //       Map dataMap;
+// //       // Inisialisasi dataMap jika diperlukan
+// //       dataMap.Count = 0;
+
+// //       // Panggil fungsi BacaKonfigurasi
+// //       BacaKonfigurasi(&dataMap, "config.txt");
+
+// //       // Tampilkan isi Map (hanya untuk keperluan debugging)
+// //       PrintMap(dataMap);
+
+// //       return 0;
+// // }
+// int main()
+// {
+//       // Inisialisasi Map
+//       Map map1;
+//       Map map2;
+//       map1.Count = 0;
+//       map2.Count = 0;
+
+//       // Menambahkan data ke Map2
+//       strcpy(map2.Elements[map2.Count].Key.TabWord, "Album1");
+//       map2.Elements[map2.Count].Key.Length = strlen("Album1");
+//       strcpy(map2.Elements[map2.Count].Value.TabWord, "Lagu1");
+//       map2.Elements[map2.Count].Value.Length = strlen("Lagu1");
+//       map2.Count++;
+
+//       strcpy(map2.Elements[map2.Count].Key.TabWord, "Album2");
+//       map2.Elements[map2.Count].Key.Length = strlen("Album2");
+//       strcpy(map2.Elements[map2.Count].Value.TabWord, "Lagu2");
+//       map2.Elements[map2.Count].Value.Length = strlen("Lagu2");
+//       map2.Count++;
+
+//       strcpy(map2.Elements[map2.Count].Key.TabWord, "Album3");
+//       map2.Elements[map2.Count].Key.Length = strlen("Album3");
+//       strcpy(map2.Elements[map2.Count].Value.TabWord, "Lagu3");
+//       map2.Elements[map2.Count].Value.Length = strlen("Lagu3");
+//       map2.Count++;
+
+//       strcpy(map2.Elements[map2.Count].Key.TabWord, "Album4");
+//       map2.Elements[map2.Count].Key.Length = strlen("Album4");
+//       strcpy(map2.Elements[map2.Count].Value.TabWord, "Lagu4");
+//       map2.Elements[map2.Count].Value.Length = strlen("Lagu4");
+//       map2.Count++;
+
+//       // nambahin data ke map1
+//       strcpy(map1.Elements[map1.Count].Key.TabWord, "Penyanyi1");
+//       map1.Elements[map1.Count].Key.Length = strlen("Penyanyi1");
+//       strcpy(map1.Elements[map1.Count].Value.TabWord, "Album1");
+//       map1.Elements[map1.Count].Value.Length = strlen("Album1");
+//       map1.Count++;
+
+//       strcpy(map1.Elements[map1.Count].Key.TabWord, "Penyanyi2");
+//       map1.Elements[map1.Count].Key.Length = strlen("Penyanyi2");
+//       strcpy(map1.Elements[map1.Count].Value.TabWord, "Album2");
+//       map1.Elements[map1.Count].Value.Length = strlen("Album2");
+//       map1.Count++;
+
+//       strcpy(map1.Elements[map1.Count].Key.TabWord, "Penyanyi3");
+//       map1.Elements[map1.Count].Key.Length = strlen("Penyanyi3");
+//       strcpy(map1.Elements[map1.Count].Value.TabWord, "Album3");
+//       map1.Elements[map1.Count].Value.Length = strlen("Album3");
+//       map1.Count++;
+
+//       strcpy(map1.Elements[map1.Count].Key.TabWord, "Penyanyi4");
+//       map1.Elements[map1.Count].Key.Length = strlen("Penyanyi4");
+//       strcpy(map1.Elements[map1.Count].Value.TabWord, "Album4");
+//       map1.Elements[map1.Count].Value.Length = strlen("Album4");
+//       map1.Count++;
+
+//       // Lanjutkan sampai 10 data...
+
+//       // Menampilkan isi Map
+//       // printf("Isi Map:\n");
+//       // for (address i = 0; i < map2.Count; i++)
+//       // {
+//       //       printf("Album: %s, Lagu: %s\n", map2.Elements[i].Key.TabWord, map2.Elements[i].Value.TabWord);
+//       // }
+//       PrintPenyanyi(map1);
+//       PrintAlbum(map1);
+//       PrintLagu(map2);
+//       return 0;
+// }
+
+#include <stdio.h>
+#include <string.h>
+
+#define MaxElMap 50
+#define Nil 0
+#define Undefined NULL
+
+typedef int address;
+
+typedef struct
 {
-      FILE *file = fopen(namaFile, "r");
+      char TabWord[50];
+      int Length;
+} Word;
 
-      if (file == NULL)
+typedef struct
+{
+      Word Key;
+      Word Values[MaxElMap]; // Array untuk menyimpan multiple values
+      int ValuesCount;       // Jumlah values yang terkait dengan key
+} infotype;
+
+typedef struct
+{
+      infotype Elements[MaxElMap];
+      address Count;
+} Map;
+
+// Fungsi untuk menampilkan isi Map
+void displayMap(Map *M)
+{
+      for (address i = 0; i < M->Count; i++)
       {
-            perror("Error membuka file");
-            exit(EXIT_FAILURE);
-      }
-
-      int jumlahPenyanyi;
-      fscanf(file, "%d", &jumlahPenyanyi);
-
-      for (int i = 0; i < jumlahPenyanyi; i++)
-      {
-            Word namaPenyanyi;
-            fscanf(file, "%d %s", &namaPenyanyi.Length, namaPenyanyi.TabWord);
-
-            int jumlahAlbum;
-            fscanf(file, "%d", &jumlahAlbum);
-
-            for (int j = 0; j < jumlahAlbum; j++)
+            printf("Elemen ke-%d:\n", i);
+            printf("   Key: \"%s\", Length: %d\n", M->Elements[i].Key.TabWord, M->Elements[i].Key.Length);
+            for (int j = 0; j < M->Elements[i].ValuesCount; j++)
             {
-                  Word judulAlbum;
-                  fscanf(file, "%d %s", &judulAlbum.Length, judulAlbum.TabWord);
-
-                  int jumlahLagu;
-                  fscanf(file, "%d", &jumlahLagu);
-
-                  for (int k = 0; k < jumlahLagu; k++)
-                  {
-                        Word judulLagu;
-                        fscanf(file, "%s", judulLagu.TabWord);
-
-                        // // Tambahkan ke dalam ADT Map
-                        Insertmap(M, namaPenyanyi, judulLagu);
-                  }
+                  printf("   Value ke %d: \"%s\", Length: %d\n", j + 1, M->Elements[i].Values[j].TabWord, M->Elements[i].Values[j].Length);
             }
       }
-
-      fclose(file);
 }
 
-// Fungsi untuk menampilkan isi Map (hanya untuk keperluan debugging)
-void PrintMap(Map M)
+// Fungsi untuk menambahkan elemen ke dalam Map
+void insertMap(Map *M, Word key, Word value)
 {
-      for (int i = 0; i < M.Count; i++)
-      {
-            printf("Key: %s, Value: %s\n", M.Elements[i].Key.TabWord, M.Elements[i].Value.TabWord);
+      if (M->Count < MaxElMap)
+      { // Pastikan array tidak penuh
+            // Cari apakah key sudah ada di map
+            address i = 0;
+            while (i < M->Count && strcmp(M->Elements[i].Key.TabWord, key.TabWord) != 0)
+            {
+                  i++;
+            }
+
+            // Jika key belum ada, tambahkan ke map
+            if (i == M->Count)
+            {
+                  strcpy(M->Elements[i].Key.TabWord, key.TabWord);
+                  M->Elements[i].Key.Length = key.Length;
+                  M->Elements[i].ValuesCount = 0;
+                  M->Count++;
+            }
+
+            // Tambahkan value ke set values yang terkait dengan key
+            strcpy(M->Elements[i].Values[M->Elements[i].ValuesCount].TabWord, value.TabWord);
+            M->Elements[i].Values[M->Elements[i].ValuesCount].Length = value.Length;
+            M->Elements[i].ValuesCount++;
       }
 }
 
 int main()
 {
-      Map dataMap;
-      // Inisialisasi dataMap jika diperlukan
-      dataMap.Count = 0;
+      // Inisialisasi Map
+      Map map1;
+      map1.Count = 0;
 
-      // Panggil fungsi BacaKonfigurasi
-      BacaKonfigurasi(&dataMap, "config.txt");
+      // Contoh penambahan elemen ke dalam Map
+      Word penyanyi1 = {"Penyanyi1", 9};
+      Word album1 = {"Album1", 6};
+      insertMap(&map1, penyanyi1, album1);
 
-      // Tampilkan isi Map (hanya untuk keperluan debugging)
-      PrintMap(dataMap);
+      Word penyanyi2 = {"Penyanyi2", 9};
+      Word album2 = {"Album2", 7};
+      insertMap(&map1, penyanyi2, album2);
+
+      Word penyanyi3 = {"Penyanyi3", 9};
+      Word album3 = {"Album3", 7};
+      insertMap(&map1, penyanyi3, album3);
+
+      // Menampilkan isi Map
+      displayMap(&map1);
 
       return 0;
-}
-
-void Insertmap(Map *M, Word key, Word value)
-{
-      if (M->Count < 100) // Pastikan array tidak penuh
-      {
-            strcpy(M->Elements[M->Count].Key.TabWord, key.TabWord);
-            M->Elements[M->Count].Key.Length = key.Length;
-
-            strcpy(M->Elements[M->Count].Value.TabWord, value.TabWord);
-            M->Elements[M->Count].Value.Length = value.Length;
-
-            M->Count++;
-      }
-      else
-      {
-            printf("Map penuh, tidak dapat menambahkan elemen baru.\n");
-      }
 }
