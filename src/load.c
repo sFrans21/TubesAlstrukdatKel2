@@ -83,7 +83,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             for (int b = 0; b < namaPenyanyi.Length; b++){
                 namaPenyanyi.TabWord[b] = '\0';}
         }
-    
+
         // QUEUE
         ADVLine();
         int nQueue = WordToInt(currentWord);
