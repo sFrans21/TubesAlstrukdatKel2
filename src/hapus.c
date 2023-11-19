@@ -38,7 +38,7 @@ typedef struct
 {
       infotype Elements[MaxElMap];
       int Count;
-} Map;
+} MapPenyanyi;
 
 // Fungsi-fungsi dan prosedur-prosedur ADT Map
 // ... (Implementasikan fungsi-fungsi ADT Map di sini)
@@ -97,9 +97,18 @@ void PrintPenyanyi(StaticList M)
       }
 }
 
-void PrintAlbum(Map M) // ini gunain map penyanyi-album
+void PrintAlbum(MapPenyanyi M, Word c) // ini gunain map penyanyi-album
 {
-      printf("Daftar Album oleh %s :\n", M.Elements[0].Key.TabWord);
+      // ngecek kata c ada di key map/tidak
+      printf("Daftar Album oleh %s :\n", c);
+      for (int i = 0; i < M.Count; i++)
+      {
+            for (int i = 0; i < c.Length; i++)
+            {
+                  if (c.TabWord[i] ==)
+            }
+      }
+
       for (int i = 0; i < M.Count; i++)
       {
             printf("%d. %s\n", (i + 1), M.Elements[i].Value.items[i]);
@@ -114,6 +123,12 @@ void PrintLagu(Map M) // ini gunain map album-lagu
             printf("%d. %s\n", (i + 1), M.Elements[i].Value.items[i]);
       }
 }
+
+/*PROGRAM UTAMA*/
+// int main()
+// {
+
+// }
 
 // map2.Elements[map2.Count].Value.Length = strlen("Lagu1");
 //       map2.Count++;
