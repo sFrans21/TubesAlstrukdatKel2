@@ -4,7 +4,7 @@
 #include "tambahan.h"
 #include "ADT/mesinkata.h"
 
-void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu){
+void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
     Set albums;
     Set songs;
     CreateEmptySet(&albums);
@@ -83,7 +83,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             for (int b = 0; b < namaPenyanyi.Length; b++){
                 namaPenyanyi.TabWord[b] = '\0';}
         }
-
+        //printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
         // QUEUE
         ADVLine();
         int nQueue = WordToInt(currentWord);
@@ -138,29 +138,24 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             namaPlaylist.Length = currentWord.Length;
             InsertLast(Playlist, namaPlaylist);
             printf("%s\n", namaPlaylist.TabWord);
-
-            if (nPLagu > 0){
-                ArrayDin LaguPlaylist;
-                CreateDynArray(&LaguPlaylist);
-                for (int k = 0; k < nPLagu; k++){
-                    ADVLine();
-                    Word namaPLagu;
-                    for (int j = 0; j < currentWord.Length; j++) {
-                        namaPLagu.TabWord[j] = currentWord.TabWord[j];
-                    }
-                    namaPLagu.Length = currentWord.Length;
-                    InsertLast(&LaguPlaylist, namaPLagu);
-                    printf("%s\n", namaPLagu.TabWord);
-                    for (int b = 0; b < namaPLagu.Length; b++){
-                        namaPLagu.TabWord[b] = '\0';
-                    }
-                }
-            }
             for (int b = 0; b < namaPlaylist.Length; b++){
                 namaPlaylist.TabWord[b] = '\0';
             }
+
+            for (int k = 1; k <= nPLagu; k++){
+                ADVLine();
+                Word namaPLagu;
+                for (int j = 0; j < currentWord.Length; j++) {
+                    namaPLagu.TabWord[j] = currentWord.TabWord[j];
+                }
+                namaPLagu.Length = currentWord.Length;
+                InsVFirst(LaguPlaylist, namaPLagu);
+                printf("%s\n", namaPLagu.TabWord);
+                for (int b = 0; b < namaPLagu.Length; b++){
+                    namaPLagu.TabWord[b] = '\0';
+                }
+            }
         }
-        printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
     } else {
         printf("Save file tidak ditemukan. WayangWave gagal dijalankan.");
     }

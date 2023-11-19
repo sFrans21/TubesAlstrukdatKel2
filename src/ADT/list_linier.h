@@ -1,6 +1,6 @@
 /* File : listlinier.h */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
-/* Representasi address dengan pointer */
+/* Representasi addressLinier dengan pointer */
 /* infotype adalah integer */
 
 #ifndef listlinier_H
@@ -9,21 +9,21 @@
 #include "boolean.h"
 #include "mesinkata.h"
 
-#define Nil NULL
+#define NilLinier NULL
 
-typedef struct tElmtlist *address;
+typedef struct tElmtlist *addressLinier;
 typedef struct tElmtlist { 
 	Word info;
-	address next;
+	addressLinier next;
 } ElmtList;
 typedef struct {
-	address First;
+	addressLinier First;
 } LinierList;
 
 /* Definisi list : */
-/* List kosong : First(L) = Nil */
-/* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
-/* Elemen terakhir list : jika addressnya Last, maka Next(Last)=Nil */
+/* List kosong : First(L) = NilLinier */
+/* Setiap elemen dengan addressLinier P dapat diacu Info(P), Next(P) */
+/* Elemen terakhir list : jika addressnya Last, maka Next(Last)=NilLinier */
 #define Info(P) (P)->info
 #define Next(P) (P)->next
 #define First(L) ((L).First)
@@ -39,21 +39,21 @@ void CreateEmptyLinier(LinierList *L);
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi(Word word);
-/* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
-/* menghasilkan P, maka info(P)=X, Next(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
-void Dealokasi (address *P);
+addressLinier Alokasi(Word word);
+/* Mengirimkan addressLinier hasil alokasi sebuah elemen */
+/* Jika alokasi berhasil, maka addressLinier tidak NilLinier, dan misalnya */
+/* menghasilkan P, maka info(P)=X, Next(P)=NilLinier */
+/* Jika alokasi gagal, mengirimkan NilLinier */
+void Dealokasi (addressLinier *P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
-/* Melakukan dealokasi/pengembalian address P */
+/* Melakukan dealokasi/pengembalian addressLinier P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search (LinierList L, Word word);
+//addressLinier Search (LinierList L, Word word);
 /* Mencari apakah ada elemen list dengan info(P)= X */
-/* Jika ada, mengirimkan address elemen tersebut. */
-/* Jika tidak ada, mengirimkan Nil */
+/* Jika ada, mengirimkan addressLinier elemen tersebut. */
+/* Jika tidak ada, mengirimkan NilLinier */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
@@ -79,36 +79,36 @@ void DelVLast (LinierList *L, Word *word);
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst (LinierList *L, address P);
+void InsertFirstLinier (LinierList *L, addressLinier P);
 /* I.S. Sembarang, P sudah dialokasi  */
-/* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
-void InsertAfter (LinierList *L, address P, address Prec);
+/* F.S. Menambahkan elemen ber-addressLinier P sebagai elemen pertama */
+void InsertAfterLinier (LinierList *L, addressLinier P, addressLinier Prec);
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
-void InsertLast (LinierList *L, address P);
+void InsertLastLinier (LinierList *L, addressLinier P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
-void DelFirst (LinierList *L, address *P);
+void DelFirst (LinierList *L, addressLinier *P);
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-void DelP (LinierList *L, Word word);
+//void DelP (LinierList *L, Word word);
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan info(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika tidak ada elemen list dengan info(P)=X, maka list tetap */
 /* List mungkin menjadi kosong karena penghapusan */
-void DelLast (LinierList *L, address *P);
+void DelLast (LinierList *L, addressLinier *P);
 /* I.S. List tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* Last element baru adalah predesesor elemen terakhir yg lama, */
 /* jika ada */
-void DelAfter (LinierList *L, address *Pdel, address Prec);
+void DelAfter (LinierList *L, addressLinier *Pdel, addressLinier Prec);
 /* I.S. List tidak kosong. Prec adalah anggota list  */
 /* F.S. Menghapus Next(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */

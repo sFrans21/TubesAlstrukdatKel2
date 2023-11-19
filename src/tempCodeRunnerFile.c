@@ -1,1 +1,2 @@
-quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
+inputString(0, command);
+        inputString(0, command);

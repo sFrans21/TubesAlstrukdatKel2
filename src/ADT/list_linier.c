@@ -5,40 +5,40 @@
 
 boolean IsEmptyLinier (LinierList L)
 {
-	return (First(L) == Nil); 
+	return (First(L) == NilLinier); 
 }
 void CreateEmptyLinier (LinierList *L)
 {
-	First(*L) = Nil;
+	First(*L) = NilLinier;
 }
 
-address Alokasi (Word word)
+addressLinier Alokasi (Word word)
 {
-	address P;
+	addressLinier P;
 	P = (ElmtList *)malloc(sizeof(ElmtList));
-	if (P != Nil)
+	if (P != NilLinier)
 	{
 		Info(P) = word;
-		Next(P) = Nil;
+		Next(P) = NilLinier;
 		return P;
 	}
 	else
 	{
-		return Nil;
+		return NilLinier;
 	}
 }
 
-void Dealokasi (address *P)
+void Dealokasi (addressLinier *P)
 {
 	free(*P);
 }
 
-address Search (LinierList L, Word word)
+/*addressLinier Search (LinierList L, Word word)
 {
-	address P = First(L);
+	addressLinier P = First(L);
 	boolean found = false;
 
-	while (P != Nil && !found)
+	while (P != NilLinier && !found)
 	{
 		if (cmp_word_1(Info(P), word))
 		{
@@ -56,15 +56,15 @@ address Search (LinierList L, Word word)
 	}
 	else
 	{
-		return Nil;
+		return NilLinier;
 	}
-}
+}*/
 
 void InsVFirst (LinierList *L, Word word)
 {
-	address P = Alokasi(word);
+	addressLinier P = Alokasi(word);
 
-	if (P != Nil)
+	if (P != NilLinier)
 	{
 		Next(P) = First(*L);
 		First(*L) = P;
@@ -73,17 +73,17 @@ void InsVFirst (LinierList *L, Word word)
 
 void InsVLast (LinierList *L, Word word)
 {
-	address P = Alokasi(word);
+	addressLinier P = Alokasi(word);
 
-	if (P != Nil)
+	if (P != NilLinier)
 	{
-		InsertLast(L, P);
+		InsertLastLinier(L, P);
 	}
 }
 
 void DelVFirst (LinierList *L, Word *word)
 {
-	address P;
+	addressLinier P;
 	DelFirst(L, &P);
 	(*word) = Info(P);
 	Dealokasi(&P);
@@ -91,60 +91,60 @@ void DelVFirst (LinierList *L, Word *word)
 
 void DelVLast (LinierList *L, Word *word)
 {
-	address P;
+	addressLinier P;
 	DelLast(L, &P);
 	(*word) = Info(P);
 	Dealokasi(&P);
 }
 
-void InsertFirst (LinierList *L, address P)
+void InsertFirstLinier (LinierList *L, addressLinier P)
 {
 	Next(P) = First(*L);
 	First(*L) = P;
 }
 
-void InsertAfter (LinierList *L, address P, address Prec)
+void InsertAfterLinier (LinierList *L, addressLinier P, addressLinier Prec)
 {
 	Next(P) = Next(Prec);
 	Next(Prec) = P;
 }
 
-void InsertLast (LinierList *L, address P)
+void InsertLastLinier (LinierList *L, addressLinier P)
 {
-	if (IsEmpty(*L))
+	if (IsEmptyLinier(*L))
 	{
-		InsertFirst(L, P);
+		InsertFirstLinier(L, P);
 	}
 	else
 	{
-		address last = First(*L);
-		while (Next(last) != Nil)
+		addressLinier last = First(*L);
+		while (Next(last) != NilLinier)
 		{
 			last = Next(last);
 		}
-		InsertAfter(L, P, last);
+		InsertAfterLinier(L, P, last);
 	}
 }
 
-void DelFirst (LinierList *L, address *P)
+void DelFirst (LinierList *L, addressLinier *P)
 {
 	*P = First(*L);
 	First(*L) = Next(*P);
-	Next(*P) = Nil;
+	Next(*P) = NilLinier;
 }
 
-void DelP (LinierList *L, Word word)
+/*void DelP (LinierList *L, Word word)
 {
-	address P = Search(*L, word);
+	addressLinier P = Search(*L, word);
 
-	if (P != Nil){
+	if (P != NilLinier){
 		if (P == First(*L))
 		{
 			DelFirst(L, &P);
 		}
 		else
 		{
-			address prec = First(*L);
+			addressLinier prec = First(*L);
 			while (Next(prec) != P)
 			{
 				prec = Next(prec);
@@ -152,52 +152,52 @@ void DelP (LinierList *L, Word word)
 			DelAfter(L, &P, prec);
 		}
 	}
-}
+}*/
 
-void DelLast (LinierList *L, address *P)
+void DelLast (LinierList *L, addressLinier *P)
 {
-	address last = First(*L);
-	address prec = Nil;
+	addressLinier last = First(*L);
+	addressLinier prec = NilLinier;
 
-	while (Next(last) != Nil)
+	while (Next(last) != NilLinier)
 	{
 		prec = last;
 		last = Next(last);
 	}
 
 	*P = last;
-	if (prec == Nil)
+	if (prec == NilLinier)
 	{
-		First(*L) = Nil; 
+		First(*L) = NilLinier; 
 	}
 	else
 	{
-		Next(prec) = Nil;
+		Next(prec) = NilLinier;
 	}
 }
 
-void DelAfter (LinierList *L, address *Pdel, address Prec)
+void DelAfter (LinierList *L, addressLinier *Pdel, addressLinier Prec)
 {
 	*Pdel = Next(Prec);
-	if (Next(Prec) != Nil)
+	if (Next(Prec) != NilLinier)
 	{
 		Next(Prec) = Next(Next(Prec));
-		Next(*Pdel) = Nil;
+		Next(*Pdel) = NilLinier;
 	}
 }
 
 void PrintInfo (LinierList L)
 {
-	address P = First(L);
+	addressLinier P = First(L);
 
-	if (IsEmpty(L))
+	if (IsEmptyLinier(L))
 	{
 		printf("[]");
 	}
 	else
 	{
 		printf("[%d", Info(P));
-		while (Next(P) != Nil)
+		while (Next(P) != NilLinier)
 		{
 			P = Next(P);
 			printf(",%d", Info(P));
@@ -211,9 +211,9 @@ int NbElmt (LinierList L)
 {
 	int count = 0;
 
-	address P = First(L);
+	addressLinier P = First(L);
 
-	while (P != Nil)
+	while (P != NilLinier)
 	{
 		P = Next(P);
 		count++;
@@ -224,38 +224,38 @@ int NbElmt (LinierList L)
 
 void InversLinierList (LinierList *L)
 {
-	address P = First(*L);
-	address A = P;
-	address B = Next(P);
+	addressLinier P = First(*L);
+	addressLinier A = P;
+	addressLinier B = Next(P);
 	
-	while (B != Nil)
+	while (B != NilLinier)
 	{
 		A = B;
 		B = Next(B);
-		InsertFirst(L, A);
+		InsertFirstLinier(L, A);
 		Next(P) = B;
 	}
 }
 
 void Konkat1 (LinierList *L1, LinierList *L2, LinierList *L3)
 {
-	CreateEmpty(L3);
-	address lastL1 = First(*L1);
+	CreateEmptyLinier(L3);
+	addressLinier lastL1 = First(*L1);
 
-	if (IsEmpty(*L1))
+	if (IsEmptyLinier(*L1))
 	{
 		First(*L3) = First(*L2);
 	}
 	else
 	{
 		First(*L3) = First(*L1);
-		while (Next(lastL1) != Nil)
+		while (Next(lastL1) != NilLinier)
 		{
 			lastL1 = Next(lastL1);
 		}
 		Next(lastL1) = First(*L2);
 	}
 
-	CreateEmpty(L1);
-	CreateEmpty(L2);
+	CreateEmptyLinier(L1);
+	CreateEmptyLinier(L2);
 }

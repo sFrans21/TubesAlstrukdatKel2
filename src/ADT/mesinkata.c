@@ -82,6 +82,17 @@ void ADVWord()
     }
 }
 
+void STARTCOMMAND() {
+    START();
+    IgnoreNewline();
+    if (currentChar == ';'){
+        EndWord = true;
+    } else {
+        EndWord = false;
+        SalinCommand();
+    }
+}
+
 void ADVInput(){
     IgnoreBlank();
     if (currentChar == NEWLINE){
