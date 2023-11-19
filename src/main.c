@@ -27,8 +27,8 @@ int main()
 
     boolean saved = false;
     boolean endProgram = false;
-    char *command;
-    command = (char *) malloc (50 * sizeof(char));
+    //char *command;
+    //command = (char *) malloc (50 * sizeof(char));
 
     printf("    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\n");
     printf("    W   W  E      L     C     O   O MM MM  E      !\n");
@@ -47,21 +47,22 @@ int main()
     while (endProgram == false) {
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
         printf("ENTER COMMAND: ");
-        inputString(0, command);
+        StartCommand();
         // inputString(0, command);
         //system("cls||clear");
         if (IsEmptymap(penyanyiAlbums)){
-            if (compareString(upper(command), "START") == true) {
+            if (IsCommandEqual(currentCommand, "START")) {
                 start(&penyanyi, &penyanyiAlbums, &albumsong);
                 //inputString(0, command);
             }
-            else if (compareString(upper(command), "LOAD") == true){
+            else if (IsCommandEqual(currentCommand, "LOAD")){
                 char *inputfile;
                 inputfile = (char *) malloc (30 *sizeof(char));
                 ADVInput();
-                //printf(currentWord.TabWord);
                 //if (currentChar == '\n'){
-                wordToString(currentWord, inputfile);
+                //printf(currentCommand.TabWord);
+                wordToString(currentCommand, inputfile);
+                //printf("%s\n", inputfile);
                 if (compareString(upper(inputfile), "LOAD") == false){
                     load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 } else {
@@ -69,24 +70,23 @@ int main()
                 }
                 //inputString(0, command);
             }
-            else if (compareString(upper(command), "QUIT") == true) {
+            else if (IsCommandEqual(currentCommand, "QUIT")) {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
                 endProgram = true;
             }
-            else if (compareString(upper(command), "HELP") == true) {
+            else if (IsCommandEqual(currentCommand, "HELP")) {
                 showhelp1();
                 //inputString(0, command);
             }
         } else {
-            if (compareString(upper(command), "HELP") == true) {
+            if (IsCommandEqual(currentCommand, "HELP")) {
                 showhelp2();
                 //inputString(0, command);
-            } else if (compareString(upper(command), "QUIT") == true) {
+            } else if (IsCommandEqual(currentCommand, "QUIT")) {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
             }
         }
     }
-    free(command);
     return 0;
 }

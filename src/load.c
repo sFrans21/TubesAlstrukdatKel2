@@ -83,11 +83,11 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             for (int b = 0; b < namaPenyanyi.Length; b++){
                 namaPenyanyi.TabWord[b] = '\0';}
         }
-        //printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
+        printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
         // QUEUE
         ADVLine();
         int nQueue = WordToInt(currentWord);
-        printf("%d\n", nQueue);
+        //printf("%d\n", nQueue);
         for (int i = 1; i <= nQueue; i++){
             ADVLine();
             Word laguQueue;
@@ -96,7 +96,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
             laguQueue.Length = currentWord.Length;
             enqueue(UrutanLagu, laguQueue);
-            printf("%s\n", laguQueue.TabWord);
+            //printf("%s\n", laguQueue.TabWord);
             for (int b = 0; b < laguQueue.Length; b++){
                 laguQueue.TabWord[b] = '\0';
             }
@@ -105,7 +105,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         //STACK RIWAYAT LAGU
         ADVLine();
         int nRLagu = WordToInt(currentWord);
-        printf("%d\n", nRLagu);
+        //printf("%d\n", nRLagu);
         char *Rlagu;
         for (int i = 1; i <= nRLagu; i++){
             ADVLine();
@@ -115,7 +115,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
             RLagu.Length = currentWord.Length;
             Push(RiwayatLagu, Rlagu);
-            printf("%s\n", RLagu.TabWord);
+            //printf("%s\n", RLagu.TabWord);
             for (int b = 0; b < RLagu.Length; b++){
                 RLagu.TabWord[b] = '\0';
             }
@@ -125,11 +125,11 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         //ARRAYDIN PLAYLIST
         ADVLine();
         int nPlaylist = WordToInt(currentWord);
-        printf("%d\n", nPlaylist);
+        //printf("%d\n", nPlaylist);
         for (int i = 1; i <= nPlaylist; i++){
             ADVWord();
             int nPLagu = WordToInt(currentWord);
-            printf("%d ", nPLagu);
+            //printf("%d ", nPLagu);
             ADVLine();
             Word namaPlaylist;
             for (int j = 0; j < currentWord.Length; j++) {
@@ -137,7 +137,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
             namaPlaylist.Length = currentWord.Length;
             InsertLast(Playlist, namaPlaylist);
-            printf("%s\n", namaPlaylist.TabWord);
+            //printf("%s\n", namaPlaylist.TabWord);
             for (int b = 0; b < namaPlaylist.Length; b++){
                 namaPlaylist.TabWord[b] = '\0';
             }
@@ -150,13 +150,44 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 }
                 namaPLagu.Length = currentWord.Length;
                 InsVFirst(LaguPlaylist, namaPLagu);
-                printf("%s\n", namaPLagu.TabWord);
+                //printf("%s\n", namaPLagu.TabWord);
                 for (int b = 0; b < namaPLagu.Length; b++){
                     namaPLagu.TabWord[b] = '\0';
                 }
             }
         }
     } else {
-        printf("Save file tidak ditemukan. WayangWave gagal dijalankan.");
+        printf("Save file tidak ditemukan. WayangWave gagal dijalankan.\n");
     }
 }
+
+/*int main() {
+    char *inputfile;
+    inputfile = (char *) malloc (30 *sizeof(char));
+    StaticList penyanyi;
+    Map penyanyiAlbums;
+    maps albumsong;
+    Queue UrutanLagu;
+    ArrayDin Playlist;
+    Stack RiwayatLagu;
+    LinierList LaguPlaylist;
+
+    initializeList(&penyanyi);
+    CreateEmptymap(&penyanyiAlbums);
+    createmaps(&albumsong);
+    CreateQueue(&UrutanLagu);
+    CreateDynArray(&Playlist);
+    CreateEmptyStack(&RiwayatLagu);
+    CreateEmptyLinier(&LaguPlaylist);
+
+    StartCommand();
+    if (isInputEqual(currentCommand, "LOAD")){
+        ADVInput();
+        wordToString(currentCommand, inputfile);
+        if (compareString(upper(inputfile), "LOAD") == false){
+            load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+        } else {
+            printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename.txt>\n");
+        }
+    }
+}*/

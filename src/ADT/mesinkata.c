@@ -4,6 +4,7 @@
 
 boolean EndWord;
 Word currentWord;
+Word currentCommand;
 
 void IgnoreBlank()
 {
@@ -82,25 +83,79 @@ void ADVWord()
     }
 }
 
-void STARTCOMMAND() {
+void StartCommand() {
     START();
     IgnoreNewline();
-    if (currentChar == ';'){
+    if (currentChar == MARK){
         EndWord = true;
     } else {
         EndWord = false;
-        SalinCommand();
+        CopyCommand();
+    }
+}
+
+void CopyCommand() {
+    ResetCommand(); 
+    int i = 0;
+    while ((currentChar != BLANK) && (currentChar != MARK) && (currentChar != EOF))
+    {
+        currentCommand.TabWord[i] = currentChar;
+        i+= 1;
+        ADV();
+    }
+    currentCommand.Length = i;
+}
+
+void ResetCommand() {
+    for (int i = 0; i < sizeof(currentCommand.TabWord); i++) {
+        currentCommand.TabWord[i] = '\0';
+        currentCommand.Length = 0;
     }
 }
 
 void ADVInput(){
     IgnoreBlank();
-    if (currentChar == NEWLINE){
+    if (currentChar == MARK){
         EndWord = true;
-    }else{
-        CopyWord();
-        IgnoreBlank();
+    } else {
+        EndWord = false;
+        CopyCommand();
     }
+}
+
+boolean IsCommandEqual(Word Input, char * kata)
+{   
+    boolean equal = true;
+    if (Input.Length == Length(kata))
+    {
+        int i = 0;
+        while (i < Input.Length && equal)
+        {
+            if (Input.TabWord[i] != kata[i])
+            {
+                equal = false;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        return equal;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+int Length(char *value){
+    int i = 0;
+
+    while (value[i] != '\0'){
+        i++;
+    }
+
+    return i;
 }
 
 void ADVLine()

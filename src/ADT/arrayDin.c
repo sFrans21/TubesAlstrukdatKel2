@@ -19,7 +19,7 @@ void DeallocateList(ArrayDin *array) {
     array->Neff = 0;
 }
 
-int Length(ArrayDin array) {
+int LengthArrayDin(ArrayDin array) {
     return array.Neff;
 }
 

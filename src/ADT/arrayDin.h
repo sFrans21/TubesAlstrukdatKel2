@@ -16,7 +16,7 @@ ArrayDin CreateDynArray();
 
 void DeallocateList(ArrayDin *array);
 
-int Length(ArrayDin list);
+int LengthArrayDin(ArrayDin list);
 
 void InsertIn(Word string , ArrayDin*ListGames ,  int idx);
 

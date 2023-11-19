@@ -16,6 +16,7 @@ typedef struct
 /* State Mesin Kata */
 extern boolean EndWord;
 extern Word currentWord;
+extern Word currentCommand;
 
 void IgnoreBlank();
 
@@ -25,9 +26,19 @@ void StartWordInput();
 
 void StartWordFile(char *filename, int type);
 
+void StartCommand();
+
+void CopyCommand();
+
+void ResetCommand();
+
 void ADVWord();
 
 void ADVInput();
+
+boolean IsCommandEqual(Word Input, char * kata);
+
+int Length(char *value);
 
 void ADVLine();
 
