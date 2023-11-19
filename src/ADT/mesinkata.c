@@ -126,7 +126,7 @@ void ADVInput(){
 boolean IsCommandEqual(Word Input, char * kata)
 {   
     boolean equal = true;
-    if (Input.Length == Length(kata))
+    if (Input.Length == stringLen(kata))
     {
         int i = 0;
         while (i < Input.Length && equal)
@@ -148,14 +148,15 @@ boolean IsCommandEqual(Word Input, char * kata)
     }
 }
 
-int Length(char *value){
+int stringLen(char *string)
+{
     int i = 0;
-
-    while (value[i] != '\0'){
+    int count = 0;
+    while (string[i]!='\0') {
+        count++;
         i++;
     }
-
-    return i;
+    return count;
 }
 
 void ADVLine()

@@ -38,7 +38,7 @@ void ADVInput();
 
 boolean IsCommandEqual(Word Input, char * kata);
 
-int Length(char *value);
+int stringLen(char *string);
 
 void ADVLine();
 

@@ -22,6 +22,4 @@ void inputString(int type, char* value);
 
 char* upper(char *string);
 
-int stringLen(char *string);
-
 #endif

@@ -122,14 +122,3 @@ char* upper(char *string)
     uppered[stringLen(string)] = '\0';
     return uppered;
 }
-
-int stringLen(char *string)
-{
-    int i = 0;
-    int count = 0;
-    while (string[i]!='\0') {
-        count++;
-        i++;
-    }
-    return count;
-}
