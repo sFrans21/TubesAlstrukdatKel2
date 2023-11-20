@@ -17,4 +17,6 @@ void PrintLagu(maps M, Word C, int i);
 
 void PrintPlaylist(DynamicList M);
 
+void PutarLagu();
+
 #endif
