@@ -60,7 +60,7 @@ typedef struct
 // Fungsi untuk membaca file konfigurasi dan mengisi ADT Map
 // void BacaKonfigurasi(Map *M, char *namaFile)
 // {
-=======
+
 // #include <stdio.h>
 // #include "list.h"
 // #include <stdio.h>
@@ -127,7 +127,7 @@ typedef struct
 // Fungsi untuk membaca file konfigurasi dan mengisi ADT Map
 // void BacaKonfigurasi(Map *M, char *namaFile)
 // {
->>>>>>> Stashed changes
+
 //       FILE *file = fopen(namaFile, "r");
 
 //       if (file == NULL)
@@ -167,7 +167,7 @@ typedef struct
 //       }
 
 //       fclose(file);
-<<<<<<< Updated upstream
+
 // }
 
 void PrintPenyanyi(StaticList M)
@@ -243,7 +243,7 @@ void PrintPlaylist();
 // 	// scanf("%s", %jawaban);
 // 	PrintLagu(M, jawab);
 // }
-=======
+
 // }
 
 void PrintPenyanyi(StaticList *M)
@@ -320,4 +320,4 @@ void PrintPenyanyi(StaticList *M)
 // // 	// scanf("%s", %jawaban);
 // // 	PrintLagu(M, jawab);
 // // }
->>>>>>> Stashed changes
+
