@@ -1,51 +1,11 @@
 #include <stdio.h>
-#include "list.h"
-#include <stdio.h>
 #include <stdlib.h>
 #include "string.h"
 #include "boolean.h"
 #include "tambahan.h"
+#include "list.h"
 
 // // Definisi struktur Word dan Map
-
-#define Nil 0
-#define MaxElMap 50
-#define Undefined NULL
-#define MAX_ITEMS 100
-#define MaxElSet 100
-
-typedef struct
-{
-    char TabWord[50];
-    int Length;
-} Word;
-
-typedef Word infotypeSet;
-typedef int addrSer;
-
-typedef struct
-{
-    infotypeSet Elements[MaxElSet];
-    addrSer Count;
-} Set;
-
-typedef struct
-{
-    Word items[MAX_ITEMS];
-    int itemCount;
-} StaticList;
-
-typedef struct
-{
-    Word Key;
-    Set Value;
-} infotype2;
-
-typedef struct
-{
-    infotype2 Elements[MaxElMap];
-    int Count;
-} Map;
 
 // Fungsi-fungsi dan prosedur-prosedur ADT Map
 // ... (Implementasikan fungsi-fungsi ADT Map di sini)
@@ -78,16 +38,16 @@ void PrintPenyanyi(StaticList M)
     }
 }
 
-void PrintAlbum(Map *M, char *c) // ini gunain map penyanyi-album
+void PrintAlbum(Map M, char c) // ini gunain map penyanyi-album
 {
 
     // ngecek kata c ada di key map/tidak
     int when;
     boolean found;
     char asem;
-    for (int d = 0; d < (*M).Count; d++)
+    for (int d = 0; d < M.Count; d++)
     {
-        wordToString((*M).Elements[d].Key, asem); // ubah ke char
+        wordToString(M.Elements[d].Key, asem); // ubah ke char
         if (strcmp(c, asem) == 0)
         {
             found = true;
@@ -96,10 +56,10 @@ void PrintAlbum(Map *M, char *c) // ini gunain map penyanyi-album
     }
 
     printf("Daftar Album oleh %s :\n", c);
-    for (int e = 0; e < (*M).Elements[when].Value.Count; e++)
+    for (int e = 0; e < M.Elements[when].Value.Count; e++)
     {
         printf("%d. ", (e + 1));
-        printf("%s\n", (*M).Elements[when].Value.Elements[e].TabWord);
+        printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
     }
 }
 
@@ -124,7 +84,10 @@ void PrintLagu(Map M, Word c) // ini gunain map album-lagu
     }
 }
 
-void PrintPlaylist();
+void PrintPlaylist(Map M)
+{
+    return M;
+}
 
 // int main()
 // {
@@ -201,7 +164,7 @@ void PrintPenyanyi(StaticList *M)
 //     }
 // }
 
-// void PrintPlaylist();
+void PrintPlaylist();
 
 // // int main()
 // // {
