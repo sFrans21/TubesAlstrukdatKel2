@@ -107,14 +107,26 @@ int main()
                 def = (char *)malloc(30 * sizeof(char));
                 ADVInput();
                 wordToString(currentCommand, def);
-                if (compareString(upper(def), "DEFAULT") == true){
+                if (compareString(upper(def), "DEFAULT") == true)
+                {
                     PrintPenyanyi(penyanyi);
                     printf("\nIngin melihat album yang ada?(Y/N): ");
                     StartCommand();
                     if (currentCommand.TabWord[0] == 'Y')
                     {
                         printf("Pilih penyanyi untuk melihat album mereka: ");
-                        // inputString(0, command);
+                        StartWordInput();
+                        for (int i = 0; i < penyanyi.itemCount; i++)
+                        {
+
+                            if (isEqual(currentWord, penyanyi.items[i]) == true)
+                            {
+                                char *e;
+                                e = (char *)malloc(30 * sizeof(char));
+                                wordToString(currentWord, e);
+                                printf("Daftar Album oleh %s :", e);
+                            }
+                        }
                     }
                 }
                 // else if (IsCommandEqual(currentCommand, "N"))
