@@ -9,11 +9,11 @@
 #include "boolean.h"
 #include "tambahan.h"
 
-#define Nil 0
+// #define Nil 0
 // #define MaxElMap 50
-#define Undefined NULL
-#define MAX_ITEMS 100
-#define MaxElSet 100
+// #define Undefined NULL
+// #define MAX_ITEMS 100
+// #define MaxElSet 100
 
 // typedef struct
 // {
@@ -50,10 +50,10 @@
 
 void PrintPenyanyi(StaticList M);
 
-void PrintAlbum(Map M, char C);
+void PrintAlbum(Map M, char *C);
 
 void PrintLagu(Map M, Word C);
 
-void PrintPlaylist(Map M);
+void PrintPlaylist(DynamicList M);
 
 #endif
