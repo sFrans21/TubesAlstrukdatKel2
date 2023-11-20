@@ -3,7 +3,7 @@
 
 #include "mesinkata.h"
 #define Nil 0
-#define MaxElMap 50
+/*#define MaxElMap 50*/
 #define Undefined NULL
 #define MAX_ITEMS 100
 #define MaxElSet 100

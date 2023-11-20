@@ -7,8 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main() {
     StaticList penyanyi;
     Map penyanyiAlbums;
     maps albumsong;
@@ -27,18 +26,8 @@ int main()
 
     boolean saved = false;
     boolean endProgram = false;
-<<<<<<< Updated upstream
     //char *command;
     //command = (char *) malloc (50 * sizeof(char));
-=======
-<<<<<<< HEAD
-    char *command;
-    command = (char *)malloc(50 * sizeof(char));
-=======
-    //char *command;
-    //command = (char *) malloc (50 * sizeof(char));
->>>>>>> 3f81e297c46e2c6214bab6264c48ca727ded0f88
->>>>>>> Stashed changes
 
     printf("    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\n");
     printf("    W   W  E      L     C     O   O MM MM  E      !\n");
@@ -54,21 +43,6 @@ int main()
     printf("Jalankan command START atau LOAD <nama file> untuk membuka file.\n");
     printf("Jalankan command QUIT untuk keluar dari program.");
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-    while (endProgram == false)
-    {
-        printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.");
-        printf("\nENTER COMMAND: ");
-        inputString(0, command);
-        // system("cls||clear");
-        if (IsEmptymap(penyanyiAlbums))
-        {
-            if (compareString(upper(command), "START") == true)
-            {
-=======
->>>>>>> Stashed changes
     while (endProgram == false) {
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
         printf("ENTER COMMAND: ");
@@ -77,53 +51,22 @@ int main()
         //system("cls||clear");
         if (IsEmptymap(penyanyiAlbums)){
             if (IsCommandEqual(currentCommand, "START")) {
-<<<<<<< Updated upstream
                 start(&penyanyi, &penyanyiAlbums, &albumsong);
                 //inputString(0, command);
             }
             else if (IsCommandEqual(currentCommand, "LOAD")){
-=======
->>>>>>> 3f81e297c46e2c6214bab6264c48ca727ded0f88
-                start(&penyanyi, &penyanyiAlbums, &albumsong);
-                //inputString(0, command);
-            }
-<<<<<<< HEAD
-            else if (compareString(upper(command), "LOAD") == true)
-            {
-=======
-            else if (IsCommandEqual(currentCommand, "LOAD")){
->>>>>>> 3f81e297c46e2c6214bab6264c48ca727ded0f88
->>>>>>> Stashed changes
                 char *inputfile;
-                inputfile = (char *)malloc(30 * sizeof(char));
+                inputfile = (char *) malloc (30 *sizeof(char));
                 ADVInput();
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
                 // printf(currentWord.TabWord);
                 // if (currentChar == '\n'){
-                wordToString(currentWord, inputfile);
-                if (compareString(upper(inputfile), "LOAD") == false)
-                {
-                    load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu);
-                }
-                else
-                {
-=======
->>>>>>> Stashed changes
-                //if (currentChar == '\n'){
-                //printf(currentCommand.TabWord);
                 wordToString(currentCommand, inputfile);
-                //printf("%s\n", inputfile);
-                if (compareString(upper(inputfile), "LOAD") == false){
+                if (compareString(upper(inputfile), "LOAD") == false) {
                     load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
-                } else {
->>>>>>> 3f81e297c46e2c6214bab6264c48ca727ded0f88
+                } else { 
                     printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
-                //inputString(0, command);
             }
-<<<<<<< Updated upstream
             else if (IsCommandEqual(currentCommand, "QUIT")) {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
                 endProgram = true;
@@ -137,47 +80,10 @@ int main()
                 showhelp2();
                 //inputString(0, command);
             } else if (IsCommandEqual(currentCommand, "QUIT")) {
-=======
-<<<<<<< HEAD
-            else if (compareString(upper(command), "QUIT") == true)
-            {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
-                endProgram = true;
-            }
-            else if (compareString(upper(command), "HELP") == true)
-            {
-=======
-            else if (IsCommandEqual(currentCommand, "QUIT")) {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
-                endProgram = true;
-            }
-            else if (IsCommandEqual(currentCommand, "HELP")) {
->>>>>>> 3f81e297c46e2c6214bab6264c48ca727ded0f88
-                showhelp1();
-                //inputString(0, command);
-            }
-<<<<<<< HEAD
-        }
-        else
-        {
-            if (compareString(upper(command), "HELP") == true)
-            {
-                showhelp2();
-            }
-            else if (compareString(upper(command), "QUIT") == true)
-            {
-=======
-        } else {
-            if (IsCommandEqual(currentCommand, "HELP")) {
-                showhelp2();
-                //inputString(0, command);
-            } else if (IsCommandEqual(currentCommand, "QUIT")) {
->>>>>>> 3f81e297c46e2c6214bab6264c48ca727ded0f88
->>>>>>> Stashed changes
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
             }
-        }
+        }  
     }
     return 0;
 }
