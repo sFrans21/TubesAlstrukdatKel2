@@ -4,7 +4,7 @@
 #include "tambahan.h"
 #include "start.h"
 
-void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *kiw){
+void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queue){
     int idxp;
     int idxa;
     printf("Daftar Penyanyi : \n");
@@ -59,49 +59,49 @@ void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *kiw)
     printf("Masukkan ID lagu yang dipilih : ");
     StartWordInput();
     int idxl = WordToInt(currentWord)-1;
-    enqueue(kiw, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl]);
+    enqueue(queue, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl]);
     printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n",albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord,  (penyanyi).items[idxp].TabWord);
 }   
 
-void queueswap(Queue *kiw, int idx1, int idx2){
+void queueswap(Queue *queue, int idx1, int idx2){
     Word temp;
-    temp = kiw->buffer[idx1];
-    kiw->buffer[idx1]=kiw->buffer[idx2];
-    kiw->buffer[idx2]=temp;
+    temp = queue->buffer[idx1];
+    queue->buffer[idx1]=queue->buffer[idx2];
+    queue->buffer[idx2]=temp;
 }
 
-void queueremove(Queue *kiw, int i)
+void queueremove(Queue *queue, int i)
 {
 	int j;
-	for (j = i ; j < kiw->idxTail ; j++)
+	for (j = i ; j < queue->idxTail ; j++)
 	{
-		kiw->buffer[j] = kiw->buffer[j+1]; 
+		queue->buffer[j] = queue->buffer[j+1]; 
 	}
 	
-	kiw->idxTail--;
+	queue->idxTail--;
 }
 
-void  queueclear(Queue *kiw){
-    CreateQueue(kiw);
+void  queueclear(Queue *queue){
+    CreateQueue(queue);
 }
 
 int main (){
     StaticList penyanyi;
     Map penyanyiAlbums;
     maps albumLagu;
-    Queue kiw;
-    CreateQueue(&kiw);
+    Queue queue;
+    CreateQueue(&queue);
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     createmaps(&albumLagu);
     start(&penyanyi, &penyanyiAlbums, &albumLagu);
-    queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);
-    queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);   
-    displayQueue(kiw);
-    queueswap(&kiw, 0, 1);
-    displayQueue(kiw);
-    queueremove(&kiw, 0);
-    displayQueue(kiw);
-    queueclear(&kiw);
-    displayQueue(kiw);
+    queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);
+    queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);   
+    displayQueue(queue);
+    queueswap(&queue, 0, 1);
+    displayQueue(queue);
+    queueremove(&queue, 0);
+    displayQueue(queue);
+    queueclear(&queue);
+    displayQueue(queue);
 }

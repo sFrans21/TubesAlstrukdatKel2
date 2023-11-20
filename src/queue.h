@@ -7,12 +7,12 @@
 #include "ADT/set.h"
 #include "ADT/Queue.h"
 
-void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *kiw);
+void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queue);
 
-void queueswap(Queue *kiw, int idx1, int idx2);
+void queueswap(Queue *queue, int idx1, int idx2);
 
-void queueremove(Queue *kiw, int i);
+void queueremove(Queue *queue, int i);
 
-void  queueclear(Queue *kiw);
+void  queueclear(Queue *queue);
 
 #endif
