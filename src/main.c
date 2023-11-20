@@ -178,13 +178,74 @@ int main()
                     //     *program berhenti*
                     // }
                     // PrintLagu()
+                    ////////////////////////////////////////////////////////*KALO ERROR APUS DARI SINI.*////////////////////////////////////////////////////
                 }
                 if (compareString(upper(def), "PLAYLIST") == true)
                 {
                     PrintPlaylist(Playlist); // inshaallah ga error
                 }
             }
+            else if (IsCommandEqual(currentCommand, "PLAY"))
+            {
+                char *fed;
+                fed = (char *)malloc(30 * sizeof(char));
+                ADVInput();
+                wordToString(currentCommand, fed);
+                if (compareString(upper(fed), "SONG") == true)
+                {
+                    PrintPenyanyi(penyanyi);
+                    printf("Masukkan Nama Penyanyi yang dipilih : ");
+                    StartWordInput();
+                    for (int i = 0; i < penyanyi.itemCount; i++)
+                    {
+
+                        if (isEqual(currentWord, penyanyi.items[i]) == true)
+                        {
+                            int ketemu;
+                            ketemu = i;
+                            char *e;
+                            e = (char *)malloc(30 * sizeof(char));
+                            wordToString(currentWord, e);
+                            printf("Daftar Album oleh %s :\n", e);
+                            PrintAlbum(penyanyiAlbums, currentWord);
+
+                            printf("Masukkan Nama Album yang dipilih : ");
+                            StartWordInput();
+                            for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
+                            {
+                                if (isEqual(currentWord, penyanyiAlbums.Elements[ketemu].Value.Elements[j]) == true)
+                                {
+                                    // int ketemulagi;
+                                    // ketemulagi = j;
+                                    char *e;
+                                    e = (char *)malloc(30 * sizeof(char));
+                                    wordToString(currentWord, e);
+                                    printf("Daftar Lagu di album %s :\n", e);
+                                    PrintLagu(albumsong, currentWord, ketemu);
+                                    printf("\n");
+
+                                    printf("Masukkan ID Lagu yang dipilih : ");
+                                    // Word nums;
+                                    // int manynums = 0;
+                                    StartCommand();
+                                    // while (!EndWord)
+                                    // {
+                                    //     manynums++;
+                                    //     ADVWord;
+                                    // }
+
+                                    // if (IsCommandEqual(currentCommand, "1"))
+                                    // {
+                                    //     M.Elements[i].Elements[when].Value.Elements[e].TabWord
+                                    //                                     }
+                                    // else if(IsCommandEqual(currentCommand, "1")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return 0;
         }
-        return 0;
     }
 }
