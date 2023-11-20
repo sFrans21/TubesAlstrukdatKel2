@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "list.h"
 
 // // Definisi struktur Word dan Map
@@ -33,15 +34,17 @@ void PrintAlbum(Map M, char *C) // ini gunain map penyanyi-album
 {
 
     // ngecek kata c ada di key map/tidak
-    int when;
+    char *D;
+    D = (char *)malloc(30 * sizeof(char));
     boolean found;
-    Word asem;
+    int when;
+    // Word asem;
     // char asem[20];
     for (int d = 0; d < M.Count; d++)
     {
-        asem = M.Elements[d].Key;
-        WORDTOSTRING(asem); // ubah ke char
-        if (compareString(C, asem) == true)
+        // asem = M.Elements[d].Key;
+        wordToString(M.Elements[d].Key, D); // ubah ke char
+        if (compareString(upper(D), C) == true)
         {
             found = true;
             when = d;
