@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 #include <stdio.h>
 #include "list.h"
 #include <stdio.h>
@@ -320,4 +319,3 @@ void PrintPenyanyi(StaticList *M)
 // // 	// scanf("%s", %jawaban);
 // // 	PrintLagu(M, jawab);
 // // }
-
