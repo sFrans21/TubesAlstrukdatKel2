@@ -2,9 +2,9 @@
 
 void savefile(char *filename, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu){
     //----------------------------------------------------------------Opening file------------------------------
-    FILE *savean = fopen(filename,'w');
-    char filepath[100];
-    stringConcat("../save/", savean,filepath);
+   char filepath[100];
+    stringConcat("../save/", filename,filepath);
+    FILE *outputfile = fopen(filepath,"w");
     
     printf("\n");
 
@@ -12,18 +12,18 @@ void savefile(char *filename, Queue *UrutanLagu, ArrayDin *Playlist, Stack *Riwa
         printf("Error opening file for writing.\n");
         return;
     }
-    FILE *inputFile = fopen("config.txt", "r");
     char fileinputpath[100];
-    stringConcat("../save/", inputFile,fileinputpath);
+    stringConcat("../save/", "config.txt",fileinputpath);
+    FILE *inputFile = fopen(fileinputpath, "r");
+    
     
    
     //--------------------------------------------------------Menuliskan konfig ulang------------------------------------------
     char currentChar;
-  
-    while (fscanf(fileinputpath, "%c", &currentChar) != EOF) {
+    while (fscanf(inputFile, "%c", &currentChar) != EOF) {
         printf("%c", currentChar); // untuk debug
         // nulis output
-        fprintf(filepath, "%c", currentChar);
+        fprintf(outputfile, "%c", currentChar);
     }
     
     //----------------------------------------------------Queue Lagu--------------------------------
