@@ -32,7 +32,6 @@ void PrintPenyanyi(StaticList M)
 
 void PrintAlbum(Map M, char *C) // ini gunain map penyanyi-album
 {
-
     // ngecek kata c ada di key map/tidak
     char *D;
     D = (char *)malloc(30 * sizeof(char));
