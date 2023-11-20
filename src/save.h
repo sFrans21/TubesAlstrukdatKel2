@@ -19,7 +19,6 @@
 
 
 
-// Deklarasi fungsi untuk membaca save file
-void savefile(char *filename,  Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu);
+void savefile(char *filename, QueueLagu  *UrutanLagu, ListPlaylist *Playlist, HistoriLagu *RiwayatLagu);
 
 #endif
