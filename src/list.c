@@ -59,26 +59,54 @@ void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
     }
 }
 
-void PrintLagu(Map M, Word c) // ini gunain map album-lagu
+void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
 {
-    int found = 0;
-    for (int d = 0; d < M.Count; d++)
+    // ngecek kata c ada di key map/tidak
+    boolean found;
+    int when;
+
+    char *D;
+    D = (char *)malloc(30 * sizeof(char));
+
+    char *E;
+    E = (char *)malloc(30 * sizeof(char));
+
+    for (int d = 0; d < M.Elements->Count; d++)
     {
-        for (int i = 0; i < c.Length; i++)
+        wordToString(C, D); // ubah ke char
+        wordToString(M.Elements[i].Elements[d].Key, E);
+        if (compareString(D, E) == true)
         {
-            if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
-            {
-                break;
-                found = d;
-            }
+            found = true;
+            when = d;
         }
     }
-    printf("Daftar Lagu di album %s :\n", M.Elements[found].Key.TabWord);
-    for (int i = 0; i < M.Elements[found].Value.Count; i++)
+    for (int e = 0; e < M.Elements[i].Elements[when].Value.Count; e++)
     {
-        printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i].TabWord);
+        printf("%d. ", (e + 1));
+        printf("%s\n", M.Elements[i].Elements[when].Value.Elements[e].TabWord);
     }
 }
+
+// {
+//     int found = 0;
+//     for (int d = 0; d < M.Count; d++)
+//     {
+//         for (int i = 0; i < c.Length; i++)
+//         {
+//             if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
+//             {
+//                 break;
+//                 found = d;
+//             }
+//         }
+//     }
+//     printf("Daftar Lagu di album %s :\n", M.Elements[found].Key.TabWord);
+//     for (int i = 0; i < M.Elements[found].Value.Count; i++)
+//     {
+//         printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i].TabWord);
+//     }
+// }
 
 void PrintPlaylist(DynamicList M)
 {

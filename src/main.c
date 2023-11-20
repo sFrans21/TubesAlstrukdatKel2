@@ -121,25 +121,65 @@ int main()
 
                             if (isEqual(currentWord, penyanyi.items[i]) == true)
                             {
-
                                 int ketemu;
                                 ketemu = i;
                                 char *e;
                                 e = (char *)malloc(30 * sizeof(char));
                                 wordToString(currentWord, e);
-                                printf("Daftar Album oleh %s :", e);
+                                printf("Daftar Album oleh %s :\n", e);
                                 PrintAlbum(penyanyiAlbums, currentWord);
+
+                                printf("Ingin melihat lagu yang ada?(Y/N): \n");
+                                StartCommand();
+                                if (currentCommand.TabWord[0] == 'Y')
+                                {
+                                    printf("Pilih album untuk melihat lagu yang ada di album : \n");
+                                    StartWordInput();
+                                    for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
+                                    {
+                                        if (isEqual(currentWord, penyanyiAlbums.Elements[ketemu].Value.Elements[j]) == true)
+                                        {
+                                            int ketemulagi;
+                                            ketemulagi = j;
+                                            char *e;
+                                            e = (char *)malloc(30 * sizeof(char));
+                                            wordToString(currentWord, e);
+                                            printf("Daftar Lagu di %s :\n", e);
+                                            PrintLagu(albumsong, currentWord, ketemu);
+                                        }
+                                    }
+                                }
                             }
+                            //     printf("Ingin melihat lagu yang ada?(Y/N): \n");
+                            //     StartWordInput();
+                            //     if (currentWord.TabWord[0] == 'Y')
+                            //     {
+                            //         printf("Pilih album untuk melihat lagu yang ada di album : \n");
+                            //         StartWordInput();
+                            //         for (int j = 0; j < penyanyiAlbums.Elements[].Value.Count; j++)
+                            //         {
+                            //             if (isEqual(currentWord, penyanyiAlbums.Elements[].Value.Elements[j]) == true)
+                            //             {
+                            //                 int ketemu;
+                            //                 ketemu = i;
+                            //                 char *e;
+                            //                 e = (char *)malloc(30 * sizeof(char));
+                            //                 wordToString(currentWord, e);
+                            //                 printf("Daftar Album oleh %s :\n", e);
+                            //                 PrintAlbum(penyanyiAlbums, currentWord);
+                            //             }
+                            //         }
+                            //     }
+                            // }
                         }
                     }
+                    // else if (IsCommandEqual(currentCommand, "N"))
+                    // {
+                    //     *program berhenti*
+                    // }
+                    // PrintLagu()
                 }
-                // else if (IsCommandEqual(currentCommand, "N"))
-                // {
-                //     *program berhenti*
-                // }
-                // PrintLagu()
             }
         }
+        return 0;
     }
-    return 0;
-}
