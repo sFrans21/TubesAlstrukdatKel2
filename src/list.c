@@ -38,12 +38,6 @@ typedef struct
 typedef struct
 {
     Word Key;
-    StaticList Value;
-} infotype1;
-
-typedef struct
-{
-    Word Key;
     Set Value;
 } infotype2;
 
