@@ -8,7 +8,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main()
+{
     StaticList penyanyi;
     Map penyanyiAlbums;
     Map AlbumLagu;
@@ -29,8 +30,8 @@ int main() {
 
     boolean saved = false;
     boolean endProgram = false;
-    //char *command;
-    //command = (char *) malloc (50 * sizeof(char));
+    // char *command;
+    // command = (char *) malloc (50 * sizeof(char));
 
     printf("    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\n");
     printf("    W   W  E      L     C     O   O MM MM  E      !\n");
@@ -46,51 +47,77 @@ int main() {
     printf("Jalankan command START atau LOAD <nama file> untuk membuka file.\n");
     printf("Jalankan command QUIT untuk keluar dari program.");
 
-    while (endProgram == false) {
+    while (endProgram == false)
+    {
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
         printf("ENTER COMMAND: ");
         StartCommand();
         // inputString(0, command);
-        //system("cls||clear");
-        if (IsEmptymap(penyanyiAlbums)){
-            if (IsCommandEqual(currentCommand, "START")) {
+        // system("cls||clear");
+        if (IsEmptymap(penyanyiAlbums))
+        {
+            if (IsCommandEqual(currentCommand, "START"))
+            {
                 start(&penyanyi, &penyanyiAlbums, &albumsong);
-                //inputString(0, command);
+                // inputString(0, command);
             }
-            else if (IsCommandEqual(currentCommand, "LOAD")){
+            else if (IsCommandEqual(currentCommand, "LOAD"))
+            {
                 char *inputfile;
-                inputfile = (char *) malloc (30 *sizeof(char));
+                inputfile = (char *)malloc(30 * sizeof(char));
                 ADVInput();
                 // printf(currentWord.TabWord);
                 // if (currentChar == '\n'){
                 wordToString(currentCommand, inputfile);
-                if (compareString(upper(inputfile), "LOAD") == false) {
+                if (compareString(upper(inputfile), "LOAD") == false)
+                {
                     load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
-                } else { 
+                }
+                else
+                {
                     printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
             }
-            else if (IsCommandEqual(currentCommand, "QUIT")) {
+            else if (IsCommandEqual(currentCommand, "QUIT"))
+            {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
                 endProgram = true;
             }
-            else if (IsCommandEqual(currentCommand, "HELP")) {
+            else if (IsCommandEqual(currentCommand, "HELP"))
+            {
                 showhelp1();
-                //inputString(0, command);
+                // inputString(0, command);
             }
-        } else {
-            if (IsCommandEqual(currentCommand, "HELP")) {
+        }
+        else
+        {
+            if (IsCommandEqual(currentCommand, "HELP"))
+            {
                 showhelp2();
-                //inputString(0, command);
-            } else if (IsCommandEqual(currentCommand, "QUIT")) {
+                // inputString(0, command);
+            }
+            else if (IsCommandEqual(currentCommand, "QUIT"))
+            {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
-            } else if (IsCommandEqual(currentCommand, "LIST")) {
-                PrintPenyanyi(penyanyi);
-                PrintAlbum(penyanyiAlbums, "BLACKPINK");
-                //PrintLagu()
             }
-        }  
+            else if (IsCommandEqual(currentCommand, "LIST DEFAULT"))
+            {
+                PrintPenyanyi(penyanyi);
+                printf("\nIngin melihat album yang ada?(Y/N): ");
+                // inputString(0, command)
+                if (IsCommandEqual(currentCommand, "Y"))
+                {
+                    printf("Pilih penyanyi untuk melihat album mereka: ");
+                    // inputString(0, command);
+                }
+                // else if (IsCommandEqual(currentCommand, "N"))
+                // {
+                //     *program berhenti*
+                // }
+                // PrintLagu()
+            }
+        }
     }
     return 0;
 }
