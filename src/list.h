@@ -5,6 +5,9 @@
 #include "ADT/map.h"
 #include "ADT/set.h"
 #include "ADT/list_dinamis.h"
+#include "string.h"
+#include "boolean.h"
+#include "tambahan.h"
 
 #define Nil 0
 // #define MaxElMap 50

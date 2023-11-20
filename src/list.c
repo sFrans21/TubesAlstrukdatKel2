@@ -1,8 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "string.h"
-#include "boolean.h"
-#include "tambahan.h"
 #include "list.h"
 
 // // Definisi struktur Word dan Map
@@ -21,11 +17,6 @@
 // #include "string.h"
 // #include "boolean.h"
 // #include "tambahan.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "boolean.h"
-#include "list.h"
 
 void PrintPenyanyi(StaticList M)
 {
@@ -54,12 +45,14 @@ void PrintAlbum(Map M, char c) // ini gunain map penyanyi-album
             when = d;
         }
     }
-
-    printf("Daftar Album oleh %s :\n", c);
-    for (int e = 0; e < M.Elements[when].Value.Count; e++)
+    if (found == true)
     {
-        printf("%d. ", (e + 1));
-        printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
+        printf("Daftar Album oleh %s :\n", c);
+        for (int e = 0; e < M.Elements[when].Value.Count; e++)
+        {
+            printf("%d. ", (e + 1));
+            printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
+        }
     }
 }
 
