@@ -128,7 +128,7 @@ int main()
                                 e = (char *)malloc(30 * sizeof(char));
                                 wordToString(currentWord, e);
                                 printf("Daftar Album oleh %s :", e);
-                                PrintAlbum(penyanyiAlbums, currentWord, i);
+                                PrintAlbum(penyanyiAlbums, currentWord);
                             }
                         }
                     }

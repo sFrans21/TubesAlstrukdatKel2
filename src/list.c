@@ -30,27 +30,32 @@ void PrintPenyanyi(StaticList M)
     }
 }
 
-void PrintAlbum(Map M, Word C, int i) // ini gunain map penyanyi-album
+void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
 {
-    // // ngecek kata c ada di key map/tidak
-    // char *D;
-    // D = (char *)malloc(30 * sizeof(char));
-    // boolean found;
-    // int when;
+    // ngecek kata c ada di key map/tidak
+    boolean found;
+    int when;
 
-    // for (int d = 0; d < M.Count; d++)
-    // {
-    //     wordToString(C, D); // ubah ke char
-    //     if (compareString(D, ) == true)
-    //     {
-    //         found = true;
-    //         when = d;
-    //     }
-    // }
-    for (int e = 0; e < M.Elements[i].Value.Count; e++)
+    char *D;
+    D = (char *)malloc(30 * sizeof(char));
+
+    char *E;
+    E = (char *)malloc(30 * sizeof(char));
+
+    for (int d = 0; d < M.Count; d++)
+    {
+        wordToString(C, D); // ubah ke char
+        wordToString(M.Elements[d].Key, E);
+        if (compareString(D, E) == true)
+        {
+            found = true;
+            when = d;
+        }
+    }
+    for (int e = 0; e < M.Elements[when].Value.Count; e++)
     {
         printf("%d. ", (e + 1));
-        printf("%s\n", M.Elements[i].Value.Elements[e].TabWord);
+        printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
     }
 }
 
