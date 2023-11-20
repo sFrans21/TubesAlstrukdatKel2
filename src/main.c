@@ -4,12 +4,14 @@
 #include "help.h"
 #include "load.h"
 #include "quit.h"
+#include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
     StaticList penyanyi;
     Map penyanyiAlbums;
+    Map AlbumLagu;
     maps albumsong;
     Queue UrutanLagu;
     ArrayDin Playlist;
@@ -18,6 +20,7 @@ int main() {
 
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
+    CreateEmptymap(&AlbumLagu);
     createmaps(&albumsong);
     CreateQueue(&UrutanLagu);
     CreateDynArray(&Playlist);
@@ -82,6 +85,10 @@ int main() {
             } else if (IsCommandEqual(currentCommand, "QUIT")) {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
+            } else if (IsCommandEqual(currentCommand, "LIST")) {
+                PrintPenyanyi(penyanyi);
+                PrintAlbum(penyanyiAlbums, "BLACKPINK");
+                //PrintLagu()
             }
         }  
     }
