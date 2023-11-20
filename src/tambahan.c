@@ -99,15 +99,16 @@ boolean compareString(char *string1, char *string2)
     return true;
 }
 
-void inputString(int type, char* value) {
+void inputString(int type, char *value)
+{
     StartWordFile(NULL, type);
     wordToString(currentWord, value);
 }
 
-char* upper(char *string)
+char *upper(char *string)
 {
     char *uppered;
-    uppered = (char *) malloc (50 * sizeof(char));
+    uppered = (char *)malloc(50 * sizeof(char));
     for (int i = 0; i < stringLen(string); i++)
     {
         if (string[i] >= 97 && string[i] <= 122)

@@ -2,7 +2,8 @@
 #include "start.h"
 #include "tambahan.h"
 
-void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
+void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong)
+{
     Set albums;
     Set songs;
     CreateEmptySet(&albums);
@@ -11,74 +12,83 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
     CreateEmptymap(&albumLagu);
     char path[NMax];
     char *filename = "config.txt";
-    stringConcat("../save/",filename,path);
+    stringConcat("../save/", filename, path);
     StartWordFile(path, 1);
 
     int jumlahPenyanyi;
     jumlahPenyanyi = WordToInt(currentWord);
-    //printf("%d\n", jumlahPenyanyi);
-    for (int i = 0; i < jumlahPenyanyi; i++) {
+    // printf("%d\n", jumlahPenyanyi);
+    for (int i = 0; i < jumlahPenyanyi; i++)
+    {
         ADVWord();
         int jumlahAlbum;
         jumlahAlbum = WordToInt(currentWord);
-        //printf("%d ", jumlahAlbum);
+        // printf("%d ", jumlahAlbum);
         Word namaPenyanyi;
         ADVLine();
         // Membuat salinan dari currentWord ke namaPenyanyi
-        for (int j = 0; j < currentWord.Length; j++) {
+        for (int j = 0; j < currentWord.Length; j++)
+        {
             namaPenyanyi.TabWord[j] = currentWord.TabWord[j];
         }
         namaPenyanyi.Length = currentWord.Length;
         // Mengirim namaPenyanyi ke setItem
 
         setItem(penyanyi, i, &namaPenyanyi);
-        //printf("%s\n", (*penyanyi).items[i].TabWord);
+        // printf("%s\n", (*penyanyi).items[i].TabWord);
 
-        for (int z=0; z < jumlahAlbum; z++)
+        for (int z = 0; z < jumlahAlbum; z++)
         {
             ADVWord();
             int jumlahLagu;
             jumlahLagu = WordToInt(currentWord);
-            //printf("%d ", jumlahLagu);
+            // printf("%d ", jumlahLagu);
             ADVLine();
             Word namaAlbum;
-            for (int j = 0; j < currentWord.Length; j++) {
+            for (int j = 0; j < currentWord.Length; j++)
+            {
                 namaAlbum.TabWord[j] = currentWord.TabWord[j];
             }
             namaAlbum.Length = currentWord.Length;
             InsertSet(&albums, namaAlbum);
-            //printf("%s\n", namaAlbum.TabWord);
-        
-            for (int k=0; k<jumlahLagu; k++)
+            // printf("%s\n", namaAlbum.TabWord);
+
+            for (int k = 0; k < jumlahLagu; k++)
             {
                 ADVLine();
                 Word judulLagu;
-                for (int j = 0; j < currentWord.Length; j++) {
+                for (int j = 0; j < currentWord.Length; j++)
+                {
                     judulLagu.TabWord[j] = currentWord.TabWord[j];
                 }
                 judulLagu.Length = currentWord.Length;
                 InsertSet(&songs, judulLagu);
-                //printf("%s\n", judulLagu.TabWord);
-                for (int b = 0; b < judulLagu.Length; b++){
+                // printf("%s\n", judulLagu.TabWord);
+                for (int b = 0; b < judulLagu.Length; b++)
+                {
                     judulLagu.TabWord[b] = '\0';
                 }
             }
             Insertmap(&albumLagu, namaAlbum, songs);
-            for (int b = 0; b < namaAlbum.Length; b++){
-                namaAlbum.TabWord[b] = '\0';}   
+            for (int b = 0; b < namaAlbum.Length; b++)
+            {
+                namaAlbum.TabWord[b] = '\0';
+            }
             CreateEmptySet(&songs);
         }
         Insertmap(penyanyiAlbums, namaPenyanyi, albums);
         insertmaps(albumsong, albumLagu);
         CreateEmptymap(&albumLagu);
         CreateEmptySet(&albums);
-        for (int b = 0; b < namaPenyanyi.Length; b++){
-            namaPenyanyi.TabWord[b] = '\0';}
+        for (int b = 0; b < namaPenyanyi.Length; b++)
+        {
+            namaPenyanyi.TabWord[b] = '\0';
+        }
     }
 
     printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
 }
-    // printf("%s", penyanyiAlbums->Elements[1].Value.Elements[0].TabWord);
+// printf("%s", penyanyiAlbums->Elements[1].Value.Elements[0].TabWord);
 // }
 // void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *kiw){
 //     int idxp;
@@ -112,9 +122,9 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
 //     // {
 //     //     printf("%d : %c\n", i, albumsong.Elements[idxp].Elements[0].Key.TabWord[i]);
 //     // }
-    
+
 //     // printf("%s\n", albumsong.Elements[idxp].Elements[0].Key.TabWord);
-    
+
 //     // printf("%d\n", currentWord.Length);
 //     // for (int i = 0; i < currentWord.Length; i++)
 //     // {
@@ -137,7 +147,7 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
 //     int idxl = WordToInt(currentWord)-1;
 //     enqueue(kiw, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl]);
 //     printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n",albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord,  (penyanyi).items[idxp].TabWord);
-// }   
+// }
 
 // void queueswap(Queue *kiw, int idx1, int idx2){
 //     Word temp;
@@ -151,9 +161,9 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
 // 	int j;
 // 	for (j = i ; j < kiw->idxTail ; j++)
 // 	{
-// 		kiw->buffer[j] = kiw->buffer[j+1]; 
+// 		kiw->buffer[j] = kiw->buffer[j+1];
 // 	}
-	
+
 // 	kiw->idxTail--;
 // }
 
@@ -172,7 +182,7 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong) {
 //     createmaps(&albumLagu);
 //     start(&penyanyi, &penyanyiAlbums, &albumLagu);
 //     queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);
-//     queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);   
+//     queuesong(penyanyi, penyanyiAlbums, albumLagu, &kiw);
 //     displayQueue(kiw);
 //     queueswap(&kiw, 0, 1);
 //     displayQueue(kiw);
