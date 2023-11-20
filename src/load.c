@@ -4,7 +4,7 @@
 #include "tambahan.h"
 #include "ADT/mesinkata.h"
 
-void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
+void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
     Set albums;
     Set songs;
     CreateEmptySet(&albums);
@@ -122,7 +122,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         }
         (*RiwayatLagu) = ReverseStack(*RiwayatLagu);
 
-        //ARRAYDIN PLAYLIST
+        //LIST DINAMIS PLAYLIST
         ADVLine();
         int nPlaylist = WordToInt(currentWord);
         //printf("%d\n", nPlaylist);
@@ -136,7 +136,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 namaPlaylist.TabWord[j] = currentWord.TabWord[j];
             }
             namaPlaylist.Length = currentWord.Length;
-            InsertLast(Playlist, namaPlaylist);
+            InsertLastDynamic(Playlist, namaPlaylist);
             //printf("%s\n", namaPlaylist.TabWord);
             for (int b = 0; b < namaPlaylist.Length; b++){
                 namaPlaylist.TabWord[b] = '\0';

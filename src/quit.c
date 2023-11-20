@@ -4,7 +4,7 @@
 #include "tambahan.h"
 #include "ADT/mesinkata.h"
 
-void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu, boolean saved){
+void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, boolean saved){
     if (saved == true){
         printf("\nKamu keluar dari WayangWave.\nDadah ^_^/\n");
     }

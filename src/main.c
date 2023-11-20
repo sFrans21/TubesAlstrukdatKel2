@@ -15,7 +15,7 @@ int main()
     Map AlbumLagu;
     maps albumsong;
     Queue UrutanLagu;
-    ArrayDin Playlist;
+    DynamicList Playlist;
     Stack RiwayatLagu;
     LinierList LaguPlaylist;
 
@@ -24,7 +24,7 @@ int main()
     CreateEmptymap(&AlbumLagu);
     createmaps(&albumsong);
     CreateQueue(&UrutanLagu);
-    CreateDynArray(&Playlist);
+    CreateEmptyDynamic(&Playlist);
     CreateEmptyStack(&RiwayatLagu);
     CreateEmptyLinier(&LaguPlaylist);
 
@@ -101,15 +101,21 @@ int main()
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
             }
-            else if (IsCommandEqual(currentCommand, "LIST DEFAULT"))
+            else if (IsCommandEqual(currentCommand, "LIST"))
             {
-                PrintPenyanyi(penyanyi);
-                printf("\nIngin melihat album yang ada?(Y/N): ");
-                // inputString(0, command)
-                if (IsCommandEqual(currentCommand, "Y"))
-                {
-                    printf("Pilih penyanyi untuk melihat album mereka: ");
-                    // inputString(0, command);
+                char *def;
+                def = (char *)malloc(30 * sizeof(char));
+                ADVInput();
+                wordToString(currentCommand, def);
+                if (compareString(upper(def), "DEFAULT") == true){
+                    PrintPenyanyi(penyanyi);
+                    printf("\nIngin melihat album yang ada?(Y/N): ");
+                    StartCommand();
+                    if (currentCommand.TabWord[0] == 'Y')
+                    {
+                        printf("Pilih penyanyi untuk melihat album mereka: ");
+                        // inputString(0, command);
+                    }
                 }
                 // else if (IsCommandEqual(currentCommand, "N"))
                 // {

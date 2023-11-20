@@ -102,7 +102,7 @@ boolean compareString(char *string1, char *string2)
 void inputString(int type, char *value)
 {
     StartWordFile(NULL, type);
-    ToString(currentWord, value);
+    wordToString(currentWord, value);
 }
 
 char *upper(char *string)

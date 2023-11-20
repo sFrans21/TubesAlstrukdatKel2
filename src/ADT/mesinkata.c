@@ -134,9 +134,7 @@ boolean IsCommandEqual(Word Input, char * kata)
             if (Input.TabWord[i] != kata[i])
             {
                 equal = false;
-            }
-            else
-            {
+            } else {
                 i++;
             }
         }
