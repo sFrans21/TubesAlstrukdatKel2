@@ -110,10 +110,17 @@ void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
 
 void PrintPlaylist(DynamicList M)
 {
-    printf("Daftar Playlist yang kamu miliki:\n");
-    for (int i = 0; i < M.Neff; i++)
+    if (IsListEmptyDynamic(M) == false)
     {
-        printf("%d. %s", (i + 1), M.A[i].TabWord);
-        // printf("%d %s", ())
+        printf("Daftar Playlist yang kamu miliki:\n");
+        for (int i = 0; i < M.Neff; i++)
+        {
+            printf("%d. %s", (i + 1), M.A[i].TabWord);
+        }
+    }
+    else
+    {
+        printf("Daftar Playlist yang kamu miliki:\n");
+        printf("Kamu tidak memiliki playlist.");
     }
 }

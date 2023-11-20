@@ -139,8 +139,8 @@ int main()
                                     {
                                         if (isEqual(currentWord, penyanyiAlbums.Elements[ketemu].Value.Elements[j]) == true)
                                         {
-                                            int ketemulagi;
-                                            ketemulagi = j;
+                                            // int ketemulagi;
+                                            // ketemulagi = j;
                                             char *e;
                                             e = (char *)malloc(30 * sizeof(char));
                                             wordToString(currentWord, e);
@@ -179,7 +179,12 @@ int main()
                     // }
                     // PrintLagu()
                 }
+                if (compareString(upper(def), "PLAYLIST") == true)
+                {
+                    PrintPlaylist(Playlist); // inshaallah ga error
+                }
             }
         }
         return 0;
     }
+}
