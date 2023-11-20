@@ -69,4 +69,6 @@ void savefile(char *filename, Queue *UrutanLagu, ArrayDin *Playlist, Stack *Riwa
     //}
     // gw bingung dimana structure yang nyimpen playlistnya 
 
+    fclose(savean);
+    fclose(inputFile);
 }
