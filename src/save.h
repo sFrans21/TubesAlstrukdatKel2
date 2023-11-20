@@ -9,11 +9,11 @@
 #include <stdlib.h>
 #include "save.h"
 #include "tambahan.h"
-#include "ADT/mesinkata.h"
 #include "queue.h"
 #include "song.h"
 #include "list.h"
-#include "list_dinamis.h"
+#include "ADT/struc.h"
+
 
 
 
