@@ -121,10 +121,14 @@ int main()
 
                             if (isEqual(currentWord, penyanyi.items[i]) == true)
                             {
+
+                                int ketemu;
+                                ketemu = i;
                                 char *e;
                                 e = (char *)malloc(30 * sizeof(char));
                                 wordToString(currentWord, e);
                                 printf("Daftar Album oleh %s :", e);
+                                PrintAlbum(penyanyiAlbums, currentWord, i);
                             }
                         }
                     }

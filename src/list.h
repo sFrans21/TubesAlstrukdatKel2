@@ -50,7 +50,7 @@
 
 void PrintPenyanyi(StaticList M);
 
-void PrintAlbum(Map M, char *C);
+void PrintAlbum(Map M, Word C, int i);
 
 void PrintLagu(Map M, Word C);
 
