@@ -30,10 +30,7 @@ void savefile(char *filename, Queue *UrutanLagu, ArrayDin *Playlist, Stack *Riwa
     //Riwayat Lagu
     Node *current = UrutanLagu->idxHead;
     // Menulis lagu yang sedang dimainkan
-    fprintf(filepath, "%s;%s;%s # Lagu yang sedang dimainkan\n",
-            current->data.singer,
-            current->data.album,
-            current->data.songtitle);
+    fprintf(filepath, "%s;%s;%s # Lagu yang sedang dimainkan\n",current->data.singer,current->data.album,current->data.songtitle);
 
     // Menulis jumlah record lagu dalam queue
     fprintf(filepath, "%d # Jumlah record lagu dalam queue\n", UrutanLagu->idxTail - UrutanLagu->idxHead);
@@ -42,10 +39,7 @@ void savefile(char *filename, Queue *UrutanLagu, ArrayDin *Playlist, Stack *Riwa
  
     current = current->next;
     while (current != NULL) {
-        fprintf(filepath, "%s;%s;%s\n",
-                current->data.singer,
-                current->data.album,
-                current->data.songtitle);
+        fprintf(filepath, "%s;%s;%s\n",current->data.singer,current->data.album,current->data.songtitle);
 
         current = current->next;
     }
