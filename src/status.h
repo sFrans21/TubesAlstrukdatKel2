@@ -2,7 +2,7 @@
 #define STATUS_H
 #include "start.h" // Termasuk file header yang diperlukan
 #include "ADT/stack.h"  // Mungkin memerlukan tipe data seperti Set untuk menyimpan lagu
-#include "ADT/arrayDin.h"   // Memerlukan Map untuk menyimpan album dan lagu
+#include "ADT/list_dinamis.h"  // Memerlukan Map untuk menyimpan album dan lagu
 #include "ADT/queue.h"  // Memerlukan List statis untuk daftar penyanyi
 
 #include "save.h"
@@ -15,6 +15,6 @@
 
 
 
-void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, ArrayDin *Playlist);
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist);
 
 #endif
