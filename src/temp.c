@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "start.h"
+#include "Spesifikasi/start.h"
 #include "tambahan.h"
 
 void start(StaticList *penyanyi, Map *album, Map *lagu) {

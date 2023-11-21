@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/map.h"
+#include "../ADT/map.h"
 
 int main() {
     Map map1, map2;

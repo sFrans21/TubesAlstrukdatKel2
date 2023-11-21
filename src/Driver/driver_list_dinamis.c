@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "ADT/list_dinamis.h"
-#include "ADT/mesinkata.h"
+#include "../ADT/list_dinamis.h"
+#include "../ADT/mesinkata.h"
 
 int main() {
     DynamicList dynamicList;

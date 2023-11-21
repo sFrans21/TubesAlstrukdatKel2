@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/queue.h"
+#include "../ADT/Queue.h"
 
 int main() {
     Queue q;

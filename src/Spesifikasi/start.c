@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "start.h"
-#include "tambahan.h"
+#include "../tambahan.h"
 
 void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong)
 {

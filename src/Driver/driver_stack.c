@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/stack.h"
+#include "../ADT/stack.h"
 
 int main() {
     Stack S;
@@ -9,9 +9,9 @@ int main() {
     CreateEmptyStack(&S);
 
     // Menambahkan elemen ke dalam Stack
-    Push(&S, "Element1");
-    Push(&S, "Element2");
-    Push(&S, "Element3");
+    Push(&S, stringToWord("Element1"));
+    Push(&S, stringToWord("Element2"));
+    Push(&S, stringToWord("Element3"));
 
     // Menampilkan isi Stack
     printf("Stack elements:\n");

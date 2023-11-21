@@ -1,9 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "save.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "tambahan.h"
+#include "../tambahan.h"
 void stringConcat(char str1[], char str2[], char *output)
 {
     int i = 0, j = 0;
@@ -91,10 +89,11 @@ if (!isQueueEmpty(*UrutanLagu)){
     char currAlb[50];
 
     strcpy(currsong, HEAD(*UrutanLagu).TabWord);
-    fprintf(outputfile, "%s;", currsong);
+
     carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
     fprintf(outputfile, "%s;", currPen);
-    fprintf(outputfile, "%s\n", currAlb);
+    fprintf(outputfile, "%s:", currAlb);
+     fprintf(outputfile, "%s\n", currsong);
 }
 
 
@@ -107,10 +106,11 @@ if (!isQueueEmpty(*UrutanLagu)){
         char currAlb[50];
 
         strcpy(currsong, UrutanLagu->buffer[i].TabWord);
-        fprintf(outputfile, "%s;", currsong);
+       
         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
         fprintf(outputfile, "%s;", currPen);
         fprintf(outputfile, "%s\n", currAlb);
+        fprintf(outputfile, "%s;", currsong);
         }
     }
 //---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
@@ -123,10 +123,10 @@ if (!isQueueEmpty(*UrutanLagu)){
             char currAlb[50];
 
             strcpy(currsong, RiwayatLagu->T[i].TabWord);
-            fprintf(outputfile, "%s;", currsong);
             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             fprintf(outputfile, "%s;", currPen);
             fprintf(outputfile, "%s\n", currAlb);
+             fprintf(outputfile, "%s;", currsong);
         }
     }
   
@@ -147,10 +147,11 @@ if (!isQueueEmpty(*UrutanLagu)){
                 char currAlb[50];
 
                 strcpy(currsong, Playlist[i].A[j].TabWord);
-                fprintf(outputfile, "%s;", currsong);
+    
                 carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
                 fprintf(outputfile, "%s;", currPen);
                 fprintf(outputfile, "%s\n", currAlb);
+                fprintf(outputfile, "%s;", currsong);
             }
         }
     }
@@ -182,4 +183,5 @@ if (!isQueueEmpty(*UrutanLagu)){
 
 //     return 0;
 // }
+  
   
