@@ -1,8 +1,8 @@
 
 #include <stdio.h>
 #include "queue.h"
-#include "tambahan.h"
-#include "start.h"
+#include "../tambahan.h"
+#include "../start.h"
 
 void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queue){
     int idxp;
@@ -85,23 +85,23 @@ void  queueclear(Queue *queue){
     CreateQueue(queue);
 }
 
-// int main (){
-//     StaticList penyanyi;
-//     Map penyanyiAlbums;
-//     maps albumLagu;
-//     Queue queue;
-//     CreateQueue(&queue);
-//     initializeList(&penyanyi);
-//     CreateEmptymap(&penyanyiAlbums);
-//     createmaps(&albumLagu);
-//     start(&penyanyi, &penyanyiAlbums, &albumLagu);
-//     queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);
-//     queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);   
-//     displayQueue(queue);
-//     queueswap(&queue, 0, 1);
-//     displayQueue(queue);
-//     queueremove(&queue, 0);
-//     displayQueue(queue);
-//     queueclear(&queue);
-//     displayQueue(queue);
-// }
+int main (){
+    StaticList penyanyi;
+    Map penyanyiAlbums;
+    maps albumLagu;
+    Queue queue;
+    CreateQueue(&queue);
+    initializeList(&penyanyi);
+    CreateEmptymap(&penyanyiAlbums);
+    createmaps(&albumLagu);
+    start(&penyanyi, &penyanyiAlbums, &albumLagu);
+    queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);
+    queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);   
+    displayQueue(queue);
+    queueswap(&queue, 0, 1);
+    displayQueue(queue);
+    queueremove(&queue, 0);
+    displayQueue(queue);
+    queueclear(&queue);
+    displayQueue(queue);
+}
