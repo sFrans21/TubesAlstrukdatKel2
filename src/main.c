@@ -41,7 +41,7 @@ int main()
     printf("\n");
     printf("\033[1;33m                                 PERINGATAN!!!\033[0m\n");
     printf("\033[1;32m======================================================================================\033[0m\n");
-    printf("\033[1;33m     MASUKKAN COMMAND MENGGUNAKAN HURUF KAPITAL DAN DIAKHIRI DENGAN ';'\033[0m\n");
+    printf("\033[1;33m          MASUKKAN COMMAND MENGGUNAKAN HURUF KAPITAL DAN DIAKHIRI DENGAN ';'\033[0m\n");
     printf("\033[1;32m======================================================================================\033[0m\n\n\n");
     printf("\033[1;32m                    Selamat datang di WayangWave!\033[0m\n\n");
     printf("\033[0;32mJalankan command START atau LOAD <filename.txt> untuk membuka file.\033[0m\n");
@@ -81,6 +81,8 @@ int main()
             else if (IsCommandEqual(currentCommand, "HELP"))
             {
                 showhelp1();
+            } else {
+                printf("Command tidak bisa dieksekusi!\n");
             }
         }
         else
