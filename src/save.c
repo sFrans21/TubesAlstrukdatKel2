@@ -56,7 +56,7 @@ boolean isQueueEmpty(Queue q){
     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
 
-void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
+void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
 
     //----------------------------------------------------------------Opening file------------------------------
     char filepath[100];
@@ -122,7 +122,7 @@ if (!isQueueEmpty(*UrutanLagu)){
             char currPen[50];
             char currAlb[50];
 
-            strcpy(currsong, RiwayatLagu->T[i]);
+            strcpy(currsong, RiwayatLagu->T[i].TabWord);
             fprintf(outputfile, "%s;", currsong);
             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             fprintf(outputfile, "%s;", currPen);
@@ -132,15 +132,15 @@ if (!isQueueEmpty(*UrutanLagu)){
   
 //---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
 
-    if(!IsEmpty(*Playlist)){
-        int playlistCount = LengthArrayDin(*Playlist);
+    if(!IsListEmptyDynamic(*Playlist)){
+        int playlistCount = LengthListDynamic(*Playlist);
         fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
 
         for (int i = 0; i < playlistCount; i++)
         {
-            fprintf(outputfile, "%d %s \n", LengthArrayDin(Playlist[i]), Playlist[i]);
+            fprintf(outputfile, "%d %s \n", LengthListDynamic(Playlist[i]), Playlist[i]);
 
-            for (int j = 1; j <= LengthArrayDin(Playlist[i]); j++)
+            for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
             {
                 char currsong[50];
                 char currPen[50];
@@ -155,30 +155,31 @@ if (!isQueueEmpty(*UrutanLagu)){
         }
     }
 }
-void CreateQueue(Queue *q){
-/* I.S. sembarang */
-/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
-/* - Index head bernilai IDX_UNDEF */
-/* - Index tail bernilai IDX_UNDEF */
-/* Proses : Melakukan alokasi, membuat sebuah q kosong */
-    IDX_HEAD(*q) = IDX_UNDEF;
-    IDX_TAIL(*q) = IDX_UNDEF;
-}
-int main() {
-    // Create and initialize your data structures
-    StaticList penyanyi;  // Modify accordingly
-    Map penyanyiAlbums;   // Modify accordingly
-    maps albumsong;       // Modify accordingly
-    Queue UrutanLagu;   
-    CreateQueue(&UrutanLagu);
-   // Modify accordingly
-    ArrayDin Playlist;     // Modify accordingly
-    Stack RiwayatLagu;     // Modify accordingly
-    LinierList LaguPlaylist; // Modify accordingly
+// void CreateQueue(Queue *q){
+// /* I.S. sembarang */
+// /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
+// /* - Index head bernilai IDX_UNDEF */
+// /* - Index tail bernilai IDX_UNDEF */
+// /* Proses : Melakukan alokasi, membuat sebuah q kosong */
+//     IDX_HEAD(*q) = IDX_UNDEF;
+//     IDX_TAIL(*q) = IDX_UNDEF;
+// }
+// int main() {
+//     // Create and initialize your data structures
+//     StaticList penyanyi;  // Modify accordingly
+//     Map penyanyiAlbums;   // Modify accordingly
+//     maps albumsong;       // Modify accordingly
+//     Queue UrutanLagu;   
+//     DynamicList Playlist;
+//     CreateQueue(&UrutanLagu);
+//    // Modify accordingly
+//       // Modify accordingly
+//     Stack RiwayatLagu;     // Modify accordingly
+//     LinierList LaguPlaylist; // Modify accordingly
 
-    // Call the save function with sample data
-    save("outpu2t.txt", &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+//     // Call the save function with sample data
+//     save("outpu2t.txt", &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
 
-    return 0;
-}
+//     return 0;
+// }
   
