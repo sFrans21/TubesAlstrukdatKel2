@@ -167,7 +167,7 @@ int stringLen(char *string)
     return count;
 }
 
-Word stringToWord(const char str[]) {
+Word stringToWord(char* str) {
     Word word;
     copyString(word.TabWord, str, NMax);
     word.Length = stringLen(str);

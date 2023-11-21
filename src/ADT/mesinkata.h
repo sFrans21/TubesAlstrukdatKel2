@@ -42,7 +42,7 @@ void copyString(char dest[], const char src[], int max_length);
 
 int stringLen(char *string);
 
-Word stringToWord(const char str[]);
+Word stringToWord(char* str);
 
 void ADVLine();
 
