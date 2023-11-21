@@ -115,7 +115,8 @@ void PrintPlaylist(DynamicList M)
             printf("Daftar Playlist yang kamu miliki:\n");
             for (int i = 0; i < M.Neff; i++)
             {
-                  printf("%d. %s", (i + 1), M.A[i].TabWord);
+                  printf("%d. ", (i + 1));
+                  printf("%s\n", M.A[i].TabWord);
             }
       }
       else
