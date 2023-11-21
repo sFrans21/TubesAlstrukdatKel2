@@ -33,12 +33,8 @@ int main()
     // char *command;
     // command = (char *) malloc (50 * sizeof(char));
 
-    printf("\033[1;32m    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\033[0m\n");
-    printf("\033[1;32m    W   W  E      L     C     O   O MM MM  E      !\033[0m\n");
-    printf("\033[1;32m    W W W  EEEE   L     C     O   O M M M  EEEE   !\033[0m\n");
-    printf("\033[1;32m    W W W  E      L     C     O   O M   M  E      \033[0m\n");
-    printf("\033[1;32m     W W   EEEEE  LLLL   CCCC  OOO  M   M  EEEEE  !\033[0m\n");
     printf("\n");
+
     printf("\033[1;33m                                 PERINGATAN!!!\033[0m\n");
     printf("\033[1;32m======================================================================================\033[0m\n");
     printf("\033[1;33m          MASUKKAN COMMAND MENGGUNAKAN HURUF KAPITAL DAN DIAKHIRI DENGAN ';'\033[0m\n");
@@ -46,6 +42,32 @@ int main()
     printf("\033[1;32m                    Selamat datang di WayangWave!\033[0m\n\n");
     printf("\033[0;32mJalankan command START atau LOAD <filename.txt> untuk membuka file.\033[0m\n");
     printf("\033[0;32mJalankan command QUIT untuk keluar dari program.\033[0m\n");
+
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\033[1;36m         #######################################################################\033[0m\n");
+    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
+    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
+    printf("\033[1;35m         [|         W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE    !!        |]\033[0m\n");
+    printf("\033[1;35m         [|         W   W  E      L     C     O   O MM MM  E        !!        |]\033[0m\n");
+    printf("\033[1;35m         [|         W W W  EEEE   L     C     O   O M M M  EEEE     !!        |]\033[0m\n");
+    printf("\033[1;35m         [|         W W W  E      L     C     O   O M   M  E                  |]\033[0m\n");
+    printf("\033[1;35m         [|          W W   EEEEE  LLLL   CCCC  OOO  M   M  EEEEE    !!        |]\033[0m\n");
+    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
+    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
+    printf("\033[1;36m         #######################################################################\033[0m\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\n");
+    printf("\033[1;34m                                 PERINGATAN!!!\033[0m\n");
+    printf("\033[1;36m======================================================================================\033[0m\n");
+    printf("\033[1;34mPROGRAM AKAN ERROR ATAU BERHENTI KETIKA MENJALANKAN COMMAND YANG MEMILIKI KARAKTER '.'\033[0m\n");
+    printf("\033[1;36m======================================================================================\033[0m\n\n\n");
+    printf("\033[1;35m                   Selamat datang di WayangWave!\033[0m\n\n");
+    printf("\033[0;36mJalankan command START atau LOAD <nama file> untuk membuka file.\033[0m\n");
+    printf("\033[0;36mJalankan command QUIT untuk keluar dari program.\033[0m");
 
     while (endProgram == false)
     {
@@ -81,7 +103,9 @@ int main()
             else if (IsCommandEqual(currentCommand, "HELP"))
             {
                 showhelp1();
-            } else {
+            }
+            else
+            {
                 printf("Command tidak bisa dieksekusi!\n");
             }
         }
