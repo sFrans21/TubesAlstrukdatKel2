@@ -95,6 +95,14 @@ int main()
                     printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
             }
+            else if (IsCommandEqual(currentCommand, "SAVE"))
+            {
+                 save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+            }  
+            else if  (IsCommandEqual(currentCommand, "STATUS"))
+            {
+                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
+            }
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
