@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../load.h"
-#include "../../tambahan.h"
-#include "../../ADT/mesinkata.h"
+#include "load.h"
+#include "../tambahan.h"
+#include "../ADT/mesinkata.h"
 
 void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
     Set albums;

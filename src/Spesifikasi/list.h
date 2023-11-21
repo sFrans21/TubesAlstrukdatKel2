@@ -1,10 +1,10 @@
 #ifndef LIST_H
 #define LIST_H
 
-#include "../../ADT/listStatik.h"
-#include "../../ADT/map.h"
-#include "../../ADT/set.h"
-#include "../../ADT/list_dinamis.h"
+#include "../ADT/listStatik.h"
+#include "../ADT/map.h"
+#include "../ADT/set.h"
+#include "../ADT/list_dinamis.h"
 #include "../boolean.h"
 #include "../tambahan.h"
 

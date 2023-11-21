@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../save.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "save.h"
 #include "../tambahan.h"
 void stringConcat(char str1[], char str2[], char *output)
 {

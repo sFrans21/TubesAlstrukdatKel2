@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../playlist.h"
+#include "playlist.h"
 
 void CreatePlaylist (DynamicList *playlist)
 {

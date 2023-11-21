@@ -1,8 +1,8 @@
 
 #include <stdio.h>
-#include "../queue.h"
+#include "queue.h"
 #include "../tambahan.h"
-#include "../start.h"
+#include "start.h"
 
 void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queue){
     int idxp;

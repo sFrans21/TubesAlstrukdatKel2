@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../quit.h"
+#include "quit.h"
 #include "../tambahan.h"
-#include "../../ADT/mesinkata.h"
+#include "../ADT/mesinkata.h"
 
 void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, boolean saved){
     if (saved == true){

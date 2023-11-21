@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../song.h"
-#include "../queue.h"
+#include "song.h"
+#include "queue.h"
 
 // Fungsi untuk memutar lagu berikutnya dalam antrian
 void playnextsong(Queue *queue) {

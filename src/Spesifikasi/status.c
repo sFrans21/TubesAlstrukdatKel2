@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "../tambahan.h"
-#include "../status.h"
+#include "status.h"
 
 
 
