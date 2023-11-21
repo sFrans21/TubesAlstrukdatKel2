@@ -12,7 +12,7 @@
 #define MaxElStack 100
 /* Undef adalah stack dengan elemen kosong . */
 
-typedef char* INFOTYPE;
+typedef Word INFOTYPE;
 typedef int addr;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */

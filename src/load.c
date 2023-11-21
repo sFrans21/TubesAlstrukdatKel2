@@ -106,7 +106,6 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         ADVLine();
         int nRLagu = WordToInt(currentWord);
         //printf("%d\n", nRLagu);
-        char *Rlagu;
         for (int i = 1; i <= nRLagu; i++){
             ADVLine();
             Word RLagu;
@@ -114,13 +113,13 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 RLagu.TabWord[j] = currentWord.TabWord[j];
             }
             RLagu.Length = currentWord.Length;
-            Push(RiwayatLagu, Rlagu);
+            Push(RiwayatLagu, RLagu);
             //printf("%s\n", RLagu.TabWord);
             for (int b = 0; b < RLagu.Length; b++){
                 RLagu.TabWord[b] = '\0';
             }
         }
-        (*RiwayatLagu) = ReverseStack(*RiwayatLagu);
+        //(*RiwayatLagu) = ReverseStack(*RiwayatLagu);
 
         //LIST DINAMIS PLAYLIST
         ADVLine();

@@ -7,7 +7,7 @@ void showhelp1()
 {
     printf("=====[ Menu Help WayangWave ]=====\n");
     printf("1. START -> Untuk masuk sesi baru\n");
-    printf("2. LOAD -> Untuk memulai sesi berdasarkan file konfigurasi\n");
+    printf("2. LOAD <filename.txt> -> Untuk memulai sesi berdasarkan file konfigurasi\n");
 }
 
 void showhelp2()
