@@ -1,11 +1,11 @@
 #include "tambahan.h"
 #include "boolean.h"
-#include "Spesifikasi/start.h"
-#include "Spesifikasi/help.h"
-#include "Spesifikasi/load.h"
-#include "Spesifikasi/quit.h"
-#include "Spesifikasi/save.h"
-#include "Spesifikasi/list.h"
+#include "../Spesifikasi/start.h"
+#include "../Spesifikasi/help.h"
+#include "../Spesifikasi/load.h"
+#include "../Spesifikasi/quit.h"
+#include "../Spesifikasi/save.h"
+#include "../Spesifikasi/list.h"
 #include <stdio.h>
 #include <stdlib.h>
 
