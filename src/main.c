@@ -129,11 +129,11 @@ int main()
                                 printf("Daftar Album oleh %s :\n", e);
                                 PrintAlbum(penyanyiAlbums, currentWord);
 
-                                printf("Ingin melihat lagu yang ada?(Y/N): \n");
+                                printf("Ingin melihat lagu yang ada?(Y/N): ");
                                 StartCommand();
                                 if (currentCommand.TabWord[0] == 'Y')
                                 {
-                                    printf("Pilih album untuk melihat lagu yang ada di album : \n");
+                                    printf("Pilih album untuk melihat lagu yang ada di album : ");
                                     StartWordInput();
                                     for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
                                     {
@@ -180,7 +180,7 @@ int main()
                     // PrintLagu()
                     ////////////////////////////////////////////////////////*KALO ERROR APUS DARI SINI.*////////////////////////////////////////////////////
                 }
-                if (compareString(upper(def), "PLAYLIST") == true)
+                else if (compareString(upper(def), "PLAYLIST") == true)
                 {
                     PrintPlaylist(Playlist); // inshaallah ga error
                 }
@@ -245,7 +245,7 @@ int main()
                     }
                 }
             }
-            return 0;
         }
     }
+    return 0;
 }
