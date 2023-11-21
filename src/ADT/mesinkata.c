@@ -146,6 +146,16 @@ boolean IsCommandEqual(Word Input, char * kata)
     }
 }
 
+void copyString(char dest[], const char src[], int max_length) {
+    int i = 0;
+    while (*src != '\0' && i < max_length - 1) {
+        dest[i] = *src;
+        i++;
+        src++;
+    }
+    dest[i] = '\0';
+}
+
 int stringLen(char *string)
 {
     int i = 0;
@@ -155,6 +165,13 @@ int stringLen(char *string)
         i++;
     }
     return count;
+}
+
+Word stringToWord(const char str[]) {
+    Word word;
+    copyString(word.TabWord, str, NMax);
+    word.Length = stringLen(str);
+    return word;
 }
 
 void ADVLine()

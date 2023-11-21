@@ -55,6 +55,8 @@ void DeleteSet(Set *S, infotypeSet Elmt);
         Elmt mungkin anggota / bukan anggota dari S */
 /* F.S. Elmt bukan anggota dari S */
 
+void PrintSet(Set S);
+
 boolean IsMemberSet(Set S, infotypeSet Elmt);
 /* Mengembalikan true jika Elmt adalah member dari S */
 

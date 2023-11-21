@@ -70,6 +70,24 @@ void DeleteSet(Set *S, infotypeSet Elmt)
       S->Count--;
 }
 
+void PrintSet(Set S) {
+    printf("{");
+
+    if (!IsEmptySet(S)) {
+        addrSer i;
+
+        for (i = 1; i <= S.Count; i++) {
+            printf("%d", S.Elements[i]);
+
+            if (i < S.Count) {
+                printf(", ");
+            }
+        }
+    }
+
+    printf("}");
+}
+
 boolean IsMemberSet(Set S, infotypeSet Elmt)
 /* Mengembalikan true jika Elmt adalah member dari S */
 {

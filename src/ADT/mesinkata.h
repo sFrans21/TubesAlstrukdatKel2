@@ -38,7 +38,11 @@ void ADVInput();
 
 boolean IsCommandEqual(Word Input, char * kata);
 
+void copyString(char dest[], const char src[], int max_length);
+
 int stringLen(char *string);
+
+Word stringToWord(const char str[]);
 
 void ADVLine();
 
