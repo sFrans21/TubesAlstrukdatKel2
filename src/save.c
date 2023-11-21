@@ -1,8 +1,9 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include "save.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "tambahan.h"
-#include "struc.h"
 void stringConcat(char str1[], char str2[], char *output)
 {
     int i = 0, j = 0;
@@ -20,10 +21,46 @@ void stringConcat(char str1[], char str2[], char *output)
     }
     output[i] = '\0';
 }
-void savefile(char *filename, QueueLagu  *UrutanLagu, ListPlaylist *Playlist, HistoriLagu *RiwayatLagu){
+
+void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA) {
+    // Pencarian lagu dalam struktur data albumsong
+    int found = 0;  // Flag untuk menandakan apakah lagu ditemukan
+    int idxp, idxa, idxl;
+
+    for (idxp = 0; idxp < singeralbum.Count; idxp++) {
+        for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++) {
+            for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++) {
+                // Menggunakan strcmp untuk membandingkan string
+                if (strcmp(songname, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) == 0) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (found) {
+                break;
+            }
+        }
+        if (found) {
+            break;
+        }
+    }
+
+    // Menyalin hasil pencarian ke variabel curP dan curA
+    if (found) {
+        strcpy(curP, singeralbum.Elements[idxp].Key.TabWord);
+        strcpy(curA, singeralbum.Elements[idxp].Value.Elements[idxa].TabWord);
+    }
+}
+boolean isQueueEmpty(Queue q){
+/* Mengirim true jika q kosong: lihat definisi di atas */
+    return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
+}
+
+void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
+
     //----------------------------------------------------------------Opening file------------------------------
     char filepath[100];
-    stringConcat("../save/", filename,filepath);
+    stringConcat("../save/",filename,filepath);
     FILE *outputfile = fopen(filepath,"w");
     
     printf("\n");
@@ -46,86 +83,102 @@ void savefile(char *filename, QueueLagu  *UrutanLagu, ListPlaylist *Playlist, Hi
         fprintf(outputfile, "%c", currentChar);
     }
     fprintf(outputfile,"\n");
-    //----------------------------------------------------Queue Lagu--------------------------------
+   
+  //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
+if (!isQueueEmpty(*UrutanLagu)){
+    char currsong[50];
+    char currPen[50];
+    char currAlb[50];
 
-    fprintf(outputfile, "%s;%s;%s\n", UrutanLagu->Isi[UrutanLagu->idxHead].lagu_playlist, UrutanLagu->Isi[UrutanLagu->idxHead].album_playlist, UrutanLagu->Isi[UrutanLagu->idxHead].Penyanyi_playlist);
-
-  
-    fprintf(outputfile, "%d\n", UrutanLagu->idxTail - UrutanLagu->idxHead);
-
-    // Tulis record-record lagu dalam queue
-    for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
-        fprintf(outputfile, "%s;%s;%s\n", UrutanLagu->Isi[i].lagu_playlist, UrutanLagu->Isi[i].album_playlist, UrutanLagu->Isi[i].Penyanyi_playlist);
-    }
-
-
-    //---------------------------------------------------- Stack Riwayat lagu-----------------------------
-
-    fprintf(outputfile, "%d\n", RiwayatLagu->count + 1);
-
-  
-    for (int i = 0; i < RiwayatLagu->count; i++) {
-        fprintf(outputfile, "%s;%s;%s\n", RiwayatLagu->hist_lagu[i].lagu_playlist, RiwayatLagu->hist_lagu[i].album_playlist, RiwayatLagu->hist_lagu[i].Penyanyi_playlist);
-    }
- 
-    //------------------------------------------------ Playlist Lagu-----------------------------------------
-    fprintf(outputfile, "%d\n", Playlist->playlistSize);
-
-    // Tulis record-record playlist
-    for (size_t i = 0; i < Playlist->playlistSize; i++) {
-        fprintf(outputfile, "%d %s\n", Playlist->playlist[i].isi, Playlist->playlist[i].playlist_nama);
-        
-        // Tulis lagu-lagu di dalam playlist
-        for (int j = 0; j < Playlist->playlist[i].isi; j++) {
-            fprintf(outputfile, "%s;%s;%s\n", Playlist->playlist[i].playlist_user[j].lagu_playlist, 
-                    Playlist->playlist[i].playlist_user[j].album_playlist, 
-                    Playlist->playlist[i].playlist_user[j].Penyanyi_playlist);
-        }
-    }
-
-    fclose(outputfile);
-    fclose(inputFile);
+    strcpy(currsong, HEAD(*UrutanLagu).TabWord);
+    fprintf(outputfile, "%s;", currsong);
+    carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+    fprintf(outputfile, "%s;", currPen);
+    fprintf(outputfile, "%s\n", currAlb);
 }
 
+
+ 
+  //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
+if (!isQueueEmpty(*UrutanLagu)){
+    for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
+        char currsong[50]; 
+        char currPen[50];
+        char currAlb[50];
+
+        strcpy(currsong, UrutanLagu->buffer[i].TabWord);
+        fprintf(outputfile, "%s;", currsong);
+        carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+        fprintf(outputfile, "%s;", currPen);
+        fprintf(outputfile, "%s\n", currAlb);
+        }
+    }
+//---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
+     if (!IsEmptyStack(*RiwayatLagu))
+    {
+        for (int i = 0; i <= RiwayatLagu->TOP; i++)
+        {
+            char currsong[50];
+            char currPen[50];
+            char currAlb[50];
+
+            strcpy(currsong, RiwayatLagu->T[i]);
+            fprintf(outputfile, "%s;", currsong);
+            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+            fprintf(outputfile, "%s;", currPen);
+            fprintf(outputfile, "%s\n", currAlb);
+        }
+    }
+  
+//---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
+
+    if(!IsEmpty(*Playlist)){
+        int playlistCount = LengthArrayDin(*Playlist);
+        fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
+
+        for (int i = 0; i < playlistCount; i++)
+        {
+            fprintf(outputfile, "%d %s \n", LengthArrayDin(Playlist[i]), Playlist[i]);
+
+            for (int j = 1; j <= LengthArrayDin(Playlist[i]); j++)
+            {
+                char currsong[50];
+                char currPen[50];
+                char currAlb[50];
+
+                strcpy(currsong, Playlist[i].A[j].TabWord);
+                fprintf(outputfile, "%s;", currsong);
+                carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+                fprintf(outputfile, "%s;", currPen);
+                fprintf(outputfile, "%s\n", currAlb);
+            }
+        }
+    }
+}
+void CreateQueue(Queue *q){
+/* I.S. sembarang */
+/* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
+/* - Index head bernilai IDX_UNDEF */
+/* - Index tail bernilai IDX_UNDEF */
+/* Proses : Melakukan alokasi, membuat sebuah q kosong */
+    IDX_HEAD(*q) = IDX_UNDEF;
+    IDX_TAIL(*q) = IDX_UNDEF;
+}
 int main() {
-    // Inisialisasi QueueLagu
-    QueueLagu UrutanLagu;
-    UrutanLagu.idxHead = 0;
-    UrutanLagu.idxTail = 0;
+    // Create and initialize your data structures
+    StaticList penyanyi;  // Modify accordingly
+    Map penyanyiAlbums;   // Modify accordingly
+    maps albumsong;       // Modify accordingly
+    Queue UrutanLagu;   
+    CreateQueue(&UrutanLagu);
+   // Modify accordingly
+    ArrayDin Playlist;     // Modify accordingly
+    Stack RiwayatLagu;     // Modify accordingly
+    LinierList LaguPlaylist; // Modify accordingly
 
-    // Tambahkan beberapa lagu ke dalam queue
-    Isi_Que lagu1 = {"Lagu1", "Album1", "Penyanyi1"};
-    Isi_Que lagu2 = {"Lagu2", "Album2", "Penyanyi2"};
-
-    // Inisialisasi ListPlaylist
-    ListPlaylist Playlist;
-    Playlist.playlist = malloc(MaxEl * sizeof(NamaPlaylist));
-    Playlist.playlistSize = 0;
-
-    // Tambahkan beberapa lagu ke dalam playlist
-    NamaPlaylist playlist1;
-    playlist1.isi = 2;
-    
-
-    Playlist.playlist[Playlist.playlistSize++] = playlist1;
-
-    // Inisialisasi HistoriLagu
-    HistoriLagu RiwayatLagu;
-    RiwayatLagu.idxTop = -1;
-    RiwayatLagu.count = 0;
-
-    // Tambahkan beberapa lagu ke dalam histori
-    Isi_Que histori1 = {"Histori1", "Album1", "Penyanyi1"};
-    Isi_Que histori2 = {"Histori2", "Album2", "Penyanyi2"};
-
-    pushHistory(&RiwayatLagu, histori1);
-    pushHistory(&RiwayatLagu, histori2);
-
-    // Memanggil fungsi savefile untuk menyimpan data ke dalam file
-    savefile("output.txt", &UrutanLagu, &Playlist, &RiwayatLagu);
-
-    // Dealokasi memori
-    free(Playlist.playlist);
+    // Call the save function with sample data
+    save("outpu2t.txt", &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
 
     return 0;
 }
+  
