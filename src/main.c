@@ -1,10 +1,11 @@
 #include "tambahan.h"
 #include "boolean.h"
-#include "start.h"
-#include "help.h"
-#include "load.h"
-#include "quit.h"
-#include "list.h"
+#include "Spesifikasi/start.h"
+#include "Spesifikasi/help.h"
+#include "Spesifikasi/load.h"
+#include "Spesifikasi/quit.h"
+#include "Spesifikasi/save.h"
+#include "Spesifikasi/list.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -74,6 +75,8 @@ int main()
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
         printf(">>> ");
         StartCommand();
+        char *inputfile;
+        inputfile = (char *)malloc(30 * sizeof(char));
         if (IsEmptymap(penyanyiAlbums))
         {
             if (IsCommandEqual(currentCommand, "START"))
@@ -82,8 +85,6 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "LOAD"))
             {
-                char *inputfile;
-                inputfile = (char *)malloc(30 * sizeof(char));
                 ADVInput();
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "LOAD") == false)

@@ -2,7 +2,6 @@
 #ifndef __SONG_H_
 #define __SONG_H_
 
-#include 
 #include "queue.h"  
 
 void SongNext(QueueSong * queueS, RiwayatLagu * riwayat, CurrentSong * CurrentS)
