@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/stack.h"
+#include "../ADT/stack.h"
 
 int main() {
     Stack S;

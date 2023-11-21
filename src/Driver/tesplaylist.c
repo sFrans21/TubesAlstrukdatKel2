@@ -1,4 +1,4 @@
-#include "../playlist.h"
+#include "../Spesifikasi/playlist.h"
 
 int main(){
     DynamicList playlist;

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/set.h"
+#include "../ADT/set.h"
 
 int main() {
     Set set1, set2, unionSet, intersectionSet, symmetricDiffSet, subtractSet;

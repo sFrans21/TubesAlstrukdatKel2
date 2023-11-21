@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "ADT/listStatik.h"
-#include "ADT/mesinkata.h"
+#include "../ADT/listStatik.h"
+#include "../ADT/mesinkata.h"
 
 int main() {
     StaticList staticList;

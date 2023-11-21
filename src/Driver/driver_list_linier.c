@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ADT/list_linier.h"
+#include "../ADT/list_linier.h"
 
 int main() {
     LinierList list;
