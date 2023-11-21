@@ -33,19 +33,19 @@ int main()
     // char *command;
     // command = (char *) malloc (50 * sizeof(char));
 
-    printf("    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\n");
-    printf("    W   W  E      L     C     O   O MM MM  E      !\n");
-    printf("    W W W  EEEE   L     C     O   O M M M  EEEE   !\n");
-    printf("    W W W  E      L     C     O   O M   M  E      \n");
-    printf("     W W   EEEEE  LLLL   CCCC  OOO  M   M  EEEEE  !\n");
+    printf("\033[0;32m    W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE  !\033[0m\n");
+    printf("\033[0;32m    W   W  E      L     C     O   O MM MM  E      !\033[0m\n");
+    printf("\033[0;32m    W W W  EEEE   L     C     O   O M M M  EEEE   !\033[0m\n");
+    printf("\033[0;32m    W W W  E      L     C     O   O M   M  E      \033[0m\n");
+    printf("\033[0;32m     W W   EEEEE  LLLL   CCCC  OOO  M   M  EEEEE  !\033[0m\n");
     printf("\n");
-    printf("                                  PERINGATAN!!!\n");
-    printf("======================================================================================\n");
-    printf("PROGRAM AKAN ERROR ATAU BERHENTI KETIKA MENJALANKAN COMMAND YANG MEMILIKI KARAKTER '.'\n");
-    printf("======================================================================================\n\n");
-    printf("Selamat datang di WayangWave\n\n");
-    printf("Jalankan command START atau LOAD <nama file> untuk membuka file.\n");
-    printf("Jalankan command QUIT untuk keluar dari program.");
+    printf("\033[1;31m                                  PERINGATAN!!!\033[0m\n");
+    printf("\033[0;31m======================================================================================\033[0m\n");
+    printf("\033[0;31mPROGRAM AKAN ERROR ATAU BERHENTI KETIKA MENJALANKAN COMMAND YANG MEMILIKI KARAKTER '.'\033[0m\n");
+    printf("\033[0;31m======================================================================================\033[0m\n\n\n");
+    printf("\033[1;32m                    Selamat datang di WayangWave!\033[0m\n\n");
+    printf("\033[0;32mJalankan command START atau LOAD <nama file> untuk membuka file.\033[0m\n");
+    printf("\033[0;32mJalankan command QUIT untuk keluar dari program.\033[0m");
 
     while (endProgram == false)
     {
