@@ -11,7 +11,7 @@ void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *Uru
     else{
         char *input;
         input = (char *) malloc (7 * sizeof(char));
-        printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N): \n");
+        printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N): ");
         StartCommand();
         if (currentCommand.TabWord[0] == 'N'){
             quit(penyanyi, penyanyiAlbums, albumsong, UrutanLagu, Playlist, RiwayatLagu, true);

@@ -63,7 +63,7 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong)
                 }
                 judulLagu.Length = currentWord.Length;
                 InsertSet(&songs, judulLagu);
-                // printf("%s\n", judulLagu.TabWord);
+                printf("%s\n", judulLagu.TabWord);
                 for (int b = 0; b < judulLagu.Length; b++)
                 {
                     judulLagu.TabWord[b] = '\0';

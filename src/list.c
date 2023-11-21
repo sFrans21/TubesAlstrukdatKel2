@@ -30,63 +30,98 @@ void PrintPenyanyi(StaticList M)
     }
 }
 
-void PrintAlbum(Map M, char *C) // ini gunain map penyanyi-album
+void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
 {
     // ngecek kata c ada di key map/tidak
-    char *D;
-    D = (char *)malloc(30 * sizeof(char));
     boolean found;
     int when;
-    // Word asem;
-    // char asem[20];
+
+    char *D;
+    D = (char *)malloc(30 * sizeof(char));
+
+    char *E;
+    E = (char *)malloc(30 * sizeof(char));
+
     for (int d = 0; d < M.Count; d++)
     {
-        // asem = M.Elements[d].Key;
-        wordToString(M.Elements[d].Key, D); // ubah ke char
-        if (compareString(upper(D), C) == true)
+        wordToString(C, D); // ubah ke char
+        wordToString(M.Elements[d].Key, E);
+        if (compareString(D, E) == true)
         {
             found = true;
             when = d;
         }
     }
-    if (found == true)
+    for (int e = 0; e < M.Elements[when].Value.Count; e++)
     {
-        printf("Daftar Album oleh %s :\n", C);
-        for (int e = 0; e < M.Elements[when].Value.Count; e++)
-        {
-            printf("%d. ", (e + 1));
-            printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
-        }
+        printf("%d. ", (e + 1));
+        printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
     }
 }
 
-void PrintLagu(Map M, Word c) // ini gunain map album-lagu
+void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
 {
-    int found = 0;
-    for (int d = 0; d < M.Count; d++)
+    // ngecek kata c ada di key map/tidak
+    boolean found;
+    int when;
+
+    char *D;
+    D = (char *)malloc(30 * sizeof(char));
+
+    char *E;
+    E = (char *)malloc(30 * sizeof(char));
+
+    for (int d = 0; d < M.Elements->Count; d++)
     {
-        for (int i = 0; i < c.Length; i++)
+        wordToString(C, D); // ubah ke char
+        wordToString(M.Elements[i].Elements[d].Key, E);
+        if (compareString(D, E) == true)
         {
-            if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
-            {
-                break;
-                found = d;
-            }
+            found = true;
+            when = d;
         }
     }
-    printf("Daftar Lagu di album %s :\n", M.Elements[found].Key.TabWord);
-    for (int i = 0; i < M.Elements[found].Value.Count; i++)
+    for (int e = 0; e < M.Elements[i].Elements[when].Value.Count; e++)
     {
-        printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i].TabWord);
+        printf("%d. ", (e + 1));
+        printf("%s\n", M.Elements[i].Elements[when].Value.Elements[e].TabWord);
     }
 }
+
+// {
+//     int found = 0;
+//     for (int d = 0; d < M.Count; d++)
+//     {
+//         for (int i = 0; i < c.Length; i++)
+//         {
+//             if (c.TabWord[i] != M.Elements[d].Key.TabWord[i])
+//             {
+//                 break;
+//                 found = d;
+//             }
+//         }
+//     }
+//     printf("Daftar Lagu di album %s :\n", M.Elements[found].Key.TabWord);
+//     for (int i = 0; i < M.Elements[found].Value.Count; i++)
+//     {
+//         printf("%d. %s\n", (i + 1), M.Elements[found].Value.Elements[i].TabWord);
+//     }
+// }
 
 void PrintPlaylist(DynamicList M)
 {
-    printf("Daftar Playlist yang kamu miliki:\n");
-    for (int i = 0; i < M.Neff; i++)
+    if (IsListEmptyDynamic(M) == false)
     {
-        printf("%d. %s", (i + 1), M.A[i].TabWord);
-        // printf("%d %s", ())
+        printf("Daftar Playlist yang kamu miliki:\n");
+        for (int i = 0; i < M.Neff; i++)
+        {
+            printf("%d. ", (i + 1));
+            printf("%s\n", M.A[i].TabWord);
+        }
+    }
+    else
+    {
+        printf("Daftar Playlist yang kamu miliki:\n");
+        printf("Kamu tidak memiliki playlist.");
     }
 }

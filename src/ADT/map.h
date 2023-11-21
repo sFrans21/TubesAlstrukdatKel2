@@ -3,7 +3,6 @@
 
 #include "boolean.h"
 #include "mesinkata.h"
-#include "string.h"
 #include "set.h"
 
 /* MODUL Map
