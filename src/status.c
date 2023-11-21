@@ -3,6 +3,7 @@
 #include "status.h"
 
 
+
 void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA) {
     // Pencarian lagu dalam struktur data albumsong
     int found = 0;  // Flag untuk menandakan apakah lagu ditemukan
@@ -27,7 +28,36 @@ void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *cu
     }
 }
 
-void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, ArrayDin *Playlist)
+char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums) {
+    // Cek apakah semua lagu dalam queue berada dalam suatu playlist
+    for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
+        char currsong[50];
+        char currPen[50];
+        char currAlb[50];
+
+        strcpy(currsong, UrutanLagu->buffer[i].TabWord);
+        carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+
+        boolean foundInPlaylist = false;
+
+        // Iterasi melalui playlist untuk mencari lagu
+        for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
+            if (strcmp(currsong, Playlist[0].A[j].TabWord) == 0) {
+                foundInPlaylist = true;
+                break;
+            }
+        }
+
+        // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
+        if (!foundInPlaylist) {
+            return NULL;
+        }
+    }
+
+    // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
+    return Playlist[0].A[0].TabWord;
+}
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist)
 {
     printf(">> STATUS;\n");
 
@@ -69,5 +99,11 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
             a++;
             }
         }
+    }
+     char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
+
+    // Jika playlistName bukan NULL, maka tampilkan nama playlist
+    if (playlistName != NULL) {
+        printf("\nCurrent Playlist: %s\n", playlistName);
     }
 }
