@@ -4,7 +4,7 @@
 #include <time.h>
 
 #include "tambahan.h"
-#include "../ADT/mesinkata.h"
+#include "ADT/mesinkata.h"
 
 boolean isEqual(Word word1, Word word2)
 {

@@ -1,6 +1,8 @@
 #ifndef __QUEUE_H_
 #define __QUEUE_H_
 
+
+#include "../ADT/mesinkarakter.h"
 #include "../ADT/mesinkata.h"
 #include "../ADT/listStatik.h"
 #include "../ADT/map.h"
