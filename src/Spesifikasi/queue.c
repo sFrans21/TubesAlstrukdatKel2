@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include "queue.h"
+#include "../queue.h"
 #include "../tambahan.h"
 #include "../start.h"
 

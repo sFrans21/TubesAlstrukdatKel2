@@ -7,7 +7,8 @@
     "algorithm": "c",
     "list_dinamis.h": "c",
     "list_linier.h": "c",
-    "queue.h": "c"
+    "queue.h": "c",
+    "load.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

@@ -4,11 +4,11 @@
 #ifndef __PLAYLIST_H__
 #define __PLAYLIST_H__
 
-#include "../ADT/list_dinamis.h"
-#include "../ADT/list_linier.h"
-#include "../ADT/mesinkata.h"
-#include "../ADT/listStatik.h"
-#include "../ADT/map.h"
+#include "../../ADT/list_dinamis.h"
+#include "../../ADT/list_linier.h"
+#include "../../ADT/mesinkata.h"
+#include "../../ADT/listStatik.h"
+#include "../../ADT/map.h"
 
 void CreatePlaylist (DynamicList *playlist);
 
