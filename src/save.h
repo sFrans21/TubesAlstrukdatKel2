@@ -5,20 +5,20 @@
 #include "ADT/stack.h"  // Mungkin memerlukan tipe data seperti Set untuk menyimpan lagu
 #include "ADT/arrayDin.h"   // Memerlukan Map untuk menyimpan album dan lagu
 #include "ADT/queue.h"  // Memerlukan List statis untuk daftar penyanyi
-#include <stdio.h>
-#include <stdlib.h>
+
 #include "save.h"
 #include "tambahan.h"
 #include "queue.h"
 #include "song.h"
 #include "list.h"
-#include "ADT/struc.h"
+#include "ADT/list_linier.h"
+#include "ADT/Queue.h"
 
 
 
 
 
-
-void savefile(char *filename, QueueLagu  *UrutanLagu, ListPlaylist *Playlist, HistoriLagu *RiwayatLagu);
+void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, ArrayDin *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist);
 
 #endif
+
