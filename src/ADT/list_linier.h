@@ -125,7 +125,7 @@ int NbElmt (LinierList L);
 
 /****************** PROSES TERHADAP LIST ******************/
 
-void InversList (LinierList *L);
+void InversLinierList (LinierList *L);
 /* I.S. sembarang. */
 /* F.S. elemen list dibalik : */
 /* Elemen terakhir menjadi elemen pertama, dan seterusnya. */

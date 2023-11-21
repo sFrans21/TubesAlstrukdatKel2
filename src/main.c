@@ -52,22 +52,17 @@ int main()
         printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
         printf("ENTER COMMAND: ");
         StartCommand();
-        // inputString(0, command);
-        // system("cls||clear");
         if (IsEmptymap(penyanyiAlbums))
         {
             if (IsCommandEqual(currentCommand, "START"))
             {
                 start(&penyanyi, &penyanyiAlbums, &albumsong);
-                // inputString(0, command);
             }
             else if (IsCommandEqual(currentCommand, "LOAD"))
             {
                 char *inputfile;
                 inputfile = (char *)malloc(30 * sizeof(char));
                 ADVInput();
-                // printf(currentWord.TabWord);
-                // if (currentChar == '\n'){
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "LOAD") == false)
                 {
@@ -86,7 +81,6 @@ int main()
             else if (IsCommandEqual(currentCommand, "HELP"))
             {
                 showhelp1();
-                // inputString(0, command);
             }
         }
         else
@@ -94,7 +88,6 @@ int main()
             if (IsCommandEqual(currentCommand, "HELP"))
             {
                 showhelp2();
-                // inputString(0, command);
             }
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
