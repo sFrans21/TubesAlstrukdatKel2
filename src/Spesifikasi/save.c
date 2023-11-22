@@ -91,7 +91,7 @@ if (!isQueueEmpty(*UrutanLagu)){
     carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
     fprintf(outputfile, "%s;", currPen);
     fprintf(outputfile, "%s:", currAlb);
-     fprintf(outputfile, "%s\n", currsong);
+    fprintf(outputfile, "%s\n", currsong);
 }
 
 

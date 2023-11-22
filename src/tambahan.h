@@ -22,4 +22,5 @@ void inputString(int type, char* value);
 
 char* upper(char *string);
 
+int CharToInt(const char *str);
 #endif
