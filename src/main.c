@@ -4,7 +4,7 @@
 #include "Spesifikasi/help.h"
 #include "Spesifikasi/load.h"
 #include "Spesifikasi/quit.h"
-#include "Spesifikasi/save.h"
+#include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -123,7 +123,7 @@ int main()
             }
              else if (IsCommandEqual(currentCommand, "SAVE"))
             {
-                save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+                //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
             }  
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
