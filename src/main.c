@@ -110,9 +110,9 @@ int main()
             {
                 displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
             }
-            //else if (IsCommandEqual(currentCommand, "SAVE"))
+            // else if (IsCommandEqual(currentCommand, "SAVE"))
             //{
-                // save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+            //  save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
             //}
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
@@ -245,21 +245,12 @@ int main()
                                     printf("\n\nMasukkan ID Lagu yang dipilih : ");
                                     // Word nums;
                                     // int manynums = 0;
-                                    StartWordInput();
-                                    int val = WordToInt(currentWord);
+                                    StartCommand();
+                                    int val = WordToInt(currentCommand);
 
                                     printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[val - 1], e);
-                                    // while (!EndWord)
-                                    // {
-                                    //     manynums++;
-                                    //     ADVWord;
-                                    // }
 
-                                    // if (IsCommandEqual(currentCommand, "1"))
-                                    // {
-                                    //     M.Elements[i].Elements[when].Value.Elements[e].TabWord
-                                    //                                     }
-                                    // else if(IsCommandEqual(currentCommand, "1")
+                                    // hapusin
                                 }
                             }
                         }
