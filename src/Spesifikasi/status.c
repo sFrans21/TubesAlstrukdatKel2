@@ -34,7 +34,15 @@ char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *album
         char currPen[50];
         char currAlb[50];
 
-        char currsong[50] = UrutanLagu->buffer[i].TabWord;
+        char currsong[50];
+        int k = 0;
+
+        while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0') {
+            currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+            k++;
+        }
+        currsong[k] = '\0';
+
         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
 
         boolean foundInPlaylist = false;
@@ -69,7 +77,14 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     }
     else {
         printf("// Ada lagu yang sedang diputar\n");
-            char currsong[50] = HEAD(*UrutanLagu).TabWord;
+            char currsong[50];
+            int k = 0;
+
+        while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0') {
+            currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+            k++;
+        }
+            currsong[k] = '\0';
             char currPen[50];
             char currAlb[50];
 
@@ -86,7 +101,14 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
         else{
             int a = 1;
             for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
-            char currsong[50] = UrutanLagu->buffer[i].TabWord;
+            char currsong[50];
+            int k = 0;
+
+            while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0') {
+                currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+                k++;
+            }
+            currsong[k] = '\0';
             char currPen[50];
             char currAlb[50];
 
