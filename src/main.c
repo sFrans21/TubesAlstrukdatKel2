@@ -143,7 +143,7 @@ int main()
                     StartCommand();
                     if (currentCommand.TabWord[0] == 'Y')
                     {
-                        printf("Pilih penyanyi untuk melihat album mereka: ");
+                        printf("\n\nPilih penyanyi untuk melihat album mereka: ");
                         StartWordInput();
                         for (int i = 0; i < penyanyi.itemCount; i++)
                         {
@@ -162,7 +162,7 @@ int main()
                                 StartCommand();
                                 if (currentCommand.TabWord[0] == 'Y')
                                 {
-                                    printf("Pilih album untuk melihat lagu yang ada di album : ");
+                                    printf("\n\nPilih album untuk melihat lagu yang ada di album : ");
                                     StartWordInput();
                                     for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
                                     {
@@ -223,7 +223,7 @@ int main()
                 if (compareString(upper(fed), "SONG") == true)
                 {
                     PrintPenyanyi(penyanyi);
-                    printf("Masukkan Nama Penyanyi yang dipilih : ");
+                    printf("\n\nMasukkan Nama Penyanyi yang dipilih : ");
                     StartWordInput();
                     for (int i = 0; i < penyanyi.itemCount; i++)
                     {
@@ -238,7 +238,7 @@ int main()
                             printf("Daftar Album oleh %s :\n", e);
                             PrintAlbum(penyanyiAlbums, currentWord);
 
-                            printf("Masukkan Nama Album yang dipilih : ");
+                            printf("\n\nMasukkan Nama Album yang dipilih : ");
                             StartWordInput();
                             for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
                             {
@@ -253,7 +253,7 @@ int main()
                                     PrintLagu(albumsong, currentWord, ketemu);
                                     printf("\n");
 
-                                    printf("Masukkan ID Lagu yang dipilih : ");
+                                    printf("\n\nMasukkan ID Lagu yang dipilih : ");
                                     // Word nums;
                                     // int manynums = 0;
                                     StartWordInput();
