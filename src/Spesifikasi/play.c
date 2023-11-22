@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "list.h"
 #include "play.h"
+#include "queue.h"
 
 // // Definisi struktur Word dan Map
 

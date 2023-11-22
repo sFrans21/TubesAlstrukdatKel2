@@ -20,3 +20,20 @@ void PrintPlaylist(DynamicList M);
 void PutarLagu();
 
 #endif
+
+typedef struct
+{
+      Word JudulLagu;
+      Word NamaAlbum;
+      Word NamaPenyanyi;
+      Word NamaPlaylist;
+      int status;
+      int statusPL;
+} CurrentSong;
+
+typedef struct
+{
+      Word NamaUser;
+      int idUser;
+      int status;
+} CurrentUser;
