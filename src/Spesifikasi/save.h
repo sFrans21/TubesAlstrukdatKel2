@@ -7,7 +7,6 @@
 #include "../ADT/Queue.h"  // Memerlukan List statis untuk daftar penyanyi
 #include "../tambahan.h"
 #include "queue.h"
-#include "song.h"
 #include "list.h"
 #include "../ADT/list_linier.h"
 #include "../ADT/Queue.h"

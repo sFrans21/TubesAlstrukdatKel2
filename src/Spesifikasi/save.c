@@ -84,7 +84,15 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
    
   //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
 if (!isQueueEmpty(*UrutanLagu)){
-    char currsong[50] = HEAD(*UrutanLagu).TabWord;
+    char currsong[50];
+    int k = 0;
+
+    while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
+    {
+    currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+    k++;
+    }
+    currsong[k] = '\0';
     char currPen[50];
     char currAlb[50];
 
@@ -99,7 +107,15 @@ if (!isQueueEmpty(*UrutanLagu)){
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
 if (!isQueueEmpty(*UrutanLagu)){
     for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
-        char currsong[50] = UrutanLagu->buffer[i].TabWord; 
+        char currsong[50];
+        int k = 0;
+
+        while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+        {
+        currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+        k++;
+        }
+        currsong[k] = '\0';
         char currPen[50];
         char currAlb[50];
 
@@ -114,7 +130,15 @@ if (!isQueueEmpty(*UrutanLagu)){
     {
         for (int i = 0; i <= RiwayatLagu->TOP; i++)
         {
-            char currsong[50] = RiwayatLagu->T[i].TabWord;
+            char currsong[50];
+            int k = 0;
+
+            while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+            {
+            currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+            k++;
+            }
+            currsong[k] = '\0';
             char currPen[50];
             char currAlb[50];
 
@@ -137,7 +161,15 @@ if (!isQueueEmpty(*UrutanLagu)){
 
             for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
             {
-                char currsong[50] = Playlist[i].A[j].TabWord;
+                char currsong[50];
+                int k = 0;
+
+                while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+               {
+                currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+                k++;
+               }
+                currsong[k] = '\0';
                 char currPen[50];
                 char currAlb[50];
     
