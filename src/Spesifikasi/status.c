@@ -77,15 +77,13 @@ char *checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *album
 }
 void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist)
 {
-    printf(">> STATUS;\n");
-
     // Cek apakah ada lagu yang sedang diputar
     if (isQueueEmpty(*UrutanLagu))
     {
-        printf("Now Playing : \n No songs have been played yet. Please search for a song to begin playback.\n");
+        printf("Now Playing: \nNo songs have been played yet. Please search for a song to begin playback.\n");
         printf("\nQueue:\n");
         printf("Your queue is empty.\n");
-        }
+    }
     else
     {
         printf("// Ada lagu yang sedang diputar\n");
@@ -133,12 +131,7 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Q
                 a++;
             }
         }
-    }
-    char *playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
-
-    // Jika playlistName bukan NULL, maka tampilkan nama playlist
-    if (playlistName != NULL)
-    {
+        char *playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
         printf("\nCurrent Playlist: %s\n", playlistName);
     }
 }
