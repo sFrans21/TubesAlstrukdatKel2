@@ -35,17 +35,6 @@ int main()
     // command = (char *) malloc (50 * sizeof(char));
 
     printf("\n");
-
-    printf("\033[1;33m                                 PERINGATAN!!!\033[0m\n");
-    printf("\033[1;32m======================================================================================\033[0m\n");
-    printf("\033[1;33m          MASUKKAN COMMAND MENGGUNAKAN HURUF KAPITAL DAN DIAKHIRI DENGAN ';'\033[0m\n");
-    printf("\033[1;32m======================================================================================\033[0m\n\n\n");
-    printf("\033[1;32m                    Selamat datang di WayangWave!\033[0m\n\n");
-    printf("\033[0;32mJalankan command START atau LOAD <filename.txt> untuk membuka file.\033[0m\n");
-    printf("\033[0;32mJalankan command QUIT untuk keluar dari program.\033[0m\n");
-
-    printf("\n");
-    printf("\n");
     printf("\n");
     printf("\033[1;36m         #######################################################################\033[0m\n");
     printf("\033[1;35m         [|                                                                   |]\033[0m\n");
@@ -64,7 +53,7 @@ int main()
     printf("\n");
     printf("\033[1;34m                                 PERINGATAN!!!\033[0m\n");
     printf("\033[1;36m======================================================================================\033[0m\n");
-    printf("\033[1;34mPROGRAM AKAN ERROR ATAU BERHENTI KETIKA MENJALANKAN COMMAND YANG MEMILIKI KARAKTER '.'\033[0m\n");
+    printf("\033[1;34m        MASUKKAN COMMAND DENGAN HURUF KAPITAL DAN DIAKHIRI DENGAN KARAKTER';'         \033[0m\n");
     printf("\033[1;36m======================================================================================\033[0m\n\n\n");
     printf("\033[1;35m                   Selamat datang di WayangWave!\033[0m\n\n");
     printf("\033[0;36mJalankan command START atau LOAD <nama file> untuk membuka file.\033[0m\n");
@@ -121,10 +110,10 @@ int main()
             {
                 displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
             }
-            else if (IsCommandEqual(currentCommand, "SAVE"))
-            {
+            //else if (IsCommandEqual(currentCommand, "SAVE"))
+            //{
                 // save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
-            }
+            //}
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);

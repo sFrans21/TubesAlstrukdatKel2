@@ -66,12 +66,10 @@ char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *album
 }
 void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist)
 {
-    printf(">> STATUS;\n");
-
     // Cek apakah ada lagu yang sedang diputar
     if (isQueueEmpty(*UrutanLagu))
     {
-        printf("Now Playing : \n No songs have been played yet. Please search for a song to begin playback.\n");
+        printf("Now Playing:\nNo songs have been played yet. Please search for a song to begin playback.\n");
         printf("\nQueue:\n");
         printf("Your queue is empty.\n");
     }
