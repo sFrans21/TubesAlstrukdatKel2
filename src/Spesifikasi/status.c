@@ -13,7 +13,7 @@ void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *cu
         for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++) {
             for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++) {
                 // Menggunakan strcmp untuk membandingkan string
-                if (strcmp(songname, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) == 0) {
+                if (songname != albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) {
                     found = 1;
                     break;
                 }
@@ -31,18 +31,17 @@ void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *cu
 char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums) {
     // Cek apakah semua lagu dalam queue berada dalam suatu playlist
     for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
-        char currsong[50];
         char currPen[50];
         char currAlb[50];
 
-        strcpy(currsong, UrutanLagu->buffer[i].TabWord);
+        char currsong[50] = UrutanLagu->buffer[i].TabWord;
         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
 
         boolean foundInPlaylist = false;
 
         // Iterasi melalui playlist untuk mencari lagu
         for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
-            if (strcmp(currsong, Playlist[0].A[j].TabWord) == 0) {
+            if (currsong != Playlist[0].A[j].TabWord) {
                 foundInPlaylist = true;
                 break;
             }
@@ -70,11 +69,10 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     }
     else {
         printf("// Ada lagu yang sedang diputar\n");
-            char currsong[50];
+            char currsong[50] = HEAD(*UrutanLagu).TabWord;
             char currPen[50];
             char currAlb[50];
 
-            strcpy(currsong, HEAD(*UrutanLagu).TabWord);
             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             printf("Now Playing:\n");
             printf("%s - %s - %s\n", HEAD(*UrutanLagu).TabWord, currAlb, currPen);
@@ -88,11 +86,10 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
         else{
             int a = 1;
             for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
-            char currsong[50]; 
+            char currsong[50] = UrutanLagu->buffer[i].TabWord;
             char currPen[50];
             char currAlb[50];
 
-            strcpy(currsong, UrutanLagu->buffer[i].TabWord);
             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             printf("\nQueue:\n");
             printf("%d. %s - %s - %s\n", a, HEAD(*UrutanLagu).TabWord, currAlb, currPen);
