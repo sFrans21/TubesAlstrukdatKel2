@@ -41,6 +41,38 @@ int WordToInt(Word word)
     return (val);
 }
 
+int CharToInt(const char *str)
+{
+    int result = 0;
+    int sign = 1;
+    int i = 0;
+
+    // Handle negative sign
+    if (str[0] == '-')
+    {
+        sign = -1;
+        i = 1;
+    }
+
+    // Iterate through the string and convert to integer
+    while (str[i] != '\0')
+    {
+        if (str[i] >= '0' && str[i] <= '9')
+        {
+            result = result * 10 + (str[i] - '0');
+        }
+        else
+        {
+            // If the character is not a digit, you may want to handle the error or break the loop
+            printf("Invalid character: %c\n", str[i]);
+            break;
+        }
+        i++;
+    }
+
+    return result * sign;
+}
+
 char *WORDTOSTRING(Word kata)
 {
     char *akusisiKata = NULL;
