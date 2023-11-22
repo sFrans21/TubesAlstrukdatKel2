@@ -257,9 +257,9 @@ int main()
                                     // Word nums;
                                     // int manynums = 0;
                                     StartWordInput();
-                                    WordToInt(currentWord);
+                                    int val = WordToInt(currentWord);
 
-                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[], e);
+                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[val - 1], e);
                                     // while (!EndWord)
                                     // {
                                     //     manynums++;
