@@ -1,24 +1,5 @@
-
-
-typedef struct
-{
-      Word JudulLagu;
-      Word NamaAlbum;
-      Word NamaPenyanyi;
-      Word NamaPlaylist;
-      int status;
-      int statusPL;
-} CurrentSong;
-
-typedef struct
-{
-      Word NamaUser;
-      int idUser;
-      int status;
-} CurrentUser;
-
-#ifndef LIST_H
-#define LIST_H
+#ifndef _PLAY_H
+#define _PLAY_H
 
 #include "../ADT/listStatik.h"
 #include "../ADT/map.h"
@@ -28,14 +9,14 @@ typedef struct
 #include "../boolean.h"
 #include "../tambahan.h"
 
-void PrintPenyanyi(StaticList M);
+void PrintPenyanyii(StaticList M);
 
-void PrintAlbum(StaticList N, Map M, Word C);
+void PrintAlbumm(StaticList N, Map M, Word C);
 
-void PrintLagu(maps M, Word C, int i);
+void PrintLaguu(maps M, Word C, int i);
 
-void PrintPlaylist(DynamicList M);
+void PrintPlaylistt(DynamicList M);
 
-void PutarLagu();
+// void PutarLagu();
 
 #endif

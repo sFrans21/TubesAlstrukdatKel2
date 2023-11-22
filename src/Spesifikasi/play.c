@@ -21,7 +21,7 @@
 // #include "boolean.h"
 // #include "tambahan.h"
 
-void PrintPenyanyi(StaticList M)
+void PrintPenyanyii(StaticList M)
 {
 
       printf("Daftar Penyanyi :\n");
@@ -32,13 +32,12 @@ void PrintPenyanyi(StaticList M)
       }
 }
 
-void PrintAlbum(StaticList N, Map M, Word C) // ini gunain map penyanyi-album
+void PrintAlbumm(StaticList N, Map M, Word C) // ini gunain map penyanyi-album
 {
       // ngecek di indeks berapa penyanyi tsb di daftar penyanyi
       boolean uy = true;
       int idx = 0;
       char *F;
-      boolean found;
       int when;
       F = (char *)malloc(30 * sizeof(char));
       wordToString(C, F);
@@ -70,7 +69,7 @@ void PrintAlbum(StaticList N, Map M, Word C) // ini gunain map penyanyi-album
             wordToString(M.Elements[d].Key, E);
             if (compareString(D, E) == true)
             {
-                  found = true;
+
                   when = d;
             }
       }
@@ -81,10 +80,10 @@ void PrintAlbum(StaticList N, Map M, Word C) // ini gunain map penyanyi-album
       }
 }
 
-void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
+void PrintLaguu(maps M, Word C, int i) // ini gunain maps album-lagu
 {
       // ngecek kata c ada di key map/tidak
-      boolean found;
+
       int when;
 
       char *D;
@@ -99,7 +98,7 @@ void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
             wordToString(M.Elements[i].Elements[d].Key, E);
             if (compareString(D, E) == true)
             {
-                  found = true;
+
                   when = d;
             }
       }
@@ -130,7 +129,7 @@ void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
 //     }
 // }
 
-void PrintPlaylist(DynamicList M)
+void PrintPlaylistt(DynamicList M)
 {
       if (IsListEmptyDynamic(M) == false)
       {
