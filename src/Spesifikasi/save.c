@@ -29,7 +29,7 @@ void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *cu
         for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++) {
             for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++) {
                 // Menggunakan strcmp untuk membandingkan string
-                if (strcmp(songname, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) == 0) {
+                if (songname != albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) {
                     found = 1;
                     break;
                 }
@@ -45,8 +45,8 @@ void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *cu
 
     // Menyalin hasil pencarian ke variabel curP dan curA
     if (found) {
-        strcpy(curP, singeralbum.Elements[idxp].Key.TabWord);
-        strcpy(curA, singeralbum.Elements[idxp].Value.Elements[idxa].TabWord);
+        curP = singeralbum.Elements[idxp].Key.TabWord;
+        curA = singeralbum.Elements[idxp].Value.Elements[idxa].TabWord;
     }
 }
 boolean isQueueEmpty(Queue q){
@@ -84,11 +84,9 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
    
   //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
 if (!isQueueEmpty(*UrutanLagu)){
-    char currsong[50];
+    char currsong[50] = HEAD(*UrutanLagu).TabWord;
     char currPen[50];
     char currAlb[50];
-
-    strcpy(currsong, HEAD(*UrutanLagu).TabWord);
 
     carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
     fprintf(outputfile, "%s;", currPen);
@@ -101,12 +99,10 @@ if (!isQueueEmpty(*UrutanLagu)){
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
 if (!isQueueEmpty(*UrutanLagu)){
     for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
-        char currsong[50]; 
+        char currsong[50] = UrutanLagu->buffer[i].TabWord; 
         char currPen[50];
         char currAlb[50];
 
-        strcpy(currsong, UrutanLagu->buffer[i].TabWord);
-       
         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
         fprintf(outputfile, "%s;", currPen);
         fprintf(outputfile, "%s\n", currAlb);
@@ -118,15 +114,14 @@ if (!isQueueEmpty(*UrutanLagu)){
     {
         for (int i = 0; i <= RiwayatLagu->TOP; i++)
         {
-            char currsong[50];
+            char currsong[50] = RiwayatLagu->T[i].TabWord;
             char currPen[50];
             char currAlb[50];
 
-            strcpy(currsong, RiwayatLagu->T[i].TabWord);
             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             fprintf(outputfile, "%s;", currPen);
             fprintf(outputfile, "%s\n", currAlb);
-             fprintf(outputfile, "%s;", currsong);
+            fprintf(outputfile, "%s;", currsong);
         }
     }
   
@@ -142,11 +137,9 @@ if (!isQueueEmpty(*UrutanLagu)){
 
             for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
             {
-                char currsong[50];
+                char currsong[50] = Playlist[i].A[j].TabWord;
                 char currPen[50];
                 char currAlb[50];
-
-                strcpy(currsong, Playlist[i].A[j].TabWord);
     
                 carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
                 fprintf(outputfile, "%s;", currPen);

@@ -4,7 +4,7 @@
 #include "Spesifikasi/help.h"
 #include "Spesifikasi/load.h"
 #include "Spesifikasi/quit.h"
-#include "Spesifikasi/save.h"
+#include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -96,14 +96,7 @@ int main()
                     printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
             }
-            else if (IsCommandEqual(currentCommand, "SAVE"))
-            {
-                 save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
-            }  
-            else if  (IsCommandEqual(currentCommand, "STATUS"))
-            {
-                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
-            }
+           
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
@@ -124,6 +117,14 @@ int main()
             {
                 showhelp2();
             }
+              else if  (IsCommandEqual(currentCommand, "STATUS"))
+            {
+                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
+            }
+             else if (IsCommandEqual(currentCommand, "SAVE"))
+            {
+                //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+            }  
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
