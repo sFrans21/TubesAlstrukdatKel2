@@ -3,15 +3,12 @@
 #define __SONG_H_
 
 #include "queue.h"  
+#include "ADT/stack.h"
+#include "ADT/mesinkata.h"
 
-void SongNext(QueueSong * queueS, RiwayatLagu * riwayat, CurrentSong * CurrentS)
-{
-    
-}
 
-void SongPrev(QueueSong * queueS, RiwayatLagu * riwayat, CurrentSong * CurrentS)
-{
+void SongNext(Queue * queue, Stack * RiwayatLagu, CurrentSong * currentS);
 
-}
+void SongPrev(Queue * queue, Stack * RiwayatLagu, CurrentSong * currentS);
 
 #endif

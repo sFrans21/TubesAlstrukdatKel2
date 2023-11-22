@@ -14,12 +14,16 @@
 #include "tambahan.h"
 
 
-void CreatePlaylist (DynamicList *playlist);
+void CreatePlaylist (DynamicList *Daftarplaylist);
 
-void PlaylistAddSong(StaticList lp, Map m2,Set S ,DynamicList *daftarplaylist);
+void PlaylistAddSong(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);
 
-void PlaylistAddAlbum(StaticList lp, Map m2,Set S ,DynamicList *daftarplaylist);
+void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);
 
-void PlaylistSwap(DynamicList ListDin, int idx1, int idx2);
+void PlaylistSwap(DynamicList DaftarPlaylist, int idx1, int idx2);
+
+void PlaylistRemove(DynamicList DaftarPlaylist);
+
+void PlaylistDelete(DynamicList DaftarPlaylist);
 #endif
 
