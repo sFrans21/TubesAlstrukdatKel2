@@ -245,18 +245,18 @@ int main()
                                     printf("\n\nMasukkan ID Lagu yang dipilih : ");
                                     // Word nums;
                                     // int manynums = 0;
-                                    StartCommand();
-                                    char *g;
-                                    g = (char *)malloc(30 * sizeof(char));
-                                    wordToString(currentCommand, g);
-                                    int val = CharToInt(g);
+                                    StartWordInput();
+                                    // char *g;
+                                    // g = (char *)malloc(30 * sizeof(char));
+                                    // wordToString(currentCommand, g);
+                                    // int val = CharToInt(g);
 
                                     // kalo atas gabisa, pake ini
                                     // StartWordInput();
-                                    // char *g;
-                                    // g = (char *)malloc(30 * sizeof(char));
-                                    // wordToString(currentWord, g);
-                                    // int val = CharToInt(g);
+                                    char *g;
+                                    g = (char *)malloc(30 * sizeof(char));
+                                    wordToString(currentWord, g);
+                                    int val = CharToInt(g);
 
                                     printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[val - 1], e);
 
