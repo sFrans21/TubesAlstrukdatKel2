@@ -119,7 +119,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 RLagu.TabWord[b] = '\0';
             }
         }
-        //(*RiwayatLagu) = ReverseStack(*RiwayatLagu);
+        (*RiwayatLagu) = ReverseStack(*RiwayatLagu);
 
         //LIST DINAMIS PLAYLIST
         ADVLine();
