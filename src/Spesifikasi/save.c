@@ -100,6 +100,7 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
    
   //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
 //if (!isQueueEmpty(*UrutanLagu)){
+    
 //     char currsong[50];
 //     int k = 0;
 
@@ -121,7 +122,9 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
 
  
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
-// if (!isQueueEmpty(*UrutanLagu)){
+// if (!isQueueEmpty(*UrutanLagu))
+//{
+    fprintf(outputfile,"%d",lengthQueue(*UrutanLagu));
 //     for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
 //         char currsong[50];
 //         int k = 0;
@@ -144,6 +147,7 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
 // //---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
     //  if (!IsEmptyStack(*RiwayatLagu))
     // {
+            fprintf(outputfile,"%d",NbElmtStack(*RiwayatLagu));
     //     for (int i = 0; i <= RiwayatLagu->TOP; i++)
     //     {
     //         char currsong[50];
