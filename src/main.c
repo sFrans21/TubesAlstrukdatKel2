@@ -96,7 +96,7 @@ int main()
                     printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
             }
-           
+
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
@@ -117,14 +117,14 @@ int main()
             {
                 showhelp2();
             }
-              else if  (IsCommandEqual(currentCommand, "STATUS"))
+            else if (IsCommandEqual(currentCommand, "STATUS"))
             {
                 displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
             }
-             else if (IsCommandEqual(currentCommand, "SAVE"))
+            else if (IsCommandEqual(currentCommand, "SAVE"))
             {
-                //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
-            }  
+                // save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+            }
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
@@ -256,7 +256,10 @@ int main()
                                     printf("Masukkan ID Lagu yang dipilih : ");
                                     // Word nums;
                                     // int manynums = 0;
-                                    StartCommand();
+                                    StartWordInput();
+                                    WordToInt(currentWord);
+
+                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[], e);
                                     // while (!EndWord)
                                     // {
                                     //     manynums++;

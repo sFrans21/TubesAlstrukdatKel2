@@ -85,7 +85,6 @@ void PrintLaguu(maps M, Word C, int i) // ini gunain maps album-lagu
       // ngecek kata c ada di key map/tidak
 
       int when;
-
       char *D;
       D = (char *)malloc(30 * sizeof(char));
 
