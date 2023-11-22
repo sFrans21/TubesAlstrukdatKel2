@@ -32,11 +32,31 @@ void PrintPenyanyi(StaticList M)
       }
 }
 
-void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
+void PrintAlbum(StaticList N, Map M, Word C) // ini gunain map penyanyi-album
 {
-      // ngecek kata c ada di key map/tidak
+      // ngecek di indeks berapa penyanyi tsb di daftar penyanyi
+      boolean uy = true;
+      int idx = 0;
+      char *F;
       boolean found;
       int when;
+      F = (char *)malloc(30 * sizeof(char));
+      wordToString(C, F);
+
+      for (int i = 0; i < N.itemCount; i++)
+      {
+            if (F != N.items[i].TabWord)
+            {
+                  uy = false;
+                  idx++;
+            }
+      }
+      if (uy == true)
+      {
+            idx -= 1;
+      }
+
+      // ngecek kata c ada di key map/tidak
 
       char *D;
       D = (char *)malloc(30 * sizeof(char));

@@ -33,7 +33,6 @@ void PrintPenyanyi(StaticList M)
 void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
 {
     // ngecek kata c ada di key map/tidak
-    boolean found;
     int when;
 
     char *D;
@@ -48,7 +47,6 @@ void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
         wordToString(M.Elements[d].Key, E);
         if (compareString(D, E) == true)
         {
-            found = true;
             when = d;
         }
     }
@@ -62,7 +60,7 @@ void PrintAlbum(Map M, Word C) // ini gunain map penyanyi-album
 void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
 {
     // ngecek kata c ada di key map/tidak
-    boolean found;
+
     int when;
 
     char *D;
@@ -77,7 +75,6 @@ void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
         wordToString(M.Elements[i].Elements[d].Key, E);
         if (compareString(D, E) == true)
         {
-            found = true;
             when = d;
         }
     }
