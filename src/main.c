@@ -6,6 +6,7 @@
 #include "Spesifikasi/quit.h"
 #include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
+#include "Spesifikasi/save.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -110,10 +111,19 @@ int main()
             {
                 displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
             }
-            // else if (IsCommandEqual(currentCommand, "SAVE"))
-            //{
-            //  save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
-            //}
+            else if (IsCommandEqual(currentCommand, "SAVE"))
+            {
+                ADVInput();
+                wordToString(currentCommand, inputfile);
+                if (compareString(upper(inputfile), "LOAD") == false)
+                {
+                   save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+                }
+                else
+                {
+                    printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
+                }
+            }
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);

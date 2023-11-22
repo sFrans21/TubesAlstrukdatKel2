@@ -132,6 +132,9 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Q
             }
         }
         char *playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
-        printf("\nCurrent Playlist: %s\n", playlistName);
+        if (playlistName != NULL)
+        {
+            printf("\nCurrent Playlist: %s\n", playlistName);
+        }
     }
 }
