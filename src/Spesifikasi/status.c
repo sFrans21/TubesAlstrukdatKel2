@@ -85,8 +85,7 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Q
         printf("Now Playing : \n No songs have been played yet. Please search for a song to begin playback.\n");
         printf("\nQueue:\n");
         printf("Your queue is empty.\n");
-        return 0;
-    }
+        }
     else
     {
         printf("// Ada lagu yang sedang diputar\n");
