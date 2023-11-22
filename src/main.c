@@ -251,6 +251,13 @@ int main()
                                     wordToString(currentCommand, g);
                                     int val = CharToInt(g);
 
+                                    // kalo atas gabisa, pake ini
+                                    // StartWordInput();
+                                    // char *g;
+                                    // g = (char *)malloc(30 * sizeof(char));
+                                    // wordToString(currentWord, g);
+                                    // int val = CharToInt(g);
+
                                     printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[val - 1], e);
 
                                     // hapusin
