@@ -8,6 +8,9 @@
 #define MAX_ITEMS 100
 #define MaxElSet 100
 #define MAX_ITEMS 100
+#define MarkStatic "-"
+#define InvalidIdx -1
+
 
 typedef struct
 {
@@ -18,5 +21,5 @@ typedef struct
 void initializeList(StaticList *list);
 void setItem(StaticList *list, int index, Word *item); // Menambahkan fungsi setItem
 void displayList(const StaticList *list);
-
+int LengthList(StaticList list);
 #endif

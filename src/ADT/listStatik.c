@@ -21,3 +21,13 @@ void displayList(const StaticList *list)
         printf("%s\n", list->items[i].TabWord);
     }
 }
+
+int LengthList(StaticList list)
+{
+    int count = 0;
+    while ((!CompareWord(list.items[count], StringToWord(MarkStatic))) && (count <= MAX_ITEMS))
+    {
+        count++;
+    }
+    return count;
+}

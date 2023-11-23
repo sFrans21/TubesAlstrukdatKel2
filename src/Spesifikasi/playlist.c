@@ -19,13 +19,22 @@ void CreatePlaylist (Word CPlaylist)
         CreateEmptyLinier.PlaylistLagu.Song;
         InsertLastDynamic (currentWord);
         printf("Playlist ");
-        Display
+        DisplayWord (currentWord);
+        printf(" berhasil dibuat! \n");
+        printf("\n Silahkan masukkan lagu - lagu artis terkini kesayangan Anda!\n");
+    }
+    else{
+        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silahkan coba lagi.\n");
+
     }
 
+}  
 
-}   printf("Playlist &")
-
-void PlaylistAddSong(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);
+void PlaylistAddSong(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong ,DynamicList *DaftarPlaylist);
+{
+    if (!IsListEmptyDynamic);
+    for(int i = 0; i < LengthList)
+}
 
 void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);
 
