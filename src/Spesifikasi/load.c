@@ -4,7 +4,7 @@
 #include "../tambahan.h"
 #include "../ADT/mesinkata.h"
 
-void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist){
+void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong){
     Set albums;
     Set songs;
     CreateEmptySet(&albums);
@@ -15,7 +15,6 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
     char *directory;
     directory = (char *) malloc (50 * sizeof(char));
     stringConcat("../save/", inputfile, directory);
-    Word currentSong;
 
     FILE *open;
     open = fopen(directory, "r");
@@ -88,12 +87,11 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
 
         // BACA CURRENTSONG
         ADVLine();
-        Word currentSong;
         for (int j = 0; j < currentWord.Length; j++) {
-            currentSong.TabWord[j] = currentWord.TabWord[j];
+            (*currentSong).TabWord[j] = currentWord.TabWord[j];
         }
-        currentSong.Length = currentWord.Length;
-        printf("%s\n", currentSong.TabWord);
+        (*currentSong).Length = currentWord.Length;
+        printf("%s\n", (*currentSong).TabWord);
 
         // QUEUE
         ADVLine();
