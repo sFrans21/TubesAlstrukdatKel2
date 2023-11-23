@@ -7,16 +7,14 @@
 //#include "../ADT/Queue.h"  // Memerlukan List statis untuk daftar penyanyi
 #include "../tambahan.h"
 #include "queue.h"
-#include "list.h"
 #include "../ADT/list_linier.h"
 #include "../ADT/Queue.h"
-#include "../ADT/list_dinamis.h"
 #include "../ADT/queue_belv.h"
 #include "../ADT/list_dinamis_belv.h"
 #include "../ADT/list_linier_belv.h"
 #include "../ADT/stack_belv.h"
 
-void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS);
+void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, , LinierList *LaguPlaylist, CurrentSong *CS);
 
 #endif
 

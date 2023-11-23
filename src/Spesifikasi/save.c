@@ -70,7 +70,7 @@
 //     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 // }
 
-void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS){
+void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, Riwayat *History, LinierList *LaguPlaylist, CurrentSong *CS){
 
     //----------------------------------------------------------------Opening file------------------------------
     char *filepath;
@@ -118,6 +118,7 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
 //     fprintf(outputfile, "%s:", currAlb);
 //     fprintf(outputfile, "%s\n", currsong);
 // }
+
 
 
  
