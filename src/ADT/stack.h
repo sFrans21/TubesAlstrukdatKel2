@@ -10,57 +10,61 @@
 
 #define Undef -1
 #define MaxElStack 100
-/* Undef adalah stack dengan elemen kosong . */
-
-typedef Word INFOTYPE;
-typedef int addr;   /* indeks tabel */
 
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
-typedef struct { 
-  INFOTYPE T[MaxElStack]; /* tabel penyimpan elemen */
-  addr TOP;  /* alamat TOP: elemen puncak */
-} Stack;
-/* Definisi stack S kosong : S.TOP = Undef */
-/* Elemen yang dipakai menyimpan nilai Stack T[0]..T[MaxElStack-1] */
-/* Jika S adalah Stack maka akses elemen : */
-   /* S.T[(S.TOP)] untuk mengakses elemen TOP */
-   /* S.TOP adalah alamat elemen TOP */
+typedef struct{
+	Word namaPenyanyi;
+	Word namaAlbum;
+	Word namaLagu;
+} CurrentSong;
+
+typedef struct{
+	CurrentSong detil_history[MaxElStack]; /* tabel penyimpan elemen */
+	int TopRiwayat; /* alamat TOP: elemen puncak */
+} RiwayatLagu;
 
 /* Definisi akses dengan Selektor : Set dan Get */
-#define Top(S) (S).TOP
-#define InfoTop(S) (S).T[(S).TOP]
+#define Top(S) (S).TopRiwayat
+#define InfoTop(S) (S).detil_history[(S).TopRiwayat]
+#define InfoSinger(D) D.namaPenyanyi
+#define InfoAlbum(D) D.namaAlbum
+#define InfoJudul(D) D.namaLagu
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyStack(Stack *S);
+void CreateEmptyRiwayat(RiwayatLagu *RL);
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxElStack */
 /* jadi indeksnya antara 0.. MaxElStack */
 /* Ciri stack kosong : TOP bernilai Undef */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptyStack(Stack S);
+boolean IsEmptyRiwayat(RiwayatLagu RL);
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
-boolean IsFullStack(Stack S);
+boolean IsFullRiwayat(RiwayatLagu RL);
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 
-/****************** Proses semua elemen Stack ******************/
-int NbElmtStack(Stack S);
-/* Mengirimkan banyaknya elemen Stack; mengirimkan 0 jika Stack kosong */
-
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack * S, INFOTYPE X);
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
+/* ************ Menambahkan sebuah elemen ke RiwayatLagu ************ */
+void Push(RiwayatLagu *RL, CurrentSong CS);
+/* Menambahkan X sebagai elemen RiwayatLagu S. */
+/* I.S. S mungkin kosong, tabel penampung elemen RiwayatLagu TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
-/* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack * S, INFOTYPE* X);
-/* Menghapus X dari Stack S. */
+/* ************ Menghapus sebuah elemen RiwayatLagu ************ */
+void Pop(RiwayatLagu *RL, CurrentSong *CS);
+/* Menghapus X dari RiwayatLagu S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 
-Stack ReverseStack(Stack in);
+void DisplayRiwayat(RiwayatLagu RL);
+/* Menampilkan Stack pada layar
+   I.S. S sembarang, mungkin kosong
+   F.S. Isi S ditampilkan ke layar */
 
+void InversStack(RiwayatLagu *RL);
+/* Membalik isi dari S
+   I.S. S Sembarang, mungkin kosong
+   F.S. Isi S terbalik
+   Contoh: [2,3,4] menjadi [4,3,2] */
 #endif

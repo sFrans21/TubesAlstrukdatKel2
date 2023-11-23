@@ -1,68 +1,93 @@
 #include <stdio.h>
 #include "stack.h"
 
-void CreateEmptyStack(Stack *S)
+void CreateEmptyRiwayat(RiwayatLagu *RL)
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxElStack */
 /* jadi indeksnya antara 0.. MaxElStack */
 /* Ciri stack kosong : TOP bernilai Undef */
 {
-      Top(*S) = Undef;
+      Top(*RL) = Undef;
 }
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
-boolean IsEmptyStack(Stack S)
+boolean IsEmptyRiwayat(RiwayatLagu RL)
 /* Mengirim true jika Stack kosong: lihat definisi di atas */
 {
-      return Top(S) == Undef;
+      return Top(RL) == Undef;
 }
-boolean IsFullStack(Stack S)
+boolean IsFullRiwayat(RiwayatLagu RL)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 {
-      return Top(S) == MaxElStack - 1;
+      return Top(RL) == MaxElStack - 1;
 }
 
 /****************** Proses semua elemen Stack ******************/
-int NbElmtStack(Stack S)
-/* Mengirimkan banyaknya elemen Stack; mengirimkan 0 jika Stack kosong */
-{
-      int count = 0;
-      INFOTYPE dump;
-      while (!IsEmptyStack(S))
-      {
-            Pop(&S, &dump);
-            count++;
-      }
-      return count;
-}
 
-/* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push(Stack *S, INFOTYPE X)
-/* Menambahkan X sebagai elemen Stack S. */
-/* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
+/* ************ Menambahkan sebuah elemen ke RiwayatLagu ************ */
+void Push (RiwayatLagu *RL, CurrentSong CS)
+/* Menambahkan X sebagai elemen RiwayatLagu S. */
+/* I.S. S mungkin kosong, tabel penampung elemen RiwayatLagu TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 {
-      Top(*S)++;
-      InfoTop(*S) = X;
+    Top(*RL) += 1;
+    InfoTop(*RL) = CS;
 }
 
-/* ************ Menghapus sebuah elemen Stack ************ */
-void Pop(Stack *S, INFOTYPE *X)
-/* Menghapus X dari Stack S. */
+/* ************ Menghapus sebuah elemen RiwayatLagu ************ */
+void Pop (RiwayatLagu *RL, CurrentSong *CS)
+/* Menghapus X dari RiwayatLagu S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 {
-      (*X) = InfoTop(*S);
-      Top(*S)--;
+    *CS = InfoTop(*RL);
+    Top(*RL) -= 1;
 }
 
-Stack ReverseStack(Stack in){
-    Stack out;
-    CreateEmptyStack(&out);
-    INFOTYPE element;
-    while(!IsEmptyStack(in)){
-        Pop(&in, &element);
-        Push(&out, element);
+void DisplayRiwayatLagu(RiwayatLagu RL)
+{
+    RiwayatLagu temp;
+    CurrentSong detiltemp;
+    CreateEmptyRiwayatLagu(&temp);
+    printf("BERIKUT URUTAN RIWAYAT DARI YANG TERBARU: \n");
+    int i = 0;
+    while(!IsEmptyRiwayatLagu(RL)){
+        i++;
+        printf("%d. ", i);
+        Pop(&RL,&detiltemp);
+        printf("Nama Penyanyi: ");
+        printWord(InfoSinger(detiltemp));
+        printf("\n");
+        printf("Nama Album: ");
+        printWord(InfoAlbum(detiltemp));
+        printf("\n");
+        printf("Nama Lagu: ");
+        printWord(InfoJudul(detiltemp));
+        printf("\n");
+        Push(&temp, detiltemp);
     }
-    return out;
+    while(!IsEmptyRiwayatLagu(temp)){
+        Pop(&temp,&detiltemp);
+        Push(&RL,detiltemp);
+    }
+}
+
+void InversStack(RiwayatLagu *RL){
+    RiwayatLagu temp1, temp2;
+    CurrentSong detil_temp;
+    CreateEmptyRiwayatLagu(&temp1);
+    CreateEmptyRiwayatLagu(&temp2);
+    while(!IsEmptyRiwayatLagu(*RL)){
+        Pop(RL,&detil_temp);
+        Push(&temp1, detil_temp);
+    }
+    while(!IsEmptyRiwayatLagu(temp1)){
+        Pop(&temp1,&detil_temp);
+        Push(&temp2, detil_temp);
+    }
+    while (!IsEmptyRiwayatLagu(temp2))
+    {
+        Pop(&temp2,&detil_temp);
+        Push(RL, detil_temp);
+    }
 }
