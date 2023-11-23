@@ -91,12 +91,12 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             (*currentSong).TabWord[j] = currentWord.TabWord[j];
         }
         (*currentSong).Length = currentWord.Length;
-        printf("%s\n", (*currentSong).TabWord);
+        //printf("%s\n", (*currentSong).TabWord);
 
         // QUEUE
         ADVLine();
         int nQueue = WordToInt(currentWord);
-        printf("%d\n", nQueue);
+        //printf("%d\n", nQueue);
         for (int i = 1; i <= nQueue; i++){
             ADVLine();
             Word laguQueue;
@@ -105,7 +105,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
             laguQueue.Length = currentWord.Length;
             enqueue(UrutanLagu, laguQueue);
-            printf("%s\n", laguQueue.TabWord);
+            //printf("%s\n", laguQueue.TabWord);
             for (int b = 0; b < laguQueue.Length; b++){
                 laguQueue.TabWord[b] = '\0';
             }
@@ -114,7 +114,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         //STACK RIWAYAT LAGU
         ADVLine();
         int nRLagu = WordToInt(currentWord);
-        printf("%d\n", nRLagu);
+        //printf("%d\n", nRLagu);
         for (int i = 1; i <= nRLagu; i++){
             ADVLine();
             Word RLagu;
@@ -123,7 +123,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
             RLagu.Length = currentWord.Length;
             Push(RiwayatLagu, RLagu);
-            printf("%s\n", RLagu.TabWord);
+            //printf("%s\n", RLagu.TabWord);
             for (int b = 0; b < RLagu.Length; b++){
                 RLagu.TabWord[b] = '\0';
             }
@@ -133,11 +133,11 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         //LIST DINAMIS PLAYLIST
         ADVLine();
         int nPlaylist = WordToInt(currentWord);
-        printf("%d\n", nPlaylist);
+        //printf("%d\n", nPlaylist);
         for (int i = 1; i <= nPlaylist; i++){
             ADVWord();
             int nPLagu = WordToInt(currentWord);
-            printf("%d ", nPLagu);
+            //printf("%d ", nPLagu);
             ADVLine();
             Word namaPlaylist;
             for (int j = 0; j < currentWord.Length; j++) {
@@ -145,7 +145,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
             namaPlaylist.Length = currentWord.Length;
             InsertLastDynamic(Playlist, namaPlaylist);
-            printf("%s\n", namaPlaylist.TabWord);
+            //printf("%s\n", namaPlaylist.TabWord);
             for (int b = 0; b < namaPlaylist.Length; b++){
                 namaPlaylist.TabWord[b] = '\0';
             }
@@ -158,7 +158,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 }
                 namaPLagu.Length = currentWord.Length;
                 InsVLast(LaguPlaylist, namaPLagu);
-                printf("%s\n", namaPLagu.TabWord);
+                //printf("%s\n", namaPLagu.TabWord);
                 for (int b = 0; b < namaPLagu.Length; b++){
                     namaPLagu.TabWord[b] = '\0';
                 }
