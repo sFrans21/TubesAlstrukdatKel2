@@ -2,7 +2,7 @@
 #include "boolean.h"
 #include "Spesifikasi/start.h"
 #include "Spesifikasi/help.h"
-#include "Spesifikasi/load.h"
+#include "Spesifikasi/load_baru.h"
 #include "Spesifikasi/quit.h"
 #include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
@@ -17,18 +17,19 @@ int main()
     Map penyanyiAlbums;
     Map AlbumLagu;
     maps albumsong;
-    Queue UrutanLagu;
+    SQueue UrutanLagu;
     DynamicList Playlist;
-    Stack RiwayatLagu;
+    RiwayatLagu History;
     LinierList LaguPlaylist;
+    CurrentSong CS;
 
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     CreateEmptymap(&AlbumLagu);
     createmaps(&albumsong);
-    CreateQueue(&UrutanLagu);
+    CreateQueueBELV(&UrutanLagu);
     CreateEmptyDynamic(&Playlist);
-    CreateEmptyStack(&RiwayatLagu);
+    CreateEmptyRiwayat(&History);
     CreateEmptyLinier(&LaguPlaylist);
 
     boolean saved = false;
@@ -80,7 +81,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "LOAD") == false)
                 {
-                    load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+                    load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, &LaguPlaylist, &CS);
                 }
                 else
                 {
@@ -90,7 +91,7 @@ int main()
 
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, true);
                 endProgram = true;
             }
             else if (IsCommandEqual(currentCommand, "HELP"))
@@ -127,7 +128,7 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, saved);
                 endProgram = true;
             }
             else if (IsCommandEqual(currentCommand, "LIST"))

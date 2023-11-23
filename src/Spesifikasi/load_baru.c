@@ -171,5 +171,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             }
         }
         InsertLastDynamic(Playlist, createPlaylist);
+    } else {
+        printf("Save file tidak ditemukan. WayangWave gagal dijalankan.\n");
     }
 }
