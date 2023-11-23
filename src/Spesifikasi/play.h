@@ -8,6 +8,23 @@
 // #include "string.h"
 #include "../boolean.h"
 #include "../tambahan.h"
+#include "../ADT/mesinkata.h"
+typedef struct
+{
+      Word JudulLagu;
+      Word NamaAlbum;
+      Word NamaPenyanyi;
+      Word NamaPlaylist;
+      int status;
+      int statusPL;
+} CurrentSong;
+
+typedef struct
+{
+      Word NamaUser;
+      int idUser;
+      int status;
+} CurrentUser;
 
 void PrintPenyanyii(StaticList M);
 
