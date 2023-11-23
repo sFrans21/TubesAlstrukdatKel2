@@ -7,7 +7,7 @@
 //#include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
 //#include "Spesifikasi/save.h"
-//#include "Spesifikasi/play.h"
+#include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,7 +21,7 @@ int main()
     DynamicList Playlist;
     Stack RiwayatLagu;
     LinierList LaguPlaylist;
-
+    Word currentSong;
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     CreateEmptymap(&AlbumLagu);
@@ -169,8 +169,8 @@ int main()
                                     {
                                         if (isEqual(currentWord, penyanyiAlbums.Elements[ketemu].Value.Elements[j]) == true)
                                         {
-                                            // int ketemulagi;
-                                            // ketemulagi = j;
+                                            int ketemulagi;
+                                            ketemulagi = j;
                                             char *e;
                                             e = (char *)malloc(30 * sizeof(char));
                                             wordToString(currentWord, e);
@@ -228,7 +228,7 @@ int main()
                     PrintPenyanyi(penyanyi);
                     printf("\n\n\033[1;36mMasukkan Nama Penyanyi yang dipilih : ");
                     StartWordInput();
-                    //int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
+                    int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
                     int IdxAlbum;
                     int IdxLagu;
                     for (int i = 0; i < penyanyi.itemCount; i++)
@@ -244,8 +244,9 @@ int main()
                             wordToString(currentWord, e);
                             printf("\033[1;36mDaftar Album oleh %s :\n", e);
                             PrintAlbum(penyanyiAlbums, currentWord);
-                            printf("\n\n\033[1;36mMasukkan Nama Album yang dipilih : ");
+                            printf("\n\n\033[1;36mMasukkan Nama Album yang dipilih : \n");
                             StartWordInput();
+
                             for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
                             {
                                 if (isEqual(currentWord, penyanyiAlbums.Elements[ketemu].Value.Elements[j]) == true)
@@ -259,7 +260,7 @@ int main()
                                     PrintLagu(albumsong, currentWord, ketemu);
                                     printf("\n");
 
-                                    printf("\n\n\033[1;36mMasukkan ID Lagu yang dipilih : ");
+                                    printf("\n\n\033[1;36mMasukkan ID Lagu yang dipilih : \n");
                                     // Word nums;
                                     // int manynums = 0;
                                     StartWordInput();
@@ -277,12 +278,29 @@ int main()
 
                                     IdxAlbum = ketemu;
                                     IdxLagu = val - 1;
-                                    //printf("\033[1;36mMemutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu].TabWord, e);
+                                    int nomorlagu = WordToInt(currentWord);
 
+                                    // printf("\nMemutar lagu %s oleh %s.\n", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu].TabWord, penyanyi.items[ketemu].TabWord);
+                                    /*Set CurrentSong ke lagu pilihan saat ini*/
+                                    Word Mark = {";", 1};
+                                    Word Penyanyisaha = penyanyi.items[IdxPenyanyi];
+                                    Word Albumsaha = penyanyiAlbums.Elements[IdxPenyanyi].Value.Elements[IdxAlbum];
+                                    Word Lagunanaon = albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu];
+                                    
+                                    Word Pilihan = ConcatWord(Penyanyisaha, Mark);
+                                    Pilihan = ConcatWord(Pilihan, Albumsaha);
+                                    Pilihan = ConcatWord(Pilihan, Mark);
+                                    Pilihan = ConcatWord(Pilihan, Lagunanaon);
+
+                                    currentSong = Pilihan;
+                                    
                                     /*Hapusin riwayat lagu & queue lagu*/
 
-                                    //CreateEmptyRiwayat(&History);
+                                    CreateEmptyStack(&RiwayatLagu);
+                                    CreateQueue(&UrutanLagu);
                                     //CreateQueueBELV(&UrutanLagu);
+
+                                    printf("\nMemutar lagu %s oleh %s.\n", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu].TabWord, penyanyi.items[ketemu].TabWord);
                                 }
                             }
                         }
@@ -302,7 +320,7 @@ int main()
                     wordToString(currentWord, k);
                     int valk = CharToInt(k);
 
-                    //printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist.TabWord);
+                    printf("\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
                 }
             } else {
                 system("cls||clear");

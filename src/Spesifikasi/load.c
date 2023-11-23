@@ -15,6 +15,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
     char *directory;
     directory = (char *) malloc (50 * sizeof(char));
     stringConcat("../save/", inputfile, directory);
+    Word currentSong;
 
     FILE *open;
     open = fopen(directory, "r");
