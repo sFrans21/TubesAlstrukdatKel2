@@ -8,6 +8,6 @@
 #include "../ADT/list_linier_belv.h"
 
 // Deklarasi fungsi untuk membaca save file
-void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist);
+void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS);
 
 #endif
