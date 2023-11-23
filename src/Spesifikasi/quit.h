@@ -1,9 +1,9 @@
 #ifndef QUIT_H
 #define QUIT_H
 
-#include "load_baru.h"
+#include "load.h"
 
 // Deklarasi fungsi untuk membaca save file
-void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, boolean saved);
+void quit(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, boolean saved);
 
 #endif
