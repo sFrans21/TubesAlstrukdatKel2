@@ -61,7 +61,7 @@ int main()
     printf("\033[1;36m                   Selamat datang di WayangWave!\033[0m\n\n");
     printf("\033[0;36mJalankan command START atau LOAD <nama file> untuk membuka file.\033[0m\n");
     printf("\033[0;36mJalankan command QUIT untuk keluar dari program.\033[0m\n");
-
+    printf("\n");
     while (endProgram == false)
     {
         printf("\033[1;36mJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
@@ -101,7 +101,7 @@ int main()
             else
             {
                 system("cls||clear");
-                printf("C\033[1;35mommand tidak bisa dieksekusi!\n");
+                printf("\033[1;35mCommand tidak bisa dieksekusi!\n");
             }
         }
         else
@@ -157,10 +157,10 @@ int main()
                                 char *e;
                                 e = (char *)malloc(30 * sizeof(char));
                                 wordToString(currentWord, e);
-                                printf("\033[1;36mDaftar Album oleh %s :\n", e);
+                                printf("\n\033[1;36mDaftar Album oleh %s :\n", e);
                                 PrintAlbum(penyanyiAlbums, currentWord);
 
-                                printf("\033[1;36mIngin melihat lagu yang ada?(Y/N): ");
+                                printf("\n\033[1;36mIngin melihat lagu yang ada?(Y/N): ");
                                 StartCommand();
                                 if (currentCommand.TabWord[0] == 'Y')
                                 {
@@ -175,7 +175,7 @@ int main()
                                             char *e;
                                             e = (char *)malloc(30 * sizeof(char));
                                             wordToString(currentWord, e);
-                                            printf("\033[1;36mDaftar Lagu di %s :\n", e);
+                                            printf("\n\033[1;36mDaftar Lagu di %s :\n", e);
                                             PrintLagu(albumsong, currentWord, ketemu);
                                         }
                                     }
@@ -214,7 +214,9 @@ int main()
                 else if (compareString(upper(def), "PLAYLIST") == true)
                 {
                     PrintPlaylist(Playlist); // inshaallah ga error
-                } else {
+                }
+                else
+                {
                     printf("Command tidak bisa dieksekusi!\n");
                 }
             }
@@ -234,17 +236,16 @@ int main()
                     int IdxLagu;
                     int ketemu;
                     for (int i = 0; i < penyanyi.itemCount; i++)
-                    {  
+                    {
 
                         if (isEqual(currentWord, penyanyi.items[i]) == true)
                         {
 
-                            
                             ketemu = i;
                             char *e;
                             e = (char *)malloc(30 * sizeof(char));
                             wordToString(currentWord, e);
-                            printf("\033[1;36mDaftar Album oleh %s :\n", e);
+                            printf("\n\033[1;36mDaftar Album oleh %s :\n", e);
                             PrintAlbum(penyanyiAlbums, currentWord);
                             printf("\n\n\033[1;36mMasukkan Nama Album yang dipilih : \n");
                             StartWordInput();
@@ -258,7 +259,7 @@ int main()
                                     char *e;
                                     e = (char *)malloc(30 * sizeof(char));
                                     wordToString(currentWord, e);
-                                    printf("\033[1;36mDaftar Lagu di album %s :\n", e);
+                                    printf("\n\033[1;36mDaftar Lagu di album %s :\n", e);
                                     PrintLagu(albumsong, currentWord, ketemu);
                                     printf("\n");
 
@@ -288,19 +289,19 @@ int main()
                                     Word Penyanyisaha = penyanyi.items[IdxPenyanyi];
                                     Word Albumsaha = penyanyiAlbums.Elements[IdxPenyanyi].Value.Elements[IdxAlbum];
                                     Word Lagunanaon = albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu];
-                                    
+
                                     Word Pilihan = ConcatWord(Penyanyisaha, Mark);
                                     Pilihan = ConcatWord(Pilihan, Albumsaha);
                                     Pilihan = ConcatWord(Pilihan, Mark);
                                     Pilihan = ConcatWord(Pilihan, Lagunanaon);
 
                                     currentSong = Pilihan;
-                                    
+
                                     /*Hapusin riwayat lagu & queue lagu*/
 
                                     CreateEmptyStack(&RiwayatLagu);
                                     CreateQueue(&UrutanLagu);
-                                    //CreateQueueBELV(&UrutanLagu);
+                                    // CreateQueueBELV(&UrutanLagu);
 
                                     printf("\nMemutar lagu %s oleh %s.\n", albumsong.Elements[IdxPenyanyi].Elements[j].Value.Elements[IdxLagu].TabWord, penyanyi.items[ketemu].TabWord);
                                 }
@@ -313,21 +314,21 @@ int main()
                 // fes = (char *)malloc(30 * sizeof(char));
                 // ADVInput();
                 // wordToString(currentCommand, fes);
-                else if (compareString(upper(fed), "PLAYLIST") == true) {
-                    printf("\033[1;36mMasukkan ID Playlist: ");
+                else if (compareString(upper(fed), "PLAYLIST") == true)
+                {
+                    printf("\n\033[1;36mMasukkan ID Playlist: ");
                     StartWordInput();
                     char *k;
                     k = (char *)malloc(30 * sizeof(char));
                     wordToString(currentWord, k);
                     int valk = CharToInt(k);
                     LaguAyeuna = SplitWordMark(SplitWordMark(currentSong));
-                    //nambahin laguayeuna ke plalist elemen pertama
+                    // nambahin laguayeuna ke plalist elemen pertama
                     InsVLast(&LaguPlaylist, LaguAyeuna);
                     // Playlist.A[0] = LaguAyeuna;
                     // Playlist.Neff++;
-                    
 
-                    //queue akan berisi semua lagu yang ada dalam playlist yang akan dimainkan
+                    // queue akan berisi semua lagu yang ada dalam playlist yang akan dimainkan
                     CreateQueue(&UrutanLagu);
                     int ruy = NbElmt(LaguPlaylist);
                     addressLinier cuy = First(LaguPlaylist);
@@ -335,24 +336,25 @@ int main()
                     {
                         enqueue(&UrutanLagu, Info(cuy));
                         cuy = Next(cuy);
-
                     }
-                    //isi riwayat lagu sama dengan queue, tetapi dengan urutan yang di-reverse.
-                    
+                    // isi riwayat lagu sama dengan queue, tetapi dengan urutan yang di-reverse.
+
                     CreateEmptyStack(&RiwayatLagu);
-                    addressLinier cey = First(LaguPlaylist); 
+                    addressLinier cey = First(LaguPlaylist);
                     while (cey != Nil)
                     {
                         Push(&RiwayatLagu, Info(cey));
                         cey = Next(cey);
                     }
-                    
+
                     RiwayatLagu = ReverseStack(RiwayatLagu);
-                    printf("\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
-                }   
-            } else {
+                    printf("\n\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
+                }
+            }
+            else
+            {
                 system("cls||clear");
-                printf("Command tidak bisa dieksekusi!\n");
+                printf("\nCommand tidak bisa dieksekusi!\n");
             }
         }
     }
