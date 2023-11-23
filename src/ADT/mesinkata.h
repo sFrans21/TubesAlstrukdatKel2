@@ -27,6 +27,10 @@ void IgnoreNewline();
 
 void StartWordInput();
 
+void StartWordMark();
+
+void StartWordBlank();
+
 void StartWordFile(char *filename, int type);
 
 void StartCommand();
@@ -58,5 +62,13 @@ void CopyWordinput();
 void ADVSemicolon();
 
 boolean CekWord(Word hasil);
+
+Word SplitWordBlank(Word word);
+
+Word SplitWordMark(Word word);
+
+Word SplitWordLeftBlank(Word word);
+
+Word SplitWordLeftMark(Word word);
 
 #endif
