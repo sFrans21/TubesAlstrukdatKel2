@@ -69,7 +69,7 @@ void PrintLagu(maps M, Word C, int i) // ini gunain maps album-lagu
     char *E;
     E = (char *)malloc(30 * sizeof(char));
 
-    for (int d = 0; d < M.Elements->Count; d++)
+    for (int d = 0; d < M.Elements[i].Elements->Key.Length; d++)
     {
         wordToString(C, D); // ubah ke char
         wordToString(M.Elements[i].Elements[d].Key, E);

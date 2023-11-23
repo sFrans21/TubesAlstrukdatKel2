@@ -232,13 +232,14 @@ int main()
                     int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
                     int IdxAlbum;
                     int IdxLagu;
+                    int ketemu;
                     for (int i = 0; i < penyanyi.itemCount; i++)
-                    {
+                    {  
 
                         if (isEqual(currentWord, penyanyi.items[i]) == true)
                         {
 
-                            int ketemu;
+                            
                             ketemu = i;
                             char *e;
                             e = (char *)malloc(30 * sizeof(char));
@@ -252,8 +253,8 @@ int main()
                             {
                                 if (isEqual(currentWord, penyanyiAlbums.Elements[ketemu].Value.Elements[j]) == true)
                                 {
-                                    // int ketemulagi;
-                                    // ketemulagi = j;
+                                    int ketemulagi;
+                                    ketemulagi = j;
                                     char *e;
                                     e = (char *)malloc(30 * sizeof(char));
                                     wordToString(currentWord, e);
@@ -301,19 +302,18 @@ int main()
                                     CreateQueue(&UrutanLagu);
                                     //CreateQueueBELV(&UrutanLagu);
 
-                                    printf("\nMemutar lagu %s oleh %s.\n", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu].TabWord, penyanyi.items[ketemu].TabWord);
+                                    printf("\nMemutar lagu %s oleh %s.\n", albumsong.Elements[IdxPenyanyi].Elements[j].Value.Elements[IdxLagu].TabWord, penyanyi.items[ketemu].TabWord);
                                 }
                             }
                         }
                     }
                 }
 
-                char *fes;
-                fes = (char *)malloc(30 * sizeof(char));
-                ADVInput();
-                wordToString(currentCommand, fes);
-                if (compareString(upper(fed), "PLAYLIST") == true)
-                {
+                // char *fes;
+                // fes = (char *)malloc(30 * sizeof(char));
+                // ADVInput();
+                // wordToString(currentCommand, fes);
+                else if (compareString(upper(fed), "PLAYLIST") == true) {
                     printf("\033[1;36mMasukkan ID Playlist: ");
                     StartWordInput();
                     char *k;
@@ -322,9 +322,34 @@ int main()
                     int valk = CharToInt(k);
                     LaguAyeuna = SplitWordMark(SplitWordMark(currentSong));
                     //nambahin laguayeuna ke plalist elemen pertama
-                    LaguAyeuna = Playlist.A[0];
-                    printf("\033[1;36mMemutar playlist %s.\n\n", Playlist.A[valk - 1].TabWord);
-                }
+                    InsVLast(&LaguPlaylist, LaguAyeuna);
+                    // Playlist.A[0] = LaguAyeuna;
+                    // Playlist.Neff++;
+                    
+
+                    //queue akan berisi semua lagu yang ada dalam playlist yang akan dimainkan
+                    CreateQueue(&UrutanLagu);
+                    int ruy = NbElmt(LaguPlaylist);
+                    addressLinier cuy = First(LaguPlaylist);
+                    for (int i = 0; i < ruy; i++)
+                    {
+                        enqueue(&UrutanLagu, Info(cuy));
+                        cuy = Next(cuy);
+
+                    }
+                    //isi riwayat lagu sama dengan queue, tetapi dengan urutan yang di-reverse.
+                    
+                    CreateEmptyStack(&RiwayatLagu);
+                    addressLinier cey = First(LaguPlaylist); 
+                    while (cey != Nil)
+                    {
+                        Push(&RiwayatLagu, Info(cey));
+                        cey = Next(cey);
+                    }
+                    
+                    RiwayatLagu = ReverseStack(RiwayatLagu);
+                    printf("\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
+                }   
             } else {
                 system("cls||clear");
                 printf("Command tidak bisa dieksekusi!\n");

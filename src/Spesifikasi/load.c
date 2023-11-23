@@ -159,7 +159,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                     namaPLagu.TabWord[j] = currentWord.TabWord[j];
                 }
                 namaPLagu.Length = currentWord.Length;
-                InsVFirst(LaguPlaylist, namaPLagu);
+                InsVLast(LaguPlaylist, namaPLagu);
                 printf("%s\n", namaPLagu.TabWord);
                 for (int b = 0; b < namaPLagu.Length; b++){
                     namaPLagu.TabWord[b] = '\0';
