@@ -2,108 +2,125 @@
 #include "../tambahan.h"
 #include "status.h"
 
-// void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA)
-// {
-//     // Pencarian lagu dalam struktur data albumsong
-//     int found = 0; // Flag untuk menandakan apakah lagu ditemukan
-//     int idxp, idxa, idxl;
+void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA) {
+    // Pencarian lagu dalam struktur data albumsong
+    int found = 0;  // Flag untuk menandakan apakah lagu ditemukan
+    int idxp, idxa, idxl;
 
-//     for (idxp = 0; idxp < singeralbum.Count; idxp++)
-//     {
-//         for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++)
-//         {
-//             for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++)
-//             {
-//                 // Menggunakan strcmp untuk membandingkan string
-//                 if (songname != albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord)
-//                 {
-//                     found = 1;
-//                     break;
-//                 }
-//             }
-//             if (found)
-//             {
-//                 break;
-//             }
-//         }
-//         if (found)
-//         {
-//             break;
-//         }
-//     }
-// }
+    for (idxp = 0; idxp < singeralbum.Count; idxp++) {
+        for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++) {
+            for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++) {
+                // Menggunakan strcmp untuk membandingkan string
+                if (songname == albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) {
+                    found = 1;
+                    break;
+                }
+            }
+            if (found) {
+                break;
+            }
+        }
+        if (found) {
+            break;
+        }
+    }
+}
 
-// char *checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums)
-// {
-//     // Cek apakah semua lagu dalam queue berada dalam suatu playlist
-//     for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++)
-//     {
-//         char currPen[50];
-//         char currAlb[50];
+char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums) {
+    // Cek apakah semua lagu dalam queue berada dalam suatu playlist
+         for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
+            char currsong[50];
+            int k = 0;
 
-//         char currsong[50];
-//         int k = 0;
+            while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
+            {
+                currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+                k++;
+            }
+            currsong[k] = '\0';
+            char currPen[50];
+            char currAlb[50];
+        carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
 
-//         while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
-//         {
-//             currsong[k] = UrutanLagu->buffer[i].TabWord[k];
-//             k++;
-//         }
-//         currsong[k] = '\0';
+        boolean foundInPlaylist = false;
 
-//         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+        // Iterasi melalui playlist untuk mencari lagu
+        for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
+            if ((Playlist[0].A[j].TabWord) == currsong) {
+                foundInPlaylist = true;
+                break;
+            }
+        }
 
-//         boolean foundInPlaylist = false;
+        // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
+        if (!foundInPlaylist) {
+            return NULL;
+        }
+    }
 
-//         // Iterasi melalui playlist untuk mencari lagu
-//         for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++)
-//         {
-//             if (currsong != Playlist[0].A[j].TabWord)
-//             {
-//                 foundInPlaylist = true;
-//                 break;
-//             }
-//         }
-
-//         // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
-//         if (!foundInPlaylist)
-//         {
-//             return NULL;
-//         }
-//     }
-
-//     // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
-//     return Playlist[0].A[0].TabWord;
-// }
-void displayStatus(SQueue *UrutanLagu, DynamicList *Playlist, CurrentSong *CS)
+    // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
+    return Playlist[0].A[0].TabWord;
+}
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist)
 {
+    printf(">> STATUS;\n");
+
     // Cek apakah ada lagu yang sedang diputar
-    if (isQueueEmptyBELV(*UrutanLagu))
+    if (isQueueEmpty(*UrutanLagu))
     {
-        printf("Now Playing: \nNo songs have been played yet. Please search for a song to begin playback.\n");
+        printf("Now Playing : \n No songs have been played yet. Please search for a song to begin playback.\n");
         printf("\nQueue:\n");
         printf("Your queue is empty.\n");
     }
-    else
-    {
+    else {
         printf("// Ada lagu yang sedang diputar\n");
-        printf("Now Playing:\n");
-        printf("%s - %s - %s\n",CS->SingerName, CS->AlbumName, CS->SongTitle);
+        char currsong[50];
+        int k = 0;
 
-        if (lengthQueueBELV(*UrutanLagu) == 1)
+        while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
+        {
+            currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+            k++;
+        }
+        currsong[k] = '\0';
+        char currPen[50];
+        char currAlb[50];
+            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+            printf("Now Playing:\n");
+            printf("%s - %s - %s\n", HEAD(*UrutanLagu).TabWord, currAlb, currPen);
+
+
+        if (lengthQueue(*UrutanLagu) == 1)
         {
             printf("\nQueue:\n");
             printf("Your queue is empty.\n");
         }
-        else
-        {
-        int a = 1;
-        for (int i = (UrutanLagu->idxHeadBELV) + 1 ; i < UrutanLagu->idxTailBELV;i++){
-         printf("\nQueue:\n");
-        printf("%d. %s - %s - %s\n", a, UrutanLagu->QueueDetail[i].SingerName, UrutanLagu->QueueDetail[i].AlbumName, UrutanLagu->QueueDetail[i].SongTitle);
-        a++;
+        else{
+            int a = 1;
+            for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
+            char currsong[50];
+            int k = 0;
+
+            while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
+            {
+                currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+                k++;
+            }
+            currsong[k] = '\0';
+            char currPen[50];
+            char currAlb[50];
+            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+            printf("\nQueue:\n");
+            printf("%d. %s - %s - %s\n", a, HEAD(*UrutanLagu).TabWord, currAlb, currPen);
+            a++;
+            }
+            char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
+
+             // Jika playlistName bukan NULL, maka tampilkan nama playlist
+            if (playlistName != NULL) {
+                printf("\nCurrent Playlist: %s\n", playlistName);
         }
-        }
-    
+    }
+     
     }
 }
