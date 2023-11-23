@@ -244,3 +244,95 @@ boolean CekWord(Word hasil){
     }
     return ada;
 }
+
+Word SplitWordBlank(Word word)
+{
+    Word temp;
+    int sum = 0, idx;
+    for (int i = 0; i < word.Length; i++)
+    {
+        if (word.TabWord[i] == BLANK)
+        {
+            idx = i;
+            break;
+        }
+    }
+
+    for (int i = (idx + 1); i < word.Length; i++)
+    {
+        temp.TabWord[sum] = word.TabWord[i];
+        sum++;
+    }
+    temp.Length = sum;
+
+    return (temp);
+}
+
+Word SplitWordMark(Word word)
+{
+    Word temp;
+    int sum = 0, idx;
+    for (int i = 0; i < word.Length; i++)
+    {
+        if (word.TabWord[i] == MARK)
+        {
+            idx = i;
+            break;
+        }
+    }
+
+    for (int i = (idx + 1); i < word.Length; i++)
+    {
+        temp.TabWord[sum] = word.TabWord[i];
+        sum++;
+    }
+    temp.Length = sum;
+
+    return (temp);
+}
+
+Word SplitWordLeftBlank(Word word)
+{
+    Word temp;
+    int sum = 0, idx;
+    for (int i = 0; i < word.Length; i++)
+    {
+        if (word.TabWord[i] == BLANK)
+        {
+            idx = i;
+            break;
+        }
+    }
+
+    for (int i = 0; i < idx; i++)
+    {
+        temp.TabWord[sum] = word.TabWord[i];
+        sum++;
+    }
+    temp.Length = sum;
+
+    return (temp);
+}
+
+Word SplitWordLeftMark(Word word)
+{
+    Word temp;
+    int sum = 0, idx;
+    for (int i = 0; i < word.Length; i++)
+    {
+        if (word.TabWord[i] == MARK)
+        {
+            idx = i;
+            break;
+        }
+    }
+
+    for (int i = 0; i < idx; i++)
+    {
+        temp.TabWord[sum] = word.TabWord[i];
+        sum++;
+    }
+    temp.Length = sum;
+
+    return (temp);
+}

@@ -59,4 +59,12 @@ void ADVSemicolon();
 
 boolean CekWord(Word hasil);
 
+Word SplitWordBlank(Word word);
+
+Word SplitWordMark(Word word);
+
+Word SplitWordLeftBlank(Word word);
+
+Word SplitWordLeftMark(Word word);
+
 #endif
