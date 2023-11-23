@@ -4,65 +4,35 @@
 #include "status.h"
 #include "../tambahan.h"
 
-// void stringConcat(char str1[], char str2[], char *output)
-// {
-//     int i = 0, j = 0;
-//     while (str1[i] != '\0')
-//     {
-//         output[i] = str1[i];
-//         i++;
-//     }
 
-//     while (str2[j] != '\0')
-//     {
-//         output[i] = str2[j];
-//         j++;
-//         i++;
-//     }
-//     output[i] = '\0';
-// }
-// boolean IsListEmptyDynamic(DynamicList list)
-// {
-//     return (list.Neff == 0);
-// }
-
-// int LengthListDynamic(DynamicList list)
-// {
-//     return (list.Neff);
-// }
-
-// boolean IsEmptyStack(Stack S)
-// /* Mengirim true jika Stack kosong: lihat definisi di atas */
-// {
-//       return Top(S) == Undef;
-// }
-void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA) {
+void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA)
+{
     // Pencarian lagu dalam struktur data albumsong
-    int found = 0;  // Flag untuk menandakan apakah lagu ditemukan
+    int found = 0; // Flag untuk menandakan apakah lagu ditemukan
     int idxp, idxa, idxl;
 
-    for (idxp = 0; idxp < singeralbum.Count; idxp++) {
-        for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++) {
-            for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++) {
+    for (idxp = 0; idxp < singeralbum.Count; idxp++)
+    {
+        for (idxa = 0; idxa < singeralbum.Elements[idxp].Value.Count; idxa++)
+        {
+            for (idxl = 0; idxl < albumsong.Elements[idxp].Elements[idxa].Value.Count; idxl++)
+            {
                 // Menggunakan strcmp untuk membandingkan string
-                if (songname != albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord) {
+                if (songname != albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord)
+                {
                     found = 1;
                     break;
                 }
             }
-            if (found) {
+            if (found)
+            {
                 break;
             }
         }
-        if (found) {
+        if (found)
+        {
             break;
         }
-    }
-
-    // Menyalin hasil pencarian ke variabel curP dan curA
-    if (found) {
-        curP = singeralbum.Elements[idxp].Key.TabWord;
-        curA = singeralbum.Elements[idxp].Value.Elements[idxa].TabWord;
     }
 }
 int countAlbumsBySinger(Map singeralbum, maps albumsong, char *singerName) {
@@ -117,12 +87,23 @@ void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
     //     fprintf(outputfile, "%c", currentChar);
     // }
     // fprintf(outputfile,"\n");
-    fprintf(outputfile,"%d\n",penyanyi->itemCount);
-    for (int iKonf = 0 ; iKonf < penyanyi->itemCount;iKonf++){
-      fprintf(outputfile,"%d ",countAlbumsBySinger(*penyanyiAlbums,*albumsong,penyanyiAlbums->Elements[iKonf].Key.TabWord));
-      fprintf(outputfile,"%s\n",penyanyiAlbums->Elements[iKonf].Key.TabWord);
-      
-    }
+     fprintf(outputfile, "%d # Jumlah penyanyi\n", penyanyi->itemCount);
+
+        for (int i = 0; i < penyanyi->itemCount; i++) {
+            fprintf(outputfile, "%d %s # Jumlah album dan nama dari penyanyi %d\n", penyanyi->items[i].Length, penyanyi->items[i].TabWord, i + 1);
+
+           
+
+            for (int j = 0; j < penyanyiAlbums->Count; j++) {
+                fprintf(outputfile, "%d %s # Jumlah lagu dan judul dari album %d penyanyi %d\n", penyanyiAlbums->Elements[j].Value.Count, penyanyiAlbums[i].Elements[j].Key.TabWord, j + 1, i + 1);
+
+                for (int k = 0; k < albumsong->Elements[j].Elements[k].Value.Count; k++) {
+                    fprintf(outputfile, "%s # Lagu %d album %d penyanyi %d\n", albumsong->Elements[i].Elements[j].Value.Elements[k].TabWord, k + 1, j + 1, i + 1);
+                }
+
+                
+            }
+        }
   //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
 if (!isQueueEmpty(*UrutanLagu)){
     
@@ -138,7 +119,7 @@ if (!isQueueEmpty(*UrutanLagu)){
     char currPen[50];
     char currAlb[50];
 
-    carialbumpenyanyi(*penyanyiAlbums, *albumsong, *currsong, currPen, currAlb);
+    carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
     fprintf(outputfile, "%s;", currPen);
     fprintf(outputfile, "%s:", currAlb);
     fprintf(outputfile, "%s\n", currsong);
@@ -171,7 +152,7 @@ if (!isQueueEmpty(*UrutanLagu))
         char currPen[50];
         char currAlb[50];
 
-        carialbumpenyanyi(*penyanyiAlbums, *albumsong, *currsong, currPen, currAlb);
+        carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
         fprintf(outputfile, "%s;", currPen);
         fprintf(outputfile, "%s\n", currAlb);
         fprintf(outputfile, "%s;", currsong);
@@ -206,7 +187,7 @@ if (!isQueueEmpty(*UrutanLagu))
             char currPen[50];
             char currAlb[50];
 
-            carialbumpenyanyi(*penyanyiAlbums, *albumsong, *currsong, currPen, currAlb);
+            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             fprintf(outputfile, "%s;", currPen);
             fprintf(outputfile, "%s\n", currAlb);
             fprintf(outputfile, "%s;", currsong);
@@ -269,15 +250,7 @@ if (!isQueueEmpty(*UrutanLagu))
     //  }
 
 }
-// void CreateQueue(Queue *q){
-// /* I.S. sembarang */
-// /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
-// /* - Index head bernilai IDX_UNDEF */
-// /* - Index tail bernilai IDX_UNDEF */
-// /* Proses : Melakukan alokasi, membuat sebuah q kosong */
-//     IDX_HEAD(*q) = IDX_UNDEF;
-//     IDX_TAIL(*q) = IDX_UNDEF;
-// }
+
 // int main() {
 //     // Create and initialize your data structures
 //     StaticList penyanyi;  // Modify accordingly

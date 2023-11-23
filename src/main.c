@@ -4,9 +4,9 @@
 #include "Spesifikasi/help.h"
 #include "Spesifikasi/load.h"
 #include "Spesifikasi/quit.h"
-//#include "Spesifikasi/status.h"
+#include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
-//#include "Spesifikasi/save.h"
+#include "Spesifikasi/save.h"
 //#include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -111,7 +111,7 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "STATUS"))
             {
-                //displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
+                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&LaguPlaylist);
             }
             else if (IsCommandEqual(currentCommand, "SAVE"))
             {
@@ -119,7 +119,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "SAVE") == false)
                 {
-                    //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 }
                 else
                 {
