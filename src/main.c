@@ -272,16 +272,26 @@ int main()
                                     wordToString(currentWord, g);
                                     int val = CharToInt(g);
 
-                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
                                     IdxAlbum = ketemu;
                                     IdxLagu = val - 1;
-                                    // Hapusin riwayat lagu & queue lagu
+                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
+
+                                    /*Hapusin riwayat lagu & queue lagu*/
+
                                     // CreateQueue(UrutanLagu);
                                     // CreateStackEmpty(RiwayatLagu)
                                 }
                             }
                         }
                     }
+                }
+
+                char *fes;
+                fes = (char *)malloc(30 * sizeof(char));
+                ADVInput();
+                wordToString(currentCommand, fed);
+                if (compareString(upper(fed), "PLAYLIST") == true)
+                {
                 }
             }
         }
