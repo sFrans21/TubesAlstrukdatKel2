@@ -300,7 +300,7 @@ int main()
                     wordToString(currentWord, k);
                     int valk = CharToInt(k);
 
-                    printf("\033[1;36mMemutar playlist “%s”.", Playlist.A[valk - 1].TabWord);
+                    printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist);
                 }
             }
         }
