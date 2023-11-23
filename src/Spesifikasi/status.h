@@ -8,6 +8,6 @@
 
 void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA);
 char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums);
-void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist);
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist, Word *currentSong);
 
 #endif
