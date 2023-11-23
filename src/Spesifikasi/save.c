@@ -103,7 +103,7 @@ for (int i = 0; i < penyanyi->itemCount; i++) {
 if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
     {
         char* carcurr[50];
-         wordToString(*currentSong,carcurr);
+         wordToString(*currentSong,*carcurr);
          int i = 0;
          while (i < currentSong->Length){
             fprintf(outputfile,"%c",carcurr[i]);
@@ -117,6 +117,27 @@ if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
 
  
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
+  
+
+    fprintf(outputfile,"%d\n",lengthQueue(*UrutanLagu));
+            int a = 1;
+            for (int i = UrutanLagu->idxHead  ; i < UrutanLagu->idxTail;i++){
+            char currsong[50];
+            int k = 0;
+
+            while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+            {
+                currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+                k++;
+            }
+            currsong[k] = '\0';
+            char currPen[50];
+            char currAlb[50];
+            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+            fprintf(outputfile,"%d. %s\n", a, UrutanLagu->buffer[i]);
+            a++;
+            }
+
 // if (!isQueueEmpty(*UrutanLagu))
 // {
 //     fprintf(outputfile,"%d\n",lengthQueue(*UrutanLagu));

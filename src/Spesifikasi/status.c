@@ -84,15 +84,15 @@ char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *album
 void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist, Word *currentSong)
 {
     printf(">> STATUS;\n");
-    char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
+    //char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
 
              
-    if (playlistName != NULL) {
-        printf("\nCurrent Playlist: %s\n", playlistName);
-    }
-    else{
-        printf("\0");
-    }
+    // if (playlistName != NULL) {
+    //     printf("\nCurrent Playlist: %s\n", playlistName);
+    // }
+    // else{
+    //     printf("\0");
+    // }
     printf("Now Playing : \n");
     // Cek apakah ada lagu yang sedang diputar
     if (IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,""))
@@ -111,7 +111,7 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     }
     else{
         int a = 1;
-            for (int i = UrutanLagu->idxHead  ; i < UrutanLagu->idxTail;i++){
+            for (int i = UrutanLagu->idxHead  ; i <= UrutanLagu->idxTail;i++){
             char currsong[50];
             int k = 0;
 
