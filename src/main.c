@@ -275,12 +275,12 @@ int main()
 
                                     IdxAlbum = ketemu;
                                     IdxLagu = val - 1;
-                                    printf("\033[1;36mMemutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
+                                    printf("\033[1;36mMemutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu], e);
 
                                     /*Hapusin riwayat lagu & queue lagu*/
 
-                                    // CreateQueue(UrutanLagu);
-                                    // CreateStackEmpty(RiwayatLagu)
+                                    CreateEmptyRiwayat(&History);
+                                    CreateQueueBELV(&UrutanLagu);
                                 }
                             }
                         }
@@ -290,7 +290,7 @@ int main()
                 char *fes;
                 fes = (char *)malloc(30 * sizeof(char));
                 ADVInput();
-                wordToString(currentCommand, fed);
+                wordToString(currentCommand, fes);
                 if (compareString(upper(fed), "PLAYLIST") == true)
                 {
                     printf("\033[1;36mMasukkan ID Playlist: ");
@@ -300,7 +300,7 @@ int main()
                     wordToString(currentWord, k);
                     int valk = CharToInt(k);
 
-                    printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist);
+                    printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist.TabWord);
                 }
             }
         }
