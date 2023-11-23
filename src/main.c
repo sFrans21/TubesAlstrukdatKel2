@@ -2,12 +2,12 @@
 #include "boolean.h"
 #include "Spesifikasi/start.h"
 #include "Spesifikasi/help.h"
-#include "Spesifikasi/load_baru.h"
+#include "Spesifikasi/load.h"
 #include "Spesifikasi/quit.h"
-#include "Spesifikasi/status.h"
+//#include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
-#include "Spesifikasi/save.h"
-#include "Spesifikasi/play.h"
+//#include "Spesifikasi/save.h"
+//#include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -17,19 +17,18 @@ int main()
     Map penyanyiAlbums;
     Map AlbumLagu;
     maps albumsong;
-    SQueue UrutanLagu;
+    Queue UrutanLagu;
     DynamicList Playlist;
-    RiwayatLagu History;
+    Stack RiwayatLagu;
     LinierList LaguPlaylist;
-    CurrentSong CS;
 
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     CreateEmptymap(&AlbumLagu);
     createmaps(&albumsong);
-    CreateQueueBELV(&UrutanLagu);
+    CreateQueue(&UrutanLagu);
     CreateEmptyDynamic(&Playlist);
-    CreateEmptyRiwayat(&History);
+    CreateEmptyStack(&RiwayatLagu);
     CreateEmptyLinier(&LaguPlaylist);
 
     boolean saved = false;
@@ -81,7 +80,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "LOAD") == false)
                 {
-                    load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, &LaguPlaylist, &CS);
+                    load(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 }
                 else
                 {
@@ -91,7 +90,7 @@ int main()
 
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, true);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
                 endProgram = true;
             }
             else if (IsCommandEqual(currentCommand, "HELP"))
@@ -111,7 +110,7 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "STATUS"))
             {
-                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
+                //displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist);
             }
             else if (IsCommandEqual(currentCommand, "SAVE"))
             {
@@ -119,7 +118,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "SAVE") == false)
                 {
-                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, &LaguPlaylist);
+                    //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 }
                 else
                 {
@@ -128,7 +127,7 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &History, saved);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
             }
             else if (IsCommandEqual(currentCommand, "LIST"))
@@ -279,8 +278,8 @@ int main()
 
                                     /*Hapusin riwayat lagu & queue lagu*/
 
-                                    CreateEmptyRiwayat(&History);
-                                    CreateQueueBELV(&UrutanLagu);
+                                    //CreateEmptyRiwayat(&History);
+                                    //CreateQueueBELV(&UrutanLagu);
                                 }
                             }
                         }
@@ -300,7 +299,7 @@ int main()
                     wordToString(currentWord, k);
                     int valk = CharToInt(k);
 
-                    printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist.TabWord);
+                    //printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist.TabWord);
                 }
             }
         }
