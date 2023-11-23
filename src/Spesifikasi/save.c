@@ -104,7 +104,11 @@ if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
     {
         char* carcurr[50];
          wordToString(*currentSong,carcurr);
-         fprintf(outputfile,"%s",currentSong);
+         int i = 0;
+         while (i < currentSong->Length){
+            fprintf(outputfile,"%c",carcurr[i]);
+         }
+         fprintf(outputfile,"\n");
         
     }
 
