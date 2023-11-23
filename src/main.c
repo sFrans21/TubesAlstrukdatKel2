@@ -115,13 +115,13 @@ int main()
             {
                 ADVInput();
                 wordToString(currentCommand, inputfile);
-                if (compareString(upper(inputfile), "LOAD") == false)
+                if (compareString(upper(inputfile), "SAVE") == false)
                 {
                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 }
                 else
                 {
-                    printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
+                    printf("Command belum memiliki parameter. Silahkan input command sesuai format SAVE <filename .txt>\n");
                 }
             }
             else if (IsCommandEqual(currentCommand, "QUIT"))
