@@ -39,6 +39,39 @@ void StartWordInput()
     }
 }
 
+void StartWordMark()
+{
+    StartMark();
+    IgnoreBlanks();
+    IgnoreNewlines();
+    if (IsEOPMark())
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordMark();
+    }
+}
+
+void StartWordBlank()
+{
+    StartBlank();
+    IgnoreMarks();
+    IgnoreBlanks();
+    IgnoreNewlines();
+    if (IsEOPBlank())
+    {
+        EndWord = true;
+    }
+    else
+    {
+        EndWord = false;
+        CopyWordNewline();
+    }
+}
+
 void StartWordFile(char *filename, int type)
 {
     if (type == 0)

@@ -27,6 +27,10 @@ void IgnoreNewline();
 
 void StartWordInput();
 
+void StartWordMark();
+
+void StartWordBlank();
+
 void StartWordFile(char *filename, int type);
 
 void StartCommand();
