@@ -90,15 +90,15 @@ void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
      fprintf(outputfile, "%d # Jumlah penyanyi\n", penyanyi->itemCount);
 
         for (int i = 0; i < penyanyi->itemCount; i++) {
-            fprintf(outputfile, "%d %s # Jumlah album dan nama dari penyanyi %d\n", penyanyi->items[i].Length, penyanyi->items[i].TabWord, i + 1);
+            fprintf(outputfile, "%d %s # Jumlah album dan nama dari penyanyi %d\n", penyanyiAlbums->Elements[i].Value.Count, penyanyi->items[i].TabWord, i + 1);
 
            
 
             for (int j = 0; j < penyanyiAlbums->Count; j++) {
-                fprintf(outputfile, "%d %s # Jumlah lagu dan judul dari album %d penyanyi %d\n", penyanyiAlbums->Elements[j].Value.Count, penyanyiAlbums[i].Elements[j].Key.TabWord, j + 1, i + 1);
+                fprintf(outputfile, "%d %s # Jumlah lagu dan judul dari album  penyanyi \n", albumsong->Elements[i].Elements[j].Value.Count, penyanyiAlbums[i].Elements[j].Key.TabWord);
 
                 for (int k = 0; k < albumsong->Elements[j].Elements[k].Value.Count; k++) {
-                    fprintf(outputfile, "%s # Lagu %d album %d penyanyi %d\n", albumsong->Elements[i].Elements[j].Value.Elements[k].TabWord, k + 1, j + 1, i + 1);
+                    fprintf(outputfile, "%s # Lagu  album  penyanyi\n", albumsong->Elements[i].Elements[j].Value.Elements[k].TabWord);
                 }
 
                 
