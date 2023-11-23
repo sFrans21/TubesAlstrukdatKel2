@@ -32,8 +32,14 @@ void CreatePlaylist (Word CPlaylist)
 
 void PlaylistAddSong(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong ,DynamicList *DaftarPlaylist);
 {
-    if (!IsListEmptyDynamic);
-    for(int i = 0; i < LengthList)
+    if (!IsListEmptyDynamic){
+        printf("Daftar Penyanyi :\n");
+        for(int index = 0; index < LengthList(penyanyi); index ++){
+            printf("\t&d", index+1);
+            DisplayWord(GetLis)
+        }
+    }
+
 }
 
 void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);
