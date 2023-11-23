@@ -1,11 +1,11 @@
-#ifndef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUEBELV_H
+#define QUEUEBELV_H
 
 #include "boolean.h"
 #include "mesinkata.h"
 
-#define IDX_UNDEF -1
-#define CAPACITY 100
+#define IDX_UNDEFBELV -1
+#define CAPACITYBELV 100
 
 /* Definisi elemen dan address */
 typedef struct{
@@ -15,21 +15,21 @@ typedef struct{
 } CurrentSong;
 
 typedef struct{
- CurrentSong QueueDetail[CAPACITY];
- int idxHead;
- int idxTail;
+ CurrentSong QueueDetail[CAPACITYBELV];
+ int idxHeadBELV;
+ int idxTailBELV;
 } SQueue;
 
 
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
-#define IDX_HEAD(q) (q).idxHead
-#define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).QueueDetail[(q).idxHead]
-#define     TAIL(q) (q).QueueDetail[(q).idxTail]
+#define IDX_HEADBELV(q) (q).idxHeadBELV
+#define IDX_TAILBELV(q) (q).idxTailBELV
+#define     HEADBELV(q) (q).QueueDetail[(q).idxHeadBELV]
+#define     TAILBELV(q) (q).QueueDetail[(q).idxTailBELV]
 
 /* *** Kreator *** */
-void CreateQueue(SQueue *q);
+void CreateQueueBELV(SQueue *q);
 /* I.S. sembarang */
 /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
@@ -37,22 +37,22 @@ void CreateQueue(SQueue *q);
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isQueueEmpty(SQueue q);
+boolean isQueueEmptyBELV(SQueue q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isQueueFull(SQueue q);
+boolean isQueueFullBELV(SQueue q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam QueueDetail melingkar*/
 
-int lengthQueue(SQueue q);
+int lengthQueueBELV(SQueue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(SQueue *q, CurrentSong val);
+void enqueueBELV(SQueue *q, CurrentSong val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam QueueDetail melingkar. */
 
-void dequeue(SQueue *q, CurrentSong *val);
+void dequeueBELV(SQueue *q, CurrentSong *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
