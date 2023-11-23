@@ -273,9 +273,9 @@ int main()
                                     int val = CharToInt(g);
 
                                     printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
-
-                                    // hapusin
-                                }
+                                    IdxAlbum = ketemu;
+                                    IdxLagu = val - 1;
+                                                                }
                             }
                         }
                     }
