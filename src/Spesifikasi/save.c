@@ -70,12 +70,12 @@
 //     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 // }
 
-boolean IsEmptyRiwayat(RiwayatLagu RL)
-/* Mengirim true jika Stack kosong: lihat definisi di atas */
-{
-      return Top(RL) == Undef;
-}
-void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS){
+// boolean IsEmptyRiwayat(RiwayatLagu RL)
+// /* Mengirim true jika Stack kosong: lihat definisi di atas */
+// {
+//       return Top(RL) == Undef;
+// }
+void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, sta *History, LinierList *LaguPlaylist, CurrentSong *CS){
 
     //----------------------------------------------------------------Opening file------------------------------
     char *filepath;

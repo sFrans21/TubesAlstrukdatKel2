@@ -7,14 +7,13 @@
 #include "../tambahan.h"
 #include "queue.h"
 #include "../ADT/Queue.h"
-#include "../ADT/queue_belv.h"
-#include "../ADT/list_dinamis_belv.h"
-#include "../ADT/list_linier_belv.h"
-#include "../ADT/stack_belv.h"
+#include "../ADT/list_dinamis.h"
+#include "../ADT/list_linier.h"
+#include "../ADT/stack.h"
 
 
 
-void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS);
+void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *History, LinierList *LaguPlaylist, CurrentSong *CS);
 
 #endif
 
