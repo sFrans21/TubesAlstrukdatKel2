@@ -239,7 +239,7 @@ if (!isQueueEmptyBELV(*UrutanLagu))
         fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
 
         for (int iPlay = 0; iPlay < Playlist->Neff; iPlay++ ){
-          fprintf(outputfile,"%s;",Playlist->IsiPlaylist->.judulLagu)
+          fprintf(outputfile,"%s;",Playlist->IsiPlaylist->judulLagu.First->info.);
         }
      }
 

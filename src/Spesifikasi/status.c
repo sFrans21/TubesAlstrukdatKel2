@@ -78,7 +78,7 @@
 void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist)
 {
     // Cek apakah ada lagu yang sedang diputar
-    if (isQueueEmpty(*UrutanLagu))
+    if (isQueueEmptyBELV(*UrutanLagu))
     {
         printf("Now Playing: \nNo songs have been played yet. Please search for a song to begin playback.\n");
         printf("\nQueue:\n");
