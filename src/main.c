@@ -272,7 +272,7 @@ int main()
                                     wordToString(currentWord, g);
                                     int val = CharToInt(g);
 
-                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[val - 1], e);
+                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
 
                                     // hapusin
                                 }
