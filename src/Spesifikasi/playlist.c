@@ -2,13 +2,27 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-void CreatePlaylist (DynamicList *Daftarplaylist)
+void CreatePlaylist (Word CPlaylist)
 {
+    int countKarakter = 0;
     printf("Masukkan nama playlist yang ingin di buat : ");
     StartWordMark();
-    printf("\n")
+    printf("\n");
 
-    
+    for ( int i = 0; i < currentWord.Length; i++){
+        if (currentWord.TabWord[i] != BLANK){
+            countKarakter++;
+        }
+    }
+
+    if (countKarakter >= 3){
+        CreateEmptyLinier.PlaylistLagu.Song;
+        InsertLastDynamic (currentWord);
+        printf("Playlist ");
+        Display
+    }
+
+
 }   printf("Playlist &")
 
 void PlaylistAddSong(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);

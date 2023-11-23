@@ -35,6 +35,8 @@ void StartWordFile(char *filename, int type);
 
 void StartCommand();
 
+void DisplayWord(Word word);
+
 void CopyCommand();
 
 void ResetCommand();
