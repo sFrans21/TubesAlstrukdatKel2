@@ -22,6 +22,7 @@ int main()
     Stack RiwayatLagu;
     LinierList LaguPlaylist;
     Word currentSong;
+    Word LaguAyeuna;
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     CreateEmptymap(&AlbumLagu);
@@ -319,8 +320,10 @@ int main()
                     k = (char *)malloc(30 * sizeof(char));
                     wordToString(currentWord, k);
                     int valk = CharToInt(k);
-
-                    printf("\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
+                    LaguAyeuna = SplitWordMark(SplitWordMark(currentSong));
+                    //nambahin laguayeuna ke plalist elemen pertama
+                    LaguAyeuna = Playlist.A[0];
+                    printf("\033[1;36mMemutar playlist %s.\n\n", Playlist.A[valk - 1].TabWord);
                 }
             } else {
                 system("cls||clear");
