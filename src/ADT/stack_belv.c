@@ -44,48 +44,21 @@ void Pop (RiwayatLagu *RL, RincianLaguStack *CS)
     Top(*RL) -= 1;
 }
 
-void DisplayRiwayatLagu(RiwayatLagu RL)
-{
-    RiwayatLagu temp;
-    RincianLaguStack detiltemp;
-    CreateEmptyRiwayatLagu(&temp);
-    printf("BERIKUT URUTAN RIWAYAT DARI YANG TERBARU: \n");
-    int i = 0;
-    while(!IsEmptyRiwayatLagu(RL)){
-        i++;
-        printf("%d. ", i);
-        Pop(&RL,&detiltemp);
-        printf("Nama Penyanyi: ");
-        printWord(InfoSinger(detiltemp));
-        printf("\n");
-        printf("Nama Album: ");
-        printWord(InfoAlbum(detiltemp));
-        printf("\n");
-        printf("Nama Lagu: ");
-        printWord(InfoJudul(detiltemp));
-        printf("\n");
-        Push(&temp, detiltemp);
-    }
-    while(!IsEmptyRiwayatLagu(temp)){
-        Pop(&temp,&detiltemp);
-        Push(&RL,detiltemp);
-    }
-}
 
 void InversStack(RiwayatLagu *RL){
     RiwayatLagu temp1, temp2;
     RincianLaguStack detil_temp;
-    CreateEmptyRiwayatLagu(&temp1);
-    CreateEmptyRiwayatLagu(&temp2);
-    while(!IsEmptyRiwayatLagu(*RL)){
+    CreateEmptyRiwayat(&temp1);
+    CreateEmptyRiwayat(&temp2);
+    while(!IsEmptyRiwayat(*RL)){
         Pop(RL,&detil_temp);
         Push(&temp1, detil_temp);
     }
-    while(!IsEmptyRiwayatLagu(temp1)){
+    while(!IsEmptyRiwayat(temp1)){
         Pop(&temp1,&detil_temp);
         Push(&temp2, detil_temp);
     }
-    while (!IsEmptyRiwayatLagu(temp2))
+    while (!IsEmptyRiwayat(temp2))
     {
         Pop(&temp2,&detil_temp);
         Push(RL, detil_temp);
