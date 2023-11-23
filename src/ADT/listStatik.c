@@ -21,7 +21,7 @@ void CreateEmptyStatic(StaticList *list)
 
     for (i = 0; i < MAX_ITEMS; i++)
     {
-        (*list).items[i] = StringToWord(MarkStatic);
+        (*list).items[i] = stringToWord(MarkStatic);
     }
 }
 
