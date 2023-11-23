@@ -12,20 +12,20 @@ void CreateEmptyLinier (LinierList *L)
 	First(*L) = NilLinier;
 }
 
-addressLinier Alokasi (Word word)
+addressLinier Alokasi (SongListLinier word)
 {
-	addressLinier P;
-	P = (ElmtList *)malloc(sizeof(ElmtList));
-	if (P != NilLinier)
-	{
-		Info(P) = word;
-		Next(P) = NilLinier;
-		return P;
-	}
-	else
-	{
-		return NilLinier;
-	}
+	addressLinier P = (addressLinier)malloc(1 * sizeof(ElmtList));
+    if (P != NilLinier)
+    {
+        (P)->info.Penyanyi = word.Penyanyi;
+        (P)->info.Album = word.Album;
+        (P)->info.Lagu = word.Lagu;
+        Next(P) = NilLinier;
+        return P;
+    }
+    {
+        return NilLinier;
+    }
 }
 
 void Dealokasi (addressLinier *P)
@@ -60,18 +60,17 @@ void Dealokasi (addressLinier *P)
 	}
 }*/
 
-void InsVFirst (LinierList *L, Word word)
+void InsVFirst (LinierList *L, SongListLinier word)
 {
 	addressLinier P = Alokasi(word);
 
 	if (P != NilLinier)
 	{
-		Next(P) = First(*L);
-		First(*L) = P;
+		InsertFirstLinier(L, P);
 	}
 }
 
-void InsVLast (LinierList *L, Word word)
+void InsVLast (LinierList *L, SongListLinier word)
 {
 	addressLinier P = Alokasi(word);
 
@@ -81,21 +80,23 @@ void InsVLast (LinierList *L, Word word)
 	}
 }
 
-void DelVFirst (LinierList *L, Word *word)
+/*void DelVFirst (LinierList *L, SongListLinier *word)
 {
-	addressLinier P;
-	DelFirst(L, &P);
-	(*word) = Info(P);
-	Dealokasi(&P);
-}
+	addressLinier P = First(*L);
+    (*word).Penyanyi = DuplicateKata((P)->info.Penyanyi);
+    (*word).Album = DuplicateKata((P)->info.Album);
+    (*word).Lagu = DuplicateKata((P)->info.Lagu);
+    First(*L) = Next(P);
+    Dealokasi(&P);
+}*/
 
-void DelVLast (LinierList *L, Word *word)
+/*void DelVLast (LinierList *L, Word *word)
 {
 	addressLinier P;
 	DelLast(L, &P);
 	(*word) = Info(P);
 	Dealokasi(&P);
-}
+}*/
 
 void InsertFirstLinier (LinierList *L, addressLinier P)
 {
