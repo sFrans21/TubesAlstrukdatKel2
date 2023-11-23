@@ -11,9 +11,10 @@
 #include "../ADT/list_linier.h"
 #include "../ADT/Queue.h"
 #include "../ADT/list_dinamis.h"
+#include "../ADT/queue_belv.h"
 
 
-void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist);
+void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS);
 
 #endif
 
