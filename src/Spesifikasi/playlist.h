@@ -11,20 +11,20 @@
 #include "ADT/map.h"
 #include "ADT/stack.h"
 #include "list.h"
-#include "tambahan.h"
+#include "../tambahan.h"
 
 
+void CreatePlaylist ();
 
-void CreatePlaylist (Word CPlaylist);
+void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
 
-void PlaylistAddSong(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong ,DynamicList *DaftarPlaylist);
+void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong);
 
-void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong ,DynamicList *DaftarPlaylist);
+void PlaylistSwap(Word Word);
 
-void PlaylistSwap(DynamicList DaftarPlaylist, int idx1, int idx2);
+void PlaylistRemove(Word Word);
 
-void PlaylistRemove(DynamicList DaftarPlaylist);
+void PlaylistDelete();
 
-void PlaylistDelete(DynamicList DaftarPlaylist);
 #endif
 

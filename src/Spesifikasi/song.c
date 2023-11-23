@@ -8,34 +8,42 @@
 
 void songNext(SQueue *q, RiwayatLagu *RL, CurrentSong*CS)
 {
-    if (isQueueEmptyBELV(*q))
+    if ((*CS).status == 0)
     {
-        printf("Queue kosong, memutar kembali lagu");
-        printf("\"");
-        printWord((*CS).SongTitle);
-        printf("\"");
-        printf("oleh");
-        printf("\"");
-        printWord((*CS).SingerName);
+        if (((*q).idxHead == IDX_UNDEF || (*q).idxTail == IDX_UNDEF))
+        {
+            printf("%sERROR: %sQueue kosong, Current Song juga kosong\n");
+            printf("%sTidak ada lagu yang dapat diputar.\n");
+        }
+        else
+        {
+            dequeueLaguNext(q, CS);
+
+            (*CS).status = 1;
+
+            printf("%sOutput: %sMemutar lagu selanjutnya\n");
+            printf("\"%s\" oleh \"%s\"\n", (*CS).SongTitle.TabWord, (*CS).SingerName.TabWord);
+        }
+    }
+    else if ((*q).idxHead == IDX_UNDEF || (*q).idxTail == IDX_UNDEF)
+    {
+        printf("%sOutput: %sQueue kosong, memutar kembali lagu\n");
+        printf("\"%s\" oleh \"%s\"\n", (*CS).SongTitle.TabWord, (*CS).SingerName.TabWord);
+
     }
     else
     {
-        RincianLaguStack CSR;
-        CSR.namaPenyanyi = DuplicateKata(CS->SingerName);
-        CSR.namaAlbum = DuplicateKata(CS->AlbumName);
-        CSR.namaLagu = DuplicateKata(CS->SongTitle);
-        Push(RL, CSR);
-        dequeue(q, CS);
-        printf("Memutar lagu selanjutnya");
-        printf("\"");
-        printWord((*CS).SongTitle);
-        printf("\"");
-        printf("oleh");
-        printf("\"");
-        printWord((*CS).SingerName);
-        printf("\"");
+        PushRiwayatLagu(RL, (*CS).SongTitle, (*CS).AlbumName, (*CS).SingerName);
+        dequeueLaguNext(q, CS);
+
+        (*CS).status = 1;
+
+        printf("%sOutput: %sMemutar lagu selanjutnya\n");
+        printf("\"%s\" oleh \"%s\"\n", (*CS).SongTitle.TabWord, (*CS).NamaPenyanyi.TabWord);
     }
+
 }
+
 
 void songPrevious(SQueue *q, RiwayatLagu *RL, CurrentSong *CS)
 {
@@ -61,9 +69,9 @@ void songPrevious(SQueue *q, RiwayatLagu *RL, CurrentSong *CS)
             enqueue(q, tempSong);
         }
         Pop(RL, &CSR);
-        CS->SingerName = DuplicateKata(CSR.namaPenyanyi);
-        CS->AlbumName = DuplicateKata(CSR.namaAlbum);
-        CS->SongTitle = DuplicateKata(CSR.namaLagu);
+        CS->SingerName = CopyWord(CSR.namaPenyanyi);
+        CS->AlbumName = CopyWord(CSR.namaAlbum);
+        CS->SongTitle = CopyWord(CSR.namaLagu);
         printf("Memutar lagu sebelumnya");
         printf("\"");
         printWord((*CS).SongTitle);
