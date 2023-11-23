@@ -275,7 +275,9 @@ int main()
                                     printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
                                     IdxAlbum = ketemu;
                                     IdxLagu = val - 1;
-                                                                }
+                                    // Hapusin riwayat lagu & queue lagu
+                                    CreateQueue(UrutanLagu);
+                                }
                             }
                         }
                     }
