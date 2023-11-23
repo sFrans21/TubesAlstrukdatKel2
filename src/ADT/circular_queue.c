@@ -5,22 +5,22 @@
 
 
 /* ********* Prototype ********* */
-boolean CIsEmpty (QueueLagu Q) {
-    return ((CIDX_HEAD(Q)==IDX_UNDEF) && (CIDX_TAIL(Q)==IDX_UNDEF));
+boolean CIsEmpty (Queue q) {
+    return ((CIDX_HEAD(q)==IDX_UNDEF) && (CIDX_TAIL(q)==IDX_UNDEF));
 }
 /* Mengirim true jika Q kosong */
 /* yaitu ketika idxHead=IDX_UNDEF dan idxTail=IDX_UNDEF */
-boolean CIsFull (QueueLagu Q){
-    if (CIDX_HEAD(Q) == 0) {
-        return (CIDX_TAIL(Q)==IDX_MAX);
+boolean CIsFull (Queue q){
+    if (CIDX_HEAD(q) == 0) {
+        return (CIDX_TAIL(q)==IDX_MAX);
     }
     else {
-        return (CIDX_HEAD(Q)==CIDX_TAIL(Q)+1);
+        return (CIDX_HEAD(q)==CIDX_TAIL(q)+1);
     }
 }
 /* Mengirim true jika tabel penampung elemen Q sudah penuh */
 /* yaitu ketika idxHead=0 dan idxTail=IDX_MAX atau idxHead=idxTail+1 ketika idxHead > idxTail */
-int CLength (QueueLagu Q){
+int CLength (Queue q){
     if (CIsEmpty(Q))
     {
         return 0;
@@ -46,7 +46,7 @@ void CCreateQueue (QueueLagu * Q){
 /* - idxTail=IDX_UNDEF. */
 
 /* *** Primitif Add/Delete *** */
-void Cenqueue(QueueLagu *Q, char *penyanyi,  char *album,  char *lagu) {
+void Cenqueue(Queue *Q, char *penyanyi,  char *album,  char *lagu) {
     if (CIsEmpty(*Q)) {
         CIDX_TAIL(*Q)++;
     } else {
