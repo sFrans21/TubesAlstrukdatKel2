@@ -8,6 +8,6 @@
 #include "../ADT/list_linier.h"
 
 // Deklarasi fungsi untuk membaca save file
-void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist);
+void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong);
 
 #endif

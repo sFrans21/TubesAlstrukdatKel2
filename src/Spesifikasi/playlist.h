@@ -16,9 +16,9 @@
 
 void CreatePlaylist ();
 
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
+void CreatePlaylist (Word CPlaylist);
 
-void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong);
+void PlaylistAddSong(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong ,DynamicList *DaftarPlaylist);
 
 void PlaylistSwap(Word Word);
 

@@ -27,15 +27,15 @@ void IgnoreNewline();
 
 void StartWordInput();
 
-void StartWordMark();
+// void StartWordMark();
 
-void StartWordBlank();
+// void StartWordBlank();
+
+Word ConcatWord(Word word_1, Word word_2);
 
 void StartWordFile(char *filename, int type);
 
 void StartCommand();
-
-void DisplayWord(Word word);
 
 void CopyCommand();
 

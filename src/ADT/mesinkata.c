@@ -39,38 +39,38 @@ void StartWordInput()
     }
 }
 
-void StartWordMark()
-{
-    StartMark();
-    IgnoreBlanks();
-    IgnoreNewlines();
-    if (IsEOPMark())
-    {
-        EndWord = true;
-    }
-    else
-    {
-        EndWord = false;
-        CopyWordMark();
-    }
-}
+// void StartWordMark()
+// {
+//     StartMark();
+//     IgnoreBlanks();
+//     IgnoreNewlines();
+//     if (IsEOPMark())
+//     {
+//         EndWord = true;
+//     }
+//     else
+//     {
+//         EndWord = false;
+//         CopyWordMark();
+//     }
+// }
 
-void StartWordBlank()
-{
-    StartBlank();
-    IgnoreMarks();
-    IgnoreBlanks();
-    IgnoreNewlines();
-    if (IsEOPBlank())
-    {
-        EndWord = true;
-    }
-    else
-    {
-        EndWord = false;
-        CopyWordNewline();
-    }
-}
+// void StartWordBlank()
+// {
+//     StartBlank();
+//     IgnoreMarks();
+//     IgnoreBlanks();
+//     IgnoreNewlines();
+//     if (IsEOPBlank())
+//     {
+//         EndWord = true;
+//     }
+//     else
+//     {
+//         EndWord = false;
+//         CopyWordNewline();
+//     }
+// }
 
 void StartWordFile(char *filename, int type)
 {
@@ -100,14 +100,6 @@ void StartWordFile(char *filename, int type)
             EndWord = false;
             ADVLine();
         }
-    }
-}
-
-void DisplayWord(Word word)
-{
-    for (int i = 0; i < word.Length; i++)
-    {
-        printf("%c", word.TabWord[i]);
     }
 }
 
@@ -327,6 +319,26 @@ Word SplitWordBlank(Word word)
     temp.Length = sum;
 
     return (temp);
+}
+
+Word ConcatWord(Word word_1, Word word_2)
+{
+    Word word;
+    int count = 0;
+    for(int i=0; i<word_1.Length; i++)
+    {
+        word.TabWord[count] = word_1.TabWord[i];
+        count++;
+    }
+
+    for(int i=0; i<word_2.Length; i++)
+    {
+        word.TabWord[count] = word_2.TabWord[i];
+        count++;
+    }
+    word.Length = word_1.Length + word_2.Length;
+
+    return (word);
 }
 
 Word SplitWordMark(Word word)

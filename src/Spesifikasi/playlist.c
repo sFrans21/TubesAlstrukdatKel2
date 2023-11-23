@@ -4,9 +4,8 @@
 
 void CreatePlaylist ()
 {
-    int countKarakter = 0;
     printf("Masukkan nama playlist yang ingin di buat : ");
-    StartWordInput();
+    StartWordMark();
     printf("\n");
 
     for ( int i = 0; i < currentWord.Length; i++){
@@ -16,11 +15,10 @@ void CreatePlaylist ()
     }
 
     if (countKarakter >= 3){
-        LinierList PlaylistIsi;
-        CreateEmptyLinier(&PlaylistIsi);
-        InsertLastDynamic(&PlaylistIsi, currentWord);
+        CreateEmptyLinier.PlaylistLagu.Song;
+        InsertLastDynamic (currentWord);
         printf("Playlist ");
-        DisplayWord(currentWord);
+        DisplayWord (currentWord);
         printf(" berhasil dibuat! \n");
         printf("\n Silahkan masukkan lagu - lagu artis terkini kesayangan Anda!\n");
     }
@@ -31,7 +29,7 @@ void CreatePlaylist ()
 
 }  
 
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong)
+void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
 {
     int idxp;
     int idxa;

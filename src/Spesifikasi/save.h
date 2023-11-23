@@ -1,6 +1,6 @@
 #ifndef SAVE_H
 #define SAVE_H
- // Termasuk file header yang diperlukan  // Mungkin memerlukan tipe data seperti Set untuk menyimpan lagu
+// Termasuk file header yang diperlukan  // Mungkin memerlukan tipe data seperti Set untuk menyimpan lagu
 // #include "../ADT/arrayDin.h"   // Memerlukan Map untuk menyimpan album dan lagu
 //#include "../ADT/Queue.h"  // Memerlukan List statis untuk daftar penyanyi
 #include "../tambahan.h"
