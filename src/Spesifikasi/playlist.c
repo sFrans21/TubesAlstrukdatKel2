@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include "playlist.h"
-#include "ADT/mesinkata.h"
 
-void CreatePlayList(DynamicList *DaftarPlaylist) 
-{
-    printf("Masukkan nama playlist yang ingin dibuat : \n");
-    StartCommand();  
+void CreatePlayList(DynamicList *DaftarPlaylist) {
+    printf("\n");
+    printf("Masukkan nama playlist yang ingin dibuat : ");
+    STARTCOMMAND();  
     int i = 0;
     int count = 0;
     while (currentCommand.Length > i) {
@@ -15,23 +14,29 @@ void CreatePlayList(DynamicList *DaftarPlaylist)
         i++;
     }
     if (count >= 3) {
-        char *comm = wordToString(currentCommand);
-        InsertLast(&list_dinamis.A[list_dinamis.NEff+1],currentCommand) ;
-        CreateEmptylistb(&list_dinamis.A[list_dinamis.NEff - 1]);
-        printf("\n Playlist %s berhasil dibuat!", comm);
-    } else {
-        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.");
+        // Menambahkan playlist baru ke DynamicList
+        InsertLD(DaftarPlaylist, currentCommand, DaftarPlaylist->Neff);
+        CreateSB(&DaftarPlaylist->Content[DaftarPlaylist->Neff-1]);
+        // Display output
+        printf("\n");
+        printf("Playlist ");
+        displayWord(currentCommand);
+        printf(" berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n");   
     }
-}
+    else {
+        printf("\n");
+        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silakan coba lagi.\n");
+    }
+}   
 
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums,maps albumsong,DynamicList *daftarplaylist) {
+void PLAYLISTADDSONG(ListPenyanyi lp, Map m2,SetLagu S ,DynamicList *daftarplaylist) {
     printf("Daftar Penyanyi:\n");
-    DisplayListPenyanyi(penyanyi);
+    DisplayListPenyanyi(lp);
     printf("\n");
 
     printf("Masukkan Nama Penyanyi: ");
-    StartCommand();
-    if(!isMemberListPenyanyi(currentCommand,penyanyi)){
+    STARTCOMMAND();
+    if(!isMemberListPenyanyi(currentCommand,lp)){
         printf("Nama Penyanyi  ");
         displayWord(currentCommand);
         printf(" tidak ada dalam daftar. Silakan coba lagi.\n");
@@ -41,32 +46,32 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums,maps albumsong,Dyna
     CreateWord2(currentCommand.Length,currentCommand.TabWord,&penyanyitemp);
 
     char *comm=wordToString(currentCommand);
-    int idxpenyanyi=albumtoidpenyanyi(penyanyi,currentCommand);
+    int idxpenyanyi=albumtoidpenyanyi(lp,currentCommand);
 
     printf("\n");
     printf("Daftar Album oleh %s:\n",comm);
-    displayMapAlbum(penyanyiAlbums,idxpenyanyi);
+    displayMapAlbum(m2,idxpenyanyi);
 
     printf("\n");
     printf("Masukkan Nama Album yang dipilih: ");
-    StartCommand();
+    STARTCOMMAND();
     Word albumtemp;
     CreateWord2(currentCommand.Length,currentCommand.TabWord,&albumtemp);
-    if (!IsMemberMapAlbum(penyanyiAlbums,currentCommand)){
+    if (!IsMemberMapAlbum(m2,currentCommand)){
         printf("Album ");
         displayWord(currentCommand);
         printf(" tidak ada dalam daftar. Silakan coba lagi.\n");
         return;
     }
     char *comm1=wordToString(currentCommand);
-    int idxalbum=laguAlbumID(currentCommand,penyanyiAlbums);
+    int idxalbum=laguAlbumID(currentCommand,m2);
     printf("\n");
     printf("Daftar Lagu Album %s oleh %s : \n",comm1,comm);
     DisplaySetLagu(S,idxalbum);
     int countlagu = CountLaguByAlbumID(&S,idxalbum);
     printf("\n");
     printf("Masukkan ID Lagu yang dipilih: ");
-    StartCommand();
+    STARTCOMMAND();
     int idxlagu=wordToInt(currentCommand);
     if((idxlagu<=0) || (idxlagu > countlagu)){
         printf("ID lagu tidak valid\n");
@@ -83,7 +88,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums,maps albumsong,Dyna
 
     // Meminta input ID Playlist
     printf("Masukkan ID Playlist yang dipilih : ");
-    StartCommand(); // Mulai membaca kata
+    STARTCOMMAND(); // Mulai membaca kata
     printf("\n");
     int id_playlist = wordToInt(currentCommand) - 1;
 
@@ -110,15 +115,14 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums,maps albumsong,Dyna
     }
 }
 
-
-void PlaylistAddAlbum (StaticList penyanyi, Map penyanyiAlbums, maps albumsong ,DynamicList *daftarplaylist) {
+void PLAYLISTADDALBUM(ListPenyanyi lp, MapAlbum m2,SetLagu S ,DynamicList *daftarplaylist) {
     printf("Daftar Penyanyi:\n");
-    DisplayListPenyanyi(penyanyi);
+    DisplayListPenyanyi(lp);
     printf("\n");
 
     printf("Masukkan Nama Penyanyi yang dipilih : ");
-    StartCommand();
-    if(!isMemberListPenyanyi(currentCommand,penyanyi)){
+    STARTCOMMAND();
+    if(!isMemberListPenyanyi(currentCommand,lp)){
         printf("Nama Penyanyi  ");
         displayWord(currentCommand);
         printf(" tidak ada dalam daftar. Silakan coba lagi.\n");
@@ -128,25 +132,25 @@ void PlaylistAddAlbum (StaticList penyanyi, Map penyanyiAlbums, maps albumsong ,
     CreateWord2(currentCommand.Length,currentCommand.TabWord,&penyanyitemp);
 
     char *comm=wordToString(currentCommand);
-    int idxpenyanyi=albumtoidpenyanyi(penyanyi,currentCommand);
+    int idxpenyanyi=albumtoidpenyanyi(lp,currentCommand);
 
     printf("\n");
     printf("Daftar Album oleh %s:\n",comm);
-    displayMapAlbum(penyanyiAlbums,idxpenyanyi);
+    displayMapAlbum(m2,idxpenyanyi);
 
     printf("\n");
     printf("Masukkan Judul Album yang dipilih: ");
-    StartCommand();
+    STARTCOMMAND();
     Word albumtemp;
     CreateWord2(currentCommand.Length,currentCommand.TabWord,&albumtemp);
-    if (!IsMemberMapAlbum(penyanyiAlbums,currentCommand)){
+    if (!IsMemberMapAlbum(m2,currentCommand)){
         printf("Album ");
         displayWord(currentCommand);
         printf(" tidak ada dalam daftar. Silakan coba lagi.\n");
         return;
     }
     char *comm1=wordToString(currentCommand);
-    int idxalbum=laguAlbumID(currentCommand,penyanyiAlbums);
+    int idxalbum=laguAlbumID(currentCommand,m2);
     printf("\n");
     printf("Daftar Playlist Pengguna :\n");
     DisplayLD(*daftarplaylist);
@@ -154,7 +158,7 @@ void PlaylistAddAlbum (StaticList penyanyi, Map penyanyiAlbums, maps albumsong ,
 
     // Meminta input ID Playlist
     printf("Masukkan ID Playlist yang dipilih : ");
-    StartCommand(); // Mulai membaca kata
+    STARTCOMMAND(); // Mulai membaca kata
     printf("\n");
     int id_playlist = wordToInt(currentCommand) - 1;
     if (IsIdxValidLD(*daftarplaylist, id_playlist)) {
@@ -162,12 +166,12 @@ void PlaylistAddAlbum (StaticList penyanyi, Map penyanyiAlbums, maps albumsong ,
         Detail d;
         PasteWord(Title(daftarplaylist->Content[id_playlist]), &playlist);
         Word lagu;
-        DisplaySetLagu(S,idxalbum);
-        /*for (int i = 0; i < ValueM(LaguAlbum, album).Length; i++) {
-            PasteWord(ValueM(LaguAlbum, album).Content[i], &lagu);
+        for (int i=1;i<=(CountLaguByAlbumID(&S,idxalbum));i++){
+            Word check = namalagufromalbum(S,idxalbum,i);
+            PasteWord(check, &lagu);
             CreateD(&d, penyanyitemp, albumtemp, lagu);
-            InsertSB(&DaftarPlaylist.Content[id_playlist], d, LengthSB(DaftarPlaylist.Content[id_playlist]));
-        }*/
+            InsertSB(&daftarplaylist->Content[id_playlist], d, LengthSB(daftarplaylist->Content[id_playlist]));
+        }
         
         printf("Album dengan judul \"");
         displayWord(albumtemp);
@@ -180,8 +184,7 @@ void PlaylistAddAlbum (StaticList penyanyi, Map penyanyiAlbums, maps albumsong ,
     }
 }
 
-
-void PLAYLISTSWAP(ListDinamik *DaftarPlaylist){
+void PLAYLISTSWAP(DynamicList *DaftarPlaylist){
     // Mengambil idP, id1, id2 dari Current Command
     printf("\n");
     int i = 14;
@@ -234,7 +237,7 @@ void PLAYLISTSWAP(ListDinamik *DaftarPlaylist){
     }
 }
 
-void PLAYLISTREMOVE(ListDinamik *DaftarPlaylist) {
+void PLAYLISTREMOVE(DynamicList *DaftarPlaylist) {
     displayWordNewLine(currentCommand);
     int index, urutan;
     int i = 16;
@@ -273,7 +276,7 @@ void PLAYLISTREMOVE(ListDinamik *DaftarPlaylist) {
     }
 }
 
-void PLAYLISTDELETE(ListDinamik *DaftarPlaylist) {
+void PLAYLISTDELETE(DynamicList *DaftarPlaylist) {
     printf("Daftar Playlist Pengguna :\n");
     DisplayLD(*DaftarPlaylist);
     printf("\n");

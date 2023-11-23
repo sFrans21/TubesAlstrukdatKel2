@@ -2,13 +2,13 @@
 #ifndef __SONG_H_
 #define __SONG_H_
 
-#include "queue.h"  
-#include "ADT/stack.h"
+#include "ADT/queue_belv.h"  
+#include "ADT/stack_belv.h"
 #include "ADT/mesinkata.h"
 
 
-void SongNext(Queue * queue, Stack * RiwayatLagu, CurrentSong * currentS);
+void SongNext(SQueue * q, RiwayatLagu * RL, CurrentSong* CS);
 
-void SongPrev(Queue * queue, Stack * RiwayatLagu, CurrentSong * currentS);
+void SongPrev(SQueue * q, RiwayatLagu * RL, CurrentSong* CS);
 
 #endif
