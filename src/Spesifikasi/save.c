@@ -70,7 +70,12 @@
 //     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 // }
 
-void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, Riwayat *History, LinierList *LaguPlaylist, CurrentSong *CS){
+boolean IsEmptyRiwayat(RiwayatLagu RL)
+/* Mengirim true jika Stack kosong: lihat definisi di atas */
+{
+      return Top(RL) == Undef;
+}
+void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, SQueue *UrutanLagu, DynamicList *Playlist, RiwayatLagu *History, LinierList *LaguPlaylist, CurrentSong *CS){
 
     //----------------------------------------------------------------Opening file------------------------------
     char *filepath;
@@ -120,7 +125,11 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
 // }
 
 
-
+if(!isQueueEmptyBELV(*UrutanLagu)){
+  fprintf(outputfile,"%s;",UrutanLagu->QueueDetail[UrutanLagu->idxHeadBELV].SingerName);
+  fprintf(outputfile,"%s;",UrutanLagu->QueueDetail[UrutanLagu->idxHeadBELV].AlbumName);
+  fprintf(outputfile,"%s\n",UrutanLagu->QueueDetail[UrutanLagu->idxHeadBELV].SongTitle);
+}
  
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
 // if (!isQueueEmpty(*UrutanLagu))
@@ -145,6 +154,17 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
 //         fprintf(outputfile, "%s;", currsong);
 //         }
 //     }
+
+if (!isQueueEmptyBELV(*UrutanLagu))
+{
+    fprintf(outputfile,"%d\n",lengthQueueBELV(*UrutanLagu));
+    for (int i = (UrutanLagu->idxHeadBELV) + 1 ; i < UrutanLagu->idxTailBELV;i++){
+
+        fprintf(outputfile, "%s;", UrutanLagu->QueueDetail[i].SingerName);
+        fprintf(outputfile, "%s;", UrutanLagu->QueueDetail[i].AlbumName);
+        fprintf(outputfile, "%s\n", UrutanLagu->QueueDetail[i].SongTitle);
+        }
+    }
 // //---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
     //  if (!IsEmptyStack(*RiwayatLagu))
     // {
@@ -169,7 +189,16 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
     //         fprintf(outputfile, "%s;", currsong);
     //     }
     // }
-  
+     if (!IsEmptyRiwayat(*History))
+    {
+        fprintf(outputfile,"%d\n",History->TopRiwayat + 1);
+        for (int i = History->TopRiwayat; i >= 0; i--)
+        {
+            fprintf(outputfile, "%s;", History->detil_history[i].namaPenyanyi);
+            fprintf(outputfile, "%s;", History->detil_history[i].namaAlbum);
+            fprintf(outputfile, "%s\n", History->detil_history[i].namaLagu);
+        }
+    }
 // //---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
 
     //  if(!IsListEmptyDynamic(*Playlist)){
@@ -204,6 +233,16 @@ void save(char *filename, StaticList *penyanyi, Map *penyanyiAlbums, maps *album
     // if (filepath != NULL) {
     //     printf("Save berhasil dilakukan, Yeay!\n");
     // }
+
+     if(Playlist->Neff != 0){
+        int playlistCount = Playlist->Neff;
+        fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
+
+        for (int iPlay = 0; iPlay < Playlist->Neff; iPlay++ ){
+          fprintf(outputfile,"%s;",Playlist->IsiPlaylist->.judulLagu)
+        }
+     }
+
 }
 // void CreateQueue(Queue *q){
 // /* I.S. sembarang */
