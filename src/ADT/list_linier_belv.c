@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "list_linier.h"
+#include "list_linier_belv.h"
 
 boolean IsEmptyLinier (LinierList L)
 {
@@ -12,20 +12,20 @@ void CreateEmptyLinier (LinierList *L)
 	First(*L) = NilLinier;
 }
 
-addressLinier Alokasi (Word word)
+addressLinier Alokasi (SongListLinier word)
 {
-	addressLinier P;
-	P = (ElmtList *)malloc(sizeof(ElmtList));
-	if (P != NilLinier)
-	{
-		Info(P) = word;
-		Next(P) = NilLinier;
-		return P;
-	}
-	else
-	{
-		return NilLinier;
-	}
+	addressLinier P = (addressLinier)malloc(1 * sizeof(ElmtList));
+    if (P != NilLinier)
+    {
+        (P)->info.Penyanyi = word.Penyanyi;
+        (P)->info.Album = word.Album;
+        (P)->info.Lagu = word.Lagu;
+        Next(P) = NilLinier;
+        return P;
+    }
+    {
+        return NilLinier;
+    }
 }
 
 void Dealokasi (addressLinier *P)
@@ -60,18 +60,17 @@ void Dealokasi (addressLinier *P)
 	}
 }*/
 
-void InsVFirst (LinierList *L, Word word)
+void InsVFirst (LinierList *L, SongListLinier word)
 {
 	addressLinier P = Alokasi(word);
 
 	if (P != NilLinier)
 	{
-		Next(P) = First(*L);
-		First(*L) = P;
+		InsertFirstLinier(L, P);
 	}
 }
 
-void InsVLast (LinierList *L, Word word)
+void InsVLast (LinierList *L, SongListLinier word)
 {
 	addressLinier P = Alokasi(word);
 

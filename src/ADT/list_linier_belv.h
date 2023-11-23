@@ -12,9 +12,14 @@
 #define NilLinier NULL
 
 typedef struct tElmtlist *addressLinier;
+typedef struct {
+	Word Penyanyi;
+	Word Album;
+	Word Lagu;
+} SongListLinier;
 
 typedef struct tElmtlist { 
-	Word info;
+	SongListLinier info;
 	addressLinier next;
 } ElmtList;
 
@@ -26,7 +31,6 @@ typedef struct {
 /* List kosong : First(L) = NilLinier */
 /* Setiap elemen dengan addressLinier P dapat diacu Info(P), Next(P) */
 /* Elemen terakhir list : jika addressnya Last, maka Next(Last)=NilLinier */
-#define Info(P) (P)->info
 #define Next(P) (P)->next
 #define First(L) ((L).First)
 
@@ -41,7 +45,7 @@ void CreateEmptyLinier(LinierList *L);
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-addressLinier Alokasi(Word word);
+addressLinier Alokasi(SongListLinier word);
 /* Mengirimkan addressLinier hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka addressLinier tidak NilLinier, dan misalnya */
 /* menghasilkan P, maka info(P)=X, Next(P)=NilLinier */
@@ -59,22 +63,22 @@ void Dealokasi (addressLinier *P);
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst (LinierList *L, Word word);
+void InsVFirst (LinierList *L, SongListLinier word);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
-void InsVLast (LinierList *L, Word word);
+void InsVLast (LinierList *L, SongListLinier word);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst (LinierList *L, Word *word);
+void DelVFirst (LinierList *L, SongListLinier *word);
 /* I.S. List L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
-void DelVLast (LinierList *L, Word *word);
+void DelVLast (LinierList *L, SongListLinier *word);
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
