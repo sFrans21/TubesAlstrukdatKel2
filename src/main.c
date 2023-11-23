@@ -276,7 +276,8 @@ int main()
                                     IdxAlbum = ketemu;
                                     IdxLagu = val - 1;
                                     // Hapusin riwayat lagu & queue lagu
-                                    CreateQueue(UrutanLagu);
+                                    // CreateQueue(UrutanLagu);
+                                    // CreateStackEmpty(RiwayatLagu)
                                 }
                             }
                         }
