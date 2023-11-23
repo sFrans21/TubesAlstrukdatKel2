@@ -6,7 +6,7 @@
 #include "Spesifikasi/quit.h"
 #include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
-#include "Spesifikasi/save.h"
+//#include "Spesifikasi/save.h"
 #include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -120,7 +120,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "SAVE") == false)
                 {
-                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist,&currentSong);
+                    //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist,&currentSong);
                 }
                 else
                 {
