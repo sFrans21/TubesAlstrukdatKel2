@@ -1,10 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "song.h"
-#include "queue.h"
 #include "../boolean.h"
-#include "song.h"
-#include <stdio.h>
+
 
 // asumsi jika queue/RiwayatLagu kosong pasti ada current song untu
 
