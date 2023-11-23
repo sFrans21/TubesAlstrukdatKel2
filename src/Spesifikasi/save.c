@@ -129,6 +129,9 @@ if(!isQueueEmptyBELV(*UrutanLagu)){
   fprintf(outputfile,"%s;",UrutanLagu->QueueDetail[UrutanLagu->idxHeadBELV].SingerName);
   fprintf(outputfile,"%s;",UrutanLagu->QueueDetail[UrutanLagu->idxHeadBELV].AlbumName);
   fprintf(outputfile,"%s\n",UrutanLagu->QueueDetail[UrutanLagu->idxHeadBELV].SongTitle);
+  fprintf(outputfile,"%s;",CS->SingerName);
+  fprintf(outputfile,"%s;",CS->AlbumName);
+  fprintf(outputfile,"%s\n",CS->SongTitle);
 }
  
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
@@ -239,7 +242,9 @@ if (!isQueueEmptyBELV(*UrutanLagu))
         fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
 
         for (int iPlay = 0; iPlay < Playlist->Neff; iPlay++ ){
-          fprintf(outputfile,"%s;",Playlist->IsiPlaylist->judulLagu.First->info.);
+          fprintf(outputfile,"%s;",Playlist->IsiPlaylist->judulLagu.First->info.Penyanyi.TabWord);
+          fprintf(outputfile,"%s;",Playlist->IsiPlaylist->judulLagu.First->info.Album.TabWord);
+          fprintf(outputfile,"%s\n",Playlist->IsiPlaylist->judulLagu.First->info.Lagu.TabWord);
         }
      }
 
