@@ -84,7 +84,15 @@ char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *album
 void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist, Word *currentSong)
 {
     printf(">> STATUS;\n");
+    char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
 
+             
+    if (playlistName != NULL) {
+        printf("\nCurrent Playlist: %s\n", playlistName);
+    }
+    else{
+        printf("\0");
+    }
     printf("Now Playing : \n");
     // Cek apakah ada lagu yang sedang diputar
     if (IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,""))
@@ -95,55 +103,33 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     else {
         printf("%s",dash(*currentSong));}
 
-    //     char currsong[50];
-    //     int k = 0;
-
-    //     while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
-    //     {
-    //         currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
-    //         k++;
-    //     }
-    //     currsong[k] = '\0';
-    //     char currPen[50];
-    //     char currAlb[50];
-    //         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-    //         printf("Now Playing:\n");
-    //         printf("%s - %s - %s\n", HEAD(*UrutanLagu).TabWord, currAlb, currPen);
-
-
-    //     if (lengthQueue(*UrutanLagu) == 1)
-    //     {
-    //         printf("\nQueue:\n");
-    //         printf("Your queue is empty.\n");
-    //     }
-    //     else{
-    //         int a = 1;
-    //         for (int i = UrutanLagu->idxHead  ; i < UrutanLagu->idxTail;i++){
-    //         char currsong[50];
-    //         int k = 0;
-
-    //         while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
-    //         {
-    //             currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
-    //             k++;
-    //         }
-    //         currsong[k] = '\0';
-    //         char currPen[50];
-    //         char currAlb[50];
-    //         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-    //         printf("\nQueue:\n");
-    //         printf("%d. %s - %s - %s\n", a, HEAD(*UrutanLagu).TabWord, currAlb, currPen);
-    //         a++;
-    //         }
-    //         char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
-
-    //          // Jika playlistName bukan NULL, maka tampilkan nama playlist
-    //         if (playlistName != NULL) {
-    //             printf("\nCurrent Playlist: %s\n", playlistName);
-    //     }
-    // }
+   
     printf("\nQueue:\n");
+    if(isQueueEmpty(*UrutanLagu))
+    {
         printf("Your queue is empty.\n");
+    }
+    else{
+        int a = 1;
+            for (int i = UrutanLagu->idxHead  ; i < UrutanLagu->idxTail;i++){
+            char currsong[50];
+            int k = 0;
+
+            while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+            {
+                currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+                k++;
+            }
+            currsong[k] = '\0';
+            char currPen[50];
+            char currAlb[50];
+            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+            printf("%d. %s\n", a, dash(UrutanLagu->buffer[i]));
+            a++;
+            }
+    }
+             
+
 }
 
 
