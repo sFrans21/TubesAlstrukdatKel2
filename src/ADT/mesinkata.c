@@ -5,6 +5,7 @@
 boolean EndWord;
 Word currentWord;
 Word currentCommand;
+Word hasil;
 
 void IgnoreBlank()
 {
@@ -222,4 +223,24 @@ void CopyWordinput(){
         i++;
     } 
     currentWord.Length = i;
+}
+
+void ADVSemicolon(){
+    hasil.Length = 0;
+    while((currentChar != MARK) && (currentChar != NEWLINE) && (currentChar != STRIP) && (currentChar != STOP)){
+        hasil.TabWord[hasil.Length] = currentChar;
+        hasil.Length++;
+        ADV();
+    }
+    if(currentChar == MARK){ 
+        ADV();
+    }
+}
+
+boolean CekWord(Word hasil){
+    boolean ada = false;
+    if(hasil.Length != 0){
+        ada = true;
+    }
+    return ada;
 }

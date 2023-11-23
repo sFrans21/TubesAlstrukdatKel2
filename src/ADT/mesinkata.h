@@ -6,6 +6,8 @@
 #define NMax 50
 #define BLANK ' '
 #define NEWLINE '\n'
+#define STRIP '-'
+#define STOP '\0'
 
 typedef struct
 {
@@ -17,6 +19,7 @@ typedef struct
 extern boolean EndWord;
 extern Word currentWord;
 extern Word currentCommand;
+extern Word hasil;
 
 void IgnoreBlank();
 
@@ -51,5 +54,9 @@ void CopyWord();
 Word CopyWordFile();
 
 void CopyWordinput();
+
+void ADVSemicolon();
+
+boolean CekWord(Word hasil);
 
 #endif
