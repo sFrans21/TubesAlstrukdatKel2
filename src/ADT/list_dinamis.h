@@ -2,6 +2,7 @@
 
 #include "boolean.h"
 #include "mesinkata.h"
+#include "map.h"
 
 #ifndef __DYNAMIC_LIST_H__
 #define __DYNAMIC_LIST_H__
@@ -44,13 +45,13 @@ Word GetDynamic(DynamicList list, IdxType i);
 /* Prekondisi : list tidak kosong, i antara FirstIdxList(L)..LastIdxList(L) */
 /* Mengirimkan elemen list yang ke-i */
 
-void InsertLD(DynamicList *list, ElType x, Key i);
+void InsertLD(DynamicList *list, ElType x, keytype i);
 /**
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
 
-void DeleteLD(DynamicList *list, Key i);
+void DeleteLD(DynamicList *list, keytype i);
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
@@ -100,4 +101,5 @@ void DisplaySemuaLD(DynamicList list);
  */
 
 void DeleteAtListDin(DynamicList *array, IdxType i);
+
 #endif
