@@ -3,11 +3,14 @@
 #include "start.h"=
 #include "../tambahan.h"
 #include "queue.h"
-#include "../ADT/map.h"
-#include "save.h"
+#include "../ADT/Queue.h"
+#include "../ADT/list_dinamis.h"
+#include "../ADT/list_linier.h"
+#include "../ADT/stack.h"
 
-// void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA);
-// char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums);
-void displayStatus(SQueue *UrutanLagu, DynamicList *Playlist , CurrentSong *CS);
+
+void carialbumpenyanyi(Map singeralbum, maps albumsong, char *songname, char *curP, char *curA);
+char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums);
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist);
 
 #endif

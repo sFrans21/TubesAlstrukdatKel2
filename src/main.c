@@ -99,6 +99,7 @@ int main()
             }
             else
             {
+                system("cls||clear");
                 printf("C\033[1;35mommand tidak bisa dieksekusi!\n");
             }
         }
@@ -304,6 +305,7 @@ int main()
                     //printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist.TabWord);
                 }
             } else {
+                system("cls||clear");
                 printf("Command tidak bisa dieksekusi!\n");
             }
         }
