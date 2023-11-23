@@ -145,3 +145,22 @@ void PrintPlaylistt(DynamicList M)
             printf("Kamu tidak memiliki playlist.");
       }
 }
+
+int IdxKetemuPenyanyi(StaticList M, Word C)
+{
+      int when;
+      char *f;
+      f = (char *)malloc(30 * sizeof(char));
+      char *e;
+      e = (char *)malloc(30 * sizeof(char));
+      for (int i = 0; i < M.itemCount; i++)
+      {
+            wordToString(C, f);
+            wordToString(M.items[i], e);
+            if (compareString(f, e) == true)
+            {
+                  when = i;
+            }
+      }
+      return when;
+}

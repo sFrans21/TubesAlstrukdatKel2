@@ -7,6 +7,7 @@
 #include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
 #include "Spesifikasi/save.h"
+#include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -117,7 +118,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "LOAD") == false)
                 {
-                   save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 }
                 else
                 {
@@ -224,11 +225,15 @@ int main()
                     PrintPenyanyi(penyanyi);
                     printf("\n\nMasukkan Nama Penyanyi yang dipilih : ");
                     StartWordInput();
+                    int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
+                    int IdxAlbum;
+                    int IdxLagu;
                     for (int i = 0; i < penyanyi.itemCount; i++)
                     {
 
                         if (isEqual(currentWord, penyanyi.items[i]) == true)
                         {
+
                             int ketemu;
                             ketemu = i;
                             char *e;
@@ -236,7 +241,6 @@ int main()
                             wordToString(currentWord, e);
                             printf("Daftar Album oleh %s :\n", e);
                             PrintAlbum(penyanyiAlbums, currentWord);
-
                             printf("\n\nMasukkan Nama Album yang dipilih : ");
                             StartWordInput();
                             for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)

@@ -34,6 +34,8 @@ void PrintLaguu(maps M, Word C, int i);
 
 void PrintPlaylistt(DynamicList M);
 
+int IdxKetemuPenyanyi(StaticList M, Word C);
+
 // void PutarLagu();
 
 #endif
