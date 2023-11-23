@@ -303,6 +303,8 @@ int main()
 
                     //printf("\033[1;36mMemutar playlist “%s”.", Playlist.IsiPlaylist[valk - 1].judulPlaylist.TabWord);
                 }
+            } else {
+                printf("Command tidak bisa dieksekusi!\n");
             }
         }
     }
