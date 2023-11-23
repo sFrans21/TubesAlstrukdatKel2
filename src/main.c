@@ -292,6 +292,14 @@ int main()
                 wordToString(currentCommand, fed);
                 if (compareString(upper(fed), "PLAYLIST") == true)
                 {
+                    printf("Masukkan ID Playlist: ");
+                    StartWordInput();
+                    char *k;
+                    k = (char *)malloc(30 * sizeof(char));
+                    wordToString(currentWord, k);
+                    int valk = CharToInt(k);
+
+                    printf("Memutar playlist “%s”.", Playlist.A[valk - 1].TabWord);
                 }
             }
         }
