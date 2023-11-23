@@ -212,6 +212,8 @@ int main()
                 else if (compareString(upper(def), "PLAYLIST") == true)
                 {
                     PrintPlaylist(Playlist); // inshaallah ga error
+                } else {
+                    printf("Command tidak bisa dieksekusi!\n");
                 }
             }
             else if (IsCommandEqual(currentCommand, "PLAY"))
@@ -225,7 +227,7 @@ int main()
                     PrintPenyanyi(penyanyi);
                     printf("\n\n\033[1;36mMasukkan Nama Penyanyi yang dipilih : ");
                     StartWordInput();
-                    int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
+                    //int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
                     int IdxAlbum;
                     int IdxLagu;
                     for (int i = 0; i < penyanyi.itemCount; i++)
@@ -274,7 +276,7 @@ int main()
 
                                     IdxAlbum = ketemu;
                                     IdxLagu = val - 1;
-                                    printf("\033[1;36mMemutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu].TabWord, e);
+                                    //printf("\033[1;36mMemutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[IdxAlbum].Value.Elements[IdxLagu].TabWord, e);
 
                                     /*Hapusin riwayat lagu & queue lagu*/
 
