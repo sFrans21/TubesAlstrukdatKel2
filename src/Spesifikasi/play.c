@@ -24,11 +24,11 @@
 void PrintPenyanyii(StaticList M)
 {
 
-      printf("Daftar Penyanyi :\n");
+      printf("\033[1;34mDaftar Penyanyi :\n");
       for (int i = 0; i < M.itemCount; i++)
       {
-            printf("%d. ", (i + 1));
-            printf("%s\n", M.items[i].TabWord);
+            printf("\033[1;34m%d. ", (i + 1));
+            printf("\033[1;34m%s\n", M.items[i].TabWord);
       }
 }
 
@@ -75,8 +75,8 @@ void PrintAlbumm(StaticList N, Map M, Word C) // ini gunain map penyanyi-album
       }
       for (int e = 0; e < M.Elements[when].Value.Count; e++)
       {
-            printf("%d. ", (e + 1));
-            printf("%s\n", M.Elements[when].Value.Elements[e].TabWord);
+            printf("\033[1;34m%d. ", (e + 1));
+            printf("\033[1;34m%s\n", M.Elements[when].Value.Elements[e].TabWord);
       }
 }
 
@@ -103,8 +103,8 @@ void PrintLaguu(maps M, Word C, int i) // ini gunain maps album-lagu
       }
       for (int e = 0; e < M.Elements[i].Elements[when].Value.Count; e++)
       {
-            printf("%d. ", (e + 1));
-            printf("%s\n", M.Elements[i].Elements[when].Value.Elements[e].TabWord);
+            printf("\033[1;34m%d. ", (e + 1));
+            printf("\033[1;34m%s\n", M.Elements[i].Elements[when].Value.Elements[e].TabWord);
       }
 }
 
@@ -132,16 +132,35 @@ void PrintPlaylistt(DynamicList M)
 {
       if (IsListEmptyDynamic(M) == false)
       {
-            printf("Daftar Playlist yang kamu miliki:\n");
+            printf("\033[1;34mDaftar Playlist yang kamu miliki:\n");
             for (int i = 0; i < M.Neff; i++)
             {
-                  printf("%d. ", (i + 1));
-                  printf("%s\n", M.A[i].TabWord);
+                  printf("\033[1;34m%d. ", (i + 1));
+                  printf("\033[1;34m%s\n", M.A[i].TabWord);
             }
       }
       else
       {
-            printf("Daftar Playlist yang kamu miliki:\n");
-            printf("Kamu tidak memiliki playlist.");
+            printf("\033[1;34mDaftar Playlist yang kamu miliki:\n");
+            printf("\033[1;34mKamu tidak memiliki playlist.");
       }
+}
+
+int IdxKetemuPenyanyi(StaticList M, Word C)
+{
+      int when;
+      char *f;
+      f = (char *)malloc(30 * sizeof(char));
+      char *e;
+      e = (char *)malloc(30 * sizeof(char));
+      for (int i = 0; i < M.itemCount; i++)
+      {
+            wordToString(C, f);
+            wordToString(M.items[i], e);
+            if (compareString(f, e) == true)
+            {
+                  when = i;
+            }
+      }
+      return when;
 }

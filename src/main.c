@@ -7,6 +7,7 @@
 #include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
 #include "Spesifikasi/save.h"
+#include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -56,14 +57,14 @@ int main()
     printf("\033[1;36m======================================================================================\033[0m\n");
     printf("\033[1;34m        MASUKKAN COMMAND DENGAN HURUF KAPITAL DAN DIAKHIRI DENGAN KARAKTER';'         \033[0m\n");
     printf("\033[1;36m======================================================================================\033[0m\n\n\n");
-    printf("\033[1;35m                   Selamat datang di WayangWave!\033[0m\n\n");
+    printf("\033[1;36m                   Selamat datang di WayangWave!\033[0m\n\n");
     printf("\033[0;36mJalankan command START atau LOAD <nama file> untuk membuka file.\033[0m\n");
-    printf("\033[0;36mJalankan command QUIT untuk keluar dari program.\033[0m");
+    printf("\033[0;36mJalankan command QUIT untuk keluar dari program.\033[0m\n");
 
     while (endProgram == false)
     {
-        printf("\nJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
-        printf(">>> ");
+        printf("\033[1;36mJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
+        printf("\033[1;34m>>> ");
         StartCommand();
         char *inputfile;
         inputfile = (char *)malloc(30 * sizeof(char));
@@ -83,7 +84,7 @@ int main()
                 }
                 else
                 {
-                    printf("Command belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
+                    printf("\033[1;35mCommand belum memiliki parameter. Silahkan input command sesuai format LOAD <filename .txt>\n");
                 }
             }
 
@@ -98,7 +99,7 @@ int main()
             }
             else
             {
-                printf("Command tidak bisa dieksekusi!\n");
+                printf("C\033[1;35mommand tidak bisa dieksekusi!\n");
             }
         }
         else
@@ -117,11 +118,11 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "SAVE") == false)
                 {
-                   save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
+                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist);
                 }
                 else
                 {
-                    printf("Command belum memiliki parameter. Silahkan input command sesuai format SAVE <filename .txt>\n");
+                    printf("\033[1;35mCommand belum memiliki parameter. Silahkan input command sesuai format SAVE <filename .txt>\n");
                 }
             }
             else if (IsCommandEqual(currentCommand, "QUIT"))
@@ -138,11 +139,11 @@ int main()
                 if (compareString(upper(def), "DEFAULT") == true)
                 {
                     PrintPenyanyi(penyanyi);
-                    printf("\nIngin melihat album yang ada?(Y/N): ");
+                    printf("\n\033[1;36mIngin melihat album yang ada?(Y/N): ");
                     StartCommand();
                     if (currentCommand.TabWord[0] == 'Y')
                     {
-                        printf("\n\nPilih penyanyi untuk melihat album mereka: ");
+                        printf("\n\n\033[1;36mPilih penyanyi untuk melihat album mereka: ");
                         StartWordInput();
                         for (int i = 0; i < penyanyi.itemCount; i++)
                         {
@@ -154,14 +155,14 @@ int main()
                                 char *e;
                                 e = (char *)malloc(30 * sizeof(char));
                                 wordToString(currentWord, e);
-                                printf("Daftar Album oleh %s :\n", e);
+                                printf("\033[1;36mDaftar Album oleh %s :\n", e);
                                 PrintAlbum(penyanyiAlbums, currentWord);
 
-                                printf("Ingin melihat lagu yang ada?(Y/N): ");
+                                printf("\033[1;36mIngin melihat lagu yang ada?(Y/N): ");
                                 StartCommand();
                                 if (currentCommand.TabWord[0] == 'Y')
                                 {
-                                    printf("\n\nPilih album untuk melihat lagu yang ada di album : ");
+                                    printf("\n\n\033[1;36mPilih album untuk melihat lagu yang ada di album : ");
                                     StartWordInput();
                                     for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
                                     {
@@ -172,7 +173,7 @@ int main()
                                             char *e;
                                             e = (char *)malloc(30 * sizeof(char));
                                             wordToString(currentWord, e);
-                                            printf("Daftar Lagu di %s :\n", e);
+                                            printf("\033[1;36mDaftar Lagu di %s :\n", e);
                                             PrintLagu(albumsong, currentWord, ketemu);
                                         }
                                     }
@@ -222,22 +223,25 @@ int main()
                 if (compareString(upper(fed), "SONG") == true)
                 {
                     PrintPenyanyi(penyanyi);
-                    printf("\n\nMasukkan Nama Penyanyi yang dipilih : ");
+                    printf("\n\n\033[1;36mMasukkan Nama Penyanyi yang dipilih : ");
                     StartWordInput();
+                    int IdxPenyanyi = IdxKetemuPenyanyi(penyanyi, currentWord);
+                    int IdxAlbum;
+                    int IdxLagu;
                     for (int i = 0; i < penyanyi.itemCount; i++)
                     {
 
                         if (isEqual(currentWord, penyanyi.items[i]) == true)
                         {
+
                             int ketemu;
                             ketemu = i;
                             char *e;
                             e = (char *)malloc(30 * sizeof(char));
                             wordToString(currentWord, e);
-                            printf("Daftar Album oleh %s :\n", e);
+                            printf("\033[1;36mDaftar Album oleh %s :\n", e);
                             PrintAlbum(penyanyiAlbums, currentWord);
-
-                            printf("\n\nMasukkan Nama Album yang dipilih : ");
+                            printf("\n\n\033[1;36mMasukkan Nama Album yang dipilih : ");
                             StartWordInput();
                             for (int j = 0; j < penyanyiAlbums.Elements[ketemu].Value.Count; j++)
                             {
@@ -248,11 +252,11 @@ int main()
                                     char *e;
                                     e = (char *)malloc(30 * sizeof(char));
                                     wordToString(currentWord, e);
-                                    printf("Daftar Lagu di album %s :\n", e);
+                                    printf("\033[1;36mDaftar Lagu di album %s :\n", e);
                                     PrintLagu(albumsong, currentWord, ketemu);
                                     printf("\n");
 
-                                    printf("\n\nMasukkan ID Lagu yang dipilih : ");
+                                    printf("\n\n\033[1;36mMasukkan ID Lagu yang dipilih : ");
                                     // Word nums;
                                     // int manynums = 0;
                                     StartWordInput();
@@ -268,13 +272,34 @@ int main()
                                     wordToString(currentWord, g);
                                     int val = CharToInt(g);
 
-                                    printf("Memutar lagu “%s” oleh “%s”.", albumsong.Elements[ketemu].Elements[val - 1], e);
+                                    IdxAlbum = ketemu;
+                                    IdxLagu = val - 1;
+                                    printf("\033[1;36mMemutar lagu “%s” oleh “%s”.", albumsong.Elements[IdxPenyanyi].Elements[ketemu].Value.Elements[val - 1], e);
 
-                                    // hapusin
+                                    /*Hapusin riwayat lagu & queue lagu*/
+
+                                    // CreateQueue(UrutanLagu);
+                                    // CreateStackEmpty(RiwayatLagu)
                                 }
                             }
                         }
                     }
+                }
+
+                char *fes;
+                fes = (char *)malloc(30 * sizeof(char));
+                ADVInput();
+                wordToString(currentCommand, fed);
+                if (compareString(upper(fed), "PLAYLIST") == true)
+                {
+                    printf("\033[1;36mMasukkan ID Playlist: ");
+                    StartWordInput();
+                    char *k;
+                    k = (char *)malloc(30 * sizeof(char));
+                    wordToString(currentWord, k);
+                    int valk = CharToInt(k);
+
+                    printf("\033[1;36mMemutar playlist “%s”.", Playlist.A[valk - 1].TabWord);
                 }
             }
         }
