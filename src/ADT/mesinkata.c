@@ -103,6 +103,14 @@ void StartWordFile(char *filename, int type)
     }
 }
 
+void DisplayWord(Word word)
+{
+    for (int i = 0; i < word.Length; i++)
+    {
+        printf("%c", word.TabWord[i]);
+    }
+}
+
 void ADVWord()
 {
     IgnoreBlank();
