@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q){
+void CreateQueue(SQueue *q){
 /* I.S. sembarang */
 /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
@@ -14,18 +14,18 @@ void CreateQueue(Queue *q){
 }
 
 /* ********* Prototype ********* */
-boolean isQueueEmpty(Queue q){
+boolean isQueueEmpty(SQueue q){
 /* Mengirim true jika q kosong: lihat definisi di atas */
     return ((IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF));
 }
 
-boolean isQueueFull(Queue q){
+boolean isQueueFull(SQueue q){
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu ketika IDX_HEAD=0 dan IDX_TAIL=CAPACITY-1 */
     return (lengthQueue(q) == CAPACITY-1);
 }
 
-int lengthQueue(Queue q){
+int lengthQueue(SQueue q){
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
     /* KAMUS LOKAL */
     int length;
@@ -43,7 +43,7 @@ int lengthQueue(Queue q){
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, Word val){
+void enqueue(SQueue *q, Song val){
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur".
@@ -56,7 +56,7 @@ void enqueue(Queue *q, Word val){
         int i;
         if (IDX_HEAD(*q) != 0) { /* Ketika tail sudah berada di posisi paling terakhir, tetapi array belum full, maka tail akan maju ke index awal yakni 0*/
             for (i=IDX_HEAD(*q); i <= IDX_TAIL(*q); i++) {
-                (*q).buffer[i - IDX_HEAD(*q)] = (*q).buffer[i];
+                (*q).QueueDetail[i - IDX_HEAD(*q)] = (*q).QueueDetail[i];
             }
             IDX_TAIL(*q) += 1;
         } else if (IDX_TAIL(*q) == CAPACITY-1) {
@@ -68,7 +68,7 @@ void enqueue(Queue *q, Word val){
     TAIL(*q) = val;
 }
 
-void dequeue(Queue *q, Word *val){
+void dequeue(SQueue *q, Song *val){
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -83,36 +83,36 @@ void dequeue(Queue *q, Word *val){
 }
 
 /* *** Display Queue *** */
-void displayQueue(Queue q){
-/* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
-   siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
-   karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
-/* I.S. q boleh kosong */
-/* F.S. Jika q tidak kosong: [e1,e2,...,en] */
-/* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
-/* Jika Queue kosong : menulis [] */
-    if (isQueueEmpty(q)){
-        printf("[]\n");
-    } else {
-        int i;
-        printf("[");
-        if (IDX_HEAD(q) > IDX_TAIL(q)){
-            for (i=IDX_HEAD(q); i <= CAPACITY-1; i++){
-                printf("%s", q.buffer[i].TabWord);
-                printf(",");
-            } for (i=0; i <= IDX_TAIL(q); i++){
-                printf("%s", q.buffer[i]);
-                if (i != IDX_TAIL(q)) {
-                    printf(",");
-                }
-            }
-        } else {
-            for (i=IDX_HEAD(q); i <= IDX_TAIL(q); i++){
-                printf("%s", q.buffer[i].TabWord);
-                if (i != IDX_TAIL(q)) {
-                    printf(",");
-                }
-            }
-        } printf("]\n");
-    }
-}
+// void displayQueue(SQueue q){
+// /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
+//    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
+//    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
+// /* I.S. q boleh kosong */
+// /* F.S. Jika q tidak kosong: [e1,e2,...,en] */
+// /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
+// /* Jika Queue kosong : menulis [] */
+//     if (isQueueEmpty(q)){
+//         printf("[]\n");
+//     } else {
+//         int i;
+//         printf("[");
+//         if (IDX_HEAD(q) > IDX_TAIL(q)){
+//             for (i=IDX_HEAD(q); i <= CAPACITY-1; i++){
+//                 printf("%s", q.QueueDetail[i].);
+//                 printf(",");
+//             } for (i=0; i <= IDX_TAIL(q); i++){
+//                 printf("%s", q.QueueDetail[i]);
+//                 if (i != IDX_TAIL(q)) {
+//                     printf(",");
+//                 }
+//             }
+//         } else {
+//             for (i=IDX_HEAD(q); i <= IDX_TAIL(q); i++){
+//                 printf("%s", q.QueueDetail[i].TabWord);
+//                 if (i != IDX_TAIL(q)) {
+//                     printf(",");
+//                 }
+//             }
+//         } printf("]\n");
+//     }
+// }
