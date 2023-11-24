@@ -3,6 +3,7 @@
 #include "load.h"
 #include "../tambahan.h"
 #include "../ADT/mesinkata.h"
+#include "../Tambahan/nyoba.h"
 
 void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong)
 {
@@ -27,6 +28,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
     open = fopen(directory, "r");
     if (open != NULL)
     {
+        loading();
         fclose(open);
         StartWordFile(directory, 1);
 

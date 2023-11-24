@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "start.h"
 #include "../tambahan.h"
+#include "../Tambahan/nyoba.h"
 
 void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong)
 {
@@ -17,6 +18,8 @@ void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong)
     char *filename = "config.txt";
     stringConcat("../save/", filename, path);
     StartWordFile(path, 1);
+
+    starting();
 
     int jumlahPenyanyi;
     jumlahPenyanyi = WordToInt(currentWord);
