@@ -6,7 +6,7 @@
 #include "Spesifikasi/quit.h"
 #include "Spesifikasi/status.h"
 #include "Spesifikasi/list.h"
-//#include "Spesifikasi/save.h"
+#include "Spesifikasi/save.h"
 #include "Spesifikasi/play.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,6 +23,8 @@ int main()
     LinierList LaguPlaylist;
     Word currentSong;
     Word LaguAyeuna;
+    DetailLagu LaguPlaylist[50];
+
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     CreateEmptymap(&AlbumLagu);
@@ -112,7 +114,7 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "STATUS"))
             {
-                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&currentSong,&LaguPlaylist);
+                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&currentSong);
             }
             else if (IsCommandEqual(currentCommand, "SAVE"))
             {
@@ -350,6 +352,29 @@ int main()
                     RiwayatLagu = ReverseStack(RiwayatLagu);
                     printf("\n\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
                 }
+            }
+            else if(IsCommandEqual(currentCommand, "QUEUE"))
+            {
+                char *charcom;
+                ADVInput();
+                wordToString(currentCommand, charcom);
+                if (compareString(upper(charcom), "SONG") == true){
+                    queuesong(penyanyi,penyanyiAlbums,albumsong,&UrutanLagu);
+                }
+                else if(compareString(upper(charcom), "REMOVE") == true){
+                    ADVInput();
+                    int inp = WordToInt(currentCommand);
+                    queueremove(&UrutanLagu,inp);
+                }
+                else if(compareString(upper(charcom), "SWAP") == true){
+                    ADVInput();
+                    int inp1 = WordToInt(currentCommand);
+                    ADVInput();
+                    int inp2 = WordToInt(currentCommand);
+                    queueswap(&UrutanLagu,inp1,inp2);
+                }
+                else if(compareString(upper(charcom), "CLEAR") == true){
+                    queueclear(&UrutanLagu);
             }
             else
             {

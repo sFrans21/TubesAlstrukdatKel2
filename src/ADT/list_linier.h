@@ -22,6 +22,10 @@ typedef struct {
 	addressLinier First;
 } LinierList;
 
+typedef struct {
+	LinierList IsiLagu;
+} DetailLagu;
+
 /* Definisi list : */
 /* List kosong : First(L) = NilLinier */
 /* Setiap elemen dengan addressLinier P dapat diacu Info(P), Next(P) */

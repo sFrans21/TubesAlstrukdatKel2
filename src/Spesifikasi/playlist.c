@@ -4,9 +4,6 @@
 
 void CreatePlaylist ()
 {
-{
-    {
-    int countKarakter = 0;
     printf("Masukkan nama playlist yang ingin di buat : ");
     StartWordMark();
     printf("\n");
@@ -17,9 +14,8 @@ void CreatePlaylist ()
         }
     }
 
-    if (countKarakter >= 3)
-        
-        CreateEmptyLinier();
+    if (countKarakter >= 3){
+        CreateEmptyLinier.PlaylistLagu.Song;
         InsertLastDynamic (currentWord);
         printf("Playlist ");
         DisplayWord (currentWord);
@@ -33,9 +29,8 @@ void CreatePlaylist ()
 
 }  
 
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong)
+void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
 {
-    {
     int idxp;
     int idxa;
     DynamicList Daftarplaylist;
@@ -65,7 +60,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong)
     printf("Masukkan ID Lagu yang dipilih : ");
     StartWordInput();
 
-    PrintPlaylist(penyanyi);
+    PrintPlaylist(penyanyi)
     printf("Daftar Playlist Pengguna : ");
                 
         for (int i = 0; i < Playlist; i++)
@@ -147,7 +142,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong)
                     if (!IsListEmptyDynamic)
                     {
                         int index = 0;
-                        for (int i = 0; i < LengthListDynamic(*DaftarPlayt); i++)
+                        for (int i = 0; i < LengthListDynamic(*DaftarPlaylist); i++)
                         {
                             printf("\t%d. ", index+1);
                             DisplayWord(GetDynamic(*DaftarPlaylist, i));
@@ -241,7 +236,6 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong)
 
 
 void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong);
-
 
 void PlaylistSwap(Word Word);
 
