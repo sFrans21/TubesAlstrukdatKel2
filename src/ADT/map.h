@@ -42,7 +42,7 @@ typedef struct
 
 typedef struct
 {
-	DynamicList PlaylistName;
+	Word PlaylistName;
 	LinierList SongName;
 } PlType;
 
@@ -83,6 +83,8 @@ void Insertmap(Map *M, keytype k, valuetype v);
 /* I.S. M mungkin kosong, M tidak penuh
 	  M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
+
+void InsertPlaylist(MapPlaylist *M, Word C, LinierList D);
 
 void createmaps(maps *m);
 

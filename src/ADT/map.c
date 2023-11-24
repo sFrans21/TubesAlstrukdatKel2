@@ -89,6 +89,13 @@ void Insertmap(Map *M, keytype k, valuetype v)
     }
 }
 
+void InsertPlaylist(MapPlaylist *M, Word C, LinierList D)
+{
+    (*M).PlElmt[(*M).PlCount].PlaylistName = C;
+    (*M).PlElmt[(*M).PlCount].SongName = D;
+    (*M).PlCount += 1;
+}
+
 void createmaps(maps *m)
 {
     m->count = Nil;
