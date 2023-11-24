@@ -278,6 +278,16 @@ boolean CekWord(Word hasil){
     return ada;
 }
 
+void DisplayWord (Word Word)
+{
+    {
+    for (int i = 0; i < Word.Length; i++)
+    {
+        printf("%c", Word.TabWord[i]);
+    }
+}
+}
+
 Word ConcatWord(Word word_1, Word word_2)
 {
     Word word;

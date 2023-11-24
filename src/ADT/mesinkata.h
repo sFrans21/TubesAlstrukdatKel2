@@ -63,6 +63,8 @@ void CopyWordinput();
 
 void ADVSemicolon();
 
+void DisplayWord (Word Word);
+
 boolean CekWord(Word hasil);
 
 Word ConcatWord(Word word_1, Word word_2);

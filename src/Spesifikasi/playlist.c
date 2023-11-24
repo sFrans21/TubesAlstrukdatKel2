@@ -43,12 +43,8 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
     if (!isEmptyDynamic(&Playlist))
     {
         printf("Daftar Penyanyi : \n");
-        PrintPenyanyi(penyanyi);
-        // printf("Daftar Penyanyi :\n");
-        // for(int i=0; i< penyanyi.itemCount; i++){
-        //     printf("   %d. %s\n", i+1, (penyanyi).items[i].TabWord);
-        // }
-
+        PrintPenyanyi(penyanyi); //print penyanyi
+        
         printf("\n");
         printf("Masukkan Nama Penyanyi yang dipilih : ");
         StartWordInput();
@@ -57,7 +53,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
         int i = 0;
         boolean penyanyivalid = false;
 
-        while (!penyanyivalid && (i < Length(penyanyi))){
+        while (!penyanyivalid && (i < LengthStatic(penyanyi))){
             if (isEqual(penyanyi.items[i], currentWord)){
                 penyanyivalid = true;
             }
@@ -68,13 +64,11 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
 
         if (penyanyivalid){
             Word jenengepenyanyi = currentWord;
-            printf("Daftar Album oleh : %s", currentWord);
+            printf("Daftar Album oleh : ");
+            displayList
             PrintAlbum(penyanyiAlbums, currentWord);
             printf("\n");
-            for(int i=0; i<penyanyi.itemCount;i++){
-                if (isEqual(currentWord,(penyanyi).items[i]))
-                    {idxp=i;}
-        }
+            
 
         printf("Masukkan Judul Album yang dipilih : ");
         StartWordInput();
@@ -86,7 +80,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
         PrintPenyanyi(penyanyi);
         printf("Daftar Playlist Pengguna : ");
                     
-            for (int i = 0; i < Playlist; i++)
+            for (int i = 0; i < Playlist.Neff; i++)
             {
                 printf("\033[1;34m%d.``````````````````  ", (i + 1));
                 printf("\033[1;34m%s\n", M.A[i].TabWord);

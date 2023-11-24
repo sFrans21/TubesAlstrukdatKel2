@@ -14,7 +14,7 @@
 #include "../tambahan.h"
 #include "play.h"
 
-void CreatePlaylist (DynamicList playlist);
+void CreatePlaylist (DynamicList Playlist);
 
 void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, DynamicList Playlist);
 
