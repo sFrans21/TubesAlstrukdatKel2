@@ -7,6 +7,8 @@
 
 #define MAX_LEN 5000
 
+void clearScreen();
+
 void delay(int seconds);
 
 void pics(FILE *filename);
@@ -18,5 +20,9 @@ void starting();
 void loading();
 
 void quitting();
+
+void displayLoadingBar(int progress);
+
+void animateSpinner(int duration);
 
 #endif
