@@ -5,7 +5,7 @@
 #include "boolean.h"
 #include "Tambahan/nyoba.h"
 
-// --------------------------------------------------------------- //
+// ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
 
 #include "Spesifikasi/start.h"
 #include "Spesifikasi/help.h"
@@ -19,7 +19,7 @@
 // #include "Spesifikasi/playlist.h"
 // #include "Spesifikasi/song.h"
 
-// ------------------------------------------------------------------------- //
+// ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
 
 int main()
 {
@@ -56,12 +56,16 @@ int main()
         StartCommand();
         char *inputfile;
         inputfile = (char *)malloc(30 * sizeof(char));
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
         if (IsEmptymap(penyanyiAlbums))
         {
             if (IsCommandEqual(currentCommand, "START"))
             {
                 start(&penyanyi, &penyanyiAlbums, &albumsong);
             }
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
             else if (IsCommandEqual(currentCommand, "LOAD"))
             {
                 ADVInput();
@@ -76,31 +80,47 @@ int main()
                 }
             }
 
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
                 endProgram = true;
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if (IsCommandEqual(currentCommand, "HELP"))
             {
                 showhelp1();
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
             else
             {
                 system("cls||clear");
                 printf("\033[1;35mCommand tidak bisa dieksekusi!\n");
             }
         }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
         else
         {
             if (IsCommandEqual(currentCommand, "HELP"))
             {
                 showhelp2();
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if (IsCommandEqual(currentCommand, "STATUS"))
             {
                 displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&currentSong);
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if (IsCommandEqual(currentCommand, "SAVE"))
             {
                 ADVInput();
@@ -114,11 +134,16 @@ int main()
                     printf("\033[1;35mCommand belum memiliki parameter. Silahkan input command sesuai format SAVE <filename .txt>\n");
                 }
             }
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
                 quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
                 endProgram = true;
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if (IsCommandEqual(currentCommand, "LIST"))
             {
                 char *def;
@@ -207,6 +232,10 @@ int main()
                     printf("Command tidak bisa dieksekusi!\n");
                 }
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
+
             else if (IsCommandEqual(currentCommand, "PLAY"))
             {
                 char *fed;
@@ -338,6 +367,9 @@ int main()
                     printf("\n\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
                 }
             }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else if(IsCommandEqual(currentCommand, "QUEUE"))
             {
                 char *charcom;
@@ -365,6 +397,9 @@ int main()
                 {
                     queueclear(&UrutanLagu);
                 }
+
+    // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+
             else
             {
                 system("cls||clear");
