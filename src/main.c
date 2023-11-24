@@ -352,6 +352,29 @@ int main()
                     printf("\n\033[1;36mMemutar playlist %s.\n", Playlist.A[valk - 1].TabWord);
                 }
             }
+            else if(IsCommandEqual(currentCommand, "QUEUE"))
+            {
+                char *charcom;
+                ADVInput();
+                wordToString(currentCommand, charcom);
+                if (compareString(upper(charcom), "SONG") == true){
+                    queuesong(penyanyi,penyanyiAlbums,albumsong,&UrutanLagu);
+                }
+                else if(compareString(upper(charcom), "REMOVE") == true){
+                    ADVInput();
+                    int inp = WordToInt(currentCommand);
+                    queueremove(&UrutanLagu,inp);
+                }
+                else if(compareString(upper(charcom), "SWAP") == true){
+                    ADVInput();
+                    int inp1 = WordToInt(currentCommand);
+                    ADVInput();
+                    int inp2 = WordToInt(currentCommand);
+                    queueswap(&UrutanLagu,inp1,inp2);
+                }
+                else if(compareString(upper(charcom), "CLEAR") == true){
+                    queueclear(&UrutanLagu);
+            }
             else
             {
                 system("cls||clear");

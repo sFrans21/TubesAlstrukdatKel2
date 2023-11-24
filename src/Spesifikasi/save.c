@@ -42,160 +42,81 @@ void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
 
     //----------------------------------------------------------------Opening file------------------------------
     char filepath[50];
-    // filepath = (char *) malloc (50 * sizeof(char));
-    stringConcat("../save/",inputfile,filepath);
+    stringConcat("../save/",inputfile,filepath); // Membuat file path untuk file tujuan
     FILE *outputfile = fopen(filepath,"w");
-   
-    // if (filepath == NULL) {
-    //     printf("Error opening file for writing.\n");
-    //     return;
-    // }
-    // char *fileinputpath;
-    // fileinputpath = (char *) malloc (50 * sizeof(char));
-    // stringConcat("../save/", "config.txt",fileinputpath);
-    // FILE *inputFile = fopen(fileinputpath, "r");
-    
-    
-   
+  
     //--------------------------------------------------------Menuliskan konfig ulang------------------------------------------
-    // char currentChar;
-    // while (fscanf(inputFile, "%c", &currentChar) != EOF) {
-    //     //printf("%c", currentChar); // untuk debug
-    //     // nulis output
-    //     fprintf(outputfile, "%c", currentChar);
-    // }
-    // fprintf(outputfile,"\n");
+   
    fprintf(outputfile, "%d\n", penyanyi->itemCount);
 
 for (int i = 0; i < penyanyi->itemCount; i++) {
-    fprintf(outputfile, "%d %s\n", penyanyiAlbums->Elements[i].Value.Count, penyanyi->items[i].TabWord);
+    fprintf(outputfile, "%d %s\n", penyanyiAlbums->Elements[i].Value.Count, penyanyi->items[i].TabWord); // Menuliskan jumlah dan nama penyanyi
 
-    // Perbaikan: Gunakan indeks i untuk mengakses data dari penyanyiAlbums
+
     for (int j = 0; j < penyanyiAlbums->Elements[i].Value.Count; j++) {
-        fprintf(outputfile, "%d %s\n", albumsong->Elements[i].Elements[j].Value.Count, albumsong->Elements[i].Elements[j].Key.TabWord);
+        fprintf(outputfile, "%d %s\n", albumsong->Elements[i].Elements[j].Value.Count, albumsong->Elements[i].Elements[j].Key.TabWord); // Album
 
-        // Perbaikan: Gunakan indeks i dan j untuk mengakses data dari penyanyiAlbums
+
         for (int k = 0; k < albumsong->Elements[i].Elements[j].Value.Count; k++) {
-            fprintf(outputfile, "%s\n", albumsong->Elements[i].Elements[j].Value.Elements[k].TabWord);
+            fprintf(outputfile, "%s\n", albumsong->Elements[i].Elements[j].Value.Elements[k].TabWord); // Lagu
         }
     }
 }
   //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
-// if (!isQueueEmpty(*UrutanLagu)){
-    
-//     char currsong[50];
-//     int k = 0;
 
-//     while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
-//     {
-//     currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
-//     k++;
-//     }
-//     currsong[k] = '\0';
-//     char currPen[50];
-//     char currAlb[50];
-
-//     carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-//     fprintf(outputfile, "%s;", currPen);
-//     fprintf(outputfile, "%s:", currAlb);
-//     fprintf(outputfile, "%s\n", currsong);
-// }
-if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
-    {
-        char* carcurr[50];
-         wordToString(*currentSong,carcurr);
-         fprintf(outputfile,"%s",currentSong);
-        
-    }
-
+//if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
+   // {
+     
+         int icur = 0;
+         while (icur < currentSong->Length)
+        {
+            fprintf(outputfile,"%c", currentSong->TabWord[icur]);
+            icur++;
+        }
+        fprintf(outputfile,"\n");
+//}
 
 
 
  
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
-// if (!isQueueEmpty(*UrutanLagu))
-// {
-//     fprintf(outputfile,"%d\n",lengthQueue(*UrutanLagu));
-//     for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
-//         char currsong[50];
-//         int k = 0;
+  
 
-//         while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
-//         {
-//         currsong[k] = UrutanLagu->buffer[i].TabWord[k];
-//         k++;
-//         }
-//         currsong[k] = '\0';
-//         char currPen[50];
-//         char currAlb[50];
+    fprintf(outputfile,"%d\n",lengthQueue(*UrutanLagu));
+        for (int i = UrutanLagu->idxHead  ; i <= UrutanLagu->idxTail;i++){
+        fprintf(outputfile,"%s\n", UrutanLagu->buffer[i].TabWord);
+            }
 
-//         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-//         fprintf(outputfile, "%s;", currPen);
-//         fprintf(outputfile, "%s\n", currAlb);
-//         fprintf(outputfile, "%s;", currsong);
-//         }
-//     }
 
 
     
-// // //---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
+//---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
 //      if (!IsEmptyStack(*RiwayatLagu))
 //     {
-//             fprintf(outputfile,"%d\n",NbElmtStack(*RiwayatLagu));
-//         for (int i = 0; i <= RiwayatLagu->TOP; i++)
-//         {
-//             char currsong[50];
-//             int k = 0;
-
-//             while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
-//             {
-//             currsong[k] = UrutanLagu->buffer[i].TabWord[k];
-//             k++;
-//             }
-//             currsong[k] = '\0';
-//             char currPen[50];
-//             char currAlb[50];
-
-//             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-//             fprintf(outputfile, "%s;", currPen);
-//             fprintf(outputfile, "%s\n", currAlb);
-//             fprintf(outputfile, "%s;", currsong);
-//         }
-//     }
+        fprintf(outputfile,"%d\n",NbElmtStack(*RiwayatLagu));
+         for (int i = RiwayatLagu->TOP; i >= 0; i--)
+         {
+            fprintf(outputfile,"%s\n", RiwayatLagu->T[i].TabWord);
+     }
      
-// // //---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
+//---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
 
 //      if(!IsListEmptyDynamic(*Playlist)){
-//         int playlistCount = LengthListDynamic(*Playlist);
-//         fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
+        int playlistCount = LengthListDynamic(*Playlist);
+        fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
 
-//         for (int i = 0; i < playlistCount; i++)
-//         {
-//             fprintf(outputfile, "%d %s \n", LengthListDynamic(Playlist[i]), Playlist[i]);
+        // for (int i = 0; i < playlistCount; i++)
+        // {
+        //     fprintf(outputfile, "%d %s \n", Playlist->A->Length, Playlist[i]);
 
-//             for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
-//             {
-//                 char currsong[50];
-//                 int k = 0;
-
-//                 while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
-//                {
-//                 currsong[k] = UrutanLagu->buffer[i].TabWord[k];
-//                 k++;
-//                }
-//                 currsong[k] = '\0';
-//                 char currPen[50];
-//                 char currAlb[50];
-    
-//                 carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-//                 fprintf(outputfile, "%s;", currPen);
-//                 fprintf(outputfile, "%s\n", currAlb);
-//                 fprintf(outputfile, "%s;", currsong);
-//             }
-//         }
+        //     for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
+        //     {
+                
+        //     }
+        // }
 //     }
 //     if (filepath != NULL) {
-//         printf("Save berhasil dilakukan, Yeay!\n");
+        printf("Save berhasil dilakukan, Yeay!\n");
 //     }
 
    
