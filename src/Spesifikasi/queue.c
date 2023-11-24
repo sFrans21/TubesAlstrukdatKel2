@@ -85,7 +85,7 @@ void queueplaylist(MapPlaylist PL, Queue *queue)
     {
     addressLinier p = First(PL.PlElmt[idx].SongName);
     for(int i=0;i<NbElmt(PL.PlElmt[idx].SongName);i++){
-        enqueue(&queue, Info(p));
+        enqueue(queue, Info(p));
         p=Next(p);
     }
     printf("Berhasil menambahkan Plylist \"%s\" ke queue\n",PL.PlElmt[idx].PlaylistName.TabWord);
