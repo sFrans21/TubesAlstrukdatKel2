@@ -84,15 +84,15 @@ char* dash(Word currentsong){
 void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, MapPlaylist *Playlist, Word *currentSong)
 {
     printf(">> STATUS;\n");
-    char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
+    // char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
 
              
-    if (playlistName != NULL) {
-        printf("\nCurrent Playlist: %s\n", playlistName);
-    }
-    else{
-        printf("\0");
-    }
+    // if (playlistName != NULL) {
+    //     printf("\nCurrent Playlist: %s\n", playlistName);
+    // }
+    // else{
+    //     printf("\0");
+    // }
     printf("Now Playing : \n");
     // Cek apakah ada lagu yang sedang diputar
     if (IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,""))

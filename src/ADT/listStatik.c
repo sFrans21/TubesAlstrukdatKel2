@@ -21,14 +21,7 @@ void displayList(const StaticList *list)
         printf("%s\n", list->items[i].TabWord);
     }
 }
-int LengthStatic(StaticList list){
-    int count = 0;
-    while ((!CompareWord(list.items[count], StringToWord(MarkStatic))) && (count <= MAX_ITEMS))
-    {
-        count++;
-    }
-    return count;
-}
+
 
 Word GetStatic(StaticList list, IdxType i){
     return (list.items[i]);
@@ -37,7 +30,7 @@ Word GetStatic(StaticList list, IdxType i){
 void InsertLastStatic(StaticList *list, Word word){
     int count = 0;
 
-    while (!CompareStringWord(list->items[count], MarkStatic))
+    while (!IsCommandEqual(list->items[count], MarkStatic))
     {
         count++;
     }
