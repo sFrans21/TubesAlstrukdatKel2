@@ -1,5 +1,6 @@
 
 #include <stdio.h>
+#include <stdlib.h>
 #include "queue.h"
 #include "../tambahan.h"
 #include "start.h"
@@ -13,14 +14,6 @@ void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queu
      }
     printf("Masukkan Nama Penyanyi : ");
     StartWordInput();
-    // printf("%d\n", penyanyi.itemCount);
-    // printf("%s\n", (penyanyi).items[1].TabWord);
-    // printf("%d\n", currentWord.Length);
-    // for (int i = 0; i < currentWord.Length; i++)
-    // {
-    //     printf("%c", currentWord.TabWord[i]);
-    // }
-    // printf("%d\n", penyanyi.items[0].Length);
     for(int i=0; i<penyanyi.itemCount;i++)
      {if (isEqual(currentWord,(penyanyi).items[i]))
          {idxp=i;}
@@ -31,22 +24,7 @@ void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queu
 
     printf("Masukkan Nama Album : ");
     StartWordInput();
-    // printf("%d\n", albumsong.Elements[idxp].Elements[0].Key.Length);
-    // for (int i = 0; i < albumsong.Elements[idxp].Elements[0].Key.Length; i++)
-    // {
-    //     printf("%d : %c\n", i, albumsong.Elements[idxp].Elements[0].Key.TabWord[i]);
-    // }
-    
-    // printf("%s\n", albumsong.Elements[idxp].Elements[0].Key.TabWord);
-    
-    // printf("%d\n", currentWord.Length);
-    // for (int i = 0; i < currentWord.Length; i++)
-    // {
-    //     printf("%c", currentWord.TabWord[i]);
-    // }
-    // printf("\n");
-    // printf(".");
-    // printf("%d", albumsong.Elements[idxp].Elements[2].Key.Length);
+
     for (int i=0;i<albumsong.Elements[idxp].Count;i++){
         if (isEqual(currentWord, albumsong.Elements[idxp].Elements[i].Key)){
             idxa = i;
@@ -83,6 +61,41 @@ void queueremove(Queue *queue, int i)
 
 void  queueclear(Queue *queue){
     CreateQueue(queue);
+}
+
+void queueplaylist(MapPlaylist PL, Queue *queue)
+{
+    if (PL.PlCount>0)
+    {
+    printf("Daftar Playlist :\n");
+    for (int i=0;i< PL.PlCount;i++)
+    {
+    printf("    %d. %s\n",PL.PlElmt[i].PlaylistName.TabWord);
+    }
+    printf("\nMasukkan ID Playlist yang dipilih : ");
+    StartWordInput();
+    int idx = atoi(currentWord.TabWord)-1;
+    if (idx<PL.PlCount)
+    {
+    addressLinier p = First(PL.PlElmt[idx].SongName);
+    for(int i=0;i<NbElmt(PL.PlElmt[idx].SongName);i++){
+        enqueue(&queue, Info(p));
+        p=Next(p);
+    }
+    printf("Berhasil menambahkan Plylist \"%s\" ke queue\n",PL.PlElmt[idx].PlaylistName.TabWord);
+    }
+    else
+    {
+        printf("Tidak ada Playlist dengan ID %d\n", idx+1);
+    }
+    }
+
+    else
+    {
+        printf("Kamu tidak punya Playlist. Silahkan buat terlebih dahulu\n");
+    }
+    
+
 }
 
 // int main (){

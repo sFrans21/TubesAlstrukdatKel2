@@ -8,6 +8,7 @@
 #include "../ADT/map.h"
 #include "../ADT/set.h"
 #include "../ADT/Queue.h"
+#include "../ADT/list_linier.h"
 
 void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queue);
 
@@ -15,6 +16,8 @@ void queueswap(Queue *queue, int idx1, int idx2);
 
 void queueremove(Queue *queue, int i);
 
-void  queueclear(Queue *queue);
+void queueclear(Queue *queue);
+
+void queueplaylist(MapPlaylist PL, Queue *queue);
 
 #endif
