@@ -1,24 +1,27 @@
 #include <stdio.h>
 #include "map.h"
 
-boolean IsStringsEqual(const char str1[], const char str2[]) {
+boolean IsStringsEqual(const char str1[], const char str2[])
+{
     int i = 0;
 
-    while (str1[i] != '\0' && str2[i] != '\0') {
-        if (str1[i] != str2[i]) {
+    while (str1[i] != '\0' && str2[i] != '\0')
+    {
+        if (str1[i] != str2[i])
+        {
             return false;
         }
         i++;
     }
 
     // Pastikan keduanya berakhir pada karakter null.
-    if (str1[i] != '\0' || str2[i] != '\0') {
+    if (str1[i] != '\0' || str2[i] != '\0')
+    {
         return false;
     }
 
     return true;
 }
-
 
 /* *** Konstruktor/Kreator *** */
 void CreateEmptymap(Map *M)
@@ -86,11 +89,13 @@ void Insertmap(Map *M, keytype k, valuetype v)
     }
 }
 
-void createmaps(maps *m){
-    m->count= Nil;
+void createmaps(maps *m)
+{
+    m->count = Nil;
 }
 
-void insertmaps(maps *m, Map M){
+void insertmaps(maps *m, Map M)
+{
     m->Elements[m->count] = M;
     m->count++;
 }
@@ -136,3 +141,4 @@ boolean IsMembermap(Map M, keytype k)
     return false;
 }
 
+// nambahin list dinamis ke linier
