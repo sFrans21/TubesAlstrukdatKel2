@@ -23,7 +23,6 @@ int main()
     LinierList LaguPlaylist;
     Word currentSong;
     Word LaguAyeuna;
-    DetailLagu LaguPlaylist[50];
 
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);

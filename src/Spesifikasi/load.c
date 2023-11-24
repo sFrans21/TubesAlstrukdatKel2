@@ -4,13 +4,13 @@
 #include "../tambahan.h"
 #include "../ADT/mesinkata.h"
 
-void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, DetailLagu *LaguPlaylist, Word *currentSong){
-    initializeList(&penyanyi);
-    CreateEmptymap(&penyanyiAlbums);
-    createmaps(&albumsong);
-    CreateQueue(&UrutanLagu);
-    CreateEmptyDynamic(&Playlist);
-    CreateEmptyStack(&RiwayatLagu);
+void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong){
+    initializeList(penyanyi);
+    CreateEmptymap(penyanyiAlbums);
+    createmaps(albumsong);
+    CreateQueue(UrutanLagu);
+    CreateEmptyDynamic(Playlist);
+    CreateEmptyStack(RiwayatLagu);
     Set albums;
     Set songs;
     CreateEmptySet(&albums);
@@ -155,7 +155,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
             for (int b = 0; b < namaPlaylist.Length; b++){
                 namaPlaylist.TabWord[b] = '\0';
             }
-            CreateEmptyLinier(&LaguPlaylist[i].IsiLagu);
+            CreateEmptyLinier(LaguPlaylist);
 
             for (int k = 1; k <= nPLagu; k++){
                 ADVLine();
@@ -164,7 +164,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                     namaPLagu.TabWord[j] = currentWord.TabWord[j];
                 }
                 namaPLagu.Length = currentWord.Length;
-                InsVLast(&LaguPlaylist[i].IsiLagu, namaPLagu);
+                InsVLast(LaguPlaylist, namaPLagu);
                 //printf("%s\n", namaPLagu.TabWord);
                 for (int b = 0; b < namaPLagu.Length; b++){
                     namaPLagu.TabWord[b] = '\0';
