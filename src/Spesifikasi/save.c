@@ -125,7 +125,7 @@ for (int i = 0; i < penyanyi->itemCount; i++) {
 //     if (filepath != NULL) {
         printf("Save berhasil dilakukan, Yeay!\n");
 //     }
-
+fclose(outputfile);
    
 }
 
