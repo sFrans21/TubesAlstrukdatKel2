@@ -1,5 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "tambahan.h"
 #include "boolean.h"
+#include "Tambahan/nyoba.h"
+
+// --------------------------------------------------------------- //
+
 #include "Spesifikasi/start.h"
 #include "Spesifikasi/help.h"
 #include "Spesifikasi/load.h"
@@ -8,8 +15,11 @@
 #include "Spesifikasi/list.h"
 #include "Spesifikasi/save.h"
 #include "Spesifikasi/play.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "Spesifikasi/queue.h"
+// #include "Spesifikasi/playlist.h"
+// #include "Spesifikasi/song.h"
+
+// ------------------------------------------------------------------------- //
 
 int main()
 {
@@ -23,6 +33,7 @@ int main()
     LinierList LaguPlaylist;
     Word currentSong;
     Word LaguAyeuna;
+    int duration;
 
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
@@ -35,34 +46,9 @@ int main()
 
     boolean saved = false;
     boolean endProgram = false;
-    // char *command;
-    // command = (char *) malloc (50 * sizeof(char));
 
-    printf("\n");
-    printf("\n");
-    printf("\033[1;36m         #######################################################################\033[0m\n");
-    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
-    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
-    printf("\033[1;35m         [|         W   W  EEEEE  L      CCCC  OOO  M   M  EEEEE    !!        |]\033[0m\n");
-    printf("\033[1;35m         [|         W   W  E      L     C     O   O MM MM  E        !!        |]\033[0m\n");
-    printf("\033[1;35m         [|         W W W  EEEE   L     C     O   O M M M  EEEE     !!        |]\033[0m\n");
-    printf("\033[1;35m         [|         W W W  E      L     C     O   O M   M  E                  |]\033[0m\n");
-    printf("\033[1;35m         [|          W W   EEEEE  LLLL   CCCC  OOO  M   M  EEEEE    !!        |]\033[0m\n");
-    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
-    printf("\033[1;35m         [|                                                                   |]\033[0m\n");
-    printf("\033[1;36m         #######################################################################\033[0m\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\n");
-    printf("\033[1;34m                                 PERINGATAN!!!\033[0m\n");
-    printf("\033[1;36m======================================================================================\033[0m\n");
-    printf("\033[1;34m        MASUKKAN COMMAND DENGAN HURUF KAPITAL DAN DIAKHIRI DENGAN KARAKTER';'         \033[0m\n");
-    printf("\033[1;36m======================================================================================\033[0m\n\n\n");
-    printf("\033[1;36m                   Selamat datang di WayangWave!\033[0m\n\n");
-    printf("\033[0;36mJalankan command START atau LOAD <nama file> untuk membuka file.\033[0m\n");
-    printf("\033[0;36mJalankan command QUIT untuk keluar dari program.\033[0m\n");
-    printf("\n");
+    welcome();
+
     while (endProgram == false)
     {
         printf("\033[1;36mJalankan command HELP untuk melihat daftar commands yang tersedia.\n");
@@ -357,30 +343,35 @@ int main()
                 char *charcom;
                 ADVInput();
                 wordToString(currentCommand, charcom);
-                if (compareString(upper(charcom), "SONG") == true){
+                if (compareString(upper(charcom), "SONG") == true)
+                {
                     queuesong(penyanyi,penyanyiAlbums,albumsong,&UrutanLagu);
                 }
-                else if(compareString(upper(charcom), "REMOVE") == true){
+                else if(compareString(upper(charcom), "REMOVE") == true)
+                {
                     ADVInput();
                     int inp = WordToInt(currentCommand);
                     queueremove(&UrutanLagu,inp);
                 }
-                else if(compareString(upper(charcom), "SWAP") == true){
+                else if(compareString(upper(charcom), "SWAP") == true)
+                {
                     ADVInput();
                     int inp1 = WordToInt(currentCommand);
                     ADVInput();
                     int inp2 = WordToInt(currentCommand);
                     queueswap(&UrutanLagu,inp1,inp2);
                 }
-                else if(compareString(upper(charcom), "CLEAR") == true){
+                else if(compareString(upper(charcom), "CLEAR") == true)
+                {
                     queueclear(&UrutanLagu);
-            }
+                }
             else
             {
                 system("cls||clear");
                 printf("\nCommand tidak bisa dieksekusi!\n");
             }
-        }
+            }
     }
     return 0;
+    }
 }
