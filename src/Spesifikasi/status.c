@@ -46,42 +46,42 @@ char* dash(Word currentsong){
     return hasil;
 }
 
-char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums) {
-    // Cek apakah semua lagu dalam queue berada dalam suatu playlist
-         for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
-            char currsong[50];
-            int k = 0;
+// char* checkQueueInPlaylist(Queue *UrutanLagu, MapPlaylist *Playlist, maps *albumsong, Map *penyanyiAlbums) {
+//     // Cek apakah semua lagu dalam queue berada dalam suatu playlist
+//          for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
+//             char currsong[50];
+//             int k = 0;
 
-            while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
-            {
-                currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
-                k++;
-            }
-            currsong[k] = '\0';
-            char currPen[50];
-            char currAlb[50];
-        carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+//             while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
+//             {
+//                 currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+//                 k++;
+//             }
+//             currsong[k] = '\0';
+//             char currPen[50];
+//             char currAlb[50];
+//         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
 
-        boolean foundInPlaylist = false;
+//         boolean foundInPlaylist = false;
 
-        // Iterasi melalui playlist untuk mencari lagu
-        for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
-            if ((Playlist[0].A[j].TabWord) == currsong) {
-                foundInPlaylist = true;
-                break;
-            }
-        }
+//         // Iterasi melalui playlist untuk mencari lagu
+//         for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
+//             if ((Playlist[0].A[j].TabWord) == currsong) {
+//                 foundInPlaylist = true;
+//                 break;
+//             }
+//         }
 
-        // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
-        if (!foundInPlaylist) {
-            return NULL;
-        }
-    }
+//         // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
+//         if (!foundInPlaylist) {
+//             return NULL;
+//         }
+//     }
 
-    // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
-    return Playlist[0].A[0].TabWord;
-}
-void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist, Word *currentSong)
+//     // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
+//     return Playlist[0].A[0].TabWord;
+// }
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, MapPlaylist *Playlist, Word *currentSong)
 {
     printf(">> STATUS;\n");
     char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);

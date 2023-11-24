@@ -33,11 +33,13 @@ int main()
     LinierList LaguPlaylist;
     Word currentSong;
     Word LaguAyeuna;
+    MapPlaylist mapforplaylist;
     int duration;
 
     initializeList(&penyanyi);
     CreateEmptymap(&penyanyiAlbums);
     CreateEmptymap(&AlbumLagu);
+    CreateEmptymapPlaylist(&mapforplaylist);
     createmaps(&albumsong);
     CreateQueue(&UrutanLagu);
     CreateEmptyDynamic(&Playlist);
@@ -116,7 +118,7 @@ int main()
 
             else if (IsCommandEqual(currentCommand, "STATUS"))
             {
-                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&currentSong);
+                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &mapforplaylist,&currentSong);
             }
 
     // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
@@ -127,7 +129,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "SAVE") == false)
                 {
-                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist,&currentSong);
+                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &mapforplaylist, &RiwayatLagu, &LaguPlaylist,&currentSong);
                 }
                 else
                 {
