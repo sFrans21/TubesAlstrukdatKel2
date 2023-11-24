@@ -4,7 +4,8 @@
 #include "boolean.h"
 #include "mesinkata.h"
 #include "set.h"
-
+#include "list_linier.h"
+#include "list_dinamis.h"
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
@@ -13,6 +14,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 // #define true 1
 #define Nil 0
 #define MaxElMap 10
+#define MaxPlaylist 50
 #define Undefined NULL
 
 // typedef int bool;
@@ -38,6 +40,17 @@ typedef struct
 	address count;
 } maps;
 
+typedef struct
+{
+	DynamicList PlaylistName;
+	LinierList SongName;
+} PlType;
+
+typedef struct
+{
+	PlType PlElmt[MaxPlaylist];
+	address PlCount;
+} MapPlaylist;
 
 /* Definisi Map M kosong : M.Count = Nil */
 /* M.Count = jumlah element Map */
