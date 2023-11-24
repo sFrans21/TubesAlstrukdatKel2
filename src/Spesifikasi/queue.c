@@ -56,13 +56,13 @@ void queueswap(Queue *queue, int idx1, int idx2){
 
 void queueremove(Queue *queue, int i)
 {
-	int j;
-	for (j = i ; j < queue->idxTail ; j++)
-	{
-		queue->buffer[j] = queue->buffer[j+1]; 
-	}
-	
-	queue->idxTail--;
+ int j;
+ for (j = i ; j < queue->idxTail ; j++)
+ {
+  queue->buffer[j] = queue->buffer[j+1]; 
+ }
+ 
+ queue->idxTail--;
 }
 
 void  queueclear(Queue *queue){
