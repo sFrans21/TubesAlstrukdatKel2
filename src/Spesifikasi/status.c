@@ -57,7 +57,7 @@ char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *album
         addressLinier current = LaguPlaylist->First;
         while (current != NULL) {
             // Perbaikan: Menggunakan fungsi strcmp untuk membandingkan string
-            if (strcmp(current->info.TabWord, lagu) == 0) {
+            if (current->info.TabWord == lagu) {
                 foundInPlaylist = true;
                 break;
             }
