@@ -86,7 +86,7 @@ int main()
 
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, true);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &mapforplaylist, &RiwayatLagu, &LaguPlaylist, &currentSong, true);
                 endProgram = true;
             }
 
@@ -140,7 +140,7 @@ int main()
 
             else if (IsCommandEqual(currentCommand, "QUIT"))
             {
-                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, saved);
+                quit(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &mapforplaylist, &RiwayatLagu, &LaguPlaylist, &currentSong, saved);
                 endProgram = true;
             }
 
@@ -380,24 +380,32 @@ int main()
                 if (compareString(upper(charcom), "SONG") == true)
                 {
                     queuesong(penyanyi,penyanyiAlbums,albumsong,&UrutanLagu);
+                    printf("Berhasil menambahkan lagu ke queue");
                 }
                 else if(compareString(upper(charcom), "REMOVE") == true)
                 {
                     ADVInput();
-                    int inp = WordToInt(currentCommand);
+                    int inp = WordToInt(currentCommand)-1;
                     queueremove(&UrutanLagu,inp);
+                    printf("Berhasil menghapus lagu dari queue");
                 }
                 else if(compareString(upper(charcom), "SWAP") == true)
                 {
                     ADVInput();
-                    int inp1 = WordToInt(currentCommand);
+                    int inp1 = WordToInt(currentCommand)-1;
                     ADVInput();
-                    int inp2 = WordToInt(currentCommand);
+                    int inp2 = WordToInt(currentCommand)-1;
                     queueswap(&UrutanLagu,inp1,inp2);
+                    printf("Berhasil menukar urutan lagu");
                 }
                 else if(compareString(upper(charcom), "CLEAR") == true)
                 {
                     queueclear(&UrutanLagu);
+                    printf("Berhasil mengosongkan queue");
+                }
+                else if(compareString(upper(charcom), "PLAYLIST") == true)
+                {
+                    queueplaylist(mapforplaylist, &UrutanLagu);
                 }
 
     // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
@@ -409,6 +417,6 @@ int main()
             }
             }
     }
-    return 0;
     }
+    return 0;
 }
