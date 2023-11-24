@@ -111,7 +111,7 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     }
     else{
         int a = 1;
-            for (int i = UrutanLagu->idxHead  ; i =< UrutanLagu->idxTail;i++){
+            for (int i = UrutanLagu->idxHead  ; i <= UrutanLagu->idxTail;i++){
             printf("%d. %s\n", a, dash(UrutanLagu->buffer[i]));
             a++;
             }
