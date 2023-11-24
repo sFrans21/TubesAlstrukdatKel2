@@ -65,8 +65,6 @@ void ADVSemicolon();
 
 boolean CekWord(Word hasil);
 
-Word ConcatWord(Word word_1, Word word_2);
-
 Word SplitWordBlank(Word word);
 
 Word SplitWordMark(Word word);
