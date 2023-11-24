@@ -12,11 +12,11 @@
 #include "ADT/stack.h"
 #include "list.h"
 #include "../tambahan.h"
+#include "play.h"
 
+void CreatePlaylist (DynamicList playlist);
 
-void CreatePlaylist ();
-
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
+void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, DynamicList Playlist);
 
 void PlaylistAddAlbum(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
 
