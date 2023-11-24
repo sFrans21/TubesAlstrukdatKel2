@@ -112,18 +112,6 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     else{
         int a = 1;
             for (int i = UrutanLagu->idxHead  ; i < UrutanLagu->idxTail;i++){
-            char currsong[50];
-            int k = 0;
-
-            while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
-            {
-                currsong[k] = UrutanLagu->buffer[i].TabWord[k];
-                k++;
-            }
-            currsong[k] = '\0';
-            char currPen[50];
-            char currAlb[50];
-            carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
             printf("%d. %s\n", a, dash(UrutanLagu->buffer[i]));
             a++;
             }

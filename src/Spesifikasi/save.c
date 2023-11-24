@@ -103,7 +103,7 @@ for (int i = 0; i < penyanyi->itemCount; i++) {
 
 //      if(!IsListEmptyDynamic(*Playlist)){
         int playlistCount = LengthListDynamic(*Playlist);
-        fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
+        fprintf(outputfile, "%d\n", playlistCount);
 
         // for (int i = 0; i < playlistCount; i++)
         // {

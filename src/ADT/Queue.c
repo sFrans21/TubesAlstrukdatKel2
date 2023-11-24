@@ -82,6 +82,23 @@ void dequeue(Queue *q, Word *val){
     }
 }
 
+void enqueueFirst(Queue *q, Word val) {
+    // Jika queue kosong, set IDX_HEAD dan IDX_TAIL ke 0
+    if (isQueueEmpty(*q)) {
+        q->idxHead = q->idxTail = 0;
+    } else {
+        // Geser elemen-elemen ke belakang
+        for (int i = (q->idxTail + 1) % CAPACITY; i != q->idxHead; i = (i + 1) % CAPACITY) {
+            q->buffer[i] = q->buffer[(i - 1 + CAPACITY) % CAPACITY];
+        }
+        // Update IDX_TAIL
+        q->idxTail = (q->idxTail + 1) % CAPACITY;
+    }
+
+    // Tambahkan elemen baru pada urutan pertama
+    q->buffer[q->idxHead] = val;
+}
+
 /* *** Display Queue *** */
 // void displayQueue(SQueue q){
 // /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
