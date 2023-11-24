@@ -25,13 +25,13 @@ Pretty Visitors
 Do I Wanna Know?
 R U Mine?
 Arabella
-Arctic Monkeys;AM;R U Mine?
+BLACKPINK;BORN PINK;Typa Girl
 3
 BLACKPINK;BORN PINK;Typa Girl
 BLACKPINK;THE ALBUM;How You Like That
 BLACKPINK;BORN PINK;Pink Venom
 2
-Arctic Monkeys;Favourite Worst Nightmare;505
+BLACKPINK;THE ALBUM ;Bet You Wanna (Feat. Cardi B)
 BLACKPINK;BORN PINK;Pink Venom
 3
 3 BLACKPINK My Top Three

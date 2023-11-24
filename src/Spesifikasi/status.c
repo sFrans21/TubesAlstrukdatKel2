@@ -46,45 +46,65 @@ char* dash(Word currentsong){
     return hasil;
 }
 
-char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums) {
+char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums, LinierList *LaguPlaylist) {
     // Cek apakah semua lagu dalam queue berada dalam suatu playlist
-         for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
-            char currsong[50];
-            int k = 0;
-
-            while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
-            {
-                currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
-                k++;
-            }
-            currsong[k] = '\0';
-            char currPen[50];
-            char currAlb[50];
-        carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
-
+    for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
+        char *lagu = (char *)malloc(30 * sizeof(char));
+        wordToString(SplitWordMark(SplitWordMark(UrutanLagu->buffer[i])), lagu);
         boolean foundInPlaylist = false;
 
-        // Iterasi melalui playlist untuk mencari lagu
-        for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
-            if ((Playlist[0].A[j].TabWord) == currsong) {
+        // Iterasi melalui lagu playlist untuk mencari lagu
+        addressLinier current = LaguPlaylist->First;
+        while (current != NULL) {
+            // Perbaikan: Menggunakan fungsi strcmp untuk membandingkan string
+            if (current->info.TabWord == lagu) {
                 foundInPlaylist = true;
                 break;
             }
+            current = current->next;
         }
 
         // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
         if (!foundInPlaylist) {
+            free(lagu);  // Perbaikan: Membebaskan memori yang dialokasikan untuk lagu
             return NULL;
         }
+
+        free(lagu);  // Perbaikan: Membebaskan memori yang dialokasikan untuk lagu setelah digunakan
     }
 
     // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
-    return Playlist[0].A[0].TabWord;
+    return LaguPlaylist->First->info.TabWord;  // Mengembalikan nama playlist dari elemen pertama
 }
-void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist, Word *currentSong)
+
+// char* checkQueueInPlaylist(Queue *UrutanLagu, DynamicList *Playlist, maps *albumsong, Map *penyanyiAlbums) {
+//     // Cek apakah semua lagu dalam queue berada dalam suatu playlist
+//          for (int i = UrutanLagu->idxHead; i < UrutanLagu->idxTail; i++) {
+//             char *lagu=(char *)malloc(30*sizeof(char));
+//     wordToString(SplitWordMark(SplitWordMark(UrutanLagu->buffer[i])),lagu);
+//         boolean foundInPlaylist = false;
+
+//         // Iterasi melalui playlist untuk mencari lagu
+//         for (int j = 1; j <= LengthListDynamic(Playlist[0]); j++) {
+//             if ((Playlist[i].A[j].TabWord) == lagu) {
+//                 foundInPlaylist = true;
+//                 break;
+//             }
+//         }
+
+//         // Jika lagu tidak ditemukan dalam playlist, maka tidak semua lagu berada dalam playlist
+//         if (!foundInPlaylist) {
+//             return NULL;
+//         }
+//     }
+
+//     // Jika semua lagu ditemukan dalam playlist, kembalikan nama playlist
+//     return Playlist[0].A[0].TabWord;
+// }
+void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , Queue *UrutanLagu, DynamicList *Playlist, Word *currentSong, LinierList *LaguPlaylist)
 {
     printf(">> STATUS;\n");
-    char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums);
+    char* playlistName = checkQueueInPlaylist(UrutanLagu, Playlist, albumsong, penyanyiAlbums,LaguPlaylist);
 
              
     if (playlistName != NULL) {
@@ -111,7 +131,7 @@ void displayStatus(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong , 
     }
     else{
         int a = 1;
-            for (int i = UrutanLagu->idxHead  ; i < UrutanLagu->idxTail;i++){
+            for (int i = UrutanLagu->idxHead  ; i <= UrutanLagu->idxTail;i++){
             char currsong[50];
             int k = 0;
 

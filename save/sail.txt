@@ -25,11 +25,3 @@ Pretty Visitors
 Do I Wanna Know?
 R U Mine?
 Arabella
-BLACKPINK;BORN PINK;Typa Girl
-3
-BLACKPINK;BORN PINK;Typa Girl
-BLACKPINK;THE ALBUM;How You Like That
-BLACKPINK;BORN PINK;Pink Venom
-2
-BLACKPINK;THE ALBUM ;Bet You Wanna (Feat. Cardi B)
-BLACKPINK;BORN PINK;Pink Venom
