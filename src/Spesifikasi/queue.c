@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "queue.h"
 #include "../tambahan.h"
-#include "start.h"
 
 void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queue){
     int idxp;
@@ -13,40 +12,20 @@ void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queu
      }
     printf("Masukkan Nama Penyanyi : ");
     StartWordInput();
-    // printf("%d\n", penyanyi.itemCount);
-    // printf("%s\n", (penyanyi).items[1].TabWord);
-    // printf("%d\n", currentWord.Length);
-    // for (int i = 0; i < currentWord.Length; i++)
-    // {
-    //     printf("%c", currentWord.TabWord[i]);
-    // }
-    // printf("%d\n", penyanyi.items[0].Length);
+    Word artist =currentWord;
+
     for(int i=0; i<penyanyi.itemCount;i++)
-     {if (isEqual(currentWord,(penyanyi).items[i]))
+    {if (isEqual(currentWord,(penyanyi).items[i]))
          {idxp=i;}
-     }
+    }
     printf("Daftar Album oleh %s : \n", (penyanyi).items[idxp].TabWord);
     for (int i=0;i<singeralbum.Elements[idxp].Value.Count;i++){
          printf("   %d. %s\n", i+1,(singeralbum.Elements[idxp].Value.Elements[i].TabWord));}
 
     printf("Masukkan Nama Album : ");
     StartWordInput();
-    // printf("%d\n", albumsong.Elements[idxp].Elements[0].Key.Length);
-    // for (int i = 0; i < albumsong.Elements[idxp].Elements[0].Key.Length; i++)
-    // {
-    //     printf("%d : %c\n", i, albumsong.Elements[idxp].Elements[0].Key.TabWord[i]);
-    // }
-    
-    // printf("%s\n", albumsong.Elements[idxp].Elements[0].Key.TabWord);
-    
-    // printf("%d\n", currentWord.Length);
-    // for (int i = 0; i < currentWord.Length; i++)
-    // {
-    //     printf("%c", currentWord.TabWord[i]);
-    // }
-    // printf("\n");
-    // printf(".");
-    // printf("%d", albumsong.Elements[idxp].Elements[2].Key.Length);
+    Word album = currentWord;
+
     for (int i=0;i<albumsong.Elements[idxp].Count;i++){
         if (isEqual(currentWord, albumsong.Elements[idxp].Elements[i].Key)){
             idxa = i;
@@ -59,7 +38,11 @@ void queuesong(StaticList penyanyi, Map singeralbum, maps albumsong, Queue *queu
     printf("Masukkan ID lagu yang dipilih : ");
     StartWordInput();
     int idxl = WordToInt(currentWord)-1;
-    enqueue(queue, albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl]);
+    Word detailed = ConcatWord(artist,stringToWord(";"));
+    detailed = ConcatWord(detailed,album);
+    detailed = ConcatWord(detailed,stringToWord(";"));
+    detailed = ConcatWord(detailed,albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl]);
+    enqueue(queue, detailed);
     printf("Berhasil menambahkan lagu \"%s\" oleh \"%s\" ke queue.\n",albumsong.Elements[idxp].Elements[idxa].Value.Elements[idxl].TabWord,  (penyanyi).items[idxp].TabWord);
 }   
 
