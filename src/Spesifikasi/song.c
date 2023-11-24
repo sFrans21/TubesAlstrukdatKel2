@@ -60,7 +60,7 @@ void songPrevious(SQueue *q, RiwayatLagu *RL, CurrentSong *CS)
     }
     else
     {
-        RincianLaguStack CSR;
+        Stack CSR;
         CurrentSong tempSong;
         enqueue(q, *CS);
         for (int i = 0; i < lengthQ(*q) - 1; i++)
