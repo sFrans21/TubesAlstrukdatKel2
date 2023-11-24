@@ -4,6 +4,9 @@
 
 void start(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong)
 {
+    initializeList(&penyanyi);
+    CreateEmptymap(&penyanyiAlbums);
+    createmaps(&albumsong);
     Set albums;
     Set songs;
     CreateEmptySet(&albums);
