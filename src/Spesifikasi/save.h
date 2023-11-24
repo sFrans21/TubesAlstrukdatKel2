@@ -12,7 +12,8 @@
 
 
 
-void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong);
+
+void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, MapPlaylist *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong);
 
 #endif
 

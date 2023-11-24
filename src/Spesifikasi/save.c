@@ -38,7 +38,7 @@
 // }
 
 
-void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, DynamicList *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong){
+void save(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, Queue *UrutanLagu, MapPlaylist *Playlist, Stack *RiwayatLagu, LinierList *LaguPlaylist, Word *currentSong){
 
     //----------------------------------------------------------------Opening file------------------------------
     char filepath[50];
@@ -102,8 +102,15 @@ for (int i = 0; i < penyanyi->itemCount; i++) {
 //---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
 
 //      if(!IsListEmptyDynamic(*Playlist)){
-        int playlistCount = LengthListDynamic(*Playlist);
+        int playlistCount = Playlist->PlCount;
         fprintf(outputfile, "%d\n", playlistCount);
+        for (int i =0 ; i < playlistCount ; i++){
+            fprintf(outputfile,"%d %s",NbElmt(Playlist->PlElmt[i].SongName), Playlist->PlElmt[i].PlaylistName);
+            for (int j = 0 ; j <NbElmt(Playlist->PlElmt[i].SongName); j++){
+                fprintf(outputfile,"%s",Playlist->PlElmt[i].SongName.First->info.TabWord);
+               Playlist->PlElmt[i].SongName.First =  Playlist->PlElmt[i].SongName.First->next ;
+            }
+        }
 
         // for (int i = 0; i < playlistCount; i++)
         // {

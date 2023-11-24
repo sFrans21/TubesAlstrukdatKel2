@@ -35,7 +35,7 @@ void CreatePlaylist (DynamicList Playlist)
 }
 //PLAYLISTADDSONG
 
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, DynamicList Playlist)
+void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, DynamicList Playlist, LinierList LaguPlaylist)
 {
     int idxp;
     int idxa;
@@ -130,7 +130,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                             }
                             count++;
                         }
-                        Word LaguPilihan = albumsong.Elements[count - 1].Elements[i].Key;
+                        Word jenengelagu = albumsong.Elements[count - 1].Elements[i].Key;
                         printf("Daftar Playlist Pengguna :\n");
                         if (!IsListEmptyDynamic)
                         {
@@ -157,31 +157,31 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                             Word Pilihan = ConcatWord(jenengepenyanyi, MarkSC);
                             Pilihan = ConcatWord(Pilihan, jenengealbum);
                             Pilihan = ConcatWord(Pilihan, MarkSC);
-                            Pilihan = ConcatWord(Pilihan, LaguPilihan);
+                            Pilihan = ConcatWord(Pilihan, jenengelagu);
 
-                            address P = First(Playlist);
-                            boolean LaguSudahAda = false;
+                            address P = First();
+                            boolean LaguAda = false;
                             int count = 0;
-                            while (!LaguSudahAda && count < NbElmt)
+                            while (!LaguAda && count < NbElmt)
                             {
-                                if (isEqual(SplitWordMark(SplitWordMark(Info(P))), LaguPilihan))
+                                if (isEqual(SplitWordMark(SplitWordMark(Info(P)))), jenengelagu)
                                 {
-                                    LaguSudahAda = true;
+                                    LaguAda = true;
                                 }
                                 else
                                 {
                                     count++;
                                     P = Next(P);
                                 }
-                            }
-                            if (!LaguSudahAda)
+                            }   
+                            if (!LaguAda)
                             {
-                                InsVLast(Playlist, Pilihan);
+                                InsVLast(&LaguPlaylist, Pilihan);
                                 printf("Lagu dengan judul \"");
-                                DisplayWord(LaguPilihan);
+                                DisplayWord(jenengelagu);
                                 printf("\" pada album ");
                                 DisplayWord(jenengealbum);
-                                printf(" oleh penyanyi ");
+                                printf(" oleh penyanyi \n");
                                 DisplayWord(jenengepenyanyi);
                                 printf(" berhasil ditambahkan ke dalam playlist ");
                                 DisplayWord(PlaylistPilihan);
@@ -190,7 +190,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                             else
                             {
                                 printf("Lagu ");
-                                DisplayWord(LaguPilihan);
+                                DisplayWord(jenengelagu);
                                 printf(" sudah ada di playlist ");
                                 DisplayWord(PlaylistPilihan);
                                 printf(".\n");
