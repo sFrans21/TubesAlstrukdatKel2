@@ -35,7 +35,7 @@ void CreatePlaylist (DynamicList Playlist)
 }
 //PLAYLISTADDSONG
 
-void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, DynamicList Playlist, LinierList LaguPlaylist)
+void PlaylistAddSong(StaticList *penyanyi, Map *penyanyiAlbums, maps *albumsong, DynamicList *Playlist, LinierList *LaguPlaylist)
 {
     int idxp;
     int idxa;
@@ -159,12 +159,12 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                             Pilihan = ConcatWord(Pilihan, MarkSC);
                             Pilihan = ConcatWord(Pilihan, jenengelagu);
 
-                            address P = First();
+                            addressLinier P = First(LaguPlaylist);
                             boolean LaguAda = false;
                             int count = 0;
                             while (!LaguAda && count < NbElmt)
                             {
-                                if (isEqual(SplitWordMark(SplitWordMark(Info(P)))), jenengelagu)
+                                if (isEqual(SplitWordMark(SplitWordMark(Info(P))), jenengelagu))
                                 {
                                     LaguAda = true;
                                 }

@@ -16,6 +16,7 @@
 #include "Spesifikasi/save.h"
 #include "Spesifikasi/play.h"
 #include "Spesifikasi/queue.h"
+//#include "Spesifikasi/playlist.h"
 // #include "Spesifikasi/playlist.h"
 // #include "Spesifikasi/song.h"
 
@@ -409,7 +410,67 @@ int main()
                 }
 
     // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
+            else if (IsCommandEqual(currentCommand, "PLAYLIST"))
+            {
+                char *pep;
+                pep = (char *)malloc(30 * sizeof(char));
+                ADVInput();
+                wordToString(currentCommand, pep);
+                if (compareString(upper(pep), "ADD") == true)
+                {
+                    char *pep2;
+                    pep2 = (char *)malloc(30 * sizeof(char));
+                    ADVInput();
+                    wordToString(currentCommand, pep2);
+                    // if (compareString(upper(pep), "SONG") == true)
+                    // {
+                    //     //PlaylistAddSong(&penyanyi,&penyanyiAlbums,&albumsong,&Playlist,&LaguPlaylist);
+                    //     // PrintPenyanyi(penyanyi);
+                    //     // printf("masukkan nama penyanyi yang dipilih: ");
+                    //     // StartWordInput();
+                    //     // int Idxsinger = IdxKetemuPenyanyi(penyanyi, currentWord);
+                    //     // int IdexAlbum;
+                    //     // int IdexLagu;
+                    //     // int found;
+                    // }
+                    // if (compareString(upper(pep2), "ALBUM") == true)
+                    // {
 
+                    // }
+                }
+
+                // else if (compareString(upper(pep), "SWAP") == true)
+                // {
+                // }
+
+                // else if (compareString(upper(pep), "REMOVE") == true)
+                // {
+                // }
+                else if (compareString(upper(pep), "DELETE") == true)
+                {
+                    PrintPlaylist(Playlist);
+                    printf("Masukkan ID playlist yang ingin dipilih :");
+                    StartWordInput();
+                    char *n;
+                    n = (char *)malloc(30 * sizeof(char));
+                    wordToString(currentWord, n);
+                    int valk = CharToInt(n);
+                    // aksi penghapusan
+                    for (int i = 0; i < LengthListDynamic(Playlist); i++)
+                    {
+                        if (isEqual(currentWord, penyanyi.items[i]) == true)
+                        {
+                            penyanyi.items[i + 1] = penyanyi.items[i];
+                            penyanyi.itemCount -= 1;
+                            printf("Playlist ID %d dengan judul %s berhasil dihapus.", valk, Playlist.A[valk - 1].TabWord);
+                        }
+                        else
+                        {
+                            printf("Tidak ada playlist dengan ID %d dalam daftar playlist pengguna. Silakan coba lagi.", valk);
+                        }
+                    }
+                }
+            }
             else
             {
                 system("cls||clear");
