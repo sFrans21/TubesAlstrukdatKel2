@@ -4,7 +4,10 @@
 
 void CreatePlaylist (DynamicList Playlist)
 {
+<<<<<<< HEAD
     {    int countKarakter = 0;
+=======
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
     printf("Masukkan nama playlist yang ingin di buat : ");
     StartWordMark();
     printf("\n");
@@ -16,29 +19,41 @@ void CreatePlaylist (DynamicList Playlist)
     }
 
     if (countKarakter >= 3){
+<<<<<<< HEAD
         
         CreateEmptyDynamic(&Playlist);
         InsertLastDynamic (&Playlist, currentWord);
+=======
+        CreateEmptyLinier.PlaylistLagu.Song;
+        InsertLastDynamic (currentWord);
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
         printf("Playlist ");
         DisplayWord (currentWord);
         printf(" berhasil dibuat! \n");
         printf("\n Silahkan masukkan lagu - lagu artis terkini kesayangan Anda!\n");
     }
-    else
-    {
-        (printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silahkan coba lagi.\n"));
+    else{
+        printf("Minimal terdapat 3 karakter selain whitespace dalam nama playlist. Silahkan coba lagi.\n");
+
     }
 
+<<<<<<< HEAD
 }
 }
 
 
 void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, DynamicList Playlist)
+=======
+}  
+
+void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong);
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
 {
-    {
     int idxp;
     int idxa;
+    DynamicList Daftarplaylist;
 
+<<<<<<< HEAD
     if (!isEmptyDynamic(&Playlist));
         printf("Daftar Penyanyi : \n");
         PrintPenyanyi(penyanyi);
@@ -49,6 +64,61 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
 
         printf("\n");
         printf("Masukkan Nama Penyanyi yang dipilih : ");
+=======
+    CreateEmptyDynamic (&Daftarplaylist);
+    PrintPenyanyi(penyanyi);
+    // printf("Daftar Penyanyi :\n");
+    // for(int i=0; i< penyanyi.itemCount; i++){
+    //     printf("   %d. %s\n", i+1, (penyanyi).items[i].TabWord);
+    // }
+
+    printf("\n");
+    printf("Masukkan Nama Penyanyi yang dipilih : ");
+    StartWordInput();
+    
+    printf("\n");
+    PrintAlbum(penyanyiAlbums, currentWord);
+    for(int i=0; i<penyanyi.itemCount;i++){
+        if (isEqual(currentWord,(penyanyi).items[i]))
+            {idxp=i;}
+    }
+
+    printf("Masukkan Judul Album yang dipilih : ");
+    StartWordInput();
+    PrintLagu(albumsong, currentWord, idxp);
+    
+    printf("Masukkan ID Lagu yang dipilih : ");
+    StartWordInput();
+
+    PrintPlaylist(penyanyi)
+    printf("Daftar Playlist Pengguna : ");
+                
+        for (int i = 0; i < Playlist; i++)
+        {
+            printf("\033[1;34m%d. ", (i + 1));
+            printf("\033[1;34m%s\n", M.A[i].TabWord);
+        }
+    int i = 0;
+    boolean penyanyivalid = false;
+    while (!penyanyivalid && (i < LengthList(penyanyi))){
+        if (isEqual(penyanyi.items[i], currentWord)){
+            penyanyivalid = true;
+        }
+        else{
+            i++;
+        }
+    }
+
+    if (penyanyivalid){
+        Word jenengepenyanyi = currentWord;
+        printf("Daftar Album oleh %s : \n", (penyanyi).items[idxp].TabWord);
+        for (int i=0;i<penyanyiAlbums.Elements[idxp].Value.Count;i++){
+            printf("   %d. %s\n", i+1,(penyanyiAlbums.Elements[idxp].Value.Elements[i].TabWord));}
+            printf("\n");
+
+        boolean albumvalid = false;
+        printf("Masukkan Judul Album yang dipilih : ");
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
         StartWordInput();
         printf("\n");
 
@@ -114,6 +184,7 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
             if (albumvalid){
                 Word jenengealbum = currentWord;
 
+<<<<<<< HEAD
                 printf("Daftar Lagu Album %s oleh %s : \n", albumsong.Elements[idxp].Elements[idxa].Key.TabWord, penyanyi.items[idxp].TabWord );
                 for(int i=0;i<albumsong.Elements[idxp].Elements[idxa].Value.Count;i++){
                     printf("    %d. %s \n", i+1, albumsong.Elements[idxp].Elements[idxa].Value.Elements[i].TabWord);
@@ -125,6 +196,34 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                         {
                             printf("\t%d. ", index+1);
                             DisplayWord(albumsong.Elements[i].Elements[i].Key);
+=======
+                printf("Masukkan ID Lagu yang dipilih : ");
+                StartWordMark();
+                printf("\n");
+                int ID_Lagu = WordToInt(currentWord);
+
+                if (ID_Lagu > 0 && ID_Lagu <= index)
+                {
+                    int check = 0;
+                    int count = 0;
+                    while (count < albumsong.count && check < ID_Lagu)
+                    {
+                        if (isEqual(albumsong.Elements[count].Elements[i].Key, jenengealbum))
+                        {
+                            check++;
+                        }
+                        count++;
+                    }
+                    Word LaguPilihan = albumsong.Elements[count - 1].Elements[i].Key;
+                    printf("Daftar Playlist Pengguna :\n");
+                    if (!IsListEmptyDynamic)
+                    {
+                        int index = 0;
+                        for (int i = 0; i < LengthListDynamic(*DaftarPlaylist); i++)
+                        {
+                            printf("\t%d. ", index+1);
+                            DisplayWord(GetDynamic(*DaftarPlaylist, i));
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
                             index++;
                             printf("\n");
                         }
@@ -136,9 +235,22 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                     printf("\n");
                     int ID_Lagu = WordToInt(currentWord);
 
+<<<<<<< HEAD
                     if (ID_Lagu > 0 && ID_Lagu <= index)
                     {
                         int check = 0;
+=======
+                    if (ID_Playlist > 0 && ID_Playlist <= LengthListDynamic(*DaftarPlaylist))
+                    {
+                        Word PlaylistPilihan = GetDynamic(*DaftarPlaylist, ID_Playlist-1);
+                        Word MarkSC = {";", 1};
+                        Word Pilihan = ConcatWord(jenengepenyanyi, MarkSC);
+                        Pilihan = ConcatWord(Pilihan, jenengealbum);
+                        Pilihan = ConcatWord(Pilihan, MarkSC);
+                        Pilihan = ConcatWord(Pilihan, LaguPilihan);
+                        address P = First(*DaftarPlaylist);
+                        boolean LaguSudahAda = false;
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
                         int count = 0;
                         while (count < albumsong.count && check < ID_Lagu)
                         {
@@ -213,6 +325,22 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
                                 printf(".\n");
                             }
                         }
+<<<<<<< HEAD
+=======
+                        if (!LaguSudahAda)
+                        {
+                            InsVLast(DaftarPlaylist, Pilihan);
+                            printf("Lagu dengan judul \"");
+                            DisplayWord(LaguPilihan);
+                            printf("\" pada album ");
+                            DisplayWord(jenengealbum);
+                            printf(" oleh penyanyi ");
+                            DisplayWord(jenengepenyanyi);
+                            printf(" berhasil ditambahkan ke dalam playlist ");
+                            DisplayWord(PlaylistPilihan);
+                            printf(".\n");
+                        }
+>>>>>>> bc402a5970eafe537b13c83e98831b5f73ffdf59
                         else
                         {
                             printf("Playlist tidak ada dalam daftar. Silakan coba lagi!\n");
@@ -247,7 +375,6 @@ void PlaylistAddSong(StaticList penyanyi, Map penyanyiAlbums, maps albumsong, Dy
 
 
 void PlaylistAddAlbum(StaticList penyanyi, Map singeralbum, maps albumsong);
-
 
 void PlaylistSwap(Word Word);
 
