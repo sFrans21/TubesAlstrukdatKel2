@@ -112,7 +112,7 @@ int main()
             }
             else if (IsCommandEqual(currentCommand, "STATUS"))
             {
-                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&currentSong);
+                displayStatus(&penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist,&currentSong,&LaguPlaylist);
             }
             else if (IsCommandEqual(currentCommand, "SAVE"))
             {
@@ -120,7 +120,7 @@ int main()
                 wordToString(currentCommand, inputfile);
                 if (compareString(upper(inputfile), "SAVE") == false)
                 {
-                    //save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist,&currentSong);
+                    save(inputfile, &penyanyi, &penyanyiAlbums, &albumsong, &UrutanLagu, &Playlist, &RiwayatLagu, &LaguPlaylist,&currentSong);
                 }
                 else
                 {
