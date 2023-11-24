@@ -6,12 +6,11 @@
 #include "ADT/stack.h"
 #include "ADT/mesinkata.h"
 #include "ADT/list_dinamis.h"
-#include "."
 
 
 
-void SongNext(Queue * q, Stack * RL, currentSong* CS);
+void SongNext(Queue * q, Stack * RL, * CS);
 
-void SongPrev(Queue * q, Stack * RL, currentSong* CS);
+void SongPrev(Queue * q, Stack * RL, CurrentSong* CS);
 
 #endif

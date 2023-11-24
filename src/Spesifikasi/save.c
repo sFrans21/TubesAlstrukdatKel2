@@ -81,57 +81,118 @@ for (int i = 0; i < penyanyi->itemCount; i++) {
     }
 }
   //---------------------------------------------------------Menuliskan Current song -------------------------------------------------------
+// if (!isQueueEmpty(*UrutanLagu)){
+    
+//     char currsong[50];
+//     int k = 0;
 
-//if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
-   // {
-     
-         int icur = 0;
-         while (icur < currentSong->Length)
-        {
-            fprintf(outputfile,"%c", currentSong->TabWord[icur]);
-            icur++;
-        }
-        fprintf(outputfile,"\n");
-//}
+//     while (k < 50 && UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k] != '\0')
+//     {
+//     currsong[k] = UrutanLagu->buffer[UrutanLagu->idxHead].TabWord[k];
+//     k++;
+//     }
+//     currsong[k] = '\0';
+//     char currPen[50];
+//     char currAlb[50];
+
+//     carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+//     fprintf(outputfile, "%s;", currPen);
+//     fprintf(outputfile, "%s:", currAlb);
+//     fprintf(outputfile, "%s\n", currsong);
+// }
+if (!(IsCommandEqual(*currentSong,"-")|| IsCommandEqual(*currentSong,"")))
+    {
+        char* carcurr[50];
+         wordToString(*currentSong,carcurr);
+         fprintf(outputfile,"%s",currentSong);
+        
+    }
+
 
 
 
  
   //---------------------------------------------------------Menuliskan Queue -------------------------------------------------------
-  
+// if (!isQueueEmpty(*UrutanLagu))
+// {
+//     fprintf(outputfile,"%d\n",lengthQueue(*UrutanLagu));
+//     for (int i = UrutanLagu->idxHead ; i < UrutanLagu->idxTail;i++){
+//         char currsong[50];
+//         int k = 0;
 
-    fprintf(outputfile,"%d\n",lengthQueue(*UrutanLagu));
-        for (int i = UrutanLagu->idxHead  ; i <= UrutanLagu->idxTail;i++){
-        fprintf(outputfile,"%s\n", UrutanLagu->buffer[i].TabWord);
-            }
+//         while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+//         {
+//         currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+//         k++;
+//         }
+//         currsong[k] = '\0';
+//         char currPen[50];
+//         char currAlb[50];
 
+//         carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+//         fprintf(outputfile, "%s;", currPen);
+//         fprintf(outputfile, "%s\n", currAlb);
+//         fprintf(outputfile, "%s;", currsong);
+//         }
+//     }
 
 
     
 // // //---------------------------------------------------------Menuliskan Riwayat Lagu -------------------------------------------------------
 //      if (!IsEmptyStack(*RiwayatLagu))
 //     {
-        fprintf(outputfile,"%d\n",NbElmtStack(*RiwayatLagu));
-         for (int i = RiwayatLagu->TOP; i >= 0; i--)
-         {
-            fprintf(outputfile,"%s\n", RiwayatLagu->T[i].TabWord);
-     }
+//             fprintf(outputfile,"%d\n",NbElmtStack(*RiwayatLagu));
+//         for (int i = 0; i <= RiwayatLagu->TOP; i++)
+//         {
+//             char currsong[50];
+//             int k = 0;
+
+//             while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+//             {
+//             currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+//             k++;
+//             }
+//             currsong[k] = '\0';
+//             char currPen[50];
+//             char currAlb[50];
+
+//             carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+//             fprintf(outputfile, "%s;", currPen);
+//             fprintf(outputfile, "%s\n", currAlb);
+//             fprintf(outputfile, "%s;", currsong);
+//         }
+//     }
      
 // // //---------------------------------------------------------Menuliskan Playlist Lagu -------------------------------------------------------
 
 //      if(!IsListEmptyDynamic(*Playlist)){
-        // int playlistCount = LengthListDynamic(*Playlist);
-        // fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
+//         int playlistCount = LengthListDynamic(*Playlist);
+//         fprintf(outputfile, "%d # Jumlah playlist\n", playlistCount);
 
-        // for (int i = 0; i < playlistCount; i++)
-        // {
-        //     fprintf(outputfile, "%d %s \n", Playlist->A->Length, Playlist[i]);
+//         for (int i = 0; i < playlistCount; i++)
+//         {
+//             fprintf(outputfile, "%d %s \n", LengthListDynamic(Playlist[i]), Playlist[i]);
 
-        //     for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
-        //     {
-                
-        //     }
-        // }
+//             for (int j = 1; j <= LengthListDynamic(Playlist[i]); j++)
+//             {
+//                 char currsong[50];
+//                 int k = 0;
+
+//                 while (k < 50 && UrutanLagu->buffer[i].TabWord[k] != '\0')
+//                {
+//                 currsong[k] = UrutanLagu->buffer[i].TabWord[k];
+//                 k++;
+//                }
+//                 currsong[k] = '\0';
+//                 char currPen[50];
+//                 char currAlb[50];
+    
+//                 carialbumpenyanyi(*penyanyiAlbums, *albumsong, currsong, currPen, currAlb);
+//                 fprintf(outputfile, "%s;", currPen);
+//                 fprintf(outputfile, "%s\n", currAlb);
+//                 fprintf(outputfile, "%s;", currsong);
+//             }
+//         }
 //     }
 //     if (filepath != NULL) {
 //         printf("Save berhasil dilakukan, Yeay!\n");
