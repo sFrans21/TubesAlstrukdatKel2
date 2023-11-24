@@ -18,7 +18,7 @@
 #include "Spesifikasi/queue.h"
 //#include "Spesifikasi/playlist.h"
 // #include "Spesifikasi/playlist.h"
-// #include "Spesifikasi/song.h"
+#include "Spesifikasi/song.h"
 
 // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
 
@@ -372,7 +372,20 @@ int main()
             }
 
     // ≻────────────────────────────────────────── ⋆✩⋆ ──────────────────────────────────────────≺
-
+            else if(IsCommandEqual(currentCommand, "SONG"))
+            {
+                char *ppo;
+                ADVInput();
+                wordToString(currentCommand, ppo);
+                if (compareString(upper(ppo), "NEXT") == true)
+                {
+                    SongNext(&penyanyi, &penyanyiAlbums,&albumsong,&RiwayatLagu, &UrutanLagu,&currentSong);
+                }
+                else if(compareString(upper(ppo), "PREV") == true)
+                {
+                    SongPrev(&penyanyi, &penyanyiAlbums,&albumsong,&RiwayatLagu, &UrutanLagu,&currentSong);
+                }
+            }
             else if(IsCommandEqual(currentCommand, "QUEUE"))
             {
                 char *charcom;
