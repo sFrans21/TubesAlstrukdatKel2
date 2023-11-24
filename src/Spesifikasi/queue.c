@@ -97,24 +97,3 @@ void queueplaylist(MapPlaylist PL, Queue *queue)
     
 
 }
-
-// int main (){
-//     StaticList penyanyi;
-//     Map penyanyiAlbums;
-//     maps albumLagu;
-//     Queue queue;
-//     CreateQueue(&queue);
-//     initializeList(&penyanyi);
-//     CreateEmptymap(&penyanyiAlbums);
-//     createmaps(&albumLagu);
-//     start(&penyanyi, &penyanyiAlbums, &albumLagu);
-//     queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);
-//     queuesong(penyanyi, penyanyiAlbums, albumLagu, &queue);   
-//     displayQueue(queue);
-//     queueswap(&queue, 0, 1);
-//     displayQueue(queue);
-//     queueremove(&queue, 0);
-//     displayQueue(queue);
-//     queueclear(&queue);
-//     displayQueue(queue);
-// }
