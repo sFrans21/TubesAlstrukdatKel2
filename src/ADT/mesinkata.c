@@ -321,26 +321,6 @@ Word SplitWordBlank(Word word)
     return (temp);
 }
 
-Word ConcatWord(Word word_1, Word word_2)
-{
-    Word word;
-    int count = 0;
-    for(int i=0; i<word_1.Length; i++)
-    {
-        word.TabWord[count] = word_1.TabWord[i];
-        count++;
-    }
-
-    for(int i=0; i<word_2.Length; i++)
-    {
-        word.TabWord[count] = word_2.TabWord[i];
-        count++;
-    }
-    word.Length = word_1.Length + word_2.Length;
-
-    return (word);
-}
-
 Word SplitWordMark(Word word)
 {
     Word temp;
