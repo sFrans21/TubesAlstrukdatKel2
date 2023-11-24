@@ -6,7 +6,7 @@
 
 // asumsi jika queue/RiwayatLagu kosong pasti ada current song untu
 
-void songNext(Queue *q, Stack *RL, currentsong*CS)
+void songNext(SQueue *q, RiwayatLagu *RL, CurrentSong*CS)
 {
     if ((*CS).status == 0)
     {
