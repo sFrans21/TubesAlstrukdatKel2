@@ -32,6 +32,10 @@ void CreateEmptymap(Map *M)
     (*M).Count = Nil;
 }
 
+void CreateEmptymapPlaylist(MapPlaylist *M){
+    (*M).PlCount = Nil;
+}
+
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptymap(Map M)
 /* Mengirim true jika Map M kosong*/

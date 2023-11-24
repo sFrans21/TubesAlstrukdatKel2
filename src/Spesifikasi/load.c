@@ -67,7 +67,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 namaAlbum.Length = currentWord.Length;
                 InsertSet(&albums, namaAlbum);
                 // printf("%s\n", namaAlbum.TabWord);
-
+            
                 for (int k = 0; k < jumlahLagu; k++)
                 {
                     ADVLine();
@@ -88,7 +88,7 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 for (int b = 0; b < namaAlbum.Length; b++)
                 {
                     namaAlbum.TabWord[b] = '\0';
-                }
+                }   
                 CreateEmptySet(&songs);
             }
             Insertmap(penyanyiAlbums, namaPenyanyi, albums);
@@ -114,9 +114,8 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
         // QUEUE
         ADVLine();
         int nQueue = WordToInt(currentWord);
-        // printf("%d\n", nQueue);
-        for (int i = 1; i <= nQueue; i++)
-        {
+        //printf("%d\n", nQueue);
+        for (int i = 1; i <= nQueue; i++){
             ADVLine();
             Word laguQueue;
             for (int j = 0; j < currentWord.Length; j++)
@@ -193,24 +192,12 @@ void load(char *inputfile, StaticList *penyanyi, Map *penyanyiAlbums, maps *albu
                 {
                     namaPLagu.TabWord[b] = '\0';
                 }
-
-                
-                // i.s = playlist(abc) lagu pl(de)
-                //f.s = 
-                
-                addressLinier pp = First(*LaguPlaylist);
-                Word Plsong;
-                for (int i = 0; i < (NbElmt(*LaguPlaylist)); i++)
-                {
-                    Plsong = Info(pp);
-                    InsertLastDynamic(Playlist, Plsong);
-                    pp = Next(pp);
-                }
             }
+            MapPlaylist mapforplaylist;
+            CreateEmptymapPlaylist(&mapforplaylist);
+            InsertPlaylist(&mapforplaylist, namaPlaylist, *LaguPlaylist);
         }
-    }
-    else
-    {
+    } else {
         printf("Save file tidak ditemukan. WayangWave gagal dijalankan.\n");
     }
 }

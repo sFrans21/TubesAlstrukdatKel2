@@ -64,6 +64,8 @@ void CreateEmptymap(Map *M);
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxEl */
 /* Ciri Map kosong : count bernilai Nil */
 
+void CreateEmptymapPlaylist(MapPlaylist *M);
+
 /* ********* Predikat Untuk test keadaan KOLEKSI ********* */
 boolean IsEmptymap(Map M);
 /* Mengirim true jika Map M kosong*/
